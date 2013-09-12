@@ -480,7 +480,7 @@ color:#000000; padding-left:3px; padding-right:3px; padding-bottom:0px!important
 .GEGanttPoint8 { background-position:-1600px 0px; }
 .GEGanttPoint8Hover { background-position:-1650px 0px; }
 
-.GEGanttResource { font:normal 11px "tahoma"; font-weight:bold; margin-top:3px; margin-left: 5px; color: #888888; text-shadow: 2px 2px 5px white }
+.GEGanttResource { font:normal 11px "tahoma"; font-weight:normal; margin-top:3px; margin-left: 5px; color: #555555; text-shadow: 2px 2px 5px white }
 .GEGanttResourceChar { width:6px; }
 
 .GEGanttAvailability { height:500px; background:#ACF; border:1px solid #88F; border-bottom:0px none; }

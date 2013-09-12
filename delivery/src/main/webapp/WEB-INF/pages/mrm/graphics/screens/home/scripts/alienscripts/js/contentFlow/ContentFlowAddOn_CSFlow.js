@@ -47,10 +47,14 @@ new ContentFlowAddOn ('CSFlow', {
         console.log('init');
         this.addStylesheet();
         console.log('aftre init');
+
+
     },
 
     onloadInit: function () {
-        console.log('on load initwwwww');
+
+
+
     },
     
     /* 
@@ -92,14 +96,14 @@ new ContentFlowAddOn ('CSFlow', {
         fixItemSize: false,             // don't scale item size to fit image, crop image if bigger than item
         relativeItemPosition: "top center", // align top/above, bottom/below, left, right, center of position coordinate
 
-        circularFlow: true,             // should the flow wrap around at begging and end?
+        circularFlow: false,             // should the flow wrap around at begging and end?
         verticalFlow: false,            // turn ContentFlow 90 degree counterclockwise
         visibleItems: -1,               // how man item are visible on each side (-1 := auto)
         endOpacity: 1,                  // opacity of last visible item on both sides
         startItem:  "center",           // which item should be shown on startup?
         scrollInFrom: "pre",            // from where should be scrolled in?
 
-        flowSpeedFactor: 0.5,           // how fast should it scroll?
+        flowSpeedFactor: 1,           // how fast should it scroll?
         flowDragFriction: 1,          // how hard should it be be drag the floe (0 := no dragging)
         scrollWheelSpeed: 1,          // how fast should the mouse wheel scroll. nagive values will revers the scroll direction (0:= deactivate mouse wheel)
         keys: {                         // key => function definition, if set to {} keys ar deactivated
@@ -111,8 +115,8 @@ new ContentFlowAddOn ('CSFlow', {
         },
 
         reflectionColor: "transparent", // none, transparent, overlay or hex RGB CSS style #RRGGBB
-        reflectionHeight: 0.2,          // float (relative to original image height)
-        reflectionGap: 0.05,             // gap between the image and the reflection
+        reflectionHeight: 0.3,          // float (relative to original image height)
+        reflectionGap: 0.00,             // gap between the image and the reflection
 
 
         /*

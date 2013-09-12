@@ -79,6 +79,8 @@
               GanttStart= "startDate"
               GanttEnd= "endDate"
               CanFilter= "1"
+              RelWidth="1"
+
               GanttSlack= "Slack"
               GanttFormatObject= "MainPrev"
               GanttFormat= "*name*"
@@ -96,7 +98,7 @@
                             &lt;span style='text-align: right;float: right;margin-left:65px;font-size: 11px'>
                             *budget**currency*&lt;/span>&lt;/div>"
               GanttZoom= "months"
-              GanttExclude = " w#1/5/2013~12/30/2013"
+              GanttExclude = " w#1/5/2013~1/7/2013"
               GanttClass="GanttOrange"
               GanttZoomList="[
                             { Name: 'years', GanttUnits: 'M', GanttChartRound: 'y', GanttWidth: 65,

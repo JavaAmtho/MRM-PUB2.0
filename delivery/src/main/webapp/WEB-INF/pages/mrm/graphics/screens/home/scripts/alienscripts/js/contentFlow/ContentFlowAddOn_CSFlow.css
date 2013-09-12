@@ -91,7 +91,7 @@
         .ContentFlowAddOn_CSFlow .scrollbar .slider {
             width: 16px;
             height: 16px;
-            background: url(img/slider_white.png) center center no-repeat;
+            background: url(img/Circle_black.png) center center no-repeat;
         }
         
         /* only for IE <= 6 and a alphatransparent slider image */
@@ -104,14 +104,14 @@
                 top: 120%;
                 font-size: 13px;
                 font-weight: bold;
-                color: silver
+                color: #343434
             }
 
     /* ----- global caption ----- */
     .ContentFlowAddOn_CSFlow .globalCaption {
         text-align: center;
         font-weight: bold;
-        color: white;
+        color: #343434;
         font-size: 14px;
         height: 20px;
         margin: 2em auto;
@@ -155,35 +155,63 @@
         padding: 3px;
         width:100%;
         height:340px;
-        border-radius: 5px;
+        border-radius: 2px;
         border: 1px double white;
-        background: #555555;
+        background: #ffffff;
         margin-bottom: 0;
     }
 
     #coverInfo{
 
-        color: white;
+        color: #343434;
         width: 26.5%;
         float: left;
         height: 100%;
-        border-radius: 5px;
-        border: 1px solid #343434;
+        border-radius: 2px;
+        border: 1px solid #777;
         margin-top: 0;
+        background-color: #e6dfe6;
+       /* background-image: linear-gradient(left bottom, #E6DFE6 0%, #EFF6FC 61%, #FFFFFF 81%);
+        background-image: -o-linear-gradient(left bottom, #E6DFE6 0%, #EFF6FC 61%, #FFFFFF 81%);
+        background-image: -moz-linear-gradient(left bottom, #E6DFE6 0%, #EFF6FC 61%, #FFFFFF 81%);
+        background-image: -webkit-linear-gradient(left bottom, #E6DFE6 0%, #EFF6FC 61%, #FFFFFF 81%);
+        background-image: -ms-linear-gradient(left bottom, #E6DFE6 0%, #EFF6FC 61%, #FFFFFF 81%);
 
-        background-color: #343434;
-        box-shadow: 1px 1px 3px 3px #000000 inset;
+        background-image: -webkit-gradient(
+            linear,
+            left bottom,
+            right top,
+            color-stop(0, #E6DFE6),
+            color-stop(0.61, #EFF6FC),
+            color-stop(0.81, #FFFFFF)
+        );
+*/
+        box-shadow: 1px 1px 3px 3px #aaa ;
+
 
     }
 
     #flowContainer{
-        box-shadow: 1px 1px 3px 3px #000000 inset;
+        box-shadow: 1px 1px 3px 3px #aaa ;
 
-        border-radius: 5px;
-        border: 1px solid #343434;
+        border-radius: 2px;
+        border: 1px solid #777;
         height: 100%;
         width: 72%;
-        background-color: #343434;
+        background-image: linear-gradient(left bottom, rgb(171,164,171) 0%, rgb(239,246,252) 61%, rgb(230,223,230) 81%);
+        background-image: -o-linear-gradient(left bottom, rgb(171,164,171) 0%, rgb(239,246,252) 61%, rgb(230,223,230) 81%);
+        background-image: -moz-linear-gradient(left bottom, rgb(171,164,171) 0%, rgb(239,246,252) 61%, rgb(230,223,230) 81%);
+        background-image: -webkit-linear-gradient(left bottom, rgb(171,164,171) 0%, rgb(239,246,252) 61%, rgb(230,223,230) 81%);
+        background-image: -ms-linear-gradient(left bottom, rgb(171,164,171) 0%, rgb(239,246,252) 61%, rgb(230,223,230) 81%);
+
+        background-image: -webkit-gradient(
+            linear,
+            left bottom,
+            right top,
+            color-stop(0, rgb(171,164,171)),
+            color-stop(0.61, rgb(239,246,252)),
+            color-stop(0.81, rgb(230,223,230))
+        );
         float:left;
 
     }
@@ -193,6 +221,9 @@
     }
 
     #coverInfoHeader{
+
+        background: transparent ;
+
         padding-top: 6px;
         font-weight: bold;
         font-family: calibri;
@@ -201,14 +232,19 @@
         text-align: center;
         height: 30px;
         width: 100%;
-        border-bottom: 2px solid #555555;
+        border-bottom: 1px solid #aaa;
         margin-top: 1px;
-        box-shadow: 1px 0px 4px 1px #000000 inset;
+        color: #343434;
+/*
+        box-shadow: 0px 0px 3px 3px #aaa ;
+*/
+
 
 
     }
 
     #coverDetail{
+        background: transparent ;
         padding-top: 4px;
         padding-left: 5px;
         font-weight: normal;
@@ -219,5 +255,8 @@
         height: 80%;
     }
 
+.scrollbar{
+    border: 0px solid #343434 !important;
+}
 
 
