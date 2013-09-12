@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import app.cs.interfaces.rule.MasterTemplateRepository;
 
+import com.cs.data.api.core.nosql.redis.InMemoryNoSqlRepository;
 import com.cs.data.api.webservices.rest.IRestClient;
 
 @Component
@@ -33,10 +34,13 @@ public class MasterTemplateImpl implements MasterTemplateRepository {
 	private String LIST_URL;
 
 	private IRestClient client;
+	private InMemoryNoSqlRepository redisRepository;
 
 	@Autowired
-	public MasterTemplateImpl(IRestClient client) {
+	public MasterTemplateImpl(IRestClient client,
+			InMemoryNoSqlRepository redisRepository) {
 		this.client = client;
+		this.redisRepository = redisRepository;
 
 	}
 
@@ -45,6 +49,11 @@ public class MasterTemplateImpl implements MasterTemplateRepository {
 		Map<String, String> headerParameters = new HashMap<String, String>();
 		prepareHeaderParameters(headerParameters);
 		return client.get(LIST_URL, headerParameters);
+	}
+
+	@Override
+	public String getMasterTemplates(String type) {
+		return redisRepository.get("masterTemplates");
 	}
 
 	private void prepareHeaderParameters(Map<String, String> headerParameters) {

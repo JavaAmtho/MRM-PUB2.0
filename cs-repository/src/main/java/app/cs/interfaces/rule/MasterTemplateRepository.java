@@ -5,4 +5,6 @@ public interface MasterTemplateRepository {
 
 	public abstract String getMasterTemplates();
 
+	String getMasterTemplates(String type);
+
 }
