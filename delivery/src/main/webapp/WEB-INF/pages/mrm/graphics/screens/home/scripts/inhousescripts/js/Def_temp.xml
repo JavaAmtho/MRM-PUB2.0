@@ -69,7 +69,7 @@
               Type= "Date"
               Format= "dd/MM/yyyy"
               WidthPad= "17"
-              MinWidth= "130"
+              RelWidth="1"
               GanttSizeFit= "0"
               CanFilter= "1"
               ResultMask="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$"

@@ -1293,7 +1293,7 @@ body, .pure-g [class*="pure-u"], .pure-g-r [class*="pure-u"] {
 }
 .pure-button,  .pure-button1 {
     font-size: 11px !important;
-    padding: 0.5em 1.5em;
+    padding: 4px 8px 4px 6px !important;
     color: rgba(0, 0, 0, 0.8);
     border: 0px none transparent;
     background-color: rgb(230, 230, 230);
@@ -1304,12 +1304,12 @@ body, .pure-g [class*="pure-u"], .pure-g-r [class*="pure-u"] {
 
 .pure-button-left {
 
-    border-radius: 6px 0px 0px 6px !important;
+    border-radius: 10px 0px 0px 10px !important;
 }
 
 .pure-button-right {
 
-    border-radius: 0px 6px 6px 0px !important;
+    border-radius: 0px 10px 10px 0px !important;
 }
 .pure-button, .pure-button1 {
     display: inline-block;
@@ -1330,7 +1330,10 @@ body, .pure-g [class*="pure-u"], .pure-g-r [class*="pure-u"] {
 }
 
 .pure-button:focus, .calendarButtonPressed{
-    background-image: linear-gradient(rgb(240,240,240), white);
+    background-image: linear-gradient(#777777, #343434);
+    color: white;
+    transition: box-shadow 0.1s linear 0s;
+    text-decoration: none;
 
 }
 

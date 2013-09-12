@@ -1,6 +1,16 @@
 var myData;
 
 var GanttChartPresenter = function(){
+
+    $("#treeGantt").addClass("calendarButtonPressed");
+
+    var ganttElements = document.getElementsByClassName("GanttProperties");
+    for(var i = 0; i < ganttElements.length; i++) {
+        ganttElements[i].style.visibility = "visible";
+    }
+
+    console.log(ganttElements);
+
     this.design = function(id){
         var treeData;
 

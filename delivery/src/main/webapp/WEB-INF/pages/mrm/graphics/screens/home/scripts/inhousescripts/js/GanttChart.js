@@ -26,6 +26,8 @@ var GanttChart = function(){
                 minHeight: 150
             });
 
+            HomePresenter.viewTreeAndGantt();
+
         }, 1000);
 
 

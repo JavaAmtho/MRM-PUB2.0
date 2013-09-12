@@ -86,7 +86,7 @@ new ContentFlowAddOn ('CSFlow', {
         activeElement: 'content',       // item or content
 
         maxItemHeight: 0,               // 0 == auto, >0 max item height in px
-        scaleFactor: 1.0,               // overall scale factor of content
+        scaleFactor: 1.1,               // overall scale factor of content
         scaleFactorLandscape: 1.33,     // scale factor of landscape images ('max' := height= maxItemHeight)
         scaleFactorPortrait: 1.0,       // scale factor of portraoit and square images ('max' := width = item width)
         fixItemSize: false,             // don't scale item size to fit image, crop image if bigger than item
@@ -99,9 +99,9 @@ new ContentFlowAddOn ('CSFlow', {
         startItem:  "center",           // which item should be shown on startup?
         scrollInFrom: "pre",            // from where should be scrolled in?
 
-        flowSpeedFactor: 1.0,           // how fast should it scroll?
-        flowDragFriction: 1.0,          // how hard should it be be drag the floe (0 := no dragging)
-        scrollWheelSpeed: 1.0,          // how fast should the mouse wheel scroll. nagive values will revers the scroll direction (0:= deactivate mouse wheel)
+        flowSpeedFactor: 0.5,           // how fast should it scroll?
+        flowDragFriction: 1,          // how hard should it be be drag the floe (0 := no dragging)
+        scrollWheelSpeed: 1,          // how fast should the mouse wheel scroll. nagive values will revers the scroll direction (0:= deactivate mouse wheel)
         keys: {                         // key => function definition, if set to {} keys ar deactivated
             13: function () { this.conf.onclickActiveItem(this._activeItem) },
             37: function () { this.moveTo('pre') }, 
@@ -111,8 +111,8 @@ new ContentFlowAddOn ('CSFlow', {
         },
 
         reflectionColor: "transparent", // none, transparent, overlay or hex RGB CSS style #RRGGBB
-        reflectionHeight: 0.5,          // float (relative to original image height)
-        reflectionGap: 0.0,             // gap between the image and the reflection
+        reflectionHeight: 0.2,          // float (relative to original image height)
+        reflectionGap: 0.05,             // gap between the image and the reflection
 
 
         /*
@@ -134,6 +134,8 @@ new ContentFlowAddOn ('CSFlow', {
          */
         onclickInactiveItem : function (item) {
             console.log('clickinactive')
+
+            moveTo(item,item)  ;
 
         },
 
