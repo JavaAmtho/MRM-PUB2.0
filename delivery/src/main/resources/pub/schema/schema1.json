@@ -1,47 +1,47 @@
-{
-    "id": "1",
-    "default": "true",
-    "name": "Marketing Initiative-Campaign-SubCampaign-Communication Plan-Communication Channel-Publication",
-    "structure": [
-        {
-            "name": "Marketing Initiative",
-            "icon": "something",
-            "possibleChild": ["Campaign"]
-        },
-        {
-            "name": "Campaign",
-            "icon": "something",
-            "possibleChild": ["SubCampaign"]
-        },
-        {
-            "name": "SubCampaign",
-            "icon": "something",
-            "possibleChild": ["Communication Plan"]
-        },
-        {
-            "name": "Communication Plan",
-            "icon": "something",
-            "possibleChild": ["Communication Channel"]
-        },
-        {
-            "name": "Communication Channel",
-            "icon": "something",
-            "possibleChild": ["Publication"]
-        },
-        {
-            "name": "Publication",
-            "icon": "something",
-            "possibleChild": ["Chapter","Page","Assortment"]
-        },
-        {
-            "name": "Chapter",
-            "icon": "something",
-            "possibleChild": ["Chapter","Page","Assortment"]
-        },
-        {
-            "name": "Page",
-            "icon": "something",
-            "possibleChild": ["Assortment"]
-        }
-    ]
+ {
+        "id": "1",
+        "default": "true",
+        "name": "MI-Campaign-SubCampaign-CP-CC-Publication",
+        "structure": [
+            {
+                "name": "MI",
+                "icon": "something",
+                "possibleChild": ["Campaign"]
+            },
+            {
+                "name": "Campaign",
+                "icon": "something",
+                "possibleChild": ["SubCampaign"]
+            },
+            {
+                "name": "SubCampaign",
+                "icon": "something",
+                "possibleChild": ["CP"]
+            },
+            {
+                "name": "CP",
+                "icon": "something",
+                "possibleChild": ["CC"]
+            },
+            {
+                "name": "CC",
+                "icon": "something",
+                "possibleChild": ["Publication"]
+            },
+            {
+                "name": "Publication",
+                "icon": "something",
+                "possibleChild": ["Chapter","Page","Assortment"]
+            },
+            {
+                "name": "Chapter",
+                "icon": "something",
+                "possibleChild": ["Chapter","Page","Assortment"]
+            },
+            {
+                "name": "Page",
+                "icon": "something",
+                "possibleChild": ["Assortment"]
+            }
+        ]
 }

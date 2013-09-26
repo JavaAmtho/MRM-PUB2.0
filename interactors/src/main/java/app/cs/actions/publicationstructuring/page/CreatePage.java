@@ -11,6 +11,7 @@ import app.cs.interfaces.chapter.IChapterRepository;
 import app.cs.model.request.CreatePageRequest;
 import app.cs.model.request.RequestModel;
 import app.cs.model.response.ResponseModel;
+import app.cs.impl.model.DimensionInfo;
 import app.cs.model.response.StringResponse;
 
 /**
@@ -70,6 +71,7 @@ public class CreatePage implements Interactor {
 		chapter.setPath(path);
 		chapter.setName(name);
 		chapter.setType(type);
+		chapter.setDimensionInfo(new DimensionInfo());
 		chapter.setChildren(new ArrayList<MultiDimensionalObject>());
 
 	}

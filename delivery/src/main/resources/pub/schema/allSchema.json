@@ -49,7 +49,7 @@
     {
         "id": "2",
         "default": "false",
-        "name": "Campaign-SubCampaign-Marketing Initiative-Communication Plan-Communication Channel-Publication",
+        "name": "Campaign-SubCampaign-MI-CP-CC-Publication",
         "structure": [
             {
                 "name": "Campaign",
@@ -59,20 +59,20 @@
             {
                 "name": "SubCampaign",
                 "icon": "something",
-                "possibleChild": ["Marketing Initiative"]
+                "possibleChild": ["MI"]
             },
             {
-                "name": "Marketing Initiative",
+                "name": "MI",
                 "icon": "something",
-                "possibleChild": ["Communication Plan"]
+                "possibleChild": ["CP"]
             },
             {
-                "name": "Communication Plan",
+                "name": "CP",
                 "icon": "something",
-                "possibleChild": ["Communication Channel"]
+                "possibleChild": ["CC"]
             },
             {
-                "name": "Communication Channel",
+                "name": "CC",
                 "icon": "something",
                 "possibleChild": ["Publication"]
             },
