@@ -251,6 +251,7 @@ HomePresenter.addEventListeners = function(){
 }
 
 HomePresenter.searchList = function(e){
+    console.log(e.currentTarget)
     if(e.keyCode == 13){
         if(currentPanelId == "btnPIM"){
             SearchPimAsset.search(e.currentTarget.value,HomePresenter.populateAssetsList);

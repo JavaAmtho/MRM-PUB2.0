@@ -1,4 +1,5 @@
 var DynaLazyTree = function(){
+
     this.createTree = function(treeObj,urls){
         $(treeObj).dynatree({
             initAjax: {
@@ -27,6 +28,10 @@ var DynaLazyTree = function(){
         var temps = $(treeObj).dynatree("getTree")
         temps.reload();
     }
+
+    $("#asSearch").keyup(function(e){
+        HomePresenter.searchList(e);
+    });
 
     function getChildURL(id){
         var url;
