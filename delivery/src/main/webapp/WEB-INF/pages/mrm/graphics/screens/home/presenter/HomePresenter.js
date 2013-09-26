@@ -178,7 +178,7 @@ HomePresenter.createFlow = function(publications){
     for(var i=0; i< details.length; i++){
         var img = $(document.createElement('img'))
         img.attr('id', details[i].id);
-        img.attr('src',details[i].previewImg);
+        img.attr('src',details[i].imageUrl);
         img.attr('alt',details[i].name);
         img.appendTo('#myImageFlow');
     }

@@ -1,5 +1,5 @@
 {
     "baseUrl":"../../../",
-    "MRMUrl":"/delivery/mrm/pages/engine/core/html/start.html",
-    "PubUrl":"/delivery/pub/pages/engine/core/html/start.html"
+    "MRMUrl":"/delivery/pages/mrm/engine/core/html/start.html",
+    "PubUrl":"/delivery/pages/pub/engine/core/html/start.html"
 }
