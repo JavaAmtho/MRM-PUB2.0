@@ -1,7 +1,7 @@
 {
     "landingScreen":{"screenName":"/start","resourceName":"start.html","containerId":"","loadOnStartup":"false"},
-    "headerScreen":{"screenName":"/delivery/mrm/header","resourceName":"Header.html","containerId":"headerContainer","loadOnStartup":"true"},
-    "footerScreen":{"screenName":"/delivery/mrm/footer","resourceName":"footer.html","containerId":"footerContainer","loadOnStartup":"true"},
-    "loginScreen":{"screenName":"/delivery/mrm/login","resourceName":"login.html","containerId":"mainContainer","loadOnStartup":"true"},
-    "homeScreen":{"screenName":"/delivery/mrm/home","resourceName":"Home.html","containerId":"mainContainer","loadOnStartup":"false"}
+    "headerScreen":{"screenName":"/delivery/mrm/header","resourceName":"Header.html","containerId":"headerContainer","loadOnStartup":"false"},
+    "footerScreen":{"screenName":"/delivery/mrm/footer","resourceName":"footer.html","containerId":"footerContainer","loadOnStartup":"false"},
+    "loginScreen":{"screenName":"/delivery/mrm/login","resourceName":"login.html","containerId":"mainContainer","loadOnStartup":"false"},
+    "homeScreen":{"screenName":"/delivery/mrm/home","resourceName":"Home.html","containerId":"mainContainer","loadOnStartup":"true"}
 }

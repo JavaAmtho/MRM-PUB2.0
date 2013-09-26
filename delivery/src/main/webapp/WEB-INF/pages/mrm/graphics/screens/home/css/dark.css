@@ -32,7 +32,7 @@
     padding: 25px 0 0 0;
     overflow: hidden;
     /*background-image: 'url("'+EngineGraphicsData.getBaseUrl()+'+")';*/
-    background-image: url("/delivery/pages/graphics/screens/home/images/cs_logo.png");
+    background-image: url("/delivery/pages/mrm/graphics/screens/home/images/cs_logo.png");
 }
 
 .profileLogo {
@@ -903,7 +903,7 @@ Top Bar Animation Section starts
 .viewOptionCSS{
     position: relative;
     /*background: 'url("'+EngineDataStore.getBaseURL()+'graphics/screens/home/images/icons/tile.png")';*/
-    background-image: url('/delivery/pages/graphics/screens/home/images/icons/grad.png');
+    background-image: url('/delivery/pages/mrm/graphics/screens/home/images/icons/grad.png');
     background-repeat: repeat-x;
 
     /* background-color:#777777;*/
@@ -918,7 +918,7 @@ Top Bar Animation Section starts
 
 .tileBtnCSS{
     /*background: 'url("'+EngineDataStore.getBaseURL()+'graphics/screens/home/images/icons/tile.png")';*/
-    background:url(/delivery/pages/graphics/screens/home/images/icons/tile.png);
+    background:url(/delivery/pages/mrm/graphics/screens/home/images/icons/tile.png);
     background-repeat: no-repeat;
     border:0px;
     width: 28px;
@@ -928,7 +928,7 @@ Top Bar Animation Section starts
 
 .listBtnCSS{
     /*background: 'url("'+EngineDataStore.getBaseURL()+'graphics/screens/home/images/icons/list.png")';*/
-    background:url(/delivery/pages/graphics/screens/home/images/icons/list.png);
+    background:url(/delivery/pages/mrm/graphics/screens/home/images/icons/list.png);
     background-repeat: no-repeat;
     border:0px;
     width: 28px;
@@ -938,7 +938,7 @@ Top Bar Animation Section starts
 
 .detailBtnCSS{
     /*background: 'url("'+EngineDataStore.getBaseURL()+'graphics/screens/home/images/icons/detail.png")';*/
-    background:url(/delivery/pages/graphics/screens/home/images/icons/detail.png);
+    background:url(/delivery/pages/mrm/graphics/screens/home/images/icons/detail.png);
     background-repeat: no-repeat;
     border:0px;
     width: 28px;

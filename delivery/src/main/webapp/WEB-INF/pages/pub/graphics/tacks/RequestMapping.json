@@ -7,8 +7,8 @@
     "getAssetsTree":"/delivery/testdrive/mocks/tree/AssetTree.json",
     "searchMamAssets":"/delivery/mam/search/",
     "searchPimAssets":"/delivery/pim/search/",
-    "btnPIM":"delivery/pim/list",
-    "btnMAM":"delivery/mam/list",
-    "btnMIM":"delivery/text/list"
+    "btnPIM":"../../pim/list",
+    "btnMAM":"../../mam/list",
+    "btnMIM":"../../text/list"
 
 }

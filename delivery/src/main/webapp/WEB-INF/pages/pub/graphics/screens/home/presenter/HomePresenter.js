@@ -83,9 +83,9 @@ HomePresenter.createTree = function(btnId){
 }
 
 HomePresenter.reset = function(){
-    $("#btnMIM").css("background-image","url(/delivery/pages/graphics/screens/home/images/icons/MIM.png)");
-    $("#btnPIM").css("background-image","url(/delivery/pages/graphics/screens/home/images/icons/PIM.png)");
-    $("#btnMAM").css("background-image","url(/delivery/pages/graphics/screens/home/images/icons/MAM.png)");
+    $("#btnMIM").css("background-image","url(/delivery/pages/pub/graphics/screens/home/images/icons/MIM.png)");
+    $("#btnPIM").css("background-image","url(/delivery/pages/pub/graphics/screens/home/images/icons/PIM.png)");
+    $("#btnMAM").css("background-image","url(/delivery/pages/pub/graphics/screens/home/images/icons/MAM.png)");
 }
 
 HomePresenter.changeSelectedBtn = function(btnId){
