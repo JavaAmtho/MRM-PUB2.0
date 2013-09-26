@@ -7,7 +7,8 @@
             Style= "ExtJS"
             MinRowHeight= "23"
             Expanded="false"
-            LeftScrollLeft="0"
+            RightWidth="800"
+            RightCanResize="3"
            />
     <Cfg
             SearchCells="1"
@@ -59,6 +60,7 @@
               Format= "dd/MM/yyyy"
               WidthPad= "17"
               MinWidth= "130"
+              GanttSizeFit= "0"
               CanFilter= "1"
                 />
         <C 	Name= "ganttChart"
@@ -69,7 +71,19 @@
               GanttSlack= "Slack"
               GanttFormatObject= "MainPrev"
               GanttFormat= "*name*"
-              GanttMainTip="TIP"
+              GanttMainTip= "&lt;div style='padding-bottom:5px;font-weight:bold'>*name*&lt;/div>
+                            &lt;div style='padding-bottom:5px;'> &lt;span  style='text-align: left;
+                            float:left;font-size:11px'>Start:&lt;/span>&lt;span style='text-align: right;
+                            margin-left:65px;float:right;font-size:11px'>*startDate*&lt;/span>&lt;/div>
+                            &lt;div style='padding-bottom:5px;'>&lt;span  style='text-align: left;
+                            float: left;font-size: 11px'>End:&lt;/span>&lt;span style='text-align: right;
+                            margin-left:65px;float: right;font-size: 11px'>*endDate*&lt;/span>&lt;/div>
+                            &lt;div style='padding-bottom:5px;'>&lt;span  style='text-align: left;
+                            float: left;font-size: 11px'>Manager:&lt;/span>&lt;span style='text-align: right;
+                            margin-left:65px;float: right;font-size: 11px'>*manager*&lt;/span>&lt;/div> &lt;div>
+                            &lt;span  style='text-align: left;float: left;font-size: 11px'>Budget:&lt;/span>
+                            &lt;span style='text-align: right;float: right;margin-left:65px;font-size: 11px'>
+                            *budget**currency*&lt;/span>&lt;/div>"
               GanttZoom= "months"
               GanttExclude = " w#1/5/2013~12/30/2013"
               GanttClass="GanttOrange"
@@ -101,14 +115,15 @@
 
 
     <LeftCols>
-        <L Name = "Panel"
+        <C Name = "Panel"
         Type= "Panel"
         WidthPad= "17"
         Buttons= "Select,Delete,Move"/>
 
-        <L Name = "name"
+        <C Name = "name"
         Type= "Text"
         Width= "500"
+        GanttSizeFit= "1"
         WidthPad= "17"/>
     </LeftCols>
 
@@ -145,7 +160,7 @@
                 Space="4"
                 Kind="Toolbar1"
                 Panel="0"
-                Cells="Print,ExportPDF,Export,ExpandAll,CollapseAll,ZoomIn,ZoomOut,ZoomFit"
+                Cells="Print,ExpandAll,CollapseAll,ZoomIn,ZoomOut,ZoomFit"
                 PrintLabel="Print"
                 ExportPDFLabel=" |  Export to PDF"
                 ExportLabel=" |  Export to Excel"

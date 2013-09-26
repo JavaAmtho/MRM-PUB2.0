@@ -35,12 +35,11 @@ Router.forwardAPIRequests = function(url,async,callback){
 
 Router.loadRequest = function(key,async,callBack,params){
     if(params){
-
         switch(params){
             case "1":
                 key = "getViewStructure1";
                 break;
-            case "Marketing Initiative-Campaign-SubCampaign-Communication Plan-Communication Channel":
+            case "MI-Campaign-SubCampaign-CP-CC-Publication":
                 key = "getTree1";
                 break;
         }
