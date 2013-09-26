@@ -25,7 +25,7 @@ public class MamRepository implements AssetsRepository {
 	private static final String HOST = "Host";
 	private static final String LANGUAGE = "en-US,en;q=0.8";
 	private static final String ACCEPT_LANGUAGE = "Accept-Language";
-	private final String BASE_URL = "http://192.168.135.104/CS13.0/admin";
+	private final String BASE_URL = "http://192.168.135.104/CS13.0Trunk/admin";
 	private final String LIST_URL = BASE_URL + "/rest/mam/list/";
 	private final String SEARCH_URL = BASE_URL + "/rest/mam/search/";
 	private IRestClient client;
