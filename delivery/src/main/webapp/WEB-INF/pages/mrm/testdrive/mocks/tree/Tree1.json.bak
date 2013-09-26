@@ -1,0 +1,185 @@
+[
+ {
+        "id": "4",
+        "type": "Campaign",
+        "path": "-1",
+        "name": "4",
+        "title": "4",
+        "startDate":"5/18/2013",
+        "endDate":"6/20/2013",
+        "isFolder": true,
+        "Items": [
+            {
+                "id": "5",
+                "type": "MasterPublication",
+                "path": "-1,4",
+                "name": "5",
+                "title": "5",
+                "startDate":"5/18/2013",
+                "endDate":"6/20/2013",
+                "isFolder": true,
+                "Items": [
+                    {
+                        "id": "zx",
+                        "type": "Publication",
+                        "path": "4,5",
+                        "name": "zx",
+                        "title": "zx",
+                        "startDate":"5/18/2013",
+                        "endDate":"6/19/2013",
+                        "isFolder": true,
+                        "Items": [
+                            {
+                                "id": "csa1",
+                                "type": "Chapter",
+                                "path": "4,5,zx",
+                                "name": "csa1",
+                                "title": "csa1",
+                                "startDate":"5/18/2013",
+                                "endDate":"5/27/2013",
+                                "isFolder": true,
+                                "Items": [],
+                                "key": "csa",
+                                "groupId": null,
+                                "root": false,
+                                "page": false,
+                                "objectKey": "DIMENSION"
+                            },
+                            {
+                                "id": "csa2",
+                                "type": "Chapter",
+                                "path": "4,5,zx",
+                                "name": "csa2",
+                                "title": "csa2",
+                                "startDate":"5/18/2013",
+                                "endDate":"5/27/2013",
+                                "isFolder": true,
+                                "Items": [],
+                                "key": "csa",
+                                "groupId": null,
+                                "root": false,
+                                "page": false,
+                                "objectKey": "DIMENSION"
+                            },
+                            {
+                                "id": "csa3",
+                                "type": "Chapter",
+                                "path": "4,5,zx",
+                                "name": "csa3",
+                                "title": "csa3",
+                                "startDate":"5/18/2013",
+                                "endDate":"5/27/2013",
+                                "isFolder": true,
+                                "Items": [],
+                                "key": "csa",
+                                "groupId": null,
+                                "root": false,
+                                "page": false,
+                                "objectKey": "DIMENSION"
+                            },
+                            {
+                                "id": "csa4",
+                                "type": "Chapter",
+                                "path": "4,5,zx",
+                                "name": "csa4",
+                                "title": "csa4",
+                                "startDate":"5/18/2013",
+                                "endDate":"5/27/2013",
+                                "isFolder": true,
+                                "Items": [],
+                                "key": "csa",
+                                "groupId": null,
+                                "root": false,
+                                "page": false,
+                                "objectKey": "DIMENSION"
+                            },
+                            {
+                                "id": "csa5",
+                                "type": "Chapter",
+                                "path": "4,5,zx",
+                                "name": "csa5",
+                                "title": "csa5",
+                                "startDate":"5/18/2013",
+                                "endDate":"5/27/2013",
+                                "isFolder": true,
+                                "Items": [],
+                                "key": "csa",
+                                "groupId": null,
+                                "root": false,
+                                "page": false,
+                                "objectKey": "DIMENSION"
+                            },
+                            {
+                                "id": "csa6",
+                                "type": "Chapter",
+                                "path": "4,5,zx",
+                                "name": "csa6",
+                                "title": "csa6",
+                                "startDate":"5/18/2013",
+                                "endDate":"5/27/2013",
+                                "isFolder": true,
+                                "Items": [],
+                                "key": "csa",
+                                "groupId": null,
+                                "root": false,
+                                "page": false,
+                                "objectKey": "DIMENSION"
+                            },
+                            {
+                                "id": "csa7",
+                                "type": "Chapter",
+                                "path": "4,5,zx",
+                                "name": "csa7",
+                                "title": "csa7",
+                                "startDate":"5/18/2013",
+                                "endDate":"5/27/2013",
+                                "isFolder": true,
+                                "Items": [],
+                                "key": "csa",
+                                "groupId": null,
+                                "root": false,
+                                "page": false,
+                                "objectKey": "DIMENSION"
+                            }
+
+
+
+                        ],
+                        "key": "zx",
+                        "groupId": [
+                            "ffd67257-8b30-4b97-b54d-bdcdf2b1f837",
+                            "ae39bf44-b24f-4036-972c-e17e66927337",
+                            "37720262-3200-4203-bc52-34a4439be0d3"
+                        ],
+                        "root": false,
+                        "page": false,
+                        "objectKey": "DIMENSION"
+                    }
+                ],
+                "key": "5",
+                "groupId": [
+                    "8f912725-1ca8-42b3-bac8-ea3f98f31acf",
+                    "6baf5cba-26a3-4697-b691-58046b2e44dc",
+                    "ffd67257-8b30-4b97-b54d-bdcdf2b1f837",
+                    "ae39bf44-b24f-4036-972c-e17e66927337",
+                    "37720262-3200-4203-bc52-34a4439be0d3"
+                ],
+                "root": false,
+                "page": false,
+                "objectKey": "DIMENSION"
+            }
+        ],
+        "key": "4",
+        "groupId": [
+            "6baf5cba-26a3-4697-b691-58046b2e44dc",
+            "d564f43b-8e7b-44d7-8a23-6b008bdf9a5c",
+            "30ac5ddd-04c7-4f5e-a143-fe3622c5e0fc",
+            "ffd67257-8b30-4b97-b54d-bdcdf2b1f837",
+            "ae39bf44-b24f-4036-972c-e17e66927337",
+            "37720262-3200-4203-bc52-34a4439be0d3"
+        ],
+        "root": true,
+        "page": false,
+        "objectKey": "DIMENSION"
+    }
+]

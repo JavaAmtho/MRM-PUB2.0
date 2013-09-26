@@ -1,0 +1,22 @@
+{
+    "id": "3",
+    "default": "false",
+    "name": "Campaign-Publication-MasterPublication",
+    "structure": [
+        {
+            "name": "Campaign",
+            "icon": "something",
+            "possibleChild": ["Publication"]
+        },
+        {
+            "name": "Publication",
+            "icon": "something",
+            "possibleChild": ["MasterPublication","Assortment"]
+        },
+        {
+            "name": "MasterPublication",
+            "icon": "something",
+            "possibleChild": []
+        }
+    ]
+}

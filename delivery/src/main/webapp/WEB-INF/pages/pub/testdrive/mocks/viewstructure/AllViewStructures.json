@@ -1,0 +1,96 @@
+[
+    {
+        "id": "1",
+        "default": "true",
+        "name": "Marketing Initiative-Campaign-SubCampaign-Communication Plan-Communication Channel",
+        "structure": [
+            {
+                "name": "Marketing Initiative",
+                "icon": "something",
+                "possibleChild": ["Campaign"]
+            },
+            {
+                "name": "Campaign",
+                "icon": "something",
+                "possibleChild": ["SubCampaign"]
+            },
+            {
+                "name": "SubCampaign",
+                "icon": "something",
+                "possibleChild": ["Communication Plan"]
+            },
+            {
+                "name": "Communication Plan",
+                "icon": "something",
+                "possibleChild": ["Communication Channel"]
+            },
+            {
+                "name": "Communication Channel",
+                "icon": "something",
+                "possibleChild": ["Publication"]
+            },
+            {
+                "name": "Publication",
+                "icon": "something",
+                "possibleChild": ["Chapter","Page","Assortment"]
+            },
+            {
+                "name": "Chapter",
+                "icon": "something",
+                "possibleChild": ["Chapter","Page","Assortment"]
+            },
+            {
+                "name": "Page",
+                "icon": "something",
+                "possibleChild": ["Assortment"]
+            }
+        ]
+    },
+    {
+        "id": "2",
+        "default": "false",
+        "name": "Campaign-SubCampaign-Marketing Initiative-Communication Plan-Communication Channel",
+        "structure": [
+            {
+                "name": "Campaign",
+                "icon": "something",
+                "possibleChild": ["SubCampaign"]
+            },
+            {
+                "name": "SubCampaign",
+                "icon": "something",
+                "possibleChild": ["Marketing Initiative"]
+            },
+            {
+                "name": "Marketing Initiative",
+                "icon": "something",
+                "possibleChild": ["Communication Plan"]
+            },
+            {
+                "name": "Communication Plan",
+                "icon": "something",
+                "possibleChild": ["Communication Channel"]
+            },
+            {
+                "name": "Communication Channel",
+                "icon": "something",
+                "possibleChild": ["Publication"]
+            },
+            {
+                "name": "Publication",
+                "icon": "something",
+                "possibleChild": ["Chapter","Page","Assortment"]
+            },
+            {
+                "name": "Chapter",
+                "icon": "something",
+                "possibleChild": ["Chapter","Page","Assortment"]
+            },
+            {
+                "name": "Page",
+                "icon": "something",
+                "possibleChild": ["Assortment"]
+            }
+        ]
+    }
+]

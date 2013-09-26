@@ -1,0 +1,13 @@
+{
+    "type": [
+        {  "list": "This is PIM list. <br>This is PIM list. <br>This is PIM list. <br>This is PIM list.",
+           "details": "These are PIM list details. These are PIM list details. These are PIM list details."
+        },
+        {   "list": "This is MAM list. <br>This is MAM list. <br>This is MAM list. <br>This is MAM list.",
+            "details": "These are MAM list details. These are MAM list details. These are MAM list details."
+        },
+        {    "list": "This is MIM list. <br>This is MIM list. <br>This is MIM list. <br>This is MIM list.",
+            "details": "These are MIM list details. These are MIM list details. These are MIM list details."
+        }
+    ]
+}

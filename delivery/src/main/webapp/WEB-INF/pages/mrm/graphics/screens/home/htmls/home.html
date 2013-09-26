@@ -1,0 +1,102 @@
+<div class="container-fluid" style="min-width: 768px">
+    <div class="row-fluid" style="height: auto">
+        <div class="span12" >
+
+            <!--UNCOMMENT THIS IF WE WANT DROPDOWN AND REMOVE NULL CHECK FROM DROPDOWN PRESENTER-->
+       <!--   <div id="selector" style="visibility: hidden">
+            <div id="selectLabel" style="visibility: hidden">
+                <p id="selectLbl" class="selectLblCSS">Select View<select id="schemaDropDown" class="customSelectCSS"></select></p>
+            </div>
+                <p id="txt" class="formatTxt"></p>
+          </div>-->
+
+          <div id="ganttBtnHolder">
+
+          <!--  <div id="ScrollPrev" class="GanttProperties"  style="position: relative"></div>-->
+
+
+                <!--
+                            <span id="ScrollPrev" class="GanttProperties"><--</span>
+                -->
+            <!--<span id="ScrollToday" class="GanttProperties">Today</span>
+            <span id="ScrollNext" class="GanttProperties">&ndash;&gt;</span>-->
+                <span id="homeListCalendarView">
+            <button id="onlyTree" class="pure-button pure-button-left pure-button-active" name="onlyTree" style="height: 22px; padding: 0px; visibility: hidden">Home</button>
+            <button id="treeFields" class="pure-button pure-button-left pure-button-active" name="treeFields" style="height: 22px; padding: 0px;  ">List</button>
+            <button id="treeGantt" class="pure-button pure-button-right pure-button-active" name="treeGantt" style="height: 22px; padding: 0px">Calendar</button>
+                </span>
+
+                <span id="yearMonthWeek">
+            <button id="year" name="year" class="pure-button pure-button-left pure-button-active GanttProperties" style="height: 22px; padding: 0px;  ">Year</button>
+            <button id="month" name="month" class="pure-button pure-button-active GanttProperties" style="height: 22px; padding: 0px;  ">Month</button>
+            <button id="week" name="week" class="pure-button pure-button-active GanttProperties" style="height: 22px; padding: 0px;  ">Week</button>
+            <button id="day" name="day" class="pure-button pure-button-right pure-button-active GanttProperties" style="height: 22px; padding: 0px">Day</button>
+                </span>
+
+                <span id="prevTodayNext">
+                <button id="ScrollPrev" class="pure-button pure-button-left pure-button-active GanttProperties" style="height: 22px; padding: 0px; margin-right: -3px"><</button>
+
+                <button id="ScrollToday" class="pure-button pure-button-active GanttProperties" style="height: 22px; padding: 0px; margin-right: -3px">Today</button>
+                <button id="ScrollNext" class="pure-button pure-button-right pure-button-active GanttProperties" style="height: 22px; padding: 0px">></button>
+                </span>
+
+            </div>
+
+            <div id="mrmGanttChart">
+            </div>
+
+           <!-- <div id="container"></div>-->
+            <div id="coverMaster">
+                <div id = "imageflowContainer">
+                    <div id="myImageFlow" class="imageflow">
+                    </div>
+                </div>
+                <div id="coverInfo">
+                </div>
+            </div>
+
+        </div>
+
+<!--
+        <div class="span0" style="background-color: white"></div>
+-->
+    </div>
+</div>
+
+
+<div id="dialog-form" >
+    <form>
+        <fieldset>
+            <p class="validateTips">All form fields are required.</p>
+
+            <label id="dimensionName"  class="labelOfPopup" for="name">Name</label>
+            <input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all" />
+
+            <label id="managerName" class="labelOfPopup" for="manager">Manager</label>
+            <input type="text" name="manager" id="manager" class="text ui-widget-content ui-corner-all" />
+
+            <div id="dateAligner">
+                <div><label for="startdate" class="labelOfPopup">StartDate</label>
+                <input type="text" name="startdate" id="startdate" value="" class="text ui-widget-content ui-corner-all datePicker inputDate" />  </div>
+
+                <div id = "endDateAligner"><label for="enddate" class="labelOfPopup">EndDate</label>
+                <input type="text" name="enddate" id="enddate" value="" class="text ui-widget-content ui-corner-all datePicker inputDate" /> </div>
+            </div>
+
+            <label id="budgetOwnerName" class="labelOfPopup" for="budgetOwner">Budget Owner</label>
+            <input type="text" name="budgetOwner" id="budgetOwner" class="text ui-widget-content ui-corner-all" />
+
+            <div id="dateAligner">
+            <div><label id="budgetAmount" class="labelOfPopup" for="budget">Budget</label>
+            <input type="text" name="budget" id="budget" class="text ui-widget-content ui-corner-all" />  </div>
+
+            <div id = "currencyAligner"><select id="currency" >
+                <option value="&euro;">EUR(&euro;)</option>
+                <option value="$">USD($)</option>
+            </select></div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+

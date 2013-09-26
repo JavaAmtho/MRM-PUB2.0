@@ -1,0 +1,162 @@
+[
+    {
+        "id": "Marketing Initiative 1",
+        "type": "Marketing Initiative",
+        "path": "-1",
+        "startDate":"5/18/2013",
+        "endDate":"6/20/2013",
+        "manager":"manager",
+        "budgetOwner":"budget owner",
+        "budget":"112$",
+        "name": "Marketing Initiative 1",
+        "title": "Marketing Initiative 1",
+        "isFolder": true,
+        "Items": [
+            {
+                "id": "Campaign 1",
+                "type": "Campaign",
+                "path": "-1,Marketing Initiative 1",
+                "startDate":"5/18/2013",
+                "endDate":"6/20/2013",
+                "manager":"manager",
+                "budgetOwner":"budget owner",
+                "budget":"112$",
+                "name": "Campaign 1",
+                "title": "Campaign 1",
+                "isFolder": true,
+                "Items": [
+                    {
+                        "id": "SubCampaign1",
+                        "type": "SubCampaign",
+                        "path": "Marketing Initiative 1,Campaign 1",
+                        "startDate":"5/18/2013",
+                        "endDate":"6/20/2013",
+                        "manager":"manager",
+                        "budgetOwner":"budget owner",
+                        "budget":"112$",
+                        "name": "SubCampaign1",
+                        "title": "SubCampaign1",
+                        "isFolder": true,
+                        "Items": [
+                            {
+                                "id": "Comm Plan 1",
+                                "type": "Communication Plan",
+                                "path": "Marketing Initiative 1,Campaign 1,SubCampaign1",
+                                "startDate":"5/18/2013",
+                                "endDate":"6/20/2013",
+                                "manager":"manager",
+                                "budgetOwner":"budget owner",
+                                "budget":"112$",
+                                "name": "Comm Plan 1",
+                                "title": "Comm Plan 1",
+                                "isFolder": true,
+                                "Items": [
+                                    {
+                                        "id": "Comm Channel 1",
+                                        "type": "Communication Channel",
+                                        "path": "Marketing Initiative 1,Campaign 1,SubCampaign1,Comm Plan 1",
+                                        "startDate":"5/18/2013",
+                                        "endDate":"6/20/2013",
+                                        "manager":"manager",
+                                        "budgetOwner":"budget owner",
+                                        "budget":"112$",
+                                        "name": "Comm Channel 1",
+                                        "title": "Comm Channel 1",
+                                        "isFolder": true,
+                                        "Items": [
+                                            {
+                                                "id": "Publication 1",
+                                                "type": "Publication",
+                                                "path": "Marketing Initiative 1,Campaign 1,SubCampaign1,Comm Plan 1,Comm Channel 1",
+                                                "startDate":"5/18/2013",
+                                                "endDate":"6/20/2013",
+                                                "manager":"manager",
+                                                "budgetOwner":"budget owner",
+                                                "budget":"112$",
+                                                "name": "Publication 1",
+                                                "title": "Publication 1",
+                                                "previewImg":"../../../graphics/screens/home/images/img/Chrysanthemum.jpg",
+                                                "isFolder": true,
+                                                "Items": [
+
+                                                ]
+                                            },
+                                            {
+                                                "id": "Publication 2",
+                                                "type": "Publication",
+                                                "path": "Marketing Initiative 1,Campaign 1,SubCampaign1,Comm Plan 1,Comm Channel 1",
+                                                "startDate":"5/18/2013",
+                                                "endDate":"6/20/2013",
+                                                "manager":"manager",
+                                                "budgetOwner":"budget owner",
+                                                "budget":"112$",
+                                                "name": "Publication 2",
+                                                "title": "Publication 2",
+                                                "previewImg":"../../../graphics/screens/home/images/img/Desert.jpg",
+                                                "isFolder": true,
+                                                "Items": [
+
+                                                ]
+                                            },
+                                            {
+                                                "id": "Publication 3",
+                                                "type": "Publication",
+                                                "path": "Marketing Initiative 1,Campaign 1,SubCampaign1,Comm Plan 1,Comm Channel 1",
+                                                "startDate":"5/18/2013",
+                                                "endDate":"6/20/2013",
+                                                "manager":"manager",
+                                                "budgetOwner":"budget owner",
+                                                "budget":"112$",
+                                                "name": "Publication 3",
+                                                "title": "Publication 3",
+                                                "previewImg":"../../../graphics/screens/home/images/img/Hydrangeas.jpg",
+                                                "isFolder": true,
+                                                "Items": [
+
+                                                ]
+                                            },
+                                            {
+                                                "id": "Publication 4",
+                                                "type": "Publication",
+                                                "path": "Marketing Initiative 1,Campaign 1,SubCampaign1,Comm Plan 1,Comm Channel 1",
+                                                "startDate":"5/18/2013",
+                                                "endDate":"6/20/2013",
+                                                "manager":"manager",
+                                                "budgetOwner":"budget owner",
+                                                "budget":"112$",
+                                                "name": "Publication 4",
+                                                "title": "Publication 4",
+                                                "previewImg":"../../../graphics/screens/home/images/img/Jellyfish.jpg",
+                                                "isFolder": true,
+                                                "Items": [
+
+                                                ]
+                                            },
+                                            {
+                                                "id": "Publication 5",
+                                                "type": "Publication",
+                                                "path": "Marketing Initiative 1,Campaign 1,SubCampaign1,Comm Plan 1,Comm Channel 1",
+                                                "startDate":"5/18/2013",
+                                                "endDate":"6/20/2013",
+                                                "manager":"manager",
+                                                "budgetOwner":"budget owner",
+                                                "budget":"112$",
+                                                "name": "Publication 5",
+                                                "title": "Publication 5",
+                                                "previewImg":"../../../graphics/screens/home/images/img/Koala.jpg",
+                                                "isFolder": true,
+                                                "Items": [
+
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

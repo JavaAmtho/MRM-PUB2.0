@@ -1,0 +1,14 @@
+{
+    "getAllSchema":"/delivery/pub/all",
+    "getSchema":"/delivery/treeviewstructure/",
+    "getTree":"/delivery/dimension/get/",
+    "dragNDrop":"/delivery/",
+    "getDefaultSchema":"/delivery/default",
+    "getAssetsTree":"/delivery/testdrive/mocks/tree/AssetTree.json",
+    "searchMamAssets":"/delivery/mam/search/",
+    "searchPimAssets":"/delivery/pim/search/",
+    "btnPIM":"delivery/pim/list",
+    "btnMAM":"delivery/mam/list",
+    "btnMIM":"delivery/text/list"
+
+}

@@ -1,0 +1,38 @@
+[
+    {
+        "id": "91",
+        "label": "Text Assets-01",
+        "title": "Text Assets-01",
+        "isfolder": true,
+        "type": "item",
+        "image": "http://192.168.135.108/CS13.0/admin/ImageServer.php?ID=f85e6a91@CSLive&class=Pdmarticle&rand=8ec636c4d5f14e6b6fa73eb0952bbc6f&width=32&height=48",
+        "description": "24,80, white",
+        "service": "pim",
+        "isLazy": true,
+        "isFolder": true
+    },
+    {
+        "id": "62",
+        "label": "Text Asset-02",
+        "title": "Text Asset-02",
+        "isfolder": true,
+        "type": "item",
+        "image": "http://192.168.135.108/CS13.0/admin/ImageServer.php?ID=a8a1ba62@CSLive&class=Pdmarticle&rand=9e280543f231782ff0ceda6ad83bc0b2&width=32&height=48",
+        "description": "89,00, Blue",
+        "service": "pim",
+        "isLazy": true,
+        "isFolder": true
+    },
+    {
+        "id": "63",
+        "label": "textable",
+        "title": "Text 03",
+        "isfolder": true,
+        "type": "item",
+        "image": "http://192.168.135.108/CS13.0/admin/ImageServer.php?ID=6198aa63@CSLive&class=Pdmarticle&rand=8ec636c4d5f14e6b6fa73eb0952bbc6f&width=32&height=48",
+        "description": null,
+        "service": "pim",
+        "isLazy": false,
+        "isFolder": true
+    }
+]

@@ -1,0 +1,4 @@
+[{"id":"tileView","event":"click","func":handleViewChange},
+ {"id":"listView","event":"click","func":handleViewChange},
+ {"id":"detailView","event":"click","func":handleViewChange}
+]

@@ -1,0 +1,39 @@
+[
+    {
+        "id": "1",
+        "default": "true",
+        "name": "MI-Campaign-SubCampaign-CP-CC-Publication",
+        "structure": [
+            {
+                "name": "MI",
+                "icon": "something",
+                "possibleChild": ["Campaign"],
+                "possibleDropParent":[]
+            },
+            {
+                "name": "Campaign",
+                "icon": "something",
+                "possibleChild": ["SubCampaign"],
+                "possibleDropParent":["MI"]
+            },
+            {
+                "name": "SubCampaign",
+                "icon": "something",
+                "possibleChild": ["CP"],
+                "possibleDropParent":["Campaign"]
+            },
+            {
+                "name": "CP",
+                "icon": "something",
+                "possibleChild": ["CC"],
+                "possibleDropParent":["SubCampaign"]
+            },
+            {
+                "name": "CC",
+                "icon": "something",
+                "possibleChild": [],
+                "possibleDropParent":["CP"]
+            }
+        ]
+    }
+]

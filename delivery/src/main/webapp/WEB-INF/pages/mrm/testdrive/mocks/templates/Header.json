@@ -1,0 +1,5 @@
+{
+    "html": "\r\n<div class=\"logobounce\">\r\n\t<img src=\"../../../graphics/screens/home/images/cs_logo.png\"\r\n\t\tclass=\"animatedbounce\">\r\n</div>\r\n<div class=\"logoutdiv\">\r\n\r\n\t<img class=\"logout\"   id=\"btnLogout\"\r\n\t\tsrc=\"../../../graphics/screens/home/images/1375043507_logout.png\"\r\n\t\talt=\"Logout\" />\r\n</div>\r\n<div class=\"wrapper\">\r\n\t<img class=\"profileLogo\"\r\n\t\tsrc=\"../../../graphics/screens/home/images/1375046344_matthew.png\" />\r\n</div>",
+    "events": "[{\"id\":\"btnLogout\",\"event\":\"click\",\"func\":logoutUser}]",
+    "elements": null
+}

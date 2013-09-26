@@ -1,0 +1,7 @@
+def langs = ['java']
+langs.each { apply plugin : it }
+apply plugin : 'war'
+apply plugin : 'idea'
+apply plugin : 'eclipse'
+apply plugin : 'jetty'
+httpPort = 8083

@@ -1,0 +1,12 @@
+{
+    "getAllSchema":"/testdrive/mocks/viewstructure/AllViewStructures.json",
+    "getViewStructure1":"/testdrive/mocks/viewstructure/ViewStructure1.json",
+    "getViewStructure2":"/testdrive/mocks/viewstructure/ViewStructure2.json",
+    "getViewStructure3":"/testdrive/mocks/viewstructure/ViewStructure3.json",
+    "getTree1":"/testdrive/mocks/tree/Tree1.json",
+    "getTree2":"/testdrive/mocks/tree/Tree2.json",
+    "getTree3":"/testdrive/mocks/tree/Tree3.json",
+    "btnPIM":"../testdrive/mocks/tree/PimAssets.json",
+    "btnMAM":"../testdrive/mocks/tree/MamAssets.json",
+    "btnMIM":"../testdrive/mocks/tree/AssetTree.json"
+}

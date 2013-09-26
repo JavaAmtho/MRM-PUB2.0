@@ -1,0 +1,31 @@
+[
+    {
+        "id": "62",
+        "title": "Media Player",
+        "type": "item",
+        "image": "http://192.168.135.108/CS13.0/admin/ImageServer.php?ID=a8a1ba62@CSLive&class=Pdmarticle&rand=9e280543f231782ff0ceda6ad83bc0b2&width=32&height=48",
+        "isFolder": true,
+        "isLazy": true,
+        "description": "89,00, Blue",
+        "service": "pim"
+    },
+    {
+        "id": "63",
+        "title": "Accessories",
+        "type": "item",
+        "image": "http://192.168.135.108/CS13.0/admin/ImageServer.php?ID=6198aa63@CSLive&class=Pdmarticle&rand=8ec636c4d5f14e6b6fa73eb0952bbc6f&width=32&height=48",
+        "isFolder": true,
+        "isLazy": true,
+        "service": "pim"
+    },
+    {
+        "id": "91",
+        "title": "Books",
+        "type": "item",
+        "image": "http://192.168.135.108/CS13.0/admin/ImageServer.php?ID=f85e6a91@CSLive&class=Pdmarticle&rand=8ec636c4d5f14e6b6fa73eb0952bbc6f&width=32&height=48",
+        "isFolder": true,
+        "isLazy": true,
+        "description": "24,80, white",
+        "service": "pim"
+    }
+]

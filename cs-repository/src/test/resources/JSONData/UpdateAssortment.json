@@ -1,0 +1,11 @@
+{
+	"id":"2a687bf4-4da4-4e8b-ac9e-34192e73copy",
+	"path": "MP01,CP01,P01",
+    "name": "AScopy",  
+    "products": [{  	
+					"productId":"425",
+					"productType":"Image",
+					"productName":"Updatedproduct"
+				}]
+				
+}

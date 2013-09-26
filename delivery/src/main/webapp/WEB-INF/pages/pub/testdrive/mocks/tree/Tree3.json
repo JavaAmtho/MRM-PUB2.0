@@ -1,0 +1,79 @@
+[
+    {
+        "id": "4",
+        "type": "Campaign",
+        "path": "-1",
+        "name": "4",
+        "title": "4",
+        "isFolder": true,
+        "children": [
+            {
+                "id": "sa",
+                "type": "Publication",
+                "path": "-1,4",
+                "name": "sa",
+                "title": "sa",
+                "isFolder": true,
+                "children": [],
+                "key": "sa",
+                "groupId": [
+                    "30ac5ddd-04c7-4f5e-a143-fe3622c5e0fc"
+                ],
+                "root": false,
+                "page": false,
+                "objectKey": "DIMENSION"
+            },
+            {
+                "id": "zx",
+                "type": "Publication",
+                "path": "-1,4",
+                "name": "zx",
+                "title": "zx",
+                "isFolder": true,
+                "children": [
+                    {
+                        "id": "5",
+                        "type": "MasterPublication",
+                        "path": "4,zx",
+                        "name": "5",
+                        "title": "5",
+                        "isFolder": true,
+                        "children": null,
+                        "key": "5",
+                        "groupId": [
+                            "8f912725-1ca8-42b3-bac8-ea3f98f31acf",
+                            "6baf5cba-26a3-4697-b691-58046b2e44dc",
+                            "ffd67257-8b30-4b97-b54d-bdcdf2b1f837",
+                            "ae39bf44-b24f-4036-972c-e17e66927337",
+                            "37720262-3200-4203-bc52-34a4439be0d3"
+                        ],
+                        "root": false,
+                        "page": false,
+                        "objectKey": "DIMENSION"
+                    }
+                ],
+                "key": "zx",
+                "groupId": [
+                    "ffd67257-8b30-4b97-b54d-bdcdf2b1f837",
+                    "ae39bf44-b24f-4036-972c-e17e66927337",
+                    "37720262-3200-4203-bc52-34a4439be0d3"
+                ],
+                "root": false,
+                "page": false,
+                "objectKey": "DIMENSION"
+            }
+        ],
+        "key": "4",
+        "groupId": [
+            "6baf5cba-26a3-4697-b691-58046b2e44dc",
+            "d564f43b-8e7b-44d7-8a23-6b008bdf9a5c",
+            "30ac5ddd-04c7-4f5e-a143-fe3622c5e0fc",
+            "ffd67257-8b30-4b97-b54d-bdcdf2b1f837",
+            "ae39bf44-b24f-4036-972c-e17e66927337",
+            "37720262-3200-4203-bc52-34a4439be0d3"
+        ],
+        "root": true,
+        "page": false,
+        "objectKey": "DIMENSION"
+    }
+]

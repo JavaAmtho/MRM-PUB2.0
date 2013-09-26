@@ -1,0 +1,4 @@
+[
+    {"id":"schemaDropDown","scriptName":"DropDownPresenter","screenName":"home","type":"dropdown"},
+    {"id":"mrmGanttChart","scriptName":"GanttChartPresenter","screenName":"home","type":"ganttchart"}
+]

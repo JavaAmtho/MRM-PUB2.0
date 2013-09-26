@@ -1,0 +1,166 @@
+<Grid>
+
+    <Cfg
+            id="Search"
+            MainCol="name"
+            ShowDeleted= "0"
+            Style= "ExtJS"
+            MinRowHeight= "23"
+            Expanded="false"
+            LeftScrollLeft="0"
+           />
+    <Cfg
+            SearchCells="1"
+            SearchFocused="3"
+            SearchNumbers="3"
+            SearchAction="Mark"
+            SearchAlertFound="500"
+            SearchWhiteChars=" "
+            />
+    <Cols>
+        <C 	Name= "currency"
+              Type= "Text"
+              CanFilter= "1"
+              Visible ="0"
+                />
+        <C 	Name= "manager"
+              Width= "75"
+              Type= "Text"
+              WidthPad= "17"
+              CanFilter= "1"
+              MinWidth="130"
+                />
+        <C 	Name= "budgetOwner"
+              Width= "75"
+              Type= "Text"
+              WidthPad= "17"
+              MinWidth= "130"
+              CanFilter= "1"
+                />
+        <C 	Name= "budget"
+              Width= "75"
+              Type= "Text"
+              WidthPad= "17"
+              CanFilter= "1"
+              MinWidth= "130"
+                />
+        <C 	Name= "startDate"
+              Width= "75"
+              Type= "Date"
+              Format= "dd/MM/yyyy"
+              WidthPad= "17"
+
+              CanFilter= "1"
+              MinWidth= "130"
+                />
+        <C 	Name= "endDate"
+              Width= "75"
+              Type= "Date"
+              Format= "dd/MM/yyyy"
+              WidthPad= "17"
+              MinWidth= "130"
+              CanFilter= "1"
+                />
+        <C 	Name= "ganttChart"
+              Type= "Gantt"
+              GanttStart= "startDate"
+              GanttEnd= "endDate"
+              CanFilter= "1"
+              GanttSlack= "Slack"
+              GanttFormatObject= "MainPrev"
+              GanttFormat= "*name*"
+              GanttMainTip="TIP"
+              GanttZoom= "months"
+              GanttExclude = " w#1/5/2013~12/30/2013"
+              GanttClass="GanttOrange"
+              GanttZoomList="[
+                            { Name: 'years', GanttUnits: 'M', GanttChartRound: 'y', GanttWidth: 65,
+                            GanttHeader1: 'y#yyyy', GanttHeader2: 'M#MMM',
+                            GanttBackground: 'M#1/1/2008#1', GanttRight: '0', GanttLeft: '0' },
+
+                            { Name: 'months', GanttUnits: 'w', GanttChartRound: 'M', GanttWidth: 170,
+                            GanttHeader1: 'M#MMMM yyyy', GanttHeader2: 'w#Week ddddddd', GanttHeader3: 'd#dd',
+                            GanttBackground: 'w#1/6/2008#1', GanttRight: '0', GanttLeft: '0'
+                            },
+
+                            { Name: 'weeks', GanttUnits: 'd', GanttChartRound: 'w', GanttWidth: 100,
+                            GanttHeader1: 'w#MMMM yyyy Week ddddddd', GanttHeader2: 'd#dddd',
+                            GanttBackground: 'd#1/2/2008#1'
+                            },
+
+                            { Name: 'days', GanttUnits: 'h', GanttChartRound: 'd', GanttWidth: 30,
+                            GanttBackground: 'h#01#1',
+                            GanttHeader1: 'd#dddd d MMMM yyyy', GanttHeader2: 'h#HH'
+                            }
+
+               ] "
+
+                />
+
+    </Cols>
+
+
+    <LeftCols>
+        <L Name = "Panel"
+        Type= "Panel"
+        WidthPad= "17"
+        Buttons= "Select,Delete,Move"/>
+
+        <L Name = "name"
+        Type= "Text"
+        Width= "500"
+        WidthPad= "17"/>
+    </LeftCols>
+
+    <Header
+            name= "Dimensions"
+            startDate= "StartDate"
+            endDate= "EndDate"
+            manager= "Manager"
+            budgetOwner= "Budget Owner"
+            budget= "Budget"
+            />
+    <Solid>
+        <Search
+                Space="0"
+                Cells="Expression,Search,Actions,Select,Mark,Find,Clear,CELLS,CASE"
+                ExpressionLeft="0"
+                ActionsRange="1"
+                Actions="Mark;Find"
+                ExpressionAction="Last"
+                ExpressionTip="You can search any string in grid"
+                CELLSType="Select"
+                CELLSDefaults="|Search in rows|Search in cells"
+                CELLS="Search in cells"
+                CELLSLeft="0"
+                CELLSOnChange="Grid.SearchCells = Grid.GetDefaultsIndex(Row,Col,Value); Grid.DoSearch('Refresh');"
+
+                CASEType="Bool"
+                CASELabelRight="Case sensitive"
+                CASEOnChange="Grid.SearchCaseSensitive = Value; Grid.DoSearch('Refresh');"
+
+        />
+
+        <Toolbar
+                Space="4"
+                Kind="Toolbar1"
+                Panel="0"
+                Cells="Print,ExportPDF,Export,ExpandAll,CollapseAll,ZoomIn,ZoomOut,ZoomFit"
+                PrintLabel="Print"
+                ExportPDFLabel=" |  Export to PDF"
+                ExportLabel=" |  Export to Excel"
+                ExpandAllLabel=" |  Expand All"
+                CollapseAllLabel=" |  Collapse All"
+                ZoomInLabel=" |  Zoom In"
+                ZoomOutLabel=" |  Zoom Out"
+                ZoomFitLabel=" |  Zoom Fit"
+
+        />
+     </Solid>
+    <Toolbar
+            Space="9"
+            Kind="Toolbar2"
+            Cells=""
+    />
+
+</Grid>

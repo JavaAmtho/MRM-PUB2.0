@@ -1,0 +1,17 @@
+<div class="container-fluid" style="min-width: 768px">
+    <div class="row-fluid" style="height: 100%">
+        <div class="span12" style="background-color: #B8D6FB">
+            <p id="selectLbl" class="selectLblCSS">Select View</p>
+            <p id="txt" class="formatTxt"></p>
+            <select id="schemaDropDown" class="customSelectCSS"></select>
+            <div id="mrmGanttChart">
+            </div>
+        </div>
+        <div class="span2" style="background-color: #d1d1d1"></div>
+    </div>
+    <div id="yearDiv">Year View</div>
+    <div id="monthDiv">Month View</div>
+    <div id="weekDiv">Week View</div>
+    <div id="dayDiv">Day View</div>
+</div>
+

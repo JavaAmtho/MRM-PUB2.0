@@ -1,0 +1,11 @@
+[   {"id":"year","event":"click","func":HomePresenter.yearView},
+    {"id":"day","event":"click","func":HomePresenter.dayView},
+    {"id":"week","event":"click","func":HomePresenter.weekView},
+    {"id":"month", "event":"click", "func":HomePresenter.monthView},
+    {"id":"onlyTree","event":"click","func":HomePresenter.viewTree},
+    {"id":"treeFields","event":"click","func":HomePresenter.viewTreeAndFields},
+    {"id":"treeGantt","event":"click","func":HomePresenter.viewTreeAndGantt},
+    {"id":"ScrollNext","event":"click","func":HomePresenter.scrollNext},
+    {"id":"ScrollPrev","event":"click","func":HomePresenter.scrollPrev},
+    {"id":"ScrollToday","event":"click","func":HomePresenter.scrollToday}
+]

@@ -1,0 +1,32 @@
+[
+    {
+    "pubId":"1",
+    "pubName":"Publication 1",
+    "pubDesc":"This is the publication 1",
+    "previewImg":"../../../graphics/screens/home/images/img/img1.png"
+    },
+    {
+    "pubId":"2",
+    "pubName":"Publication 2",
+    "pubDesc":"This is the publication 2",
+    "previewImg":"../../../graphics/screens/home/images/img/img2.png"
+    },
+    {
+    "pubId":"3",
+    "pubName":"Publication 3",
+    "pubDesc":"This is the publication 3",
+    "previewImg":"../../../graphics/screens/home/images/img/img3.png"
+    },
+    {
+    "pubId":"4",
+    "pubName":"Publication 4",
+    "pubDesc":"This is the publication 4",
+    "previewImg":"../../../graphics/screens/home/images/img/img4.png"
+    },
+    {
+    "pubId":"5",
+    "pubName":"Publication 5",
+    "pubDesc":"This is the publication 5",
+    "previewImg":"../../../graphics/screens/home/images/img/img1.png"
+    }
+]

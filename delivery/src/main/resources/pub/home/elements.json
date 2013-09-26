@@ -1,0 +1,3 @@
+[{"id":"leftTree","type":"tree","scriptName":"TreePresenter","screenName":"home"},
+    {"id":"schemaDropDown","scriptName":"DropDownPresenter","screenName":"home","type":"dropdown"},
+    {"id":"assetsTree","type":"tree","scriptName":"AssetTreePresenter","screenName":"home"}]

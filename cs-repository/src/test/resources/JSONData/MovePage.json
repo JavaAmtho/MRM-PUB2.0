@@ -1,0 +1,7 @@
+
+{   
+	"type": "MultiDimensionalObject",
+    "path": "MP01,CP01,P01,CH01",
+	"newPath":"MP01,CP01,P01,CH02",
+    "name": "PG01"
+}

@@ -1,0 +1,5 @@
+{
+    "baseUrl":"../../../",
+    "MRMUrl":"/delivery/mrm/pages/engine/core/html/start.html",
+    "PubUrl":"/delivery/pub/pages/engine/core/html/start.html"
+}

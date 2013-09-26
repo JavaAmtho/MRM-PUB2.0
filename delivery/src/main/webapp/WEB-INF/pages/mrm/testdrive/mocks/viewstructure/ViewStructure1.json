@@ -1,0 +1,37 @@
+{
+    "id": "1",
+    "default": "true",
+    "name": "Marketing Initiative-Campaign-SubCampaign-Communication Plan-Communication Channel",
+    "structure": [
+        {
+            "name": "Marketing Initiative",
+            "icon": "something",
+            "possibleChild": ["Campaign"],
+            "possibleDropParent":[]
+        },
+        {
+            "name": "Campaign",
+            "icon": "something",
+            "possibleChild": ["SubCampaign"],
+            "possibleDropParent":["Marketing Initiative"]
+        },
+        {
+            "name": "SubCampaign",
+            "icon": "something",
+            "possibleChild": ["Communication Plan"],
+            "possibleDropParent":["Campaign"]
+        },
+        {
+            "name": "Communication Plan",
+            "icon": "something",
+            "possibleChild": ["Communication Channel"],
+            "possibleDropParent":["SubCampaign"]
+        },
+        {
+            "name": "Communication Channel",
+            "icon": "something",
+            "possibleChild": [],
+            "possibleDropParent":["Communication Plan"]
+        }
+    ]
+}

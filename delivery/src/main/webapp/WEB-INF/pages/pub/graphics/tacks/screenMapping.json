@@ -1,0 +1,7 @@
+{
+    "landingScreen":{"screenName":"/start","resourceName":"start.html","containerId":"","loadOnStartup":"false"},
+    "headerScreen":{"screenName":"/delivery/pub/header","resourceName":"Header.html","containerId":"headerContainer","loadOnStartup":"false"},
+    "footerScreen":{"screenName":"/delivery/pub/footer","resourceName":"footer.html","containerId":"footerContainer","loadOnStartup":"false"},
+    "loginScreen":{"screenName":"/delivery/pub/login","resourceName":"login.html","containerId":"mainContainer","loadOnStartup":"false"},
+    "homeScreen":{"screenName":"/delivery/pub/home","resourceName":"Home.html","containerId":"mainContainer","loadOnStartup":"true"}
+}

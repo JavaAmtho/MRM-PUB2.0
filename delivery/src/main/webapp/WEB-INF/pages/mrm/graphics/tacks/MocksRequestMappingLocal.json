@@ -1,0 +1,5 @@
+{
+    "getAllSchema":"/testdrive/mocks/viewstructure/AllViewStructures.json",
+    "getViewStructure1":"/testdrive/mocks/viewstructure/ViewStructure1.json",
+    "getTree1":"/testdrive/mocks/tree/Tree1.json"
+}
