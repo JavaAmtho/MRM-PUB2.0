@@ -21,8 +21,8 @@
             <!--<span id="ScrollToday" class="GanttProperties">Today</span>
             <span id="ScrollNext" class="GanttProperties">&ndash;&gt;</span>-->
                 <span id="homeListCalendarView">
-            <button id="onlyTree" class="pure-button pure-button-left pure-button-active" name="onlyTree" style="height: 22px; padding: 0px;  ">Home</button>
-            <button id="treeFields" class="pure-button pure-button-active" name="treeFields" style="height: 22px; padding: 0px;  ">List</button>
+            <button id="onlyTree" class="pure-button pure-button-left pure-button-active" name="onlyTree" style="height: 22px; padding: 0px; visibility: hidden">Home</button>
+            <button id="treeFields" class="pure-button pure-button-left pure-button-active" name="treeFields" style="height: 22px; padding: 0px;  ">List</button>
             <button id="treeGantt" class="pure-button pure-button-right pure-button-active" name="treeGantt" style="height: 22px; padding: 0px">Calendar</button>
                 </span>
 
@@ -46,10 +46,15 @@
             </div>
 
            <!-- <div id="container"></div>-->
-            <div style="width:100%;">
-                <div id="myImageFlow" class="imageflow">
+            <div id="coverMaster">
+                <div id = "imageflowContainer">
+                    <div id="myImageFlow" class="imageflow">
+                    </div>
+                </div>
+                <div id="coverInfo">
                 </div>
             </div>
+
         </div>
 
 <!--
