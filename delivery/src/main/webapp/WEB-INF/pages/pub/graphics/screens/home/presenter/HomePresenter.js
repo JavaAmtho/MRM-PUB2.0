@@ -5,6 +5,7 @@ function HomePresenter(){
 var rendererData;
 var btnSelectionFlag = 0;
 var onTarget=false;
+var $isotopeContainer;
 
 HomePresenter.handleViewChange = function(evt){
     switch(evt.currentTarget.id)
@@ -30,8 +31,52 @@ HomePresenter.handleViewChange = function(evt){
 }
 
 HomePresenter.loadViewItems = function(evt,currentTemplateView){
+    $.each(evt.mydata, function (index, value) {
+        var ref = value;
+        if (ref != null) {
+            var css = "";
+            var stackcss = "";
+            if (ref.type == "Page") {
+                css = "masterPage";
+                console.log("CSS : " + css);
+                ref.typeCSS = css;
+                ref.typeID = "P" + index + 1;
+                ref.hiddenCSS = "";
+            }
+            else {
+                ref.typeCSS = "dimension";
+                ref.hiddenCSS = 'hidden';
+            }
+        }
+
+    });
+
     MustacheWrapper.createUI(currentTemplateView,evt, function(currentViewStr){
+
+
         $('#viewHolder').html(currentViewStr);
+
+
+
+        if ($isotopeContainer) {
+            $isotopeContainer.isotope('destroy');
+        }
+
+
+        $isotopeContainer =  $('#viewHolder');
+
+        $isotopeContainer.find('.masterPage').each(function (key,value) {
+            var $this = $(this),
+                number = key+1;
+            if (number % 2 == 1) {
+                $this.addClass('odd');
+            }
+            else {
+                $this.addClass('even');
+            }
+        });
+
+        $isotopeContainer.isotope();
     });
 }
 
@@ -292,4 +337,354 @@ HomePresenter.createProductsJSON = function(){
 HomePresenter.unHideAssortPanel = function(){
     $("#dim").hide();
     $("#assortPanel").show();
+}
+var stillWorking = true;
+var mamFileID;
+var json
+
+
+HomePresenter.openWhiteBoard = function(divReference,event){
+
+
+    jQuery.getJSON("http://192.168.135.104/CS13.0Trunk/admin/rest/whiteboard/3/"+ $(divReference).children('.inner').children('.templateName').html(),function(data){
+        console.log("WBD created "+data);
+        mamFileID = data;
+        console.log("Wbd stillWorking : "+stillWorking);
+        if(stillWorking){
+            stillWorking = false;
+        }
+        else{
+
+
+            HomePresenter.createMergeList(mamFileID, json,$(divReference).children('.inner'));
+        }
+    });
+    console.log($(divReference).children('.inner').children('.assortment'))
+    jQuery.getJSON("Data/"+$(divReference).children('.inner').children('.assortment').html()+".json",function(data) {
+        console.log("Assortment Loaded "+data);
+        var json1 = "["
+        $.each( data, function( key, val ) {
+            //console.log(val)
+            json1 +="{\"id\":\"" + val.id +"\"}";
+            if(key != data.length-1){
+                json1+=","
+            }
+        })
+
+        json1 +="]"
+        //console.log(json1)
+        //json = JSON.parse(json1);
+        json = json1;
+        console.log(json) ;
+        console.log("Json stillWorking : "+stillWorking);
+        if(stillWorking){
+            stillWorking = false;
+            console.log("Json stillWorking after : "+stillWorking);
+        }
+        else{
+
+
+            HomePresenter.createMergeList(mamFileID, json,$(divReference).children('.inner'));
+        }
+    });
+    $(divReference).children('.inner').children('.loading-overlay').toggle();
+    $(divReference).children('.inner').children('.loading-message').toggle();
+
+
+}
+
+HomePresenter.expandPages = function(div, event) {
+    var $container = $isotopeContainer;
+    if (!$(div).hasClass('large') && !$(div).hasClass('childPages')) {
+
+        if (!$(div).hasClass('opened')) {
+            $(div).children('.expand').html("-");
+            var $masterTemplate;
+            var $assortment;
+            var $itemsToInsert = new Array();
+            var $results = $(div).children('.rule').children('.then').children('.thenChild');
+            var $size = $results.length;
+            if ($size > 0) {
+                $(div).toggleClass('opened');
+            }
+            for (var i = 0; i < $size; i++) {
+                $values = $($results[i]).children('.rulesText')
+                $masterTemplate = $values[0].value;
+                $assortment = $values[1].value;
+
+
+                var newDiv = document.createElement("div");
+                newDiv.setAttribute('ondblclick',"HomePresenter.openWhiteBoard(this,event)");
+                var content = '';
+
+                if ($(div).hasClass('odd')) {
+                    $(newDiv).addClass('odd');
+                    content += "<div class='childPages inner odd'>";
+                }
+                else {
+                    $(newDiv).addClass('even');
+                    content += "<div class='childPages inner even'>";
+                }
+                content += "<div class='loading-overlay' ondblclick='event.stopPropagation()'></div>" +
+                    "<img ondblclick='event.stopPropagation()' src='../../../graphics/screens/home/images/load.gif' class='loading-message'/>"
+                $(newDiv).addClass($(div)[0].id);
+                $(newDiv).addClass('childPages');
+
+                $dimensionValues = $($results[i]).children('.whenChild').children('.value');
+                if ($dimensionValues.length > 0) {
+//                        $(newDiv).removeClass('any');
+                    for (var j = 0; j < $dimensionValues.length; j++) {
+                        if (!$($dimensionValues[j]).hasClass('hidden')) {
+                            $(newDiv).addClass($dimensionValues[j].value.toLowerCase());
+                        }
+                    }
+                }
+                else {
+                    $(newDiv).addClass('any');
+                }
+                content += "<div class='childPageName' >" + $($values[0]).find(":selected").text() + "</div>";
+                content += "<p class='data templateName' >" + $masterTemplate + "</p>";
+                content += "<p class='data assortment' >" + $assortment + "</p>";
+                content += "</div>";
+                newDiv.innerHTML = newDiv.innerHTML + content;
+
+                $itemsToInsert[i] = newDiv;
+                /*$(div).addClass('isotope-hidden');
+                 //opacity: 0, scale: 0.001
+                 $(div).css('opacity','0');
+                 $(div).css('scale','0.001');
+                 $container.isotope('reLayout');*/
+            }
+            $container.isotope('insert', $($itemsToInsert), $(div));
+        }
+        else {
+            $(div).children('.expand').html("+");
+            $container.isotope('remove', $('.' + $(div)[0].id));
+            $(div).toggleClass('opened');
+        }
+
+    }
+}
+
+HomePresenter.createMergeList = function(mamFileID, json, $loading) {
+    console.log(json);
+    jQuery.post("http://192.168.135.104/CS13.0Trunk/admin/rest/whiteboard/4/" + mamFileID, json, function (data) {
+        console.log("merge list prepared");
+
+        jQuery.get("http://192.168.135.104/CS13.0Trunk/admin/rest/whiteboard/5/" + mamFileID, function (url) {
+            $loading.children('.loading-overlay').toggle();
+            $loading.children('.loading-message').toggle();
+            url = url.replace("../admin", "http://192.168.135.104/CS13.0Trunk/admin");
+            console.log(url);
+            var screenParams = [
+                'height=' + (screen.height - 100),
+                'width=' + (screen.width - 100),
+                'fullscreen=yes'
+            ].join(',');
+
+            window.open(url, '_blank', screenParams); // <- This is what makes it open in a new window.
+        });
+
+    }, "json");
+
+
+}
+
+
+
+HomePresenter.openRules = function(div, event) {
+
+    if (!$(div).hasClass('childPages') && !$(div).hasClass('opened')) {
+        $(div).toggleClass('rules-opened');
+        $isotopeContainer.isotope('reLayout');
+        $(div).children(".open").toggle();
+        $(div).children(".rule").toggle();
+        $(div).children(".name").toggle();
+        $(div).children(".type").toggle();
+        var $thenChildren = $(div).children('.rule').children('.then').children('.thenChild');
+        if ($thenChildren.length > 0) {
+            $(div).children(".expand").toggle();
+        }
+
+    }
+    else if ($(div).hasClass('opened')) {
+        HomePresenter.expandPages(div, event);
+        $(div).toggleClass('rules-opened');
+        $isotopeContainer.isotope('reLayout');
+        $(div).children(".expand").toggle();
+        $(div).children(".open").toggle();
+        $(div).children(".rule").toggle();
+        $(div).children(".name").toggle();
+        $(div).children(".type").toggle();
+
+    }
+}
+
+
+HomePresenter.addValue = function(text, event) {
+    //get all values inside div
+    var $values = $(text).closest('.then').children('.thenChild').children('.whenChild').children('.value');
+    var dimension = $(text).siblings('.groupType')[0].value;
+    var value = text.value;
+    $parentDiv = $(text).closest('.large');
+    var isOdd = $(text).closest('.large').hasClass('odd');
+    var $filterClasses = '';
+    for (var i = 0; i < $values.length; i++) {
+        if (!$($values[i]).hasClass('hidden')) {
+            $filterClasses = $filterClasses + ' ' + $values[i].value.toLowerCase();
+        }
+    }
+    var basicClasses;
+    if (isOdd) {
+        basicClasses = 'masterPage odd large any';
+    }
+    else {
+        basicClasses = 'masterPage even large any';
+    }
+    var $newClasses = basicClasses + ' ' + $filterClasses;
+    $parentDiv.removeClass().addClass(basicClasses + ' ' + $filterClasses);
+}
+
+HomePresenter.toggleRegionTargetGroup = function(toggle) {
+    if (toggle.selectedIndex == 1) {
+        var options = "<option disable='disabled'>Select Region</option><option>Germany</option><option>India</option><option>USA</option>";
+        $(toggle).siblings('.value').html(options);
+    }
+    else if (toggle.selectedIndex == 2) {
+        var options = "<option disable='disabled'>Select Group</option><option>Men</option><option>Women</option>";
+        $(toggle).siblings('.value').html(options);
+    }
+}
+
+
+HomePresenter.newWhen = function (reference, event) {
+    var newDiv = document.createElement("div");
+    $(newDiv).addClass("whenChild");
+    content = "&nbsp;&nbsp;<select onchange='HomePresenter.toggleRegionTargetGroup(this)' onclick='event.stopPropagation()' class='rulesText groupType'><option selected='selected' disabled='disabled'>Choose</option><option>Region</option><option>TargetGroup</option></select>";
+    newDiv.innerHTML = newDiv.innerHTML + content;
+    content = "<select onclick='event.stopPropagation()' class='rulesText operation" + reference.id + "><option selected='selected'>=</option><option><=</option><option>>=</option></select>";
+    newDiv.innerHTML = newDiv.innerHTML + content;
+    content = "<select onclick='event.stopPropagation()' onchange='HomePresenter.addValue(this,event)'  class='input rulesText value' type='text'><option selected='selected' disabled='disabled'>Choose</option></select>";
+    newDiv.innerHTML = newDiv.innerHTML + content;
+    var content = "&nbsp;&nbsp;<span class='buttons remove' onclick='HomePresenter.removeNew(this.parentNode,event)'>-</span>";
+    newDiv.innerHTML = newDiv.innerHTML + content;
+    reference.appendChild(newDiv);
+    event.stopPropagation();
+}
+
+HomePresenter.getMAMFileNames = function (reference) {
+   // var data = new Array(new Object({templateID: '1458', templateName: 'CSLive.All.indd'}), new Object({templateID: '2', templateName: 'Template2'}),
+     //new Object({templateID: '3', templateName: 'Template3'}));
+   /* jQuery.getJSON("http://192.168.135.104/CS13.0Trunk/admin/rest/whiteboard/2?callback=?",{},function( data ) {
+        console.log(data)
+        HomePresenter.fillMasterTemplateDropDown(reference, data);
+    }).error(function(jqXHR, textStatus, errorThrown) { // Debug the error!!
+            console.log("error " + textStatus);
+            alert(123)
+            console.log("error throw " + errorThrown);
+            console.log(jqXHR);
+        });*/
+
+    /*jQuery.getJSON("http://192.168.135.104/CS13.0Trunk/admin/rest/whiteboard/2").done(
+        function(data){
+alert(data)
+        })
+        .fail(function(data){
+            alert(JSON.stringify(data));
+        });*/
+
+     jQuery.ajax({
+     url:"http://192.168.135.104/CS13.0Trunk/admin/rest/pim/list/",
+     type:'GET',
+         dataType:"json" ,
+     success: function( data ) {
+         alert(JSON.stringify(data))
+     /*console.log(data);
+      HomePresenter.fillMasterTemplateDropDown(reference, data);*/
+     }
+     });
+}
+
+
+HomePresenter.fillMasterTemplateDropDown = function(reference, data) {
+    var newDiv = document.createElement("div");
+    $(newDiv).addClass("thenChild");
+    var pageNames = data;
+
+
+    var content = "<select onclick='event.stopPropagation()' class='rulesText' id='template'" + reference.id + "><option selected='selected' disabled='disabled'>Select</option>";
+    for (var i = 0; i < pageNames.length; i++) {
+        content += "<option value=" + pageNames[i].templateID + ">" + pageNames[i].templateName + "</option>";
+    }
+    content += "</select>";
+    newDiv.innerHTML = newDiv.innerHTML + content;
+    content = "<select onclick='event.stopPropagation()' class='rulesText' id='assortment'" + reference.id + "><option selected='selected'>Assortment1</option><option>Assortment2</option><option>Assortment3</option><option>Assortment4</option><option>Assortment5</option></select>";
+    newDiv.innerHTML = newDiv.innerHTML + content;
+    content = "<span class='buttons remove' onclick='HomePresenter.removeNew(this.parentNode,event)'>-</span>"
+    newDiv.innerHTML = newDiv.innerHTML + content;
+    content = "<span class='buttons addCondition' onclick='HomePresenter.newWhen(this.parentNode,event)'>+</span>"
+    newDiv.innerHTML = newDiv.innerHTML + content;
+    reference.appendChild(newDiv);
+}
+HomePresenter.newThen = function (reference, event) {
+
+    HomePresenter.getMAMFileNames(reference);
+
+}
+
+
+HomePresenter.removeNew = function (reference, event) {
+    if ($(reference).hasClass('whenChild')) {
+        $values = $(reference).find('.value');
+        console.log($values[0].value);
+        $(reference).closest('.large').removeClass($values[0].value.toLowerCase());
+    }
+    else if ($(reference).hasClass('thenChild')) {
+        $values = $(reference).find('.value');
+        console.log($values.length)
+        for (var i = 0; i < $values.length; i++) {
+            console.log($values[i].value)
+            $(reference).closest('.large').removeClass($values[i].value.toLowerCase());
+        }
+    }
+    reference.parentNode.removeChild(reference);
+    event.stopPropagation();
+    return false;
+}
+
+HomePresenter.edit = function (tagsClass, tagNo, reference, event) {
+    console.log(reference.parentNode)
+    var elements = reference.parentNode.getElementsByClassName(tagsClass);
+    for (var i = 0; i < elements.length; i++) {
+        var element = elements[i];
+        console.log(element);
+        element.disabled = false;
+    }
+    var okButtons = reference.parentNode.getElementsByClassName("done");
+    for (var i = 0; i < okButtons.length; i++) {
+        okButtons[i].style.visibility = 'visible';
+    }
+    var editButtons = reference.parentNode.getElementsByClassName("edit");
+    for (var i = 0; i < okButtons.length; i++) {
+        editButtons[i].style.visibility = 'hidden';
+    }
+    event.stopPropagation();
+}
+
+HomePresenter.done = function (tagsClass, tagNo, reference, event) {
+    var elements = reference.parentNode.getElementsByClassName(tagsClass);
+    for (var i = 0; i < elements.length; i++) {
+        var element = elements[i];
+        console.log(element);
+        element.disabled = true;
+    }
+    var okButtons = reference.parentNode.getElementsByClassName("done");
+    for (var i = 0; i < okButtons.length; i++) {
+        okButtons[i].style.visibility = 'hidden';
+    }
+    var editButtons = reference.parentNode.getElementsByClassName("edit");
+    for (var i = 0; i < okButtons.length; i++) {
+        editButtons[i].style.visibility = 'visible';
+    }
+    event.stopPropagation();
 }

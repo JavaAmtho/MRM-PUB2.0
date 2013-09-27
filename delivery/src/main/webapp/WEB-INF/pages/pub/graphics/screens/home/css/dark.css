@@ -958,3 +958,435 @@ Top Bar Animation Section starts
     margin: 5px !important;*/
 }
 
+
+
+/************************PAGE STUFF STARTS!!!!!********************/
+
+.masterPage {
+    width: 106px;
+    height: 150px;
+    margin: 20px;
+    float: left;
+    position: relative;
+    color: #222;
+    padding: 8px;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 0 30px rgba(0,0,0,0.3), 1px 1px 3px rgba(0,0,0,0.9);
+    overflow: hidden;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.childPages {
+
+    width: 106px;
+    height: 150px;
+    margin: 20px;
+    float: left;
+    position: relative;
+    color: #222;
+    padding: 8px;
+    background: transparent;
+    overflow: hidden;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.childPages .inner {
+    width: 90px;
+    height: 125px;
+    margin-top: 15px;
+    margin: 13px 0px 5px 0px;
+    float: left;
+    position: relative;
+    color: #222;
+    padding: 8px;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 0 30px rgba(0,0,0,0.3), 1px 1px 3px rgba(0,0,0,0.9);
+    overflow: hidden;
+}
+
+
+
+.masterPage.odd          { background: #638FDB;  }
+.masterPage.even           { background: #B8BFDB; }
+.childPages.odd.inner          { background: #638FDB; }
+.childPages.even.inner      { background: #B8BFDB; }
+
+
+.masterPage:hover{
+    text-shadow:
+        0 0 10px white,
+        0 0 10px white
+;
+}
+
+.masterPage .type {
+    margin-top: 60px;
+    margin-left: 10px;
+    font-size: 1.0em;
+}
+
+.masterPage .name {
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 2.2em;
+    color: #FFF;
+}
+
+.childPageName{
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 30px;
+    color: #FFF;
+    word-wrap: break-word;
+    display: inline-block;
+
+}
+
+.childPages:hover{
+    text-shadow:
+        0 0 10px white,
+        0 0 10px white
+;
+}
+
+.masterPage.rules-opened {
+    /*    -webkit-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+
+    -webkit-transition: all .5s ease-out;
+    -moz-transition: all .5s ease-out;
+    -o-transition: all .5s ease-out;*/
+    z-index: 100;
+    background: #7894C4;
+
+    height: 420px;
+    width:  420px;
+}
+
+/*.masterPage.is-restored {
+     -webkit-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+
+    -webkit-transition: all .5s ease-in;
+    -moz-transition: all .5s ease-in;
+    -o-transition: all .5s ease-in;
+
+    height: 150px;
+    width:  106px;
+
+}*/
+
+
+
+h2.open{
+    position:absolute;
+    top:68%;
+    left:5%;
+    font-size: 25px;
+}
+
+h2:hover{
+    cursor:pointer;
+    color:white;
+}
+
+h2.expand{
+    position:absolute;
+    top:68%;
+    left:80%;
+    font-size: 25px;
+    display:none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/*h2.close:hover{
+    cursor:pointer;
+    color:black;
+}*/
+
+h2.close{
+    position:absolute;
+    top:0.1%;
+    left:90%;
+    z-index: 50;
+}
+
+
+.loading-overlay { z-index:200;
+    display:none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000;
+    opacity: 0.7; }
+
+.loading-message { z-index:250;display:none; position: absolute;height:30px;width:30px;top:31%;left:35%;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none; }
+
+
+
+/************************PAGE STUFF ENDS!!!!!********************/
+
+
+/************************RULE STUFF START!!!!!********************/
+
+.rule {
+    height:100%;
+    width:100%;
+    color:White;
+    top:1px;
+    position:absolute;
+    display:none;
+    overflow-y: auto;
+    overflow-x:hidden;
+}
+
+.rulesFront{
+    margin: 0 0 0 55%;
+}
+
+.rulesText{
+    height:30px;
+    width:125px;
+    position: relative;
+}
+
+.buttons{
+    position:relative;
+    padding:5px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.addNewThen{
+    width:5%;
+}
+
+.thenChild{
+    position:relative;
+    width:100%;
+    border-bottom:1px dashed white;
+    padding: 5px;
+}
+
+.then{
+    width:100%;
+    z-index: 25;
+}
+
+.whenChild{
+    position:relative;
+    padding-left: 20px;
+    margin:5px;
+}
+
+.backButtonClass{
+    position:absolute;
+    top:2px;
+    right:4px;
+}
+
+.operation{
+    width:50px;
+}
+
+.groupType{
+    width:70px
+}
+
+
+.data{
+    display:none;
+}
+
+
+/************************RULE STUFF ENDS!!!!!********************/
+
+
+/*********************DIMESNION STUFF START!!!!!*****************/
+
+.dimension {
+    width: 200px;
+    height: 200px;
+    margin: 5px;
+    float: left;
+    position: relative;
+    background: #888;
+    color: #222;
+    padding: 8px;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 0 30px rgba(0,0,0,0.3), 1px 1px 3px rgba(0,0,0,0.9);
+    -webkit-border-top-right-radius: 1.2em;
+    -moz-border-radius-topright: 1.2em;
+    border-top-right-radius: 1.2em;
+}
+
+.dimension * {
+    margin: 0;
+}
+
+.dimension .type {
+    margin-top: 80px;
+    left: 0.5em;
+    font-size: 1.0em;
+}
+
+.dimension .name {
+    margin-left: 10px;
+    font-size: 2.2em;
+    line-height: 2.0em;
+    color: #FFF;
+}
+
+.dimension .weight {
+    font-size: 0.9em;
+    left: 0.5em;
+    bottom: 0.5em;
+}
+
+.dimension .number {
+    font-size: 1.25em;
+    font-weight: bold;
+    color: hsla(0,0%,0%,.5);
+    right: 0.5em;
+    top: 0.5em;
+}
+
+/*********************DIMESNION STUFF END!!!!!*****************/
+
+
+
+.listDivCSS{
+    position: relative;
+    background-color:#DFDFDF;
+    float: left;
+    height : 35px;
+    width : 95%;
+    padding: 5px;
+    margin: 5px;
+    border:1px solid #BBBBBB;
+    border-radius:12px;
+}
+
+.detailDivCSS{
+    position: relative;
+    background-color:#DFDFDF;
+    border:1px solid #BBBBBB;
+    border-radius:12px;
+    float: left;
+    height : auto;
+    width : 95%;
+    padding: 5px;
+    margin: 5px;
+
+}
+
+.viewOptionCSS{
+    position: relative;
+    /*background: 'url("'+EngineDataStore.getBaseURL()+'graphics/screens/home/images/icons/tile.png")';*/
+    background-image: url('/delivery/pages/graphics/screens/home/images/icons/grad.png');
+    background-repeat: repeat-x;
+
+    /* background-color:#777777;*/
+    float: left;
+    height : 27px;
+    width : 100%;
+    text-align: center;
+    border-top: 1px solid #BBBBBB;
+    border-left: 1px solid #BBBBBB;
+    border-bottom: 1px solid #BBBBBB;
+}
+
+.tileBtnCSS{
+    /*background: 'url("'+EngineDataStore.getBaseURL()+'graphics/screens/home/images/icons/tile.png")';*/
+    background:url(/delivery/pages/graphics/screens/home/images/icons/tile.png);
+    background-repeat: no-repeat;
+    border:0px;
+    width: 28px;
+    height: 22px;
+    margin-top: 2px;
+}
+
+.listBtnCSS{
+    /*background: 'url("'+EngineDataStore.getBaseURL()+'graphics/screens/home/images/icons/list.png")';*/
+    background:url(/delivery/pages/graphics/screens/home/images/icons/list.png);
+    background-repeat: no-repeat;
+    border:0px;
+    width: 28px;
+    height: 22px;
+    margin-top: 2px;
+}
+
+.detailBtnCSS{
+    /*background: 'url("'+EngineDataStore.getBaseURL()+'graphics/screens/home/images/icons/detail.png")';*/
+    background:url(/delivery/pages/graphics/screens/home/images/icons/detail.png);
+    background-repeat: no-repeat;
+    border:0px;
+    width: 28px;
+    height: 22px;
+    margin-top: 2px;
+}
+/* Tile, List and Detail View Item Renderer CSS Section Ends */
+
+
+/*************ISOTOPE STUFF START!!******************************/
+
+.isotope-item {
+    z-index: 2;
+}
+
+.isotope-hidden.isotope-item {
+    pointer-events: none;
+    z-index: 1;
+}
+
+/**** Isotope CSS3 transitions ****/
+
+.isotope,
+.isotope .isotope-item {
+    -webkit-transition-duration: 0.8s;
+    -moz-transition-duration: 0.8s;
+    -ms-transition-duration: 0.8s;
+    -o-transition-duration: 0.8s;
+    transition-duration: 0.8s;
+}
+
+.isotope {
+    -webkit-transition-property: height, width;
+    -moz-transition-property: height, width;
+    -ms-transition-property: height, width;
+    -o-transition-property: height, width;
+    transition-property: height, width;
+}
+
+.isotope .isotope-item {
+    -webkit-transition-property: -webkit-transform, opacity;
+    -moz-transition-property:    -moz-transform, opacity;
+    -ms-transition-property:     -ms-transform, opacity;
+    -o-transition-property:      -o-transform, opacity;
+    transition-property:         transform, opacity;
+}
+
+/*********************ISOTOPE STUFF END!!******************************/
+
+.hidden{
+    visiblity:hidden;
+}
+
