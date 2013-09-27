@@ -63,6 +63,17 @@ GraphicDataStore.getPossibleDropParent = function(dim){
     }
 }
 
+GraphicDataStore.setCurrentFocusedItem = function(item){
+    var arr =   GraphicDataStore.getCommChannelDetails();
+    for(var i=0; i< arr.length; i++){
+        if(item.content.id == arr[i].id){
+            GraphicDataStore.currentFocusedItem = GraphicDataStore.getCommChannelDetails()[i];
+        }
+    }
+}
+
+var currentFocusedItem;
+
 /*
 GraphicDataStore.setSchemaLabel = function(){
     $("#txt").show();

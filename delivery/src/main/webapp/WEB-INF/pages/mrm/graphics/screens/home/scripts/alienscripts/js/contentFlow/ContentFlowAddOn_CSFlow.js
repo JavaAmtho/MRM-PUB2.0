@@ -141,24 +141,18 @@ new ContentFlowAddOn ('CSFlow', {
          * called after the active item is clicked.
          */
         onclickActiveItem: function (item) {
-            var url, target;
+            GraphicDataStore.setCurrentFocusedItem(item);
+            var ur;
+            if (GraphicDataStore.currentFocusedItem.previewType === "image") {
+               url = EngineDataStore.getPubUrl()+"?pubId="+item.content.id;
+               window.open(url,"_blank");
+            }
+            else{
+                url = GraphicDataStore.currentFocusedItem.actualImage;
+                window.open(url, "popupWindow", "width=600,height=600,scrollbars=yes");
+            }
 
-            if (url = item.content.getAttribute('href')) {
-                target = item.content.getAttribute('target');
-            }
-            else if (url = item.element.getAttribute('href')) {
-                target = item.element.getAttribute('target');
-            }
-            else if (url = item.content.getAttribute('src')) {
-                target = item.content.getAttribute('target');
-            }
 
-            if (url) {
-                if (target)
-                    window.open(url, target).focus();
-                else
-                    window.location.href = url;
-            }
         },
         
         /*
@@ -173,11 +167,11 @@ new ContentFlowAddOn ('CSFlow', {
          * called when an item becomes active.
          */
         onMakeActive: function (item) {
-            console.log(item.content.id);
-            GraphicDataStore
-            document.getElementById("coverInfoHeader").innerHTML="Publication "+item.item.itemIndex;
-            console.log(document.getElementById("coverDetail"));
-            document.getElementById("coverDetail").innerHTML="<br><b>Name: </b>"+"Publication "+item.item.itemIndex+"<br><br><b>Link: </b><a target='_blank'  href='"+item.item.baseURI+"'>"+item.item.baseURI+"</a>";
+            GraphicDataStore.setCurrentFocusedItem(item);
+
+            document.getElementById("coverInfoHeader").innerHTML= GraphicDataStore.currentFocusedItem.name;
+            //console.log(document.getElementById("coverDetail"));
+            document.getElementById("coverDetail").innerHTML="<br><b>Name: </b>"+GraphicDataStore.currentFocusedItem.name+"<br><br><b>Type: </b>"+GraphicDataStore.currentFocusedItem.previewType+"<br><br><b>Link: </b><a target='_blank'  href='"+GraphicDataStore.currentFocusedItem.actualImage+"'>"+GraphicDataStore.currentFocusedItem.actualImage+"</a>";
 
         },
         
