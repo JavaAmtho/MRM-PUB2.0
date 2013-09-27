@@ -69,6 +69,8 @@ public class DimensionRepository implements IDimensionRepository {
 	@Override
 	public MultiDimensionalObject createDimension(
 			MultiDimensionalObject dimension) {
+		if (dimensionAlreadyExists(dimension))
+			return null;
 		String groupId = getDimensionGroupId(dimension.getPath());
 		if (groupCache.ifGroupIdExistsFor(dimension.getPath())) {
 			createDimensionWithExistingGroupId(dimension, groupId);
@@ -77,6 +79,10 @@ public class DimensionRepository implements IDimensionRepository {
 		}
 
 		return dimension;
+	}
+
+	private boolean dimensionAlreadyExists(MultiDimensionalObject dimension) {
+		return mongoRepository.getObjectByKey(dimension, dimension.getClass()) != null;
 	}
 
 	private void createDimensionWithNewGroupId(MultiDimensionalObject dimension) {
