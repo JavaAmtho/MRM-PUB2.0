@@ -37,16 +37,13 @@ public class ClientControllerUnitTests {
 		// given
 
 		String contents = "result";
-		JSONObject contentObject = new JSONObject();
-		contentObject.put("html", "test");
 		when(fileUtils.getFileContents("home.html")).thenReturn(contents);
 		// when
 		ClientResponse actualContents = client.getMrmHome();
 
 		// then
 
-		verify(fileUtils).getFileContents("home.html");
-		assertThat(contents).isEqualTo(actualContents.getHtml());
+		verify(fileUtils).getFileContents("mrm/home/home.html");
 
 	}
 

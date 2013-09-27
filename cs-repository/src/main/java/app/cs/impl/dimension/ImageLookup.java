@@ -34,7 +34,6 @@ public class ImageLookup {
 		}
 		JSONObject jsonImages = (JSONObject) images;
 
-		System.out.println(jsonImages.get(name));
 		return (String) jsonImages.get(name);
 	}
 }

@@ -31,18 +31,12 @@ public class InMemoryDimensionGroup implements IInMemoryDimensionGroup {
 
 	}
 
-	/* (non-Javadoc)
-	 * @see com.cs.data.business.inmemory.IInMemoryDimensionGroup#getDimensionGroupIdFor(java.lang.String)
-	 */
 	@Override
 	public String getDimensionGroupIdFor(String path) {
 		// TODO Auto-generated method stub
 		return redisRepository.get(path);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.cs.data.business.inmemory.IInMemoryDimensionGroup#updateCache(com.cs.data.business.api.model.IMultiDimensionalObject, java.lang.String)
-	 */
 	@Override
 	public void updateCache(MultiDimensionalObject dimension, String groupId) {
 

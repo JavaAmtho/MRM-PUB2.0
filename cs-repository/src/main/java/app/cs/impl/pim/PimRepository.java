@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import app.cs.interfaces.mam.AssetsRepository;
@@ -21,13 +22,17 @@ public class PimRepository implements AssetsRepository {
 	private static final String X_REQUESTED_WITH = "X-Requested-With";
 	private static final String USER_AGENT_INFO = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.63 Safari/537.31";
 	private static final String USER_AGENT = "User-Agent";
-	private static final String HOSTIP = "192.168.135.104";
 	private static final String HOST = "Host";
 	private static final String LANGUAGE = "en-US,en;q=0.8";
 	private static final String ACCEPT_LANGUAGE = "Accept-Language";
-	private final String BASE_URL = "http://192.168.135.104/CS13.0Trunk/admin";
-	private final String LIST_URL = BASE_URL + "/rest/pim/list/";
-	private final String SEARCH_URL = BASE_URL + "/rest/pim/search/";
+	@Value("${host}")
+	private String HOSTIP;
+	@Value("${url}")
+	private String BASE_URL;
+	@Value("${pimListUrl}")
+	private String LIST_URL;
+	@Value("${pimSearchUrl}")
+	private String SEARCH_URL;
 	private IRestClient client;
 
 	@Autowired

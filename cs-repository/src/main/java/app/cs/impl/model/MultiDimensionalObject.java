@@ -1,7 +1,6 @@
 package app.cs.impl.model;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +12,30 @@ import com.cs.data.api.core.GenericDomain;
 @Component
 public class MultiDimensionalObject implements Serializable, GenericDomain {
 
+	public String getPreviewImage() {
+		return previewImage;
+	}
+
+	public void setPreviewImage(String previewImage) {
+		this.previewImage = previewImage;
+	}
+
+	public String getActualImage() {
+		return actualImage;
+	}
+
+	public void setActualImage(String actualImage) {
+		this.actualImage = actualImage;
+	}
+
+	public String getPreviewType() {
+		return previewType;
+	}
+
+	public void setPreviewType(String previewType) {
+		this.previewType = previewType;
+	}
+
 	private static final long serialVersionUID = 1L;
 	private final String PAGE = "page";
 	private String id;
@@ -20,6 +43,9 @@ public class MultiDimensionalObject implements Serializable, GenericDomain {
 	private String path;
 	private String name;
 	private String title;
+	private String previewImage;
+	private String actualImage;
+	private String previewType;
 	private boolean isFolder;
 	private String manager;
 	private String startDate;

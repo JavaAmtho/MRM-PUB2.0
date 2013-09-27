@@ -70,7 +70,6 @@ public class DimensionRepository implements IDimensionRepository {
 	public MultiDimensionalObject createDimension(
 			MultiDimensionalObject dimension) {
 		String groupId = getDimensionGroupId(dimension.getPath());
-		assignImageIfExists(dimension);
 		if (groupCache.ifGroupIdExistsFor(dimension.getPath())) {
 			createDimensionWithExistingGroupId(dimension, groupId);
 		} else {
@@ -78,11 +77,6 @@ public class DimensionRepository implements IDimensionRepository {
 		}
 
 		return dimension;
-	}
-
-	private void assignImageIfExists(MultiDimensionalObject dimension) {
-		dimension.setImage(imageLookup.get(dimension.getName()));
-
 	}
 
 	private void createDimensionWithNewGroupId(MultiDimensionalObject dimension) {
