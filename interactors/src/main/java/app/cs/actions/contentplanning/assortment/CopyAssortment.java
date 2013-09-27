@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import app.cs.boundary.delivery.Interactor;
 import app.cs.impl.model.Assortment;
+import app.cs.impl.model.DimensionInfo;
 import app.cs.impl.model.MultiDimensionalObject;
 import app.cs.interfaces.assortment.IAssortmentRepository;
 import app.cs.model.request.CopyAssortmentRequest;
@@ -41,7 +42,9 @@ public class CopyAssortment implements Interactor {
 		assortmentObject.setTitle(copyAssortmentRequest.getNewName());
 		assortmentObject.setPath(copyAssortmentRequest.getNewPath());
 		assortmentObject.setProducts(assortment.getProducts());
-
+		//TODO could make it better 
+		assortmentObject.setDimensionInfo(new DimensionInfo());
+		
 		System.out.println("Interactor");
 		assortmentRepository.copy(assortmentObject);
 		return new EmptyResponse();
