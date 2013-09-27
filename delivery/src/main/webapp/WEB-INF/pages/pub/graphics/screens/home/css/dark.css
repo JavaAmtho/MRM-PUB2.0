@@ -641,7 +641,7 @@ Top Bar Animation Section starts
     z-index: 6;
     right: -200px;
     padding: 0px;
-    height: 500px;
+    height:595px;
     width: 200px;
     border-bottom-left-radius: 2px;
     border-top-left-radius: 2px;
@@ -704,20 +704,20 @@ Top Bar Animation Section starts
 }
 
 #assetDetails {
-    overflow-x: auto;
-    overflow-y: scroll;
+    overflow-x: hidden;
+    overflow-y: auto;
     font-weight: lighter;
     font-style: italic;
     margin-top: 3px;
     background-color: white;
     border-top: 1px solid #BBBBBB;
     border-bottom: 1px solid #BBBBBB;
-    /* border-left: 1px solid #BBBBBB;
-     border-right: 1px solid #BBBBBB;*/
+   /* border-left: 1px solid #BBBBBB;*/
+    /* border-right: 1px solid #BBBBBB;*/
 
     top: 0px;
     width: 100%;
-    min-height: 200px;
+    min-height: 280px;
 
 }
 
@@ -1348,7 +1348,6 @@ img.save {
     height: 17px;
 }
 
-
 /************************RULE STUFF ENDS!!!!!********************/
 /*for hidden fields and unwanted divs in certain views*/
 .hidden {
@@ -1594,6 +1593,9 @@ img.save {
     font-size: 12px;
     line-height: 14px;
     font-family: tahoma;
+/*
+    margin: 5px !important;
+*/
 
 }
 
@@ -1715,20 +1717,12 @@ a.pure-button:focus, .pure-button:focus, .calendarButtonPressed{
 
 .pure-button:active, a.pure-button:active {
     box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, .4) inset;
-    -webkit-transition:  box-shadow 0.1s linear 0s;
-    -moz-transition:  box-shadow 0.1s linear 0s;
-    -ms-transition:  box-shadow 0.1s linear 0s;
-    -o-transition:  box-shadow 0.1s linear 0s;
-    transition:  box-shadow 0.1s linear 0s;
+    transition: box-shadow 0.1s linear 0s;
 }
 
 .pure-button-active, a.pure-button-active {
     box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.35) inset, 0px 0px 3px rgba(0, 0, 0, 0.2) inset;
-    -webkit-transition:  box-shadow 0.1s linear 0s;
-    -moz-transition:  box-shadow 0.1s linear 0s;
-    -ms-transition:  box-shadow 0.1s linear 0s;
-    -o-transition:  box-shadow 0.1s linear 0s;
-    transition:  box-shadow 0.1s linear 0s;
+    transition: box-shadow 0.1s linear 0s;
 }
 
 
@@ -1775,7 +1769,8 @@ li{
     margin-bottom: 0.2em;
     margin: 0px;
     padding: 0px;
-    border: 0px none;
+    border:0px;
+
     font: inherit;
     vertical-align: baseline;
 }
@@ -1783,13 +1778,7 @@ li{
 .option-combo{
     margin-top: 0px;
     position: absolute;
-    width: 40%;
-    display : none;
-    -webkit-transition:  all 0.3s ease-out;
-    -moz-transition:  all 0.3s ease-out;
-    -ms-transition:  all 0.3s ease-out;
-    -o-transition:  all 0.3s ease-out;
-    transition:  all 0.3s ease-out;
+    width: 23%;
 }
 
 .option-set{
@@ -1797,8 +1786,8 @@ li{
 }
 
 .targetGroup{
-
-    left: 22%;
+    float: right;
+    right: 0px;
 }
 
 #targetText{
@@ -1831,4 +1820,26 @@ a.pure-button:hover, a.pure-button{
 .popupImage.urlInjected{
     box-shadow: 0 0 10px white, 0 0 10px white;
     cursor:pointer;
+}
+
+
+.btn-custom-mini{
+    line-height: 10px;
+    height: 10px;
+}
+
+
+.bootstrap-select.btn-group .dropdown-menu li > a {
+    border-bottom: 1px solid #dddddd;
+    width: 100%;
+}
+
+
+.bootstrap-select.btn-group, .bootstrap-select.btn-group[class*="span"] {
+margin-left: 7px !important;
+}
+
+.region{
+    float:right;
+    right: 300px;
 }

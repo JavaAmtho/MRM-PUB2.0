@@ -179,7 +179,6 @@ var DynaTree = function(){
                         if(node.data.type == "Publication"){
 
                             GraphicDataStore.setCurrentPublication(node.data.title);
-                            $('.option-combo').toggle();
                         }
                         data = HomePresenter.getChildrenForSelectedNode(node)
                     }

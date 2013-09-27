@@ -122,16 +122,9 @@ HomePresenter.loadViewItems = function (evt, currentTemplateView) {
         $('.filter a').click(function () {
 
             var $this = $(this);
-            // don't proceed if already selected
-            if ($this.hasClass('calendarButtonPressed')) {
-                return;
-            }
-
             var $optionSet = $this.parents('.option-set');
-            // change selected class
-            $optionSet.find('.calendarButtonPressed').removeClass('calendarButtonPressed');
-            $this.addClass('calendarButtonPressed');
-
+            // store filter value in object
+            // i.e. filters.color = 'red'
             var group = $optionSet.attr('data-filter-group');
             filters[ group ] = $this.attr('data-filter-value');
             // convert object into array
@@ -144,8 +137,10 @@ HomePresenter.loadViewItems = function (evt, currentTemplateView) {
                 else if(filters[prop].indexOf("anyTargetGroup")!=-1)
                     bothTgs=filters[prop].split(",");
                 isoFilters.push(filters[ prop ])
+                console.log(isoFilters);
             }
             var selector;
+            console.log(bothRegions+"==>"+bothTgs)
             if(bothRegions!=undefined && bothTgs!=undefined)
             {
                 selector=bothRegions[0]+ bothTgs[1]+","+bothRegions[1]+bothTgs[0]+","+bothRegions[0]+bothTgs[0]+","+bothRegions[1]+bothTgs[1];
@@ -153,6 +148,7 @@ HomePresenter.loadViewItems = function (evt, currentTemplateView) {
             else{
                 selector = isoFilters.join('');
             }
+            console.log(selector)
             $isotopeContainer.isotope({ filter: selector });
 
             return false;
@@ -690,10 +686,8 @@ HomePresenter.saveRulesData = function (div) {
                 var condArray = [];
                 var $whenConditions = $($thenStatements[i]).children('.whenChild');
                 for (var j = 0; j < $whenConditions.length; j++) {
-                    console.log('inside for');
                     var variable = $($whenConditions[j]).children('.groupType')[0].value;
                     var value = $($whenConditions[j]).children('.value')[0].value;
-                    console.log(variable +" : "+ value);
                     if ((variable != '-1' && variable != 'Choose') && (value != '-1' && value != 'Choose')) {
                         var condition = {};
                         var columnName = "variable";
@@ -756,7 +750,7 @@ HomePresenter.saveRulesData = function (div) {
         for (var i = 0; i < $dirtyFields.length; i++) {
             $dirtyFields[i].innerHTML = '0';
         }
-        $(div).find('.savedText').show().delay(5000).fadeOut();
+
     }
     else {
         alert("No changes detected. No save operation performed.");
@@ -1051,12 +1045,8 @@ HomePresenter.toggleRegionTargetGroup = function (toggle, makeDirty) {
         for (var i = 0; i < targetGroupsList.length; i++) {
             options += "<option>" + targetGroupsList[i] + "</option>";
         }
-
     }
-    options += "</select>";
-    $(toggle).siblings('.value').remove();
-    var $operationDropdown = $(toggle).siblings('.operation');
-    $($operationDropdown[$operationDropdown.length-1]).after(options);
+    $(toggle).siblings('.value').html(options);
     $('.selectpicker').selectpicker();
 
 }
@@ -1079,7 +1069,7 @@ HomePresenter.newWhen = function (reference, event) {
     var variablesList = groupTypes;
     content = "&nbsp;&nbsp;<select onchange='HomePresenter.toggleRegionTargetGroup(this,true)' " +
         "onclick='event.stopPropagation()' class='rulesText groupType selectpicker span2' data-width='auto' value='-1'>" +
-        "<option selected='selected' disabled='disabled'>Choose</option>";
+        "<option selected='selected' disabled='disabled'>Choose Dimension</option>";
     for (var i = 0; i < variablesList.length; i++) {
         content += "<option>" + variablesList[i] + "</option>";
     }
@@ -1132,7 +1122,7 @@ HomePresenter.newThen = function (reference, data) {
     content += "<p class='hidden wbdURL'> </p>";
     content += "<p class='hidden mamFileID'> </p>";
     content += "<select onclick='event.stopPropagation()' onchange='HomePresenter.makeDirty(this.parentNode)' " +
-        "class='rulesText template selectpicker span2' data-width='auto'><option selected='selected' disabled='disabled' value='-1'>Select</option>";
+        "class='rulesText btn-custom-mini template selectpicker span2' data-width='45%'><option selected='selected' disabled='disabled' value='-1'>Select Master Template</option>";
     for (var i = 0; i < pageNames.length; i++) {
         content += "<option value=" + pageNames[i].templateID + ">" + pageNames[i].templateName + "</option>";
     }
@@ -1147,7 +1137,7 @@ HomePresenter.newThen = function (reference, data) {
 
     var assortmentList = assortments;
     content = "<select onchange='HomePresenter.makeDirty(this.parentNode)' onclick='event.stopPropagation()' " +
-        "class='rulesText assortment selectpicker span2' data-width='auto'><option selected='selected' disabled='disabled' value='-1'>Select</option>";
+        "class='rulesText assortment selectpicker span3' data-width='35%'><option selected='selected' disabled='disabled' value='-1'>Select Assortment</option>";
     console.log(assortmentList)
     for (var i = 0; i < assortmentList.length; i++) {
         content += "<option>" + assortmentList[i].name + "</option>";
