@@ -141,6 +141,7 @@ new ContentFlowAddOn ('CSFlow', {
          * called after the active item is clicked.
          */
         onclickActiveItem: function (item) {
+            console.log(item);
             GraphicDataStore.setCurrentFocusedItem(item);
             var ur;
             if (GraphicDataStore.currentFocusedItem.previewType === "image") {
@@ -149,7 +150,27 @@ new ContentFlowAddOn ('CSFlow', {
             }
             else{
                 url = GraphicDataStore.currentFocusedItem.actualImage;
-                window.open(url, "popupWindow", "width=600,height=600,scrollbars=yes");
+                $.get("http://192.168.135.104/CS13.0Trunk/admin/forward.php?forward=../CSLive/playCSVideoPlayerUsingMamFile.php&mamFileNo=7546",function(data){
+                    data = data.replace("../admin.local","http://192.168.135.104/CS13.0Trunk/admin.local");
+                    console.log(data)
+                    console.log( $( "#myPlayer" ) )
+                    $( "#myPlayer" ).dialog({
+                        autoOpen: false,
+                        height: 455,
+                        width: 805,
+                        modal: true,
+                        title: item.content.id,
+                        close: function() {
+
+                        }
+                    });
+
+                    $('#myPlayer').html(data);
+                    $('#myPlayer').dialog('open');
+
+
+                });
+                //window.open(url, "popupWindow", "width=600,height=600,scrollbars=yes");
             }
 
 

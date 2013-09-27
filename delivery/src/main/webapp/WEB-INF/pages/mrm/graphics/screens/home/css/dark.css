@@ -1120,7 +1120,7 @@ select{
 
 
 .ui-dialog-titlebar {
-    height: 30px !important;
+    height: 16px !important;
     font-size: 13px !important;
 }
 
@@ -1441,6 +1441,23 @@ body, .pure-g [class*="pure-u"], .pure-g-r [class*="pure-u"] {
     word-wrap: break-word;
 }
 
+.ui-widget-overlay{
+    background-color: #343434 !important;
+    opacity: .8 !important;
+    background: url("/delivery/pages/mrm/graphics/screens/home/images/custom_layout.png");
+    background-repeat: repeat;
+
+}
+
+#myPlayer{
+    padding: 1px !important;
+    overflow: hidden;
+}
+
+#myPlayer > .ui-dialog-titlebar{
+    width: 10px !important;
+
+}
 
 /*
 #myImageFlow:hover{

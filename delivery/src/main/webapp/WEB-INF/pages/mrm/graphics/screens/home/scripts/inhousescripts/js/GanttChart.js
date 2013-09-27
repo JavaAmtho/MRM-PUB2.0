@@ -334,8 +334,9 @@ var GanttChart = function(){
     function showPopUp(G,row,col,name){
         $( "#dialog-form" ).dialog({
             height: 490,
-            width: 500,
+            width: 510,
             modal: true,
+            resizable: false,
             show: {
                 effect: "clip",
                 duration: 500
