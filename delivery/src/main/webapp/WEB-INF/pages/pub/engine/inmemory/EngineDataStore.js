@@ -2,6 +2,7 @@ var EngineDataStore = function(){
     var screenMappingObject;
     var apiMappingObject;
     var baseURL;
+    var publicationDetailsArray;
 }
 
 EngineDataStore.setBaseURL = function(url){
@@ -26,4 +27,12 @@ EngineDataStore.setApiMappingObject = function(obj){
 
 EngineDataStore.getApiMappingObject = function(){
     return this.apiMappingObject;
+}
+
+EngineDataStore.setPublicationDetailsArray = function(obj){
+    this.publicationDetailsArray = obj;
+}
+
+EngineDataStore.getPublicationDetailsArray = function(){
+    return this.publicationDetailsArray;
 }

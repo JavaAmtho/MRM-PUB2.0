@@ -2,7 +2,7 @@
     {
         "id": "1",
         "default": "true",
-        "name": "MI-Campaign-SubCampaign-CP-CC-Publication",
+        "name": "MI-Campaign-SubCampaign-CP-CC",
         "structure": [
             {
                 "name": "MI",

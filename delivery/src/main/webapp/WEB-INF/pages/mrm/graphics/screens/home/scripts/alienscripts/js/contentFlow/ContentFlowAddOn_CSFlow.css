@@ -1,0 +1,222 @@
+/*  ContentFlowAddOn_DEFAULT, version 1.0.2 
+ *  (c) 2008 - 2010 Sebastian Kutsch
+ *  <http://www.jacksasylum.eu/ContentFlow/>
+ *
+ *  This file is distributed under the terms of the MIT license.
+ *  (see http://www.jacksasylum.eu/ContentFlow/LICENSE)
+ *
+ *--------------------------------------------------------------------------*/
+
+/*
+ * This is an example file of an AddOn stylesheet. All values are the default
+ * values as they are found in 'mycontentflow.css'.
+ *
+ * It should give you a good idea which elements of the ContentFlow you can
+ * style and how to excess them.
+ *
+ * To use this stylesheet follow this guideline:
+ *
+ * 1. Create a new AddOn and use the addStylesheet method in the init method.
+ *    Take a look at ContentFlowAddOn_DEFAULT.js to know how.
+ *    So a minimal AddOn file just to apply this stylesheet would look like this:
+ *      new ContentFlowAddOn ('ADDONNAME', {
+ *          init: function () { this.addStylesheet(); }
+ *      });
+ *
+ * 2. Rename all class definitions '.ContentFlowAddOn_DEFAULT' to
+ *    '.ContentFlowAddOn_ADDONNAME'.
+ *    Where ADDONNAME is the name of your AddOn.
+ *
+ * 3. Make the changes you like
+ *
+ * 4. Reload your page :-)
+ * 
+ */
+
+/* ========== ContentFlow ========== */
+/*
+ * Within this file you can adjust the styling of ContentFlow
+ * to your personal needs. The default styling is the same as found on the 
+ * project page.
+ *
+ */
+
+.ContentFlowAddOn_CSFlow {
+}
+
+    /* ----- styling of items ----- */
+    .ContentFlowAddOn_CSFlow .flow .item.active {
+        cursor: pointer;
+    }
+        .ContentFlowAddOn_CSFlow .flow .item .caption {
+            font-size: 100%;
+            font-weight: bold;
+            text-align: center;
+            color: white;
+            max-height: 30%;
+            bottom: 10%;
+            background: url(img/1x1_0.5_black.png);
+            width: 100%;
+        }
+        * html .ContentFlowAddOn_CSFlow .flow .item .caption {
+            background-image: none;
+            filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src='img/1x1_0.5_black.png');
+        }
+            .ContentFlowAddOn_CSFlow .flow .item .caption a,
+            .ContentFlowAddOn_CSFlow .flow .item .caption a:link,
+            .ContentFlowAddOn_CSFlow .flow .item .caption a:visited,
+            .ContentFlowAddOn_CSFlow .flow .item .caption a:active,
+            .ContentFlowAddOn_CSFlow .flow .item .caption a:hover {
+                text-decoration: none;
+                color: white;
+                font-style: italic;
+                font-size: 0.8em;
+            }
+            .ContentFlowAddOn_CSFlow .flow .item .caption a:hover {
+                text-decoration: underline;
+            }
+        .ContentFlowAddOn_CSFlow .flow .item.active .caption {
+            /*display: block;*/ /* uncomment to show caption inside item */
+        }
+
+    /* ----- scrollbar ----- */
+    .ContentFlowAddOn_CSFlow .scrollbar {
+        width: 50%;
+        margin: 0px auto;
+        height: 16px;
+        background: url(img/scrollbar_white.png) left center repeat-x;
+        position: relative;
+    }
+
+        .ContentFlowAddOn_CSFlow .scrollbar .slider {
+            width: 16px;
+            height: 16px;
+            background: url(img/slider_white.png) center center no-repeat;
+        }
+        
+        /* only for IE <= 6 and a alphatransparent slider image */
+        * html .ContentFlow .scrollbar .slider { background-image: none; }
+        * html .ContentFlow .scrollbar .slider .virtualSlider {
+            filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=crop, src='img/slider_white.png');
+        }
+
+            .ContentFlowAddOn_CSFlow .scrollbar .slider .position {
+                top: 120%;
+                font-size: 13px;
+                font-weight: bold;
+                color: silver
+            }
+
+    /* ----- global caption ----- */
+    .ContentFlowAddOn_CSFlow .globalCaption {
+        text-align: center;
+        font-weight: bold;
+        color: white;
+        font-size: 14px;
+        height: 20px;
+        margin: 2em auto;
+    }
+        .ContentFlowAddOn_CSFlow .globalCaption .caption {
+        }
+            .ContentFlowAddOn_CSFlow .globalCaption .caption a,
+            .ContentFlowAddOn_CSFlow .globalCaption .caption a:link,
+            .ContentFlowAddOn_CSFlow .globalCaption .caption a:visited,
+            .ContentFlowAddOn_CSFlow .globalCaption .caption a:active,
+            .ContentFlowAddOn_CSFlow .globalCaption .caption a:hover {
+                text-decoration: none;
+                color: white;
+                font-style: italic;
+                font-size: 0.8em;
+            }
+
+            .ContentFlowAddOn_CSFlow .globalCaption .caption a:hover {
+                text-decoration: underline;
+            }
+
+    /* ----- load indicator ----- */
+    .ContentFlowAddOn_CSFlow .loadIndicator {
+        width: 100%;
+        height: 100%;
+        top: 0px;
+        left: 0px;
+        background: url(img/1x1_0.5_black.png);
+    }
+    * html .ContentFlowAddOn_CSFlow .loadIndicator {
+        background-image: none;
+        filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src='img/1x1_0.5_black.png');
+    }
+        .ContentFlowAddOn_CSFlow .loadIndicator .indicator {
+            background: url(img/loader.gif) center center no-repeat;
+            width: 100%;
+            height: 100%;
+        }
+
+    #coverMain{
+        padding: 3px;
+        width:100%;
+        height:340px;
+        border-radius: 5px;
+        border: 1px double white;
+        background: #555555;
+        margin-bottom: 0;
+    }
+
+    #coverInfo{
+
+        color: white;
+        width: 26.5%;
+        float: left;
+        height: 100%;
+        border-radius: 5px;
+        border: 1px solid #343434;
+        margin-top: 0;
+
+        background-color: #343434;
+        box-shadow: 1px 1px 3px 3px #000000 inset;
+
+    }
+
+    #flowContainer{
+        box-shadow: 1px 1px 3px 3px #000000 inset;
+
+        border-radius: 5px;
+        border: 1px solid #343434;
+        height: 100%;
+        width: 72%;
+        background-color: #343434;
+        float:left;
+
+    }
+
+    #myFantasicFlow{
+        margin-top: 40px;
+    }
+
+    #coverInfoHeader{
+        padding-top: 6px;
+        font-weight: bold;
+        font-family: calibri;
+        text-shadow: 1px black;
+        font-size: 16px;
+        text-align: center;
+        height: 30px;
+        width: 100%;
+        border-bottom: 2px solid #555555;
+        margin-top: 1px;
+        box-shadow: 1px 0px 4px 1px #000000 inset;
+
+
+    }
+
+    #coverDetail{
+        padding-top: 4px;
+        padding-left: 5px;
+        font-weight: normal;
+        font-family: tahoma;
+        font-size: 12px;
+        width: 95%;
+        height: 80%;
+    }
+
+
+

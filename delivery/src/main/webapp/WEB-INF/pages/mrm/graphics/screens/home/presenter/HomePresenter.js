@@ -138,66 +138,57 @@ HomePresenter.scrollToday = function(){
 }
 
 HomePresenter.createFlow = function(publications){
-
-    /*var data = [
-        {
-            "pubId":"1",
-            "pubName":"Publication 1",
-            "pubDesc":"This is the publication 1",
-            "previewImg":"../../../graphics/screens/home/images/img/Chrysanthemum.jpg"
-        },
-        {
-            "pubId":"2",
-            "pubName":"Publication 2",
-            "pubDesc":"This is the publication 2",
-            "previewImg":"../../../graphics/screens/home/images/img/Desert.jpg"
-        },
-        {
-            "pubId":"3",
-            "pubName":"Publication 3",
-            "pubDesc":"This is the publication 3",
-            "previewImg":"../../../graphics/screens/home/images/img/Hydrangeas.jpg"
-        },
-        {
-            "pubId":"4",
-            "pubName":"Publication 4",
-            "pubDesc":"This is the publication 4",
-            "previewImg":"../../../graphics/screens/home/images/img/Jellyfish.jpg"
-        },
-        {
-            "pubId":"5",
-            "pubName":"Publication 5",
-            "pubDesc":"This is the publication 5",
-            "previewImg":"../../../graphics/screens/home/images/img/Koala.jpg"
-        }
-    ];*/
-
+   /* var publications = [
+         {
+         "id":"1",
+         "name":"Publication 1",
+         "pubDesc":"This is the publication 1",
+         "imageUrl":"img/Chrysanthemum.jpg"
+         },
+         {
+         "id":"2",
+         "name":"Publication 2",
+         "pubDesc":"This is the publication 2",
+         "imageUrl":"img/Desert.jpg"
+         },
+         {
+         "id":"3",
+         "name":"Publication 3",
+         "pubDesc":"This is the publication 3",
+         "imageUrl":"img/Hydrangeas.jpg"
+         },
+         {
+         "id":"4",
+         "name":"Publication 4",
+         "pubDesc":"This is the publication 4",
+         "imageUrl":"img/Jellyfish.jpg"
+         },
+         {
+         "id":"5",
+         "name":"Publication 5",
+         "pubDesc":"This is the publication 5",
+         "imageUrl":"img/Koala.jpg"
+         }
+     ];
+*/
     GraphicDataStore.setCommChannelDetails(publications);
-    var details = GraphicDataStore.getCommChannelDetails();
+     var details = GraphicDataStore.getCommChannelDetails();
 
-    for(var i=0; i< details.length; i++){
-        var img = $(document.createElement('img'))
-        img.attr('id', details[i].id);
-        img.attr('src',details[i].imageUrl);
-        img.attr('alt',details[i].name);
-        img.appendTo('#myImageFlow');
-    }
-    /* Create ImageFlow instances when the DOM structure has been loaded */
-    var instanceOne = new ImageFlow();
-    instanceOne.init({
-        ImageFlowID:'myImageFlow',// Div id which needs to be converted into the coverflow
-        imageCursor: 'pointer',// Cursor used for images
-        //imageFocusM: 1.1,// Focused image margin from other images
-        xStep: 200,
-        opacity: true,
-        onClick: function(){
-            var url = EngineDataStore.getPubUrl()+"?pubId="+this.id;
-            console.log(url);
-            window.open(url,"_blank");
-        },
-        buttons: true,
-        reflections: false,
-        reflectionP: 0.0
-    });
+    $(".flow").html("");
+
+     for(var i=0; i< details.length; i++){
+         var img = $(document.createElement('img'))
+         img.attr('id', details[i].id);
+         img.attr('src',details[i].imageUrl);
+         img.attr('class',"item");
+         img.attr('alt',details[i].name);
+         img.attr('title',details[i].name);
+         img.appendTo('.flow');
+     }
+
+    var scriptTag = '<script type="text/javascript" src="../../../graphics/screens/home/scripts/alienscripts/js/contentFlow/contentflow.js" load="CSFlow"></script>';
+    $("head").append(scriptTag);
+    $('#coverMain').fadeIn(600);
+
 }
 

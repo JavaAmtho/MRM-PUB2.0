@@ -9,7 +9,10 @@
             Expanded="false"
             RightWidth="800"
             RightCanResize="3"
-           />
+            ConstWidth="1"
+            ConstHeight="1"
+
+            />
     <Cfg
             SearchCells="1"
             SearchFocused="3"
@@ -71,16 +74,16 @@
               GanttSlack= "Slack"
               GanttFormatObject= "MainPrev"
               GanttFormat= "*name*"
-              GanttMainTip= "&lt;div style='padding-bottom:5px;font-weight:bold'>*name*&lt;/div>
-                            &lt;div style='padding-bottom:5px;'> &lt;span  style='text-align: left;
+              GanttMainTip= "&lt;div style='height: 16px;padding-bottom:5px;position:relative;font-weight:bold'>*name*&lt;/div>
+                            &lt;div style='height: 13px;padding-bottom:5px;position:relative;'> &lt;span  style='text-align: left;
                             float:left;font-size:11px'>Start:&lt;/span>&lt;span style='text-align: right;
                             margin-left:65px;float:right;font-size:11px'>*startDate*&lt;/span>&lt;/div>
-                            &lt;div style='padding-bottom:5px;'>&lt;span  style='text-align: left;
+                            &lt;div style='height: 13px;padding-bottom:5px;position:relative;'>&lt;span  style='text-align: left;
                             float: left;font-size: 11px'>End:&lt;/span>&lt;span style='text-align: right;
                             margin-left:65px;float: right;font-size: 11px'>*endDate*&lt;/span>&lt;/div>
-                            &lt;div style='padding-bottom:5px;'>&lt;span  style='text-align: left;
+                            &lt;div style='height: 13px;padding-bottom:5px;position:relative;'>&lt;span  style='text-align: left;
                             float: left;font-size: 11px'>Manager:&lt;/span>&lt;span style='text-align: right;
-                            margin-left:65px;float: right;font-size: 11px'>*manager*&lt;/span>&lt;/div> &lt;div>
+                            margin-left:65px;float: right;font-size: 11px'>*manager*&lt;/span>&lt;/div> &lt;div style='height: 13px;padding-bottom:5px;position:relative;'>
                             &lt;span  style='text-align: left;float: left;font-size: 11px'>Budget:&lt;/span>
                             &lt;span style='text-align: right;float: right;margin-left:65px;font-size: 11px'>
                             *budget**currency*&lt;/span>&lt;/div>"

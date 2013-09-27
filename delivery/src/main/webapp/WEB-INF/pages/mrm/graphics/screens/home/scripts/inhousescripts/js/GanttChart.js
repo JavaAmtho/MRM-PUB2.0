@@ -143,7 +143,7 @@ var GanttChart = function(){
     }
 
      Grids.OnExpand = function(grid,row){
-         if(row.Level === 5){
+        /* if(row.Level === 5){
              var arr = [];
              var length =  row.childNodes.length;
              if(length>0){
@@ -160,7 +160,7 @@ var GanttChart = function(){
              }
              HomePresenter.createFlow(arr);
              return true;
-         }
+         }*/
      }
 
     Grids.OnGetGanttHtml = function(G,row,col,width,comp,crit){
@@ -213,11 +213,12 @@ var GanttChart = function(){
     //SetEvent("OnClick","g1",function(){ alert("G1 clicked");} );
 
     Grids.OnClick = function(grid,row,col,x,y){
+
         if(row.id != "Header"){
             if(col === "name"){
                 if(row.type === "CC"){
                     //Call to server to get the publications of this Communication Channel
-                    GanttChartPresenter.getPublications(row.name,Grids.onPublicationHandler);
+                    GanttChartPresenter.getPublications(row,Grids.onPublicationHandler);
                 }
             }
             if(col != "ganttChart") {
@@ -226,8 +227,8 @@ var GanttChart = function(){
         }
     }
 
-    Grids.onPublicationHandler = function(){
-
+    Grids.onPublicationHandler = function(data){
+        HomePresenter.createFlow(data);
     }
 
     Grids.OnEndDragGantt = function(grid, row, col, name, start, end,

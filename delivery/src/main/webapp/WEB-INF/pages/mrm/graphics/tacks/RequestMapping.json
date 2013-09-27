@@ -3,5 +3,5 @@
     "getSchema":"/delivery/treeviewstructure/",
     "getTree":"/delivery/dimension/get/",
     "dragNDrop":"/delivery/",
-    "getPublications":"some url"
+    "getPublications":"/delivery/publication/get/"
 }

@@ -2,8 +2,19 @@ var pubIdToOpen;
 $(document).ready(function() {
     pubIdToOpen = getParameterByName("pubId");
     EngineDataStore.setBaseURL("../../../");
-    getScreenMappingObject();
+    getPublicationDetailsObject();
 });
+
+function getPublicationDetailsObject(){
+    Router.forward(EngineDataStore.getBaseURL()+"graphics/tacks/PublicationDetails.json",true,function(json){
+        parsePublicationDetailsObject(json);
+    });
+}
+
+function parsePublicationDetailsObject(json){
+    EngineDataStore.setPublicationDetailsArray(json);
+    getScreenMappingObject();
+}
 
 function getParameterByName(name) {
     name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");

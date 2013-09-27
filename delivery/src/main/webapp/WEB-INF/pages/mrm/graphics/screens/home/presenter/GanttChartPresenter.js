@@ -73,8 +73,8 @@ GanttChartPresenter.updateDimension = function(prefix,row,callback){
     UpdateDimension.updateDim(prefix,row,callback);
 }
 
-GanttChartPresenter.getPublications = function(ccId,callback){
-    var url = "http://192.168.135.104/CS13.0Trunk/admin/forward.php?forward=../CSLive/playCSVideoPlayerUsingMamFile.php&mamFileNo=7547";
-    window.open(url,"_blank");
-    //GetPublications.get(ccId,callback);
+GanttChartPresenter.getPublications = function(comChannelObj,callback){
+   /* var url = "http://192.168.135.104/CS13.0Trunk/admin/forward.php?forward=../CSLive/playCSVideoPlayerUsingMamFile.php&mamFileNo=7547";
+    window.open(url,"_blank");*/
+    GetPublications.get(comChannelObj,callback);
 }

@@ -39,7 +39,7 @@ Router.loadRequest = function(key,async,callBack,params){
             case "1":
                 key = "getViewStructure1";
                 break;
-            case "MI-Campaign-SubCampaign-CP-CC-Publication":
+            case "MI-Campaign-SubCampaign-CP-CC":
                 key = "getTree1";
                 break;
         }
