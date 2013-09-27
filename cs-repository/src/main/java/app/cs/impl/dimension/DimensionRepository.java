@@ -37,8 +37,6 @@ public class DimensionRepository implements IDimensionRepository {
 
 	private DomainFactory factory;
 
-	private final String FIELDTOUPDATE = "groupIds";
-
 	private final String TYPE = "type";
 
 	private final String GROUPIDS = "groupIds";
@@ -110,7 +108,7 @@ public class DimensionRepository implements IDimensionRepository {
 	private void updateGroupIdForAllAncestor(String path, String groupId) {
 		String[] paths = path.split(",");
 		for (String singlePath : paths) {
-			mongoRepository.updateById(singlePath, FIELDTOUPDATE, groupId,
+			mongoRepository.updateById(singlePath, GROUPIDS, groupId,
 					MultiDimensionalObject.class);
 		}
 

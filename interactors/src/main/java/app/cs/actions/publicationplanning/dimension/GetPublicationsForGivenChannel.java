@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import app.cs.boundary.delivery.Interactor;
 import app.cs.impl.dimension.DimensionRepository;
+import app.cs.interfaces.dimension.IDimensionRepository;
 import app.cs.model.request.GetDimensionByIdRequest;
 import app.cs.model.request.RequestModel;
 import app.cs.model.response.ResponseModel;
@@ -13,7 +14,7 @@ import app.cs.model.response.TreeResponse;
 @Component
 public class GetPublicationsForGivenChannel implements Interactor {
 
-	private DimensionRepository dimensionRepository;
+	private IDimensionRepository dimensionRepository;
 
 	@Autowired
 	public GetPublicationsForGivenChannel(
