@@ -173,7 +173,8 @@ new ContentFlowAddOn ('CSFlow', {
          * called when an item becomes active.
          */
         onMakeActive: function (item) {
-            console.log(item.content.id)            ;
+            console.log(item.content.id);
+            GraphicDataStore
             document.getElementById("coverInfoHeader").innerHTML="Publication "+item.item.itemIndex;
             console.log(document.getElementById("coverDetail"));
             document.getElementById("coverDetail").innerHTML="<br><b>Name: </b>"+"Publication "+item.item.itemIndex+"<br><br><b>Link: </b><a target='_blank'  href='"+item.item.baseURI+"'>"+item.item.baseURI+"</a>";

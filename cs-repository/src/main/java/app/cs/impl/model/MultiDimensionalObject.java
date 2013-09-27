@@ -131,7 +131,7 @@ public class MultiDimensionalObject implements Serializable, GenericDomain {
 
 	@JsonProperty("previewType")
 	public String getPreviewType() {
-		return dimensionInfo.getActualImage();
+		return dimensionInfo.getPreviewType();
 	}
 
 	@JsonProperty("actualImage")

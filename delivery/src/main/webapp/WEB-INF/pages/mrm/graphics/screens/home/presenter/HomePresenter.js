@@ -138,7 +138,7 @@ HomePresenter.scrollToday = function(){
 }
 
 HomePresenter.createFlow = function(publications){
-    var publications = [
+    /*var publications = [
          {
          "id":"pub1",
          "name":"Publication 1",
@@ -169,7 +169,7 @@ HomePresenter.createFlow = function(publications){
          "pubDesc":"This is the publication 5",
          "imageUrl":"img/Koala.jpg"
          }
-     ];
+     ];*/
     GraphicDataStore.setCommChannelDetails(publications);
      var details = GraphicDataStore.getCommChannelDetails();
 
@@ -178,7 +178,7 @@ HomePresenter.createFlow = function(publications){
      for(var i=0; i< details.length; i++){
          var img = $(document.createElement('img'))
          img.attr('id', details[i].id);
-         img.attr('src',details[i].imageUrl);// previewImage
+         img.attr('src',details[i].previewImage);// previewImage
          img.attr('class',"item");
          img.attr('alt',details[i].name);
          img.attr('title',details[i].name);
