@@ -171,7 +171,7 @@ new ContentFlowAddOn ('CSFlow', {
 
             document.getElementById("coverInfoHeader").innerHTML= GraphicDataStore.currentFocusedItem.name;
             //console.log(document.getElementById("coverDetail"));
-            document.getElementById("coverDetail").innerHTML="<br><b>Name: </b>"+GraphicDataStore.currentFocusedItem.name+"<br><br><b>Type: </b>"+GraphicDataStore.currentFocusedItem.previewType+"<br><br><b>Link: </b><a target='_blank'  href='"+GraphicDataStore.currentFocusedItem.actualImage+"'>"+GraphicDataStore.currentFocusedItem.actualImage+"</a>";
+            document.getElementById("coverDetail").innerHTML="<br><b>Name: </b>"+GraphicDataStore.currentFocusedItem.name+"<br><br><b>Type: </b>"+GraphicDataStore.currentFocusedItem.previewType+"<br><br><b>Link: </b><a class='linkOfCoverflowItem' target='_blank'  href='"+GraphicDataStore.currentFocusedItem.actualImage+"'>"+GraphicDataStore.currentFocusedItem.actualImage+"</a>";
 
         },
         
