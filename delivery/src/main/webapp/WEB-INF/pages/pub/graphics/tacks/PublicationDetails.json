@@ -1,30 +1,25 @@
 [
     {
-        "id":1,
         "previewImage": "http://cdn.arstechnica.net/wp-content/uploads/2012/10/01_Place_Peters-640x450.jpg",
         "actualImage": "http://cdn.arstechnica.net/wp-content/uploads/2012/10/01_Place_Peters-640x450.jpg",
         "previewType": "image"
     },
     {
-        "id":2,
         "previewImage": "http://192.168.135.104/CS13.0Trunk/admin/forward.php?forward=../CSLive/playCSVideoPlayerUsingMamFile.php&mamFileNo=7547",
         "actualImage": "http://192.168.135.104/CS13.0Trunk/admin/forward.php?forward=../CSLive/playCSVideoPlayerUsingMamFile.php&mamFileNo=7547",
         "previewType": "video"
     },
     {
-        "id":3,
         "previewImage": "http://t3.gstatic.com/images?q=tbn:ANd9GcTAdh5FhHiYuqnI0M1TdWcRC2WJfP6v_bhLIzNQcjNu2EnBmw8O",
         "actualImage": "http://t3.gstatic.com/images?q=tbn:ANd9GcTAdh5FhHiYuqnI0M1TdWcRC2WJfP6v_bhLIzNQcjNu2EnBmw8O",
         "previewType": "image"
     },
     {
-        "id":4,
         "previewImage": "http://upload.wikimedia.org/wikipedia/en/thumb/b/b7/Fiery_Mask.jpg/250px-Fiery_Mask.jpg",
         "actualImage": "http://upload.wikimedia.org/wikipedia/en/thumb/b/b7/Fiery_Mask.jpg/250px-Fiery_Mask.jpg",
         "previewType": "image"
     },
     {
-        "id":5,
         "previewImage": "http://192.168.135.104/CS13.0Trunk/admin/forward.php?forward=../CSLive/playCSVideoPlayerUsingMamFile.php&mamFileNo=7546",
         "actualImage": "http://192.168.135.104/CS13.0Trunk/admin/forward.php?forward=../CSLive/playCSVideoPlayerUsingMamFile.php&mamFileNo=7546",
         "previewType": "video"

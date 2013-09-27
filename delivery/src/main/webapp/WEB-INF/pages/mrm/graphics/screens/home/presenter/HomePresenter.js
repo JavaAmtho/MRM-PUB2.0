@@ -138,27 +138,27 @@ HomePresenter.scrollToday = function(){
 }
 
 HomePresenter.createFlow = function(publications){
-   /* var publications = [
+    var publications = [
          {
-         "id":"1",
+         "id":"pub1",
          "name":"Publication 1",
          "pubDesc":"This is the publication 1",
          "imageUrl":"img/Chrysanthemum.jpg"
          },
          {
-         "id":"2",
+         "id":"pub12",
          "name":"Publication 2",
          "pubDesc":"This is the publication 2",
          "imageUrl":"img/Desert.jpg"
          },
          {
-         "id":"3",
+         "id":"pub13",
          "name":"Publication 3",
          "pubDesc":"This is the publication 3",
          "imageUrl":"img/Hydrangeas.jpg"
          },
          {
-         "id":"4",
+         "id":"pub14",
          "name":"Publication 4",
          "pubDesc":"This is the publication 4",
          "imageUrl":"img/Jellyfish.jpg"
@@ -170,7 +170,6 @@ HomePresenter.createFlow = function(publications){
          "imageUrl":"img/Koala.jpg"
          }
      ];
-*/
     GraphicDataStore.setCommChannelDetails(publications);
      var details = GraphicDataStore.getCommChannelDetails();
 
@@ -179,7 +178,7 @@ HomePresenter.createFlow = function(publications){
      for(var i=0; i< details.length; i++){
          var img = $(document.createElement('img'))
          img.attr('id', details[i].id);
-         img.attr('src',details[i].imageUrl);
+         img.attr('src',details[i].imageUrl);// previewImage
          img.attr('class',"item");
          img.attr('alt',details[i].name);
          img.attr('title',details[i].name);
