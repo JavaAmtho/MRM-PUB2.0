@@ -213,12 +213,22 @@ var GanttChart = function(){
     //SetEvent("OnClick","g1",function(){ alert("G1 clicked");} );
 
     Grids.OnClick = function(grid,row,col,x,y){
-        if(col!="ganttChart"){
-            Grids[0].ScrollToDate(row.startDate,"Center");
+        if(row.id != "Header"){
+            if(col === "name"){
+                if(row.type === "CC"){
+                    //Call to server to get the publications of this Communication Channel
+                    GanttChartPresenter.getPublications(row.name,Grids.onPublicationHandler);
+                }
+            }
+            if(col != "ganttChart") {
+                Grids[0].ScrollToDate(row.startDate,"Center");
+            }
         }
-
     }
 
+    Grids.onPublicationHandler = function(){
+
+    }
 
     Grids.OnEndDragGantt = function(grid, row, col, name, start, end,
         oldstart, oldend, dir, XY, keyprefix, clientX, clientY, ToRow){
