@@ -30,7 +30,6 @@ public class GetDimensionsByIdController {
 	List<MultiDimensionalObject> getPublicationBy(
 			@RequestBody GetDimensionByIdRequest byIdRequest,
 			@PathVariable String channelName) {
-		System.out.println("In");
 		return ((TreeResponse) getPublicationsForGivenChannel
 				.execute(byIdRequest)).getTree();
 

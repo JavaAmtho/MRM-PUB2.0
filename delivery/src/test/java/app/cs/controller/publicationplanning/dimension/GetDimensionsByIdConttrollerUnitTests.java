@@ -29,7 +29,7 @@ public class GetDimensionsByIdConttrollerUnitTests {
 		// when
 		when(perspective.execute(byIdRequest)).thenReturn(
 				new TreeResponse(null));
-		perspectiveController.getPublicationBy(byIdRequest);
+		perspectiveController.getPublicationBy(byIdRequest,"");
 
 		// then
 		verify(perspective).execute(byIdRequest);
