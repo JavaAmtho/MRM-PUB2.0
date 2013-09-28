@@ -11,6 +11,25 @@ var GraphicDataStore = function(){
     var currentSchema;
     var prodcutsArr=[];
     var currentAssortment;
+    var pageRulesArr;
+}
+
+GraphicDataStore.getPageRuleById = function(id){
+    console.log(this.pageRulesArr);
+    if(this.pageRulesArr){
+        return this.pageRulesArr[id];
+    }
+    else{
+        return undefined;
+    }
+}
+
+GraphicDataStore.addToPageRules = function(rule){
+    if(!this.pageRulesArr){
+        this.pageRulesArr = {};
+    }
+    this.pageRulesArr[rule.logicalPageID] = rule;
+    console.log(this.pageRulesArr)
 }
 
 GraphicDataStore.setCurrentAssortment = function(obj){

@@ -34,6 +34,7 @@ Router.forwardAPIRequests = function(url,async,callback){
 }
 
 Router.loadRequest = function(key,async,callBack,params){
+    console.log('')
     if(params){
         switch(params){
             case "1":

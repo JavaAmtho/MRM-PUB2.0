@@ -1011,19 +1011,19 @@ Top Bar Animation Section starts
 }
 
 
-.childPages .inner:hover{
-    text-shadow:
-        0 0 5px white,
-        0 0 5px white;
-    cursor:pointer;
-}
-
 
 .masterPage.odd          { background: #638FDB;  }
 .masterPage.even           { background: #B8BFDB; }
 .childPages.odd.inner          { background: #638FDB; }
 .childPages.even.inner      { background: #B8BFDB; }
 
+
+.masterPage:hover{
+    text-shadow:
+        0 0 10px white,
+        0 0 10px white
+;
+}
 
 .masterPage .type {
     margin-top: 60px;
@@ -1048,7 +1048,12 @@ Top Bar Animation Section starts
 
 }
 
-
+.childPages:hover{
+    text-shadow:
+        0 0 10px white,
+        0 0 10px white
+;
+}
 
 .masterPage.rules-opened {
     /*    -webkit-transform: rotateY(180deg);
@@ -1090,15 +1095,7 @@ h2.open{
 
 h2:hover{
     cursor:pointer;
-    /*color:white;*/
-    text-shadow:
-        0 0 8px white,
-        0 0 8px white;
-    -webkit-transition: text-shadow 0.3s ease-out;
-    -moz-transition: text-shadow 0.3s ease-out;
-    -ms-transition: text-shadow 0.3s ease-out;
-    -o-transition: text-shadow 0.3s ease-out;
-    transition: text-shadow 0.3s ease-out;
+    color:white;
 }
 
 h2.expand{
@@ -1117,6 +1114,14 @@ h2.expand{
     cursor:pointer;
     color:black;
 }*/
+
+h2.close{
+    position:absolute;
+    top:0.1%;
+    left:90%;
+    z-index: 50;
+}
+
 
 .loading-overlay { z-index:200;
     display:none;
@@ -1157,32 +1162,10 @@ h2.expand{
 }
 
 .rulesText{
-    height:25px;
+    height:30px;
     width:125px;
     position: relative;
-    margin:2px;
-    padding: 0px;
 }
-
-
-.operation{
-    padding:0px;
-    width:41px;
-    margin:0.5px;
-}
-
-
-
-.groupType{
-    margin:0.5px;
-    width:108px
-}
-
-.value{
-    margin:0.5px;
-    width:109px
-}
-
 
 .buttons{
     position:relative;
@@ -1192,9 +1175,7 @@ h2.expand{
     cursor: pointer;
 }
 
-
 .addNewThen{
-    font-size: 27px;
     width:5%;
 }
 
@@ -1222,57 +1203,22 @@ h2.expand{
     right:4px;
 }
 
-h2.close:hover{
-    opacity:0.9;
-    color: red;
-    text-shadow:
-        0 0 2px red,
-        0 0 2px red;
-
-    -webkit-transition: color 0.3s ease-out;
-    -moz-transition: color 0.3s ease-out;
-    -ms-transition: color 0.3s ease-out;
-    -o-transition: color 0.3s ease-out;
-    transition: color 0.3s ease-out;
+.operation{
+    width:50px;
 }
 
-h2.close{
-    position:absolute;
-    top:0.7%;
-    left:92%;
-    z-index: 50;
-    line-height: 0px;
-    opacity:1;
-    color: darkred;
-    font-size: 16px;
-    text-shadow: 0 0px 0 darkred;
+.groupType{
+    width:70px
 }
 
 
-h2.save:hover{
-    opacity:0.7;
-    color: greenyellow;
+.data{
+    display:none;
 }
 
-img.save{
-    line-height: 0px;
-    top:2.1%;
-    left:6%;
-    font-size: 15px;
-    position:absolute;
-    text-decoration: none;
-    cursor: pointer;
-    float: left;
-    font-weight: bold;
-    text-shadow: 0 1px 0 lightgreen;
-    height:17px;
-}
 
 /************************RULE STUFF ENDS!!!!!********************/
-/*for hidden fields and unwanted divs in certain views*/
-.hidden{
-    visiblity:hidden;
-}
+
 
 /*********************DIMESNION STUFF START!!!!!*****************/
 
@@ -1326,6 +1272,80 @@ img.save{
 /*********************DIMESNION STUFF END!!!!!*****************/
 
 
+
+.listDivCSS{
+    position: relative;
+    background-color:#DFDFDF;
+    float: left;
+    height : 35px;
+    width : 95%;
+    padding: 5px;
+    margin: 5px;
+    border:1px solid #BBBBBB;
+    border-radius:12px;
+}
+
+.detailDivCSS{
+    position: relative;
+    background-color:#DFDFDF;
+    border:1px solid #BBBBBB;
+    border-radius:12px;
+    float: left;
+    height : auto;
+    width : 95%;
+    padding: 5px;
+    margin: 5px;
+
+}
+
+.viewOptionCSS{
+    position: relative;
+    /*background: 'url("'+EngineDataStore.getBaseURL()+'graphics/screens/home/images/icons/tile.png")';*/
+    background-image: url('/delivery/pages/graphics/screens/home/images/icons/grad.png');
+    background-repeat: repeat-x;
+
+    /* background-color:#777777;*/
+    float: left;
+    height : 27px;
+    width : 100%;
+    text-align: center;
+    border-top: 1px solid #BBBBBB;
+    border-left: 1px solid #BBBBBB;
+    border-bottom: 1px solid #BBBBBB;
+}
+
+.tileBtnCSS{
+    /*background: 'url("'+EngineDataStore.getBaseURL()+'graphics/screens/home/images/icons/tile.png")';*/
+    background:url(/delivery/pages/graphics/screens/home/images/icons/tile.png);
+    background-repeat: no-repeat;
+    border:0px;
+    width: 28px;
+    height: 22px;
+    margin-top: 2px;
+}
+
+.listBtnCSS{
+    /*background: 'url("'+EngineDataStore.getBaseURL()+'graphics/screens/home/images/icons/list.png")';*/
+    background:url(/delivery/pages/graphics/screens/home/images/icons/list.png);
+    background-repeat: no-repeat;
+    border:0px;
+    width: 28px;
+    height: 22px;
+    margin-top: 2px;
+}
+
+.detailBtnCSS{
+    /*background: 'url("'+EngineDataStore.getBaseURL()+'graphics/screens/home/images/icons/detail.png")';*/
+    background:url(/delivery/pages/graphics/screens/home/images/icons/detail.png);
+    background-repeat: no-repeat;
+    border:0px;
+    width: 28px;
+    height: 22px;
+    margin-top: 2px;
+}
+/* Tile, List and Detail View Item Renderer CSS Section Ends */
+
+
 /*************ISOTOPE STUFF START!!******************************/
 
 .isotope-item {
@@ -1366,46 +1386,7 @@ img.save{
 
 /*********************ISOTOPE STUFF END!!******************************/
 
-#dialog-confirm{
-    display:none;
-}
-
-
-.ui-dialog-titlebar {
-    text-align: center;
-    height: 19px !important;
-    font-size: 13px !important;
-}
-
-.ui-dialog-title {
-    text-align: center !important;
-    float: none !important;
-}
-
-.ui-dialog-content {
-    /*padding: 10px !important;*/
-    /*padding-top: 0px !important;*/
-    overflow: hidden !important;
-    text-align: center;
-    line-height: 18px;
-}
-
-.ui-widget-header{
-    background-color: #343434;
-    background-image: none !important;
-    color: white;
-    border: none !important;
-}
-
-.ui-dialog-buttonpane{
-    padding:0px !important;
-    background-color: #c9c9c9 !important;
-}
-
-.ui-widget{
-    font-size: 11px; !important
-}
-.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset{
-    margin:0 auto;
+.hidden{
+    visiblity:hidden;
 }
 
