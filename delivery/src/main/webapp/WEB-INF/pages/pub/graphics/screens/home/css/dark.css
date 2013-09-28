@@ -203,7 +203,7 @@ img {
     float: left;
     min-width: 500px;
     width: 100%; /* width of whole page */
-    height: 650px !important;
+    height: 600px !important;
     /*overflow:hidden;		*//* This chops off any overhanging divs */
 }
 
@@ -430,11 +430,10 @@ Top Bar Animation Section starts
 }
 
 .mainContainer {
-    min-height: 100%;
+    height: 630px;
     float: left;
     position: relative;
     width: 100%;
-    height: auto;
     margin-top: 0px;
     overflow: auto;
     /*position: relative;*/
@@ -576,7 +575,7 @@ Top Bar Animation Section starts
     position: relative;
     float: left;
     width: 70%;
-    height:540px;
+    height:585px;
     display: none;
     background-image: url('../images/drag_and_drop.jpg');
     background-repeat: no-repeat;
@@ -605,7 +604,7 @@ Top Bar Animation Section starts
     float: left;
     position: relative;
     width: 100% !important;
-    height: 500px !important;
+    height: 548px !important;
     margin-top: 0px;
     background-image: url('../images/drag_and_drop.jpg');
     background-repeat: no-repeat;
@@ -630,12 +629,12 @@ Top Bar Animation Section starts
 
 #rightMenuBar {
     z-index: 1000;
-    position: absolute;
+    position: fixed;
     width: 29px;
-    height: 100%;
+    height: 94%;
     float: right;
-    right: 0px;
-    bottom: 0px;
+    right: 1px;
+    top:28px;
     background-color: #373737;
     border-left: 1px solid #BBBBBB;
     border-top: 1px solid #BBBBBB;
@@ -1947,3 +1946,16 @@ li#targetRegionText , li#targetGroupText{
     font-size: 11px;
 }
 
+
+.selectboxit-arrow-container {
+
+    /* Encloses the down arrow in a box */
+    border-left: 1px solid #ccc;
+
+}
+/*
+
+.assortment {
+    width: 50px;
+}
+*/

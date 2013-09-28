@@ -66,7 +66,7 @@ function getChildrenForSelectedNode(node){
 function showAssortmentPanel(rendererData){
     $("#dim").hide();
     $("#assortPanel").show();
-    $("#subtab1").jqxListBox({ allowDrop: true, allowDrag: true,dropAction:'copy', source: rendererData, width: 200, height: 250,
+    $("#subtab1").jqxListBox({ allowDrop: true, allowDrag: true,dropAction:'copy', source: rendererData, width: 250, height: 600,
         dragEnd: function (event) {
             //alert(123)
         }
