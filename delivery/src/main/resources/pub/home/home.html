@@ -2,12 +2,12 @@
     <div class="option-combo region">
 
         <ul class="filter option-set clearfix " data-filter-group="region">
-			<li id ="targetRegionText">Target Region:</li>
-            <li><a href="#filter-region-any" data-filter-value="" class="pure-button  pure-button-left pure-button-active calendarButtonPressed">Any</a></li>
+            <li id ="targetText">Target Region:</li>
+            <li><a href="#filter-region-any" data-filter-value="" class="pure-button  pure-button-left pure-button-active">Any</a></li>
 
-            <li><a href="#filter-region-germany" data-filter-value=".anyRegion,.germany" class="pure-button pure-button-active"> Germany</a></li>
-            <li><a href="#filter-region-india" data-filter-value=".anyRegion,.india" class="pure-button pure-button-active">India</a></li>
-            <li><a href="#filter-region-usa" data-filter-value=".anyRegion,.usa" class="pure-button pure-button-right pure-button-active">USA</a></li>
+            <li><a href="#filter-region-germany" data-filter-value=".any,.germany" class="pure-button pure-button-active"> Germany</a></li>
+            <li><a href="#filter-region-india" data-filter-value=".any,.india" class="pure-button pure-button-active">India</a></li>
+            <li><a href="#filter-region-usa" data-filter-value=".any,.usa" class="pure-button pure-button-right pure-button-active">USA</a></li>
 
         </ul>
     </div>
@@ -15,37 +15,35 @@
     <div class="option-combo targetGroup">
 
         <ul class="filter option-set clearfix " data-filter-group="targetGroup">
-			<li id ="targetGroupText">Target Group:</li>
-            <li><a href="#filter-targetGroup-any" data-filter-value="" class="calendarButtonPressed pure-button pure-button-left pure-button-active">Any</a> </li>
-            <li><a href="#filter-targetGroup-men" data-filter-value=".men,.anyTargetGroup" class="pure-button  pure-button-active">Men</a></li>
-            <li><a href="#filter-targetGroup-women" data-filter-value=".women,.anyTargetGroup" class="pure-button pure-button-active">Women</a></li>
-            <li><a href="#filter-targetGroup-women" data-filter-value=".kids,.anyTargetGroup" class="pure-button pure-button-right pure-button-active">Kids</a></li>
-
+            <li id ="targetText">Target Group:</li>
+            <li><a href="#filter-targetGroup-any" data-filter-value="" class=" pure-button pure-button-left pure-button-active">Any</a> </li>
+            <li><a href="#filter-targetGroup-men" data-filter-value=".any,.men" class="pure-button  pure-button-active">Men</a></li>
+            <li><a href="#filter-targetGroup-women" data-filter-value=".any,.women" class="pure-button pure-button-right pure-button-active">Women</a></li>
 
         </ul>
     </div>
-	
+
     <div id="viewOptionNew">
-		<button id="tileView" class="tileBtnCSS"></button>
+        <button id="tileView" class="tileBtnCSS"></button>
         <button id="listView" class="listBtnCSS"></button>
-        <button id="detailView" class="detailBtnCSS"></button> 
-   
-	</div>
+        <button id="detailView" class="detailBtnCSS"></button>
+
+    </div>
 
 </div>
 <div class="colmask">
     <div class="splitter-panel">
-<!--
-        <div id="menubar" class="menubar"></div>
--->
+        <!--
+                <div id="menubar" class="menubar"></div>
+        -->
 
 
                 <span id="leftPanel" class="span3">
 
                     <div id="mainAnimationContainer" class="mainAnimationContainerCSS">
-<!--
-                        <p id="selectLbl" class="selectLblCSS" >Select View</p>
--->
+                        <!--
+                                                <p id="selectLbl" class="selectLblCSS" >Select View</p>
+                        -->
                         <!--<select id="schemaDropDown" class="selectpicker"  data-style="btn-inverse" data-width="auto"> </select>-->
                         <p id="selectLbl" class="selectLblCSS" >Select View</p>
                         <select id="schemaDropDown" class="selectpicker"  data-style="btn-primary">
@@ -96,9 +94,9 @@
     </div>
 
     <div class="splitter-panel">
-<!--
-        <div class="colmid"></div>
--->
+        <!--
+                <div class="colmid"></div>
+        -->
 
               <span id="rightPanel" class="span9">
 
@@ -106,25 +104,22 @@
 
                      <div id="rightPanelView">
                          <div id="dim">
-                           <!--  <div id="viewOption" class="viewOptionCSS">
-                                 <span id="txt" class="formatTxt"></span>
-                                 <button id="tileView" class="tileBtnCSS"></button>
-                                 <button id="listView" class="listBtnCSS"></button>
-                                 <button id="detailView" class="detailBtnCSS"></button>
-                             </div>-->
+                             <!--  <div id="viewOption" class="viewOptionCSS">
+                                   <span id="txt" class="formatTxt"></span>
+                                   <button id="tileView" class="tileBtnCSS"></button>
+                                   <button id="listView" class="listBtnCSS"></button>
+                                   <button id="detailView" class="detailBtnCSS"></button>
+                               </div>-->
                              <div id="viewHolder" class="viewHolderCSS">
 
                              </div>
                          </div>
                          <div id="assortPanel">
-                             <div id="assortPanelHeader">Assortment Panel</div>
+                             <div id="assortPanelHeader"> <div id='btnSaveAssort'><img src='../../../graphics/screens/home/images/save.png'></div></div>
 
                              <div id="subtab1">
+                             </div>
 
-                             </div>
-                             <div id="subtab2">
-                                   <button id='btnSaveAssort'>Save</button>
-                             </div>
                          </div>
                          <div id="rightMenuBar">
                              <button id="btnPIM" class="rightMenu" name="PIM"></button>
@@ -137,8 +132,8 @@
                              <div id="assetSearch"><input type="text" placeholder="Search" id="asSearch"/> </div>
                              <div id="assetsTree"></div>
                              <div id="assetDetails" class="assetDetails"></div>
-                            <!-- <a href = "http://www.inbetween.com">My site</a><br>
-                             <input id="panelBtn" type="button" value = "Enter name">-->
+                             <!-- <a href = "http://www.inbetween.com">My site</a><br>
+                              <input id="panelBtn" type="button" value = "Enter name">-->
                          </div>
                      </div>
              </span>

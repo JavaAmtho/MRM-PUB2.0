@@ -82,7 +82,7 @@ body {
     margin: 0;
     padding: 0;
     border: 0;
-     /* This removes the border around the viewport in old versions of IE */
+    /* This removes the border around the viewport in old versions of IE */
     width: 100%;
     min-height: 100%;
     color: #333333;
@@ -351,7 +351,7 @@ Top Bar Animation Section starts
     margin: 5px;
     vertical-align: middle;
     width: auto;
-   /* min-height: 27px;*/
+    /* min-height: 27px;*/
     height: auto;
     line-height: 16px;
     /* background-color: #EEEEEE;*/
@@ -488,6 +488,8 @@ Top Bar Animation Section starts
     width: 100%;
     float: left;
     position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .footer {
@@ -560,7 +562,7 @@ Top Bar Animation Section starts
     float: left;
     background-color: white;
     width: 100%;
-    min-height: 550px;
+    min-height: 580px;
     /* overflow-x:scroll;
      overflow-y: scroll;*/
 }
@@ -568,15 +570,21 @@ Top Bar Animation Section starts
 /* CSS for Assortment Panel*/
 
 #assortPanel {
-    margin-top: 5px;
-    margin-left: 5px;
-    border: 1px solid #BBBBBB;
+    margin-top: 10px;
+    margin-left: 15px;
+    border: 1px solid #999999;
     position: relative;
     float: left;
-    width: 80%;
-    height: 99%;
+    width: 70%;
+    height:540px;
     display: none;
+    background-image: url('../images/drag_and_drop.jpg');
+    background-repeat: no-repeat;
+    z-index: 9999;
+    background-position: 30% 30%;
 }
+
+
 
 #assortPanelHeader {
     position: relative;
@@ -599,7 +607,11 @@ Top Bar Animation Section starts
     width: 100% !important;
     height: 500px !important;
     margin-top: 0px;
-    overflow-y: auto;
+    background-image: url('../images/drag_and_drop.jpg');
+    background-repeat: no-repeat;
+    z-index: 9999;
+    background-position: 50% 50%;
+
 }
 
 #subtab2 {
@@ -638,7 +650,7 @@ Top Bar Animation Section starts
     background-color: #EEEEEE;
     border: 0px;
     position: absolute;
-    z-index: 150;
+    z-index: 6;
     right: -200px;
     padding: 0px;
     height:595px;
@@ -712,7 +724,7 @@ Top Bar Animation Section starts
     background-color: white;
     border-top: 1px solid #BBBBBB;
     border-bottom: 1px solid #BBBBBB;
-   /* border-left: 1px solid #BBBBBB;*/
+    /* border-left: 1px solid #BBBBBB;*/
     /* border-right: 1px solid #BBBBBB;*/
 
     top: 0px;
@@ -971,7 +983,7 @@ Top Bar Animation Section starts
     border-radius: 12px !important;
     float: left !important;
 
-    width: 95% !important;
+    width: 70% !important;
     /*  padding: 5px !important;
       margin: 5px !important;*/
 }
@@ -1042,15 +1054,15 @@ Top Bar Animation Section starts
     color: #222;
 
     overflow: hidden;
-   /* bottom: 0;
-    right: 0;
-*//*
-    margin: 13px 0px 5px 0px;
-*//*
-    float: right;
-    position: absolute;
-    padding: 8px;
-  */
+    /* bottom: 0;
+     right: 0;
+ *//*
+     margin: 13px 0px 5px 0px;
+ *//*
+     float: right;
+     position: absolute;
+     padding: 8px;
+   */
 }
 
 .assortment{
@@ -1593,9 +1605,9 @@ img.save {
     font-size: 12px;
     line-height: 14px;
     font-family: tahoma;
-/*
-    margin: 5px !important;
-*/
+    /*
+        margin: 5px !important;
+    */
 
 }
 
@@ -1717,20 +1729,12 @@ a.pure-button:focus, .pure-button:focus, .calendarButtonPressed{
 
 .pure-button:active, a.pure-button:active {
     box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, .4) inset;
-    -webkit-transition:  box-shadow 0.1s linear 0s;
-    -moz-transition:  box-shadow 0.1s linear 0s;
-    -ms-transition:  box-shadow 0.1s linear 0s;
-    -o-transition:  box-shadow 0.1s linear 0s;
-    transition:  box-shadow 0.1s linear 0s;
+    transition: box-shadow 0.1s linear 0s;
 }
 
 .pure-button-active, a.pure-button-active {
     box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.35) inset, 0px 0px 3px rgba(0, 0, 0, 0.2) inset;
-    -webkit-transition:  box-shadow 0.1s linear 0s;
-    -moz-transition:  box-shadow 0.1s linear 0s;
-    -ms-transition:  box-shadow 0.1s linear 0s;
-    -o-transition:  box-shadow 0.1s linear 0s;
-    transition:  box-shadow 0.1s linear 0s;
+    transition: box-shadow 0.1s linear 0s;
 }
 
 
@@ -1844,10 +1848,52 @@ a.pure-button:hover, a.pure-button{
 
 
 .bootstrap-select.btn-group, .bootstrap-select.btn-group[class*="span"] {
-margin-left: 7px !important;
+    margin-left: 7px !important;
 }
 
 .region{
     float:right;
     right: 300px;
+}
+
+.jqx-icon-arrow-right{
+    background-image: url('../images/arr_right.png') !important;
+    opacity: .6;
+}
+
+.jqx-icon-arrow-left{
+    background-image: url('../images/arr-left.png') !important;
+    opacity: .6;
+}
+
+.jqx-icon-arrow-up{
+    background-image: url('../images/arr-up.png') !important;
+    opacity: .6;
+}
+
+.jqx-icon-arrow-down{
+    background-image: url('../images/arr-down.png') !important;
+    opacity: .6;
+}
+
+#btnSaveAssort{
+
+    float: left;
+    background-position: 2px 2px;
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    padding-top: 5px;
+    padding-left: 10px;
+    /*
+        background-color: #000000;
+    */
+}
+
+h2.openRules{
+    font-size: 20px !important;
+    margin-bottom: 15px;
+}
+
+#listBoxContentassetDetails{
+    height: 100% !important;
 }
