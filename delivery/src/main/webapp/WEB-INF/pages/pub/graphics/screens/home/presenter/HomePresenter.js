@@ -314,7 +314,7 @@ HomePresenter.showAssortmentPanel = function (rendererData) {
 HomePresenter.populateAssetsList = function (data) {
     //Converting the div into the jqwidget list with the renderer for that list
     $("#assetDetails").jqxListBox('beginUpdate');
-    $("#assetDetails").jqxListBox({ source: data, scrollBarSize: 15, height: '350px', displayMember: "title", valueMember: "description", width: 200, height: 250,
+    $("#assetDetails").jqxListBox({ source: data, autoItemsHeight: true, scrollBarSize: 15, height: '450px', displayMember: "title", valueMember: "description", width: 200, height: 250,
         renderer: function (index, label, value) {
             var datarecord = data[index];
             var imgurl = datarecord.image;

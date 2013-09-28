@@ -635,6 +635,7 @@ Top Bar Animation Section starts
     height: 100%;
     float: right;
     right: 0px;
+    bottom: 0px;
     background-color: #373737;
     border-left: 1px solid #BBBBBB;
     border-top: 1px solid #BBBBBB;
@@ -716,8 +717,10 @@ Top Bar Animation Section starts
 }
 
 #assetDetails {
-    overflow-x: hidden;
+    overflow-x: auto;
+/*
     overflow-y: auto;
+*/
     font-weight: lighter;
     font-style: italic;
     margin-top: 3px;
