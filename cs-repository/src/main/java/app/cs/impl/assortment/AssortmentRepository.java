@@ -1,5 +1,7 @@
 package app.cs.impl.assortment;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -115,6 +117,48 @@ public class AssortmentRepository implements IAssortmentRepository {
 		oldAssortment.setProducts(assortment.getProducts());
 
 		return saveToRepository(publication);
+	}
+
+	@Override
+	public String getAllAssortmentNames(String pagePath, String logicalPageID) {
+
+		String nameOfAssortments = "";
+		int countOfAssortments = 1;
+
+		// get the publication
+		MultiDimensionalObject publication = mongoRepository
+				.getObjectByKey(finder.getPublicationId(pagePath),
+						MultiDimensionalObject.class);
+		if (publication == null) {
+			return "publication not found";
+		}
+
+		// get the page
+		MultiDimensionalObject page = finder.find(publication, logicalPageID);
+		if (page == null) {
+			return "page not found";
+		}
+
+		// get the children i.e assortments
+		List<MultiDimensionalObject> listOfAssortments = page.getChildren();
+		if (listOfAssortments == null) {
+			return "assortments not found";
+		}
+
+		// iterate over them and create list of names
+		for (MultiDimensionalObject assortment : listOfAssortments) {
+			if (countOfAssortments < listOfAssortments.size()) {
+				nameOfAssortments += "{\"name\":\"" + assortment.getName()
+						+ "\"},";
+			} else {
+				nameOfAssortments += "{\"name\":\"" + assortment.getName()
+						+ "\"}";
+			}
+			countOfAssortments++;
+		}
+
+		System.out.println(nameOfAssortments);
+		return nameOfAssortments;
 	}
 
 }
