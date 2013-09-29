@@ -94,6 +94,11 @@ public class ChapterRepository implements IChapterRepository {
 		saveToRepository(parentPublication);
 		return chapter.getId();
 	}
+	
+	public MultiDimensionalObject findMultiDimensionalObjectByID(MultiDimensionalObject publication,
+											String assortmentID){
+		return finder.find(publication, assortmentID);
+	}
 
 	@Override
 	public void move(MultiDimensionalObject chapter, String newPath) {
@@ -112,4 +117,8 @@ public class ChapterRepository implements IChapterRepository {
 				MultiDimensionalObject.class);
 	}
 
+	public MultiDimensionalObject getParentPublicationByID(String id) {
+		return mongoRepository.getObjectByKey(id,
+				MultiDimensionalObject.class);
+	}
 }

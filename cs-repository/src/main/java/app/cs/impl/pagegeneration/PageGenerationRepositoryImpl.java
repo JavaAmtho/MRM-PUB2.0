@@ -7,18 +7,18 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import app.cs.impl.chapter.ChapterRepository;
 import app.cs.impl.model.MultiDimensionalObject;
 import app.cs.impl.model.Product;
 import app.cs.interfaces.pagegeneration.IPageGenerationRepository;
 
-import com.cs.data.api.core.nosql.mongodb.NoSqlRepository;
 import com.cs.data.api.webservices.rest.IRestClient;
 import com.sun.jersey.api.client.ClientResponse;
 
 @Component
 public class PageGenerationRepositoryImpl implements IPageGenerationRepository {
 
-	private NoSqlRepository noSqlRepository;
+	private ChapterRepository chapterRepository;
 
 	private static final String CHARSET = "ISO-8859-1,utf-8;q=0.7,*;q=0.3";
 	private static final String ACCEPT_CHARSET = "Accept-Charset";
@@ -37,31 +37,29 @@ public class PageGenerationRepositoryImpl implements IPageGenerationRepository {
 	private IRestClient client;
 
 	@Autowired
-	public PageGenerationRepositoryImpl(NoSqlRepository noSqlRepository,
-			IRestClient client) {
-		this.noSqlRepository = noSqlRepository;
+	public PageGenerationRepositoryImpl(IRestClient client,
+			ChapterRepository chapterRepository) {
 		this.client = client;
+		this.chapterRepository = chapterRepository;
 	}
 
 	@Override
-	public String createAndPlanWBD(String templateID, String assortmentID, String parentID) {
+	public String createAndPlanWBD(String templateID, String assortmentID,
+			String publicationID) {
 
 		String input = "";
 		String productIds = "";
 		int countOfProducts = 1;
-		
-		// get the assortment
-		MultiDimensionalObject result = noSqlRepository.find(parentID,
-				MultiDimensionalObject.class);
-		if(result == null){
-			return "result is null";
-		}
-		MultiDimensionalObject assortment = findAssortmentIn(result,
-				assortmentID);
 
-		if(assortment == null){
-			return "result is null";
-		}
+		// get the publication
+		MultiDimensionalObject publication = chapterRepository
+				.getParentPublicationByID(publicationID);
+
+		// find the assortment
+		MultiDimensionalObject assortment = chapterRepository
+				.findMultiDimensionalObjectByID(publication, assortmentID);
+
+		// get the products from assortment
 		// iterate over them and create a json string of ids
 		List<Product> products = assortment.getProducts();
 		for (Product product : products) {
@@ -90,31 +88,6 @@ public class PageGenerationRepositoryImpl implements IPageGenerationRepository {
 
 		String output = response.getEntity(String.class);
 		return output;
-	}
-
-	private MultiDimensionalObject findAssortmentIn(MultiDimensionalObject obj,
-			String assortmentName) {
-		
-		if (obj == null) {
-			return null;
-		}
-		if (obj.getType().equals("Assortment")
-				&& obj.getName().equals(assortmentName)) {
-			return obj;
-		} else {
-			List<MultiDimensionalObject> items = obj.getItems();
-			MultiDimensionalObject result = null;
-			if(items != null)
-			{
-				for (MultiDimensionalObject child : items) {
-					result = findAssortmentIn(child, assortmentName);
-					if (result != null) {
-						break;
-					}
-				}
-			}
-			return result;
-		}
 	}
 
 	private void prepareHeaderParameters(Map<String, String> headerParameters) {
