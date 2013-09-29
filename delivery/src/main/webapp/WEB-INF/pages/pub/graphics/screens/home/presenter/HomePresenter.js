@@ -54,7 +54,9 @@ HomePresenter.loadViewItems = function (evt, currentTemplateView) {
     });
     if(pageIDs.length > 0){
         pages["pageIDs"] = pageIDs;
-        GetAllPageRules.get(pages);
+        GetAllPageRules.get(pages,function(data){
+            GraphicDataStore.addAllPageRules(data.listOfPageRules);
+        });
     }
 
     MustacheWrapper.createUI(currentTemplateView, evt, function (currentViewStr) {
@@ -689,9 +691,9 @@ HomePresenter.setRules = function (div) {
     if (isDirty) {
         $(div).find('.thenChild').remove();
         $dirtyFields.html('0');
-        var dataFromCS = GraphicDataStore.getPageRuleById(div.id);
-        if(dataFromCS){
-        var pageRules = dataFromCS.pageRules;
+        var pageRules = GraphicDataStore.getPageRuleById(div.id);
+        if(pageRules){
+        console.log(pageRules)
         var $thenReference = $(div).children('.rule').children('.then');
         for (var i = 0; i < pageRules.length; i++) {
             if (pageRules[i].ruleResult) {
@@ -858,29 +860,9 @@ HomePresenter.openRules = function (div, event) {
             }
         }
         else {
-            var $dirtyFields = $(div).find('.dataDirty');
-            var isDirty = getDataDirtyFlag($dirtyFields);
-            if (isDirty) {
-                GetPageRules.get(div.id, function (data) {
-                    if (data != 'error') {
-                        GraphicDataStore.addToPageRules(data);
-                        HomePresenter.setRules(div);
-                    }
-                });
-            }
-            else {
+                console.log(GraphicDataStore.getPageRuleById(div.id))
                 if (GraphicDataStore.getPageRuleById(div.id) != null) {
-                    if (GraphicDataStore.getPageRuleById(div.id).pageRules.length < 1) {
-                        GetPageRules.get(div.id, function (data) {
-                            if (data != 'error') {
-                                GraphicDataStore.addToPageRules(data);
-                                HomePresenter.setRules(div);
-                            }
-                        });
-                    }
-                    else {
-                        HomePresenter.setRules(div);
-                    }
+                    HomePresenter.setRules(div);
                 }
 
                 else {
@@ -891,7 +873,6 @@ HomePresenter.openRules = function (div, event) {
                         }
                     });
                 }
-            }
             if ($(div).children(".expand").css('display') == 'block') {
                 $(div).children(".expand").toggle();
             }

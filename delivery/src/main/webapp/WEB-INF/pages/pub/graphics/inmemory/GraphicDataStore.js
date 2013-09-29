@@ -22,11 +22,9 @@ GraphicDataStore.pushToAssortmentsList = function(pageID,assortments){
         this.assortmentsList = {};
     }
     this.assortmentsList[pageID] = assortments;
-    console.log(this.assortmentsList);
 }
 
 GraphicDataStore.getAssortmentsByID = function(pageID){
-    console.log(this.assortmentsList);
     if(this.assortmentsList){
         return this.assortmentsList[pageID];
     }
@@ -61,11 +59,24 @@ GraphicDataStore.getPageRuleById = function(id){
     }
 }
 
+GraphicDataStore.addAllPageRules = function(rules){
+    if(!this.pageRulesArr){
+        this.pageRulesArr = {};
+    }
+    if(rules != null && rules.length > 0){
+        for(var i = 0 ; i < rules.length ; i++){
+            if(rules[i] != null){
+                this.pageRulesArr[rules[i].id] = rules[i].pageRules;
+            }
+        }
+    }
+}
+
 GraphicDataStore.addToPageRules = function(rule){
     if(!this.pageRulesArr){
         this.pageRulesArr = {};
     }
-    this.pageRulesArr[rule.logicalPageID] = rule;
+    this.pageRulesArr[rule.logicalPageID] = rule.pageRules;
 }
 
 GraphicDataStore.setCurrentAssortment = function(obj){
