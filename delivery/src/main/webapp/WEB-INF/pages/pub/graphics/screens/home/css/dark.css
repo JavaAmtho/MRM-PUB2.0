@@ -1020,9 +1020,9 @@ Top Bar Animation Section starts
 
 .popupImage{
     position:absolute;
-    display:none;
-    top:1%;
-    left:70%;
+    height:17px;
+    top:2%;
+    left:80%;
     margin:10px
     -webkit-transition: box-shadow 0.5s ease-in;
     -moz-transition: box-shadow 0.5s ease-in;

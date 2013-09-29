@@ -14,5 +14,6 @@
     "saveRules":"/delivery/page/rule/save/",
     "getRules" : "/delivery/page/rule/getrules/",
     "getMasterTemplateList" : "/delivery/page/masterTemplateList/",
-    "createWBD" : "/delivery/page/createwbd/"
+    "createWBD" : "/delivery/page/createwbd/",
+    "getAssortmentsList" : "/delivery/assortment/getall/"
 }

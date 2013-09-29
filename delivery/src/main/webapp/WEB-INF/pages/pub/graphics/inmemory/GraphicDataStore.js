@@ -14,6 +14,18 @@ var GraphicDataStore = function(){
     var pageRulesArr;
     var masterTemplateList;
     var currentPublication;
+    var assortmentsList;
+}
+
+GraphicDataStore.pushToAssortmentsList = function(pageID,assortments){
+    if(!this.assortmentsList){
+        this.assortmentsList = {};
+    }
+    this.assortmentsList[pageID] = assortments;
+}
+
+GraphicDataStore.getAssortmentsByID = function(pageID){
+    return this.assortmentsList[pageID];
 }
 
 GraphicDataStore.setCurrentPublication = function(obj){
