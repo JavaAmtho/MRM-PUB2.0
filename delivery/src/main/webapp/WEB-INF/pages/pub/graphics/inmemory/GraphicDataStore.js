@@ -12,7 +12,26 @@ var GraphicDataStore = function(){
     var prodcutsArr=[];
     var currentAssortment;
     var pageRulesArr;
+    var masterTemplateList;
+    var currentPublication;
 }
+
+GraphicDataStore.setCurrentPublication = function(obj){
+    this.currentPublication = obj;
+}
+
+GraphicDataStore.getCurrentPublication = function(){
+    return this.currentPublication;
+}
+
+GraphicDataStore.setMasterTemplateList = function(obj){
+    this.masterTemplateList = obj;
+}
+
+GraphicDataStore.getMasterTemplateList = function(){
+    return this.masterTemplateList;
+}
+
 
 GraphicDataStore.getPageRuleById = function(id){
     console.log(this.pageRulesArr);

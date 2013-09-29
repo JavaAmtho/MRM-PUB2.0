@@ -40,7 +40,6 @@ HomePresenter.loadViewItems = function(evt,currentTemplateView){
                 css = "masterPage";
                 console.log("CSS : " + css);
                 ref.typeCSS = css;
-                ref.typeID = "P" + (index + 1);
                 ref.hiddenCSS = "";
             }
             else {
@@ -338,22 +337,43 @@ HomePresenter.unHideAssortPanel = function(){
     $("#dim").hide();
     $("#assortPanel").show();
 }
-var stillWorking = true;
-var mamFileID;
-var json
+
 
 var regions = ['Germany','India','USA'];
 var targetGroups = ['Men','Women'];
 var groupTypes = ['Region','Target Group'];
 var assortments = ['Assortment1','Assortment2','Assortment3','Assortment4','Assortment5'];
-var masterTemplateList = new Array(new Object({templateID: '1', templateName: 'Template1'}),
-    new Object({templateID: '2', templateName: 'Template2'}),
-    new Object({templateID: '3', templateName: 'Template3'}));
+var masterTemplateList = new Array();
 
 
+HomePresenter.openURL = function(reference) {
+    var urlToOpen = $(reference).children('.url').html();
+    var screenParams = [
+        'height=' + (screen.height - 100),
+        'width=' + (screen.width - 100),
+        'fullscreen=yes'
+    ].join(',');
+    window.open(urlToOpen, '_blank', screenParams); // <- This is what makes it open in a new window.
+}
 
 
 HomePresenter.openWhiteBoard = function (divReference, event) {
+
+    var publicationID =  GraphicDataStore.getCurrentPublication();
+    var assortmentID = $(divReference).children('.inner').children('.assortment');
+    var templateID = $(divReference).children('.inner').children('.templateName').html();
+    CreateWBD.createWBD(publicationID,assortmentID,templateID,function(url){
+
+        $childPage = $(divReference).closest('.childPages');
+        $childPage.addClass('urlInjected');
+        $childPage.append("<p class='hidden url'>" + url + "</p>");
+        $childPage.attr('onclick', "HomePresenter.openURL(this)");
+        $childPage.attr('ondblclick', "");
+        $childPage.animate({ opacity: 0.5 }, 1200, 'linear');
+        $(divReference).children('.inner').children('.loading-overlay').toggle();
+        $(divReference).children('.inner').children('.loading-message').toggle();
+
+    });
 
 
     /*jQuery.getJSON("http://192.168.135.104/CS13.0Trunk/admin/rest/whiteboard/3/"+ $(divReference).children('.inner').children('.templateName').html(),function(data){
@@ -364,12 +384,8 @@ HomePresenter.openWhiteBoard = function (divReference, event) {
      stillWorking = false;
      }
      else{
-
-HomePresenter.openWhiteBoard = function(divReference,event){
-
      HomePresenter.createMergeList(mamFileID, json,$(divReference).children('.inner'));
      }
-     });
      console.log($(divReference).children('.inner').children('.assortment'))
      jQuery.getJSON("Data/"+$(divReference).children('.inner').children('.assortment').html()+".json",function(data) {
      console.log("Assortment Loaded "+data);
@@ -381,7 +397,6 @@ HomePresenter.openWhiteBoard = function(divReference,event){
      json1+=","
      }
      })
-
      json1 +="]"
      //console.log(json1)
      //json = JSON.parse(json1);
@@ -393,19 +408,11 @@ HomePresenter.openWhiteBoard = function(divReference,event){
      console.log("Json stillWorking after : "+stillWorking);
      }
      else{
-
-
      HomePresenter.createMergeList(mamFileID, json,$(divReference).children('.inner'));
      }
      });*/
     $(divReference).children('.inner').children('.loading-overlay').toggle();
     $(divReference).children('.inner').children('.loading-message').toggle();
-    setTimeout(function () {
-        $(divReference).children('.inner').children('.loading-overlay').toggle();
-        $(divReference).children('.inner').children('.loading-message').toggle();
-    }, 3000)
-
-
 }
 
 HomePresenter.expandPages = function (div, event) {
@@ -478,29 +485,32 @@ HomePresenter.expandPages = function (div, event) {
     }
 }
 
+/*
 HomePresenter.createMergeList = function (mamFileID, json, $loading) {
-    console.log(json);
-    jQuery.post("http://192.168.135.104/CS13.0Trunk/admin/rest/whiteboard/4/" + mamFileID, json, function (data) {
+    jQuery.post("http://192.168.135.104/CS13.0Trunk/admin/rest/whiteboard/4/" + mamFileID, json, function (data){
         console.log("merge list prepared");
 
-        jQuery.get("http://192.168.135.104/CS13.0Trunk/admin/rest/whiteboard/5/" + mamFileID, function (url) {
-            $loading.children('.loading-overlay').toggle();
-            $loading.children('.loading-message').toggle();
-            url = url.replace("../admin", "http://192.168.135.104/CS13.0Trunk/admin");
-            console.log(url);
-            var screenParams = [
-                'height=' + (screen.height - 100),
-                'width=' + (screen.width - 100),
-                'fullscreen=yes'
-            ].join(',');
+    jQuery.get("http://192.168.135.104/CS13.0Trunk/admin/rest/whiteboard/5/" + mamFileID, function (url) {
+        $loading.children('.loading-overlay').toggle();
+        $loading.children('.loading-message').toggle();
+        url = url.replace("../admin", "http://192.168.135.104/CS13.0Trunk/admin");
+        console.log(url);
+        var screenParams = [
+            'height=' + (screen.height - 100),
+            'width=' + (screen.width - 100),
+            'fullscreen=yes'
+        ].join(',');
 
-            window.open(url, '_blank', screenParams); // <- This is what makes it open in a new window.
-        });
+        window.open(url, '_blank', screenParams); // <- This is what makes it open in a new window.
+    });
+});
 
-    }, "json");
+}, "json");
+
 
 
 }
+*/
 
 
 HomePresenter.saveRulesData = function (div) {
@@ -605,7 +615,9 @@ HomePresenter.setRules = function(div){
         //var data = ''//Get Data from data store or CS
         var newDiv = document.createElement("div");
         $(newDiv).addClass("thenChild");
-        var pageNames = masterTemplateList;
+        HomePresenter.getMAMFileNames()
+        var pageNames = GraphicDataStore.getMasterTemplateList();
+        console.log(pageNames)
         var content = "<select onclick='event.stopPropagation()' onchange='HomePresenter.makeDirty(this.parentNode)' " +
                 "class='rulesText template'><option selected='selected' disabled='disabled'>Select</option>";
         for (var j = 0; j < pageNames.length; j++) {
@@ -744,7 +756,6 @@ HomePresenter.openRules = function (div, event) {
             }
         }
         else {
-            console.log(GraphicDataStore.getPageRuleById(div.id))
             if(GraphicDataStore.getPageRuleById(div.id)!=null){
                 if(GraphicDataStore.getPageRuleById(div.id).pageRules.length < 1){
                     GetPageRules.get(div.id,function(data){
@@ -787,8 +798,8 @@ HomePresenter.addValue = function (text, event) {
     var $values = $(text).closest('.then').children('.thenChild').children('.whenChild').children('.value');
     var dimension = $(text).siblings('.groupType')[0].value;
     var value = text.value;
-    $parentDiv = $(text).closest('.large');
-    var isOdd = $(text).closest('.large').hasClass('odd');
+    $parentDiv = $(text).closest('.rules-opened');
+    var isOdd = $(text).closest('.rules-opened').hasClass('odd');
     var $filterClasses = '';
     for (var i = 0; i < $values.length; i++) {
         if (!$($values[i]).hasClass('hidden')) {
@@ -868,31 +879,21 @@ HomePresenter.newWhen = function (reference, event) {
     reference.appendChild(newDiv);
 }
 
-HomePresenter.getMAMFileNames = function (reference) {
-    var data = masterTemplateList;
-    //   jQuery.getJSON("http://192.168.135.104/CS13.0Trunk/admin/rest/whiteboard/2",{},function( data ) {
-    //      console.log(data)
-    HomePresenter.newThenWithUpdatedMasterTemplateDropDown(reference, data);
-//    });
-
-
-    /*jQuery.ajax({
-     url:"http://192.168.135.104/CS13.0Trunk/admin/rest/whiteboard/2",
-     type:'GET',
-     dataType:'JSONP',
-     success: function( data ) {
-     console.log(data);
-     fillMasterTemplateDopDown(reference, data);
-     }
-     });*/
+HomePresenter.getMAMFileNames = function () {
+    if(!GraphicDataStore.getMasterTemplateList()){
+        GetMasterTemplateList.get(function(data){
+            GraphicDataStore.setMasterTemplateList(data);
+            console.log(GraphicDataStore.getMasterTemplateList());
+        });
+    }
 }
 
 
-HomePresenter.newThenWithUpdatedMasterTemplateDropDown = function (reference, data) {
+HomePresenter.newThen = function (reference, data) {
     $(reference).children('.dataDirty').html('1');
     var newDiv = document.createElement("div");
     $(newDiv).addClass("thenChild");
-    var pageNames = data;
+    var pageNames = HomePresenter.getMAMFileNames();
 
 
     var content = "<select onclick='event.stopPropagation()' onchange='HomePresenter.makeDirty(this.parentNode)' " +
@@ -920,11 +921,6 @@ HomePresenter.newThenWithUpdatedMasterTemplateDropDown = function (reference, da
     newDiv.innerHTML = newDiv.innerHTML + content;
     reference.appendChild(newDiv);
 }
-HomePresenter.newThen = function (reference, event) {
-
-    HomePresenter.getMAMFileNames(reference);
-
-}
 
 
 HomePresenter.removeNew = function (reference, event) {
@@ -933,14 +929,14 @@ HomePresenter.removeNew = function (reference, event) {
     if ($(reference).hasClass('whenChild')) {
         $values = $(reference).find('.value');
         console.log($values[0].value);
-        $(reference).closest('.large').removeClass($values[0].value.toLowerCase());
+        $(reference).closest('.rules-opened').removeClass($values[0].value.toLowerCase());
     }
     else if ($(reference).hasClass('thenChild')) {
         $values = $(reference).find('.value');
         console.log($values.length)
         for (var i = 0; i < $values.length; i++) {
             console.log($values[i].value)
-            $(reference).closest('.large').removeClass($values[i].value.toLowerCase());
+            $(reference).closest('.rules-opened').removeClass($values[i].value.toLowerCase());
         }
     }
     reference.parentNode.removeChild(reference);

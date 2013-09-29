@@ -168,7 +168,12 @@ var DynaTree = function(){
                         nodeType = "Assortment";
                         GraphicDataStore.setCurrentAssortment(node.data);
                         data = node.data.products;//HomePresenter.getProductsForSelectedNode(node);
-                    }else{
+                    }
+                    else
+                    {
+                        if(node.data.type == "Publication"){
+                            GraphicDataStore.setCurrentPublication(node.data.id);
+                        }
                         data = HomePresenter.getChildrenForSelectedNode(node)
                     }
                     $(document).trigger({

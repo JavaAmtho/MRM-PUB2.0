@@ -1012,9 +1012,7 @@ Top Bar Animation Section starts
 
 
 .childPages .inner:hover{
-    text-shadow:
-        0 0 5px white,
-        0 0 5px white;
+    text-shadow: 0 0 5px white, 0 0 5px white;
     cursor:pointer;
 }
 
