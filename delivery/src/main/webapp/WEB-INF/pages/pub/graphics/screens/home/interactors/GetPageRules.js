@@ -1,5 +1,5 @@
 function GetPageRules(){
-
+//Not being used anymore since we are now using GetAllPageRules
 }
 
 GetPageRules.get = function(pageID,callBack){

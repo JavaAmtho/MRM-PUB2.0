@@ -7,7 +7,7 @@ var btnSelectionFlag = 0;
 var onTarget = false;
 var $isotopeContainer;
 
-var pages = [];
+var pages = {};
 
 HomePresenter.handleViewChange = function (evt) {
     switch (evt.currentTarget.id) {
@@ -32,12 +32,14 @@ HomePresenter.handleViewChange = function (evt) {
 }
 
 HomePresenter.loadViewItems = function (evt, currentTemplateView) {
+    var pageIDs = [];
     $.each(evt.mydata, function (index, value) {
         var ref = value;
         if (ref != null) {
             var css = "";
             var stackcss = "";
             if (ref.type == "Page") {
+                pageIDs.push(ref.id);
                 css = "masterPage";
                 console.log("CSS : " + css);
                 ref.typeCSS = css;
@@ -50,6 +52,10 @@ HomePresenter.loadViewItems = function (evt, currentTemplateView) {
         }
 
     });
+    if(pageIDs.length > 0){
+        pages["pageIDs"] = pageIDs;
+        GetAllPageRules.get(pages);
+    }
 
     MustacheWrapper.createUI(currentTemplateView, evt, function (currentViewStr) {
 
