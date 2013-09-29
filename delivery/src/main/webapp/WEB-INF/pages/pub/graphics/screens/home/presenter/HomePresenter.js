@@ -7,6 +7,8 @@ var btnSelectionFlag = 0;
 var onTarget = false;
 var $isotopeContainer;
 
+var pages = [];
+
 HomePresenter.handleViewChange = function (evt) {
     switch (evt.currentTarget.id) {
         case "tileView":
@@ -682,6 +684,7 @@ HomePresenter.setRules = function (div) {
         $(div).find('.thenChild').remove();
         $dirtyFields.html('0');
         var dataFromCS = GraphicDataStore.getPageRuleById(div.id);
+        if(dataFromCS){
         var pageRules = dataFromCS.pageRules;
         var $thenReference = $(div).children('.rule').children('.then');
         for (var i = 0; i < pageRules.length; i++) {
@@ -787,6 +790,7 @@ HomePresenter.setRules = function (div) {
             }
 
         }
+    }
     }
     else {
         console.log('removing dirty flags')

@@ -30,6 +30,9 @@ public class PageRuleRepositoryImpl implements IPageRuleRepository {
 	public PageRules getPageRulesFor(String logicalPageID) {
 		PageRules pageRules = noSqlRepository.find(logicalPageID,
 				PageRules.class);
+        if(pageRules == null){
+            return null;
+        }
 		return pageRules;
 	}
 
