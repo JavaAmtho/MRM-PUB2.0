@@ -1,5 +1,6 @@
 package app.cs.impl.pagerule;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,15 @@ public class PageRuleRepositoryImpl implements IPageRuleRepository {
 			}
 		}
 		return null;
+	}
+
+	@Override
+	public List<PageRules> getAllRulesForAllPages(List<String> pageIDs) {
+		List<PageRules> allPageRules = new ArrayList<PageRules>();
+		for (String pageID : pageIDs) {
+			allPageRules.add(getPageRulesFor(pageID));
+		}
+		return allPageRules;
 	}
 
 }
