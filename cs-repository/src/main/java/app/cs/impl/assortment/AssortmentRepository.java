@@ -136,13 +136,15 @@ public class AssortmentRepository implements IAssortmentRepository {
 		// get the page
 		MultiDimensionalObject page = finder.find(publication, logicalPageID);
 		if (page == null) {
-			return "page not found";
+		    nameOfAssortments += "]";
+		    return nameOfAssortments;
 		}
 
 		// get the children i.e assortments
 		List<MultiDimensionalObject> listOfAssortments = page.getChildren();
-		if (listOfAssortments == null) {
-			return "assortments not found";
+		if (listOfAssortments.isEmpty()) {
+		    nameOfAssortments += "]";
+			return nameOfAssortments;
 		}
 
 		// iterate over them and create list of names

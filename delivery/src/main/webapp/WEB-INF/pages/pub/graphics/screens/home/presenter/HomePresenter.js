@@ -709,11 +709,9 @@ HomePresenter.setRules = function (div) {
                 newDiv.innerHTML = newDiv.innerHTML + content;
 
                 var assortments;
-                if(!GraphicDataStore.getAssortmentsByID(div.id)){
-                    GetAssortments.get($(div).children('.pagePath').html(),div.id,function(data){
+                GetAssortments.get($(div).children('.pagePath').html(),div.id,function(data){
                         GraphicDataStore.pushToAssortmentsList(div.id,data);
-                    });
-                }
+                });
                 assortments = GraphicDataStore.getAssortmentsByID(div.id);
 
                 var assortmentList = assortments;
@@ -824,9 +822,6 @@ HomePresenter.openRules = function (div, event) {
                             },
                             "Discard": function () {
                                 $(this).dialog("close");
-                                for (var i = 0; i < $dirtyFields.length; i++) {
-                                    $dirtyFields[i].innerHTML = '0';
-                                }
                                 var $thenChildren = $(div).children('.rule').children('.then').children('.thenChild');
                                 if ($thenChildren.length > 0) {
                                     if ($(div).children(".expand").css('display') == 'none') {
@@ -1035,17 +1030,15 @@ HomePresenter.newThen = function (reference, data) {
     newDiv.innerHTML = newDiv.innerHTML + content;
 
     var assortments;
-    if(GraphicDataStore.getAssortmentsByID(reference.id) == null){
-        console.log($(reference).closest(".masterPage").children('.pagePath').html());
-        GetAssortments.get($(reference).closest(".masterPage").children('.pagePath').html(),$(reference).closest(".masterPage")[0].id,function(data){
-            GraphicDataStore.pushToAssortmentsList(reference.id,data);
-        });
-    }
+    GetAssortments.get($(reference).closest(".masterPage").children('.pagePath').html(),$(reference).closest(".masterPage")[0].id,function(data){
+        GraphicDataStore.pushToAssortmentsList(reference.id,data);
+    });
     assortments = GraphicDataStore.getAssortmentsByID(reference.id);
 
     var assortmentList = assortments;
     content = "<select onchange='HomePresenter.makeDirty(this.parentNode)' onclick='event.stopPropagation()' " +
         "class='rulesText assortment'><option selected='selected' disabled='disabled' value='-1'>Select</option>";
+    console.log(assortmentList)
     for (var i = 0; i < assortmentList.length; i++) {
         content += "<option>" + assortmentList[i].name + "</option>";
     }
