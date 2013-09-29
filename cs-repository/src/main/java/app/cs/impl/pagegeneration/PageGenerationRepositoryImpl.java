@@ -4,13 +4,20 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import app.cs.impl.chapter.ChapterRepository;
 import app.cs.impl.model.MultiDimensionalObject;
+import app.cs.impl.model.PageRule;
+import app.cs.impl.model.PageRules;
 import app.cs.impl.model.Product;
+import app.cs.impl.pagerule.PageRuleRepositoryImpl;
 import app.cs.interfaces.pagegeneration.IPageGenerationRepository;
+import app.cs.interfaces.pagerule.IPageRuleRepository;
 
 import com.cs.data.api.webservices.rest.IRestClient;
 import com.sun.jersey.api.client.ClientResponse;
@@ -19,6 +26,7 @@ import com.sun.jersey.api.client.ClientResponse;
 public class PageGenerationRepositoryImpl implements IPageGenerationRepository {
 
 	private ChapterRepository chapterRepository;
+	private IPageRuleRepository pageRuleRepository;
 
 	private static final String CHARSET = "ISO-8859-1,utf-8;q=0.7,*;q=0.3";
 	private static final String ACCEPT_CHARSET = "Accept-Charset";
@@ -34,22 +42,46 @@ public class PageGenerationRepositoryImpl implements IPageGenerationRepository {
 	private static final String ACCEPT_LANGUAGE = "Accept-Language";
 	private final String BASE_URL = "http://192.168.135.104/CS13.0Trunk/admin";
 	private final String LIST_URL = BASE_URL + "/rest/whiteboard/1/";
+
 	private IRestClient client;
 
 	@Autowired
 	public PageGenerationRepositoryImpl(IRestClient client,
-			ChapterRepository chapterRepository) {
+			ChapterRepository chapterRepository,
+			PageRuleRepositoryImpl pageRuleRepository) {
 		this.client = client;
 		this.chapterRepository = chapterRepository;
+		this.pageRuleRepository = pageRuleRepository;
 	}
 
 	@Override
-	public String createAndPlanWBD(String templateID, String assortmentID,
+	public String createAndPlanWBD(String ruleID, String logicalPageID,
 			String publicationID) {
 
+		String output = "";
 		String input = "";
 		String productIds = "";
+		String assortmentID = "";
+		String masterPageID = "";
+
 		int countOfProducts = 1;
+
+		HashMap<String, String> additionalInformation = new HashMap<String, String>();
+
+		// get the rule
+		PageRules pageRules = pageRuleRepository.getPageRulesFor(logicalPageID);
+		if (pageRules == null) {
+			return "pageRules not found";
+		}
+		PageRule pageRule = pageRuleRepository
+				.getPageRuleFor(pageRules, ruleID);
+		if (pageRule == null) {
+			return "pageRule not found";
+		}
+
+		// get the assortmentID and the masterPageID from the ruleResult
+		assortmentID = pageRule.getRuleResult().getAssortmentId();
+		masterPageID = pageRule.getRuleResult().getMasterPageId();
 
 		// get the publication
 		MultiDimensionalObject publication = chapterRepository
@@ -72,7 +104,7 @@ public class PageGenerationRepositoryImpl implements IPageGenerationRepository {
 		}
 
 		// create string to POST
-		input = "{\"templateID\":\"" + templateID + "\",\"products\":["
+		input = "{\"templateID\":\"" + masterPageID + "\",\"products\":["
 				+ productIds + "]}";
 
 		Map<String, String> headerParameters = new HashMap<String, String>();
@@ -86,7 +118,24 @@ public class PageGenerationRepositoryImpl implements IPageGenerationRepository {
 			return "Not Successful";
 		}
 
-		String output = response.getEntity(String.class);
+		output = response.getEntity(String.class);
+
+		JSONParser jsonParser = new JSONParser();
+
+		try {
+			JSONObject jsonObject = (JSONObject) jsonParser.parse(output);
+			additionalInformation.put("mamFileID",
+					(String) jsonObject.get("mamFileID"));
+			additionalInformation.put("editUrl",
+					(String) jsonObject.get("editorURL"));
+		} catch (ParseException e) {
+			return "Error";
+		}
+
+		// store the information in the rule
+		pageRule.setAdditionalInformation(additionalInformation);
+		pageRuleRepository.savePageRules(pageRules);
+
 		return output;
 	}
 

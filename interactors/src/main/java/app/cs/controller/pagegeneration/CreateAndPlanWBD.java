@@ -23,9 +23,9 @@ public class CreateAndPlanWBD implements Interactor {
 	public ResponseModel execute(RequestModel requestModel) {
 		WBDCreationAndPlanningRequest wbdCreationAndPlanningRequest = (WBDCreationAndPlanningRequest) requestModel;
 		return new StringResponse(pageGenerationRepository.createAndPlanWBD(
-				wbdCreationAndPlanningRequest.getTemplateID(),
-				wbdCreationAndPlanningRequest.getAssortmentID(),
-				wbdCreationAndPlanningRequest.getParentID()));
+				wbdCreationAndPlanningRequest.getRuleID(),
+				wbdCreationAndPlanningRequest.getLogicalPageID(),
+				wbdCreationAndPlanningRequest.getPublicationID()));
 	}
 
 }

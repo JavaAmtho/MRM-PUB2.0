@@ -25,13 +25,14 @@ public class WBDCreationAndPlanningController {
 
 	}
 
-	@RequestMapping(value = { "/page/createwbd/{parentID}/{assortmentID}/{templateID}" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/page/createwbd/{ruleID}/{logicalPageID}/{publicationID}" }, method = RequestMethod.GET)
 	public @ResponseBody
-	String getPageRules(@PathVariable String parentID,
-			@PathVariable String assortmentID, @PathVariable String templateID) {
-		request.setTemplateID(templateID);
-		request.setAssortmentID(assortmentID);
-		request.setParentID(parentID);
+	String getPageRules(@PathVariable String ruleID,
+			@PathVariable String logicalPageID,
+			@PathVariable String publicationID) {
+		request.setRuleID(ruleID);
+		request.setLogicalPageID(logicalPageID);
+		request.setPublicationID(publicationID);
 		return ((StringResponse) createAndPlanWBD.execute(request))
 				.getResponseString();
 	}

@@ -5,32 +5,32 @@ import org.springframework.stereotype.Component;
 @Component
 public class WBDCreationAndPlanningRequest implements RequestModel {
 
-	private String templateID;
-	private String assortmentID;
-	private String parentID;
+	private String ruleID;
+	private String logicalPageID;
+	private String publicationID;
 
-	public String getParentID() {
-		return parentID;
+	public String getRuleID() {
+		return ruleID;
 	}
 
-	public void setParentID(String parentID) {
-		this.parentID = parentID;
+	public void setRuleID(String ruleID) {
+		this.ruleID = ruleID;
 	}
 
-	public String getTemplateID() {
-		return templateID;
+	public String getLogicalPageID() {
+		return logicalPageID;
 	}
 
-	public void setTemplateID(String templateID) {
-		this.templateID = templateID;
+	public void setLogicalPageID(String logicalPageID) {
+		this.logicalPageID = logicalPageID;
 	}
 
-	public String getAssortmentID() {
-		return assortmentID;
+	public String getPublicationID() {
+		return publicationID;
 	}
 
-	public void setAssortmentID(String assortmentID) {
-		this.assortmentID = assortmentID;
+	public void setPublicationID(String publicationID) {
+		this.publicationID = publicationID;
 	}
 
 }

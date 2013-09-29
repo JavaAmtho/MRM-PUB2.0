@@ -1,8 +1,11 @@
 package app.cs.impl.pagerule;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import app.cs.impl.model.PageRule;
 import app.cs.impl.model.PageRules;
 import app.cs.interfaces.pagerule.IPageRuleRepository;
 
@@ -20,16 +23,25 @@ public class PageRuleRepositoryImpl implements IPageRuleRepository {
 
 	@Override
 	public void savePageRules(PageRules pageRules) {
-		String ret = noSqlRepository.save(pageRules);
-		System.out.println(ret);
+		noSqlRepository.save(pageRules);
 	}
 
 	@Override
-	public PageRules getPageRuleFor(String id) {
-		PageRules pageRules = noSqlRepository.find(id, PageRules.class);
-		System.out.println(noSqlRepository.find(id, PageRules.class)
-				.getPageRules());
+	public PageRules getPageRulesFor(String logicalPageID) {
+		PageRules pageRules = noSqlRepository.find(logicalPageID,
+				PageRules.class);
 		return pageRules;
+	}
+
+	@Override
+	public PageRule getPageRuleFor(PageRules pageRules, String ruleID) {
+		List<PageRule> listOfPageRules = pageRules.getPageRules();
+		for (PageRule pageRule : listOfPageRules) {
+			if (pageRule.getRuleID().equals(ruleID)) {
+				return pageRule;
+			}
+		}
+		return null;
 	}
 
 }
