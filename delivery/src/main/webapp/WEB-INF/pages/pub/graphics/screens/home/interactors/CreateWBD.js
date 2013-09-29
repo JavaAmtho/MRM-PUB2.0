@@ -2,6 +2,6 @@ function CreateWBD(){
 
 }
 
-CreateWBD.createWBD = function(publicationID,assortmentID,templateID,callBack){
-    Router.loadRequest("createWBD" + publicationID + "/" + assortmentID + "/" + templateID,true,callBack);
+CreateWBD.createWBD = function(ruleID,logicalPageID,publicationID,callBack){
+    Router.forward("/delivery/page/createwbd/" + ruleID + "/" + logicalPageID + "/" + publicationID,true,callBack);
 }

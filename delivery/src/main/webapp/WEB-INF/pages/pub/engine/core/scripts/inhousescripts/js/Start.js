@@ -1,5 +1,14 @@
 var pubIdToOpen;
 $(document).ready(function() {
+
+    $("body").queryLoader2({
+        barColor: "#6e6d73",
+        backgroundColor: "#343434",
+        percentage: true,
+        barHeight: 1,
+        completeAnimation: "grow"
+});
+
     pubIdToOpen = getParameterByName("pubId");
     EngineDataStore.setBaseURL("../../../");
     getPublicationDetailsObject();
@@ -47,5 +56,8 @@ function getApiMappingObject(){
 
 function parseApiMappingObject(json){
     EngineDataStore.setApiMappingObject(json);
+    Router.loadRequest("getMasterTemplateList",false,function(data){
+        EngineDataStore.setMasterTemplateList(data);
+    });
 }
 

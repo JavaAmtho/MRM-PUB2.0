@@ -3,6 +3,15 @@ var EngineDataStore = function(){
     var apiMappingObject;
     var baseURL;
     var publicationDetailsArray;
+    var masterTemplateList;
+}
+
+EngineDataStore.setMasterTemplateList = function(list){
+    this.masterTemplateList = list;
+}
+
+EngineDataStore.getMasterTemplateList = function(){
+    return this.masterTemplateList;
 }
 
 EngineDataStore.setBaseURL = function(url){

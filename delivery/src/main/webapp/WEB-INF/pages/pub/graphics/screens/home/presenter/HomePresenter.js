@@ -32,6 +32,7 @@ HomePresenter.handleViewChange = function(evt){
 
 HomePresenter.loadViewItems = function(evt,currentTemplateView){
     $.each(evt.mydata, function (index, value) {
+        console.log(value);
         var ref = value;
         if (ref != null) {
             var css = "";
@@ -348,6 +349,8 @@ var masterTemplateList = new Array();
 
 HomePresenter.openURL = function(reference) {
     var urlToOpen = $(reference).children('.url').html();
+    urlToOpen= urlToOpen.replace(/&amp;/g, '&');
+    alert(urlToOpen)
     var screenParams = [
         'height=' + (screen.height - 100),
         'width=' + (screen.width - 100),
@@ -360,19 +363,36 @@ HomePresenter.openURL = function(reference) {
 HomePresenter.openWhiteBoard = function (divReference, event) {
 
     var publicationID =  GraphicDataStore.getCurrentPublication();
-    var assortmentID = $(divReference).children('.inner').children('.assortment');
-    var templateID = $(divReference).children('.inner').children('.templateName').html();
-    CreateWBD.createWBD(publicationID,assortmentID,templateID,function(url){
-
-        $childPage = $(divReference).closest('.childPages');
-        $childPage.addClass('urlInjected');
-        $childPage.append("<p class='hidden url'>" + url + "</p>");
-        $childPage.attr('onclick', "HomePresenter.openURL(this)");
-        $childPage.attr('ondblclick', "");
-        $childPage.animate({ opacity: 0.5 }, 1200, 'linear');
-        $(divReference).children('.inner').children('.loading-overlay').toggle();
-        $(divReference).children('.inner').children('.loading-message').toggle();
-
+    var $innerDiv = $(divReference);
+    if(!$innerDiv.hasClass('inner')){
+        $innerDiv = $innerDiv.children('.inner');
+    }
+    var ruleID = $innerDiv.children('.ruleID').html();
+    var logicalPageID = $innerDiv.children('.logicalPageID').html();
+    console.log(ruleID)
+    console.log(logicalPageID)
+    CreateWBD.createWBD(ruleID,logicalPageID,publicationID,function(data){
+        if(data == 'error'){
+            alert("Error creating WBD!!");
+        }
+        else{
+            var url = data.editorURL;
+            url = url.replace("../admin", "http://192.168.135.104/CS13.0Trunk/admin");
+            var $childPage = $innerDiv;
+            /*if(!$childPage.hasClass('childPages'));
+                $childPage = $(divReference).closest('.childPages');*/
+            $childPage.append("<p class='hidden url'>" + url + "</p>");
+            $childPage.attr('onclick', "HomePresenter.openURL(this)");
+            $childPage.attr('ondblclick', "");
+            $imageReference = $childPage.children('.popupImage');
+            $imageReference.toggle();
+            //$childPage.animate({ opacity: 0.5 }, 1200, 'linear');
+            setInterval(function(){
+                $imageReference.toggleClass('urlInjected');
+            }, 1000);
+            $innerDiv.children('.loading-overlay').toggle();
+            $innerDiv.children('.loading-message').toggle();
+        }
     });
 
 
@@ -411,8 +431,8 @@ HomePresenter.openWhiteBoard = function (divReference, event) {
      HomePresenter.createMergeList(mamFileID, json,$(divReference).children('.inner'));
      }
      });*/
-    $(divReference).children('.inner').children('.loading-overlay').toggle();
-    $(divReference).children('.inner').children('.loading-message').toggle();
+    $innerDiv.children('.loading-overlay').toggle();
+    $innerDiv.children('.loading-message').toggle();
 }
 
 HomePresenter.expandPages = function (div, event) {
@@ -433,23 +453,30 @@ HomePresenter.expandPages = function (div, event) {
                 $values = $($results[i]).children('.rulesText')
                 $masterTemplate = $($results[i]).children('.template')[0].value;
                 $assortment = $($results[i]).children('.assortment')[0].value;
+                var ruleID = $($results[i]).children('.ruleID').html();
+                var wbdURL = $($results[i]).children('.wbdURL').html();
+                var mamFileID = $($results[i]).children('.mamFileID').html();
 
 
                 var newDiv = document.createElement("div");
-                newDiv.setAttribute('ondblclick', "HomePresenter.openWhiteBoard(this,event)");
+                //newDiv.setAttribute('ondblclick', "HomePresenter.openWhiteBoard(this,event)");
                 var content = '';
 
                 if ($(div).hasClass('odd')) {
                     $(newDiv).addClass('odd');
-                    content += "<div class='childPages inner odd'>";
+                    content += "<div class='childPages inner odd' ondblclick='HomePresenter.openWhiteBoard(this,event)'>";
                 }
                 else {
                     $(newDiv).addClass('even');
-                    content += "<div class='childPages inner even'>";
+                    content += "<div class='childPages inner even' ondblclick='HomePresenter.openWhiteBoard(this,event)'>";
                 }
                 content += "<div class='loading-overlay' ondblclick='event.stopPropagation()'></div>" +
                     "<img ondblclick='event.stopPropagation()' src='../../../graphics/screens/home/images/load.gif' " +
                     "class='loading-message'/>"
+                content +=  "<img ondblclick='event.stopPropagation()' src='../../../graphics/screens/home/images/popup_icon.png' " +
+                    "class='popupImage'/>";
+                /*content +=  "<img ondblclick='event.stopPropagation()' src='../../../graphics/screens/home/images/icon-popout.png' " +
+                    "class='popupImage'/>";*/
                 $(newDiv).addClass($(div)[0].id);
                 $(newDiv).addClass('childPages');
 
@@ -467,8 +494,12 @@ HomePresenter.expandPages = function (div, event) {
                 }
                 content += "<div class='childPageName' >" +
                     $($results[i]).children('.template').find(":selected").text()[0] + "</div>";
-                content += "<p class='data templateName' >" + $masterTemplate + "</p>";
-                content += "<p class='data assortment' >" + $assortment + "</p>";
+                content += "<p class='hidden logicalPageID'>"+div.id+"</p>";
+                content += "<p class='hidden ruleID'>" + ruleID + "</p>";
+                content += "<p class='hidden data templateName' >" + $masterTemplate + "</p>";
+                content += "<p class='hidden data assortment' >" + $assortment + "</p>";
+                content += "<p class='hidden data wbdURL'> " +wbdURL+ " </p>";
+                content += "<p class='hidden data mamFileID'>" + mamFileID + "</p>";
                 content += "</div>";
                 newDiv.innerHTML = newDiv.innerHTML + content;
 
@@ -548,12 +579,33 @@ HomePresenter.saveRulesData = function (div) {
             }
 
 
+            var wbdURL = $($thenStatements[i]).children('.wbdURL').html();
+            var mamFileID = $($thenStatements[i]).children('.mamFileID').html();
+
+
+
+
             var pageRule = {};
             var columnName = "ruleResult";
             pageRule[columnName] = ruleResult;
             var columnName = "ruleConditions";
             pageRule[columnName] = condArray;
-            pageRuleArr.push(pageRule)
+            var columnName = "ruleID";
+            var ruleID = $($thenStatements[i]).children('.ruleID').html();
+            pageRule[columnName] = ruleID;
+
+            var additional = {};
+            var columnName = "mamFileID";
+            var mamFileID = $($thenStatements[i]).children('.mamFileID').html()
+            additional[columnName] = mamFileID;
+            var columnName = "editUrl";
+            var editUrl = $($thenStatements[i]).children('.mamFileID').html()
+            additional[columnName] = editUrl;
+
+            var columnName = "additionalInformation";
+            pageRule[columnName] = additional;
+
+            pageRuleArr.push(pageRule);
         }
 
 
@@ -563,6 +615,7 @@ HomePresenter.saveRulesData = function (div) {
         finalJson[columnName] = div.id;
         var columnName = "pageRules";
         finalJson[columnName] = pageRuleArr;
+        alert(JSON.stringify(finalJson))
 
         //Sending Save call
         SavePageRules.save("saveRules",finalJson,HomePresenter.onSaveSuccess);
@@ -604,100 +657,113 @@ function getDataDirtyFlag($dirtyFields) {
 
 HomePresenter.setRules = function(div){
 
-    var dataFromCS = GraphicDataStore.getPageRuleById(div.id);
-    var pageRules = dataFromCS.pageRules;
-    var $thenReference = $(div).children('.rule').children('.then');
-    for (var i = 0; i < pageRules.length; i++) {
-        var masterPageId = pageRules[i].ruleResult.masterPageId;
-        var assortmentName = pageRules[i].ruleResult.assortmentId;
-
-        /***********Then Div creation***********/
-        //var data = ''//Get Data from data store or CS
-        var newDiv = document.createElement("div");
-        $(newDiv).addClass("thenChild");
-        HomePresenter.getMAMFileNames()
-        var pageNames = GraphicDataStore.getMasterTemplateList();
-        console.log(pageNames)
-        var content = "<select onclick='event.stopPropagation()' onchange='HomePresenter.makeDirty(this.parentNode)' " +
-                "class='rulesText template'><option selected='selected' disabled='disabled'>Select</option>";
-        for (var j = 0; j < pageNames.length; j++) {
-           content += "<option value='" + pageNames[j].templateID + "'>" + pageNames[j].templateName + "</option>";
-        }
-        content += "</select>";
-        newDiv.innerHTML = newDiv.innerHTML + content;
-
-        var assortmentList = assortments;
-        content = "<select onchange='HomePresenter.makeDirty(this.parentNode)' onclick='event.stopPropagation()' " +
-            "class='rulesText assortment'><option selected='selected' disabled='disabled'>Select</option>";
-        for(var j = 0 ; j < assortmentList.length ; j++){
-            content += "<option>"+ assortmentList[j] +"</option>";
-        }
-        content += "</select>";
-        newDiv.innerHTML = newDiv.innerHTML + content;
-
-        content = "<span class='buttons remove' onclick='HomePresenter.removeNew(this.parentNode,event)'>-</span>"
-        newDiv.innerHTML = newDiv.innerHTML + content;
-        content = "<span class='buttons addCondition' onclick='HomePresenter.newWhen(this.parentNode,event)'>+</span>"
-        newDiv.innerHTML = newDiv.innerHTML + content;
-        content = "<p class='hidden dataDirty'>0</p>"
-        newDiv.innerHTML = newDiv.innerHTML + content;
-
-        $thenReference.append(newDiv);
-        /*****************Setting drop down values************************/
-        $(newDiv).children('.template').val(masterPageId);
-        $(newDiv).children('.assortment').val(assortmentName);
-
-
-            var ruleConditions = pageRules[i].ruleConditions;
-
-            for (var j = 0; j < ruleConditions.length; j++) {
-                var groupType = ruleConditions[j].variable;
-                var operation = ruleConditions[j].operator;
-                var value = ruleConditions[j].value;
-
-                /***********when Div creation***********/
-
-                var whenDiv = document.createElement("div");
-                $(whenDiv).addClass("whenChild");
-
-                var variablesList = groupTypes;
-                content = "<select onchange='HomePresenter.toggleRegionTargetGroup(this)' " +
-                    "onclick='event.stopPropagation()' class='rulesText groupType'>" +
-                    "<option selected='selected' disabled='disabled' value='-1'>Choose</option>";
-                for(var k = 0 ; k < variablesList.length ; k++){
-                    content += "<option>" + variablesList[k] + "</option>";
-                }
-                content += "</select>";
-                whenDiv.innerHTML = whenDiv.innerHTML + content;
-
-                content = "<select onchange='HomePresenter.makeDirty(this.parentNode)' " +
-                    "onclick='event.stopPropagation()' class='rulesText operation'>" +
-                    "<option selected='selected'>=</option><option><=</option><option>>=</option></select>";
-                whenDiv.innerHTML = whenDiv.innerHTML + content;
-
-                content = "<select onclick='event.stopPropagation()' " +
-                    "onchange='HomePresenter.addValue(this,event)'  class='input rulesText value' type='text'>" +
-                    "<option selected='selected' disabled='disabled' value='-1'>Choose</option></select>";
-                whenDiv.innerHTML = whenDiv.innerHTML + content;
-
-                var content = "&nbsp;&nbsp;<span class='buttons remove' " +
-                    "onclick='HomePresenter.removeNew(this.parentNode,event)'>-</span>";
-                whenDiv.innerHTML = whenDiv.innerHTML + content;
-                content = "<p class='hidden dataDirty'>0</p>"
-                whenDiv.innerHTML = whenDiv.innerHTML + content;
-
-                newDiv.appendChild(whenDiv);
-
-                /******************Setting dropdown Values****************************/
-                $(whenDiv).children('.groupType').val(groupType);
-                HomePresenter.toggleRegionTargetGroup($(whenDiv).children('.groupType')[0],false)
-                $(whenDiv).children('.operation').val(operation);
-                $(whenDiv).children('.value').val(value);
+    var $dirtyFields = $(div).find('.dataDirty');
+    var isDirty = getDataDirtyFlag($dirtyFields);
+    if(isDirty){
+        $(div).find('.thenChild').remove();
+        $dirtyFields.html('0');
+        var dataFromCS = GraphicDataStore.getPageRuleById(div.id);
+        var pageRules = dataFromCS.pageRules;
+        var $thenReference = $(div).children('.rule').children('.then');
+        for (var i = 0; i < pageRules.length; i++) {
+            var masterPageId = pageRules[i].ruleResult.masterPageId;
+            var assortmentName = pageRules[i].ruleResult.assortmentId;
+            var ruleId = pageRules[i].ruleID;
+            var mamFileID = pageRules[i].additionalInformation.mamFileID;
+            var wbdURL = pageRules[i].additionalInformation.editUrl;
+            /***********Then Div creation***********/
+            //var data = ''//Get Data from data store or CS
+            var newDiv = document.createElement("div");
+            $(newDiv).addClass("thenChild");
+            //HomePresenter.getMAMFileNames()
+            var pageNames = EngineDataStore.getMasterTemplateList();
+            var content = "<p class='hidden ruleID'>"+ruleId+"</p>";
+            content += "<p class='hidden wbdURL'>" + wbdURL + "</p>";
+            content += "<p class='hidden mamFileID'>" + mamFileID + "</p>";
+            content += "<select onclick='event.stopPropagation()' onchange='HomePresenter.makeDirty(this.parentNode)' " +
+                    "class='rulesText template'><option selected='selected' disabled='disabled'>Select</option>";
+            for (var j = 0; j < pageNames.length; j++) {
+               content += "<option value='" + pageNames[j].templateID + "'>" + pageNames[j].templateName + "</option>";
             }
+            content += "</select>";
+            newDiv.innerHTML = newDiv.innerHTML + content;
+
+            var assortmentList = assortments;
+            content = "<select onchange='HomePresenter.makeDirty(this.parentNode)' onclick='event.stopPropagation()' " +
+                "class='rulesText assortment'><option selected='selected' disabled='disabled'>Select</option>";
+            for(var j = 0 ; j < assortmentList.length ; j++){
+                content += "<option>"+ assortmentList[j] +"</option>";
+            }
+            content += "</select>";
+            newDiv.innerHTML = newDiv.innerHTML + content;
+
+            content = "<span class='buttons remove' onclick='HomePresenter.removeNew(this.parentNode,event)'>-</span>"
+            newDiv.innerHTML = newDiv.innerHTML + content;
+            content = "<span class='buttons addCondition' onclick='HomePresenter.newWhen(this.parentNode,event)'>+</span>"
+            newDiv.innerHTML = newDiv.innerHTML + content;
+            content = "<p class='hidden dataDirty'>0</p>"
+            newDiv.innerHTML = newDiv.innerHTML + content;
+
+            $thenReference.append(newDiv);
+            /*****************Setting drop down values************************/
+            $(newDiv).children('.template').val(masterPageId);
+            $(newDiv).children('.assortment').val(assortmentName);
+
+
+                var ruleConditions = pageRules[i].ruleConditions;
+
+                for (var j = 0; j < ruleConditions.length; j++) {
+                    var groupType = ruleConditions[j].variable;
+                    var operation = ruleConditions[j].operator;
+                    var value = ruleConditions[j].value;
+
+                    /***********when Div creation***********/
+
+                    var whenDiv = document.createElement("div");
+                    $(whenDiv).addClass("whenChild");
+
+                    var variablesList = groupTypes;
+                    content = "<select onchange='HomePresenter.toggleRegionTargetGroup(this)' " +
+                        "onclick='event.stopPropagation()' class='rulesText groupType'>" +
+                        "<option selected='selected' disabled='disabled' value='-1'>Choose</option>";
+                    for(var k = 0 ; k < variablesList.length ; k++){
+                        content += "<option>" + variablesList[k] + "</option>";
+                    }
+                    content += "</select>";
+                    whenDiv.innerHTML = whenDiv.innerHTML + content;
+
+                    content = "<select onchange='HomePresenter.makeDirty(this.parentNode)' " +
+                        "onclick='event.stopPropagation()' class='rulesText operation'>" +
+                        "<option selected='selected'>=</option><option><=</option><option>>=</option></select>";
+                    whenDiv.innerHTML = whenDiv.innerHTML + content;
+
+                    content = "<select onclick='event.stopPropagation()' " +
+                        "onchange='HomePresenter.addValue(this,event)'  class='input rulesText value' type='text'>" +
+                        "<option selected='selected' disabled='disabled' value='-1'>Choose</option></select>";
+                    whenDiv.innerHTML = whenDiv.innerHTML + content;
+
+                    var content = "&nbsp;&nbsp;<span class='buttons remove' " +
+                        "onclick='HomePresenter.removeNew(this.parentNode,event)'>-</span>";
+                    whenDiv.innerHTML = whenDiv.innerHTML + content;
+                    content = "<p class='hidden dataDirty'>0</p>"
+                    whenDiv.innerHTML = whenDiv.innerHTML + content;
+
+                    newDiv.appendChild(whenDiv);
+
+                    /******************Setting dropdown Values****************************/
+                    $(whenDiv).children('.groupType').val(groupType);
+                    HomePresenter.toggleRegionTargetGroup($(whenDiv).children('.groupType')[0],false)
+                    $(whenDiv).children('.operation').val(operation);
+                    $(whenDiv).children('.value').val(value);
+                }
+
+        }
 
     }
-
-
+    else{
+        console.log('removing dirty flags')
+        $dirtyFields.html('0');
+    }
 }
 
 
@@ -865,7 +931,7 @@ HomePresenter.newWhen = function (reference, event) {
     newDiv.innerHTML = newDiv.innerHTML + content;
 
     content = "<select onclick='event.stopPropagation()' " +
-        "onchange='HomePresenter.addValue(this,event)'  class='input rulesText value' type='text'>" +
+        "  class='input rulesText value' type='text'>" +
         "<option selected='selected' disabled='disabled' value='-1'>Choose</option></select>";
     newDiv.innerHTML = newDiv.innerHTML + content;
 
@@ -880,10 +946,9 @@ HomePresenter.newWhen = function (reference, event) {
 }
 
 HomePresenter.getMAMFileNames = function () {
-    if(!GraphicDataStore.getMasterTemplateList()){
+    if(!EngineDataStore.getMasterTemplateList()){
         GetMasterTemplateList.get(function(data){
-            GraphicDataStore.setMasterTemplateList(data);
-            console.log(GraphicDataStore.getMasterTemplateList());
+            EngineDataStore.setMasterTemplateList(data);
         });
     }
 }
@@ -893,10 +958,20 @@ HomePresenter.newThen = function (reference, data) {
     $(reference).children('.dataDirty').html('1');
     var newDiv = document.createElement("div");
     $(newDiv).addClass("thenChild");
-    var pageNames = HomePresenter.getMAMFileNames();
+    //HomePresenter.getMAMFileNames();
+    var pageNames = EngineDataStore.getMasterTemplateList();
 
+    console.log($(reference));
+    console.log($(reference).find('.rulesCount'))
+    var rulesCount = $(reference).find('.rulesCount').html();
+    var generateNumber = rulesCount ? (Number(rulesCount))+1 : 100;
+    $(reference).find('.rulesCount').html(generateNumber);
+    var ruleId = $(reference).closest('.masterPage')[0].id + "." + generateNumber;
 
-    var content = "<select onclick='event.stopPropagation()' onchange='HomePresenter.makeDirty(this.parentNode)' " +
+    var content = "<p class='hidden ruleID'>"+ruleId+"</p>";
+    content += "<p class='hidden wbdURL'> </p>";
+    content += "<p class='hidden mamFileID'> </p>";
+    content += "<select onclick='event.stopPropagation()' onchange='HomePresenter.makeDirty(this.parentNode)' " +
         "class='rulesText template'><option selected='selected' disabled='disabled' value='-1'>Select</option>";
     for (var i = 0; i < pageNames.length; i++) {
         content += "<option value=" + pageNames[i].templateID + ">" + pageNames[i].templateName + "</option>";

@@ -994,6 +994,7 @@ Top Bar Animation Section starts
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
+
 }
 
 .childPages .inner {
@@ -1008,6 +1009,7 @@ Top Bar Animation Section starts
     border: 1px solid #ccc;
     box-shadow: inset 0 0 30px rgba(0,0,0,0.3), 1px 1px 3px rgba(0,0,0,0.9);
     overflow: hidden;
+
 }
 
 
@@ -1016,6 +1018,23 @@ Top Bar Animation Section starts
     cursor:pointer;
 }
 
+.popupImage{
+    position:absolute;
+    display:none;
+    top:1%;
+    left:70%;
+    margin:10px
+    -webkit-transition: box-shadow 0.5s ease-in;
+    -moz-transition: box-shadow 0.5s ease-in;
+    -ms-transition: box-shadow 0.5s ease-in;
+    -o-transition: box-shadow 0.5s ease-in;
+    transition: box-shadow 0.5s ease-in;
+}
+
+.popupImage.urlInjected{
+    box-shadow: 0 0 10px white, 0 0 10px white;
+    cursor:pointer;
+}
 
 .masterPage.odd          { background: #638FDB;  }
 .masterPage.even           { background: #B8BFDB; }
@@ -1043,7 +1062,11 @@ Top Bar Animation Section starts
     color: #FFF;
     word-wrap: break-word;
     display: inline-block;
-
+    -webkit-transition: text-shadow 0.5s ease-in;
+    -moz-transition: text-shadow 0.5s ease-in;
+    -ms-transition: text-shadow 0.5s ease-in;
+    -o-transition: text-shadow 0.5s ease-in;
+    transition: text-shadow 0.5s ease-in;
 }
 
 
