@@ -22,10 +22,17 @@ GraphicDataStore.pushToAssortmentsList = function(pageID,assortments){
         this.assortmentsList = {};
     }
     this.assortmentsList[pageID] = assortments;
+    console.log(this.assortmentsList);
 }
 
 GraphicDataStore.getAssortmentsByID = function(pageID){
-    return this.assortmentsList[pageID];
+    console.log(this.assortmentsList);
+    if(this.assortmentsList){
+        return this.assortmentsList[pageID];
+    }
+    else{
+        return null;
+    }
 }
 
 GraphicDataStore.setCurrentPublication = function(obj){
@@ -46,7 +53,6 @@ GraphicDataStore.getMasterTemplateList = function(){
 
 
 GraphicDataStore.getPageRuleById = function(id){
-    console.log(this.pageRulesArr);
     if(this.pageRulesArr){
         return this.pageRulesArr[id];
     }
@@ -60,7 +66,6 @@ GraphicDataStore.addToPageRules = function(rule){
         this.pageRulesArr = {};
     }
     this.pageRulesArr[rule.logicalPageID] = rule;
-    console.log(this.pageRulesArr)
 }
 
 GraphicDataStore.setCurrentAssortment = function(obj){

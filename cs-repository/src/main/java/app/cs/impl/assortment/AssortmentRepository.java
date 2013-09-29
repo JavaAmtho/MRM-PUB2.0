@@ -122,7 +122,7 @@ public class AssortmentRepository implements IAssortmentRepository {
 	@Override
 	public String getAllAssortmentNames(String pagePath, String logicalPageID) {
 
-		String nameOfAssortments = "";
+		String nameOfAssortments = "[";
 		int countOfAssortments = 1;
 
 		// get the publication
@@ -152,7 +152,7 @@ public class AssortmentRepository implements IAssortmentRepository {
 						+ "\"},";
 			} else {
 				nameOfAssortments += "{\"name\":\"" + assortment.getName()
-						+ "\"}";
+						+ "\"}]";
 			}
 			countOfAssortments++;
 		}

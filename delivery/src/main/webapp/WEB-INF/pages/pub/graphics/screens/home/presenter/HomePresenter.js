@@ -656,7 +656,6 @@ HomePresenter.toggleRulesView = function (div) {
     console.log('toggle here')
 
     $(div).toggleClass('rules-opened');
-    console.log($(div))
     $isotopeContainer.isotope('reLayout');
     $(div).children(".open").toggle();
     $(div).children(".rule").toggle();
@@ -709,11 +708,20 @@ HomePresenter.setRules = function (div) {
                 content += "</select>";
                 newDiv.innerHTML = newDiv.innerHTML + content;
 
+                var assortments;
+                if(!GraphicDataStore.getAssortmentsByID(div.id)){
+                    GetAssortments.get($(div).children('.pagePath').html(),div.id,function(data){
+                        GraphicDataStore.pushToAssortmentsList(div.id,data);
+                    });
+                }
+                assortments = GraphicDataStore.getAssortmentsByID(div.id);
+
                 var assortmentList = assortments;
+                console.log(assortments)
                 content = "<select onchange='HomePresenter.makeDirty(this.parentNode)' onclick='event.stopPropagation()' " +
                     "class='rulesText assortment'><option selected='selected' disabled='disabled' value='-1'>Select</option>";
                 for (var j = 0; j < assortmentList.length; j++) {
-                    content += "<option>" + assortmentList[j] + "</option>";
+                    content += "<option>" + assortmentList[j].name + "</option>";
                 }
                 content += "</select>";
                 newDiv.innerHTML = newDiv.innerHTML + content;
@@ -1027,8 +1035,9 @@ HomePresenter.newThen = function (reference, data) {
     newDiv.innerHTML = newDiv.innerHTML + content;
 
     var assortments;
-    if(!GraphicDataStore.getAssortmentsByID(reference.id)){
-        GetAssortments.get($(reference).children('.pagePath').html(),function(data){
+    if(GraphicDataStore.getAssortmentsByID(reference.id) == null){
+        console.log($(reference).closest(".masterPage").children('.pagePath').html());
+        GetAssortments.get($(reference).closest(".masterPage").children('.pagePath').html(),$(reference).closest(".masterPage")[0].id,function(data){
             GraphicDataStore.pushToAssortmentsList(reference.id,data);
         });
     }
@@ -1038,7 +1047,7 @@ HomePresenter.newThen = function (reference, data) {
     content = "<select onchange='HomePresenter.makeDirty(this.parentNode)' onclick='event.stopPropagation()' " +
         "class='rulesText assortment'><option selected='selected' disabled='disabled' value='-1'>Select</option>";
     for (var i = 0; i < assortmentList.length; i++) {
-        content += "<option>" + assortmentList[i] + "</option>";
+        content += "<option>" + assortmentList[i].name + "</option>";
     }
     content += "</select>";
     newDiv.innerHTML = newDiv.innerHTML + content;
