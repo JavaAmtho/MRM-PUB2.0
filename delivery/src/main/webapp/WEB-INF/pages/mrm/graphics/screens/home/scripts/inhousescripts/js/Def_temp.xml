@@ -11,8 +11,13 @@
             RightCanResize="3"
             ConstWidth="1"
             ConstHeight="1"
+            Validate="Added,Changed"
+            SectionResizing="1"
+            LeftCanResize="2"
+            ExportType="Expanded,Indent"
 
-            />
+
+    />
     <Cfg
             SearchCells="1"
             SearchFocused="3"
@@ -28,43 +33,46 @@
               Visible ="0"
                 />
         <C 	Name= "manager"
-              Width= "75"
               Type= "Text"
               WidthPad= "17"
               CanFilter= "1"
               MinWidth="130"
+              ResultMask="^[A-Za-z]+$"
                 />
         <C 	Name= "budgetOwner"
-              Width= "75"
+
               Type= "Text"
               WidthPad= "17"
               MinWidth= "130"
               CanFilter= "1"
+              ResultMask="^[A-Za-z]+$"
                 />
         <C 	Name= "budget"
-              Width= "75"
+
               Type= "Text"
               WidthPad= "17"
               CanFilter= "1"
               MinWidth= "130"
+              ResultMask="^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?[$]?$"
                 />
         <C 	Name= "startDate"
-              Width= "75"
+
               Type= "Date"
               Format= "dd/MM/yyyy"
               WidthPad= "17"
-
               CanFilter= "1"
               MinWidth= "130"
+              ResultMask="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$"
                 />
         <C 	Name= "endDate"
-              Width= "75"
+
               Type= "Date"
               Format= "dd/MM/yyyy"
               WidthPad= "17"
               MinWidth= "130"
               GanttSizeFit= "0"
               CanFilter= "1"
+              ResultMask="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$"
                 />
         <C 	Name= "ganttChart"
               Type= "Gantt"
@@ -163,11 +171,11 @@
                 Space="4"
                 Kind="Toolbar1"
                 Panel="0"
-                Cells="Print,ExpandAll,CollapseAll,ZoomIn,ZoomOut,ZoomFit"
-                PrintLabel="Print"
+                Cells="ExpandAll,CollapseAll,ZoomIn,ZoomOut,ZoomFit,Print,Export"
+                PrintLabel=" |  Print/Export to PDF"
                 ExportPDFLabel=" |  Export to PDF"
                 ExportLabel=" |  Export to Excel"
-                ExpandAllLabel=" |  Expand All"
+                ExpandAllLabel="  Expand All"
                 CollapseAllLabel=" |  Collapse All"
                 ZoomInLabel=" |  Zoom In"
                 ZoomOutLabel=" |  Zoom Out"

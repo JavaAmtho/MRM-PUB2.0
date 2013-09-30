@@ -1,13 +1,26 @@
+<div id="viewOption" class="viewOptionCSS">
+    <div id="viewOptionNew">
+        <button id="tileView" class="tileBtnCSS"></button>
+        <button id="listView" class="listBtnCSS"></button>
+        <button id="detailView" class="detailBtnCSS"></button>
+    </div>
+</div>
 <div class="colmask">
-    <div class="colleft">
+    <div class="splitter-panel">
+<!--
         <div id="menubar" class="menubar"></div>
+-->
 
 
                 <span id="leftPanel" class="span3">
 
                     <div id="mainAnimationContainer" class="mainAnimationContainerCSS">
-                        <p id="selectLbl" class="selectLblCSS">Select View</p>
-                        <select id="schemaDropDown" class="customSelectCSS">
+<!--
+                        <p id="selectLbl" class="selectLblCSS" >Select View</p>
+-->
+                        <!--<select id="schemaDropDown" class="selectpicker"  data-style="btn-inverse" data-width="auto"> </select>-->
+                        <p id="selectLbl" class="selectLblCSS" >Select View</p>
+                        <select id="schemaDropDown" class="selectpicker"  data-style="btn-primary">
                         </select>
                     </div>
 
@@ -54,47 +67,29 @@
 
     </div>
 
-    <div class="colright">
+    <div class="splitter-panel">
+<!--
         <div class="colmid"></div>
+-->
 
               <span id="rightPanel" class="span9">
 
-                 <p id="txt" class="formatTxt"></p>
+
 
                      <div id="rightPanelView">
                          <div id="dim">
-                             <div id="filterButtons">
-                                 <ul class="filter option-set clearfix " data-filter-group="region">
-                                     <li><a href="#filter-region-any" data-filter-value="*">any</a></li>
-
-                                     <li><a href="#filter-region-germany" data-filter-value=".any,.germany">Germany</a></li>
-                                     <li><a href="#filter-region-india" data-filter-value=".any,.india">India</a></li>
-                                     <li><a href="#filter-region-usa" data-filter-value=".any,.usa">USA</a></li>
-
-                                 </ul>
-
-                             </div>
-                             <div class="option-combo size">
-                                 <h4>Target Group</h4>
-                                 <ul class="filter option-set clearfix " data-filter-group="targetGroup">
-                                     <li><a href="#filter-targetGroup-any" data-filter-value="*" class="selected">any</a>
-
-                                     <li><a href="#filter-targetGroup-men" data-filter-value=".any,.men">Men</a></li>
-                                     <li><a href="#filter-targetGroup-women" data-filter-value=".any,.women">Women</a></li>
-
-                                 </ul>
-                             </div>
-                             <div id="viewOption" class="viewOptionCSS">
+                           <!--  <div id="viewOption" class="viewOptionCSS">
+                                 <span id="txt" class="formatTxt"></span>
                                  <button id="tileView" class="tileBtnCSS"></button>
                                  <button id="listView" class="listBtnCSS"></button>
                                  <button id="detailView" class="detailBtnCSS"></button>
-                             </div>
+                             </div>-->
                              <div id="viewHolder" class="viewHolderCSS">
 
                              </div>
                          </div>
                          <div id="assortPanel">
-                             <div id="assortPanelHeader">Assortment Panel</div>
+                             <div id="assortPanelHeader">THIS IS HEADER</div>
 
                              <div id="subtab1">
 
@@ -111,7 +106,7 @@
 
                          <div id="panel">
                              <div id="typeHolder"></div>
-                             <div id="assetSearch"><input type="text" placeholder="Search" id="asSearch"> </div>
+                             <div id="assetSearch"><input type="text" placeholder="Search" id="asSearch"/> </div>
                              <div id="assetsTree"></div>
                              <div id="assetDetails" class="assetDetails"></div>
                             <!-- <a href = "http://www.inbetween.com">My site</a><br>

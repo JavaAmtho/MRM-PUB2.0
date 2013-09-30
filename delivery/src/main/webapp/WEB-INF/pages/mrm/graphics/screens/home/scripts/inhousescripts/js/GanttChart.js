@@ -328,13 +328,45 @@ var GanttChart = function(){
             return true;
         }
     }
+    var ck_alpha = /^[A-Za-z]+$/;
+    function checkAlpha(obj){
+        console.log(obj.val());
+        if (!ck_alpha.test(obj.val())) {
+            obj.addClass( "ui-state-error") ;
+           console.log('false')
+           return false;
+        }
+        else{
+            obj.removeClass("ui-state-error")   ;
+            return true;
+            console.log('true')
+        }
+    }
+
+
+
+
+    var ck_date = /^(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d$/;
+    function checkDate(obj){
+        console.log(obj.val());
+        if (!ck_date.test(obj.val())) {
+            obj.addClass( "ui-state-error") ;
+            console.log('false')
+            return false;
+        }
+        else{
+            obj.removeClass("ui-state-error")   ;
+            return true;
+            console.log('true')
+        }
+    }
 
 
 
     function showPopUp(G,row,col,name){
         $( "#dialog-form" ).dialog({
             height: 490,
-            width: 510,
+            width: 500,
             modal: true,
             resizable: false,
             show: {
@@ -357,7 +389,6 @@ var GanttChart = function(){
                     enddate = $( "#enddate" ),
                     budgetowner = $( "#budgetOwner" ),
                     budgetamount = $( "#budget"),
-                    type = $()
                     currency = $( "#currency" );
 
 
@@ -374,7 +405,11 @@ var GanttChart = function(){
                 popupValid = popupValid && checkNull(budgetowner);
                 popupValid = popupValid && checkNull(budgetamount);
 
+                popupValid &= checkAlpha(manager);
+                popupValid &= checkAlpha(budgetowner);
 
+                popupValid &= checkDate(startdate);
+                popupValid &= checkDate(enddate);
                 if(!popupValid){
                     errorMsg += "Fields should not be EMPTY!";
                 }
@@ -437,6 +472,13 @@ var GanttChart = function(){
         },
         close: function() {
             //allFields.val( "" ).removeClass( "ui-state-error" );
+            $( "#name" ).removeClass("ui-state-error") ;
+            $( "#manager" ).removeClass("ui-state-error");
+            $( "#startdate" ).removeClass("ui-state-error");
+            $( "#enddate" ).removeClass("ui-state-error");
+            $( "#budgetOwner" ).removeClass("ui-state-error");
+            $( "#budget").removeClass("ui-state-error");
+            $( "#currency" ).removeClass("ui-state-error");
             clearForm();
         },
         autoOpen :true,
@@ -445,6 +487,7 @@ var GanttChart = function(){
         datePicker: $(function() {
                         $( '.datePicker' ).datepicker({
                             showOn: 'both',
+                            duration: "slow",
                             buttonImage: 'calendar-icon.png',
                             buttonImageOnly: true,
                             //changeMonth: true,
@@ -512,3 +555,4 @@ function clearForm(form)
 
 
 };
+

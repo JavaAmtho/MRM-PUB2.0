@@ -34,7 +34,7 @@
 }
 
 .GEHScrollLeft{
-    visibility: hidden;
+    visibility: visible;
     background: transparent;
 }
 .GEHScrollLeftResize,.GEHScrollMidRightResize,.GEHScrollLeftResizeTouch,.GEHScrollMidRightResizeTouch { border-right:2px dotted red; margin-right:2px; }
