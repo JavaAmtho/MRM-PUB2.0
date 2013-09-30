@@ -638,6 +638,7 @@ Top Bar Animation Section starts
     background-color: #EEEEEE;
     border: 0px;
     position: absolute;
+    z-index: 6;
     right: -200px;
     padding: 0px;
     height: 500px;
