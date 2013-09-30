@@ -694,7 +694,7 @@ HomePresenter.saveRulesData = function (div) {
             }
             else
             {
-                alert("Wrong Rule Configured!!! Fuck Off");
+                alert("Wrong Rule Configured!!!");
                 return;
             }
             pageRuleArr.push(pageRule);
@@ -708,7 +708,7 @@ HomePresenter.saveRulesData = function (div) {
         finalJson[columnName] = GraphicDataStore.getCurrentPublication() + "." + div.id;
         var columnName = "pageRules";
         finalJson[columnName] = pageRuleArr;
-        alert("Finally Saved, Nahi karta tho kya ukaad leta");
+        alert("Saved Successfully");
         //Sending Save call
         SavePageRules.save("saveRules", finalJson, HomePresenter.onSaveSuccess);
         GraphicDataStore.addToPageRules(finalJson);
@@ -731,7 +731,7 @@ HomePresenter.onSaveSuccess = function (data) {
 HomePresenter.toggleRulesView = function (div) {
     $(div).toggleClass('rules-opened');
     $isotopeContainer.isotope('reLayout');
-    $(div).children(".open").toggle();
+    $(div).children(".openRules").toggle();
     $(div).children(".rule").toggle();
     $(div).children(".name").toggle();
     $(div).children(".type").toggle();
