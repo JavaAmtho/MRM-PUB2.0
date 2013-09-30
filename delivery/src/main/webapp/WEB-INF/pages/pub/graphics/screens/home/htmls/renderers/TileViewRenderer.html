@@ -1,6 +1,7 @@
-{{#mydata}}<div class= "{{typeCSS}}" id="{{typeID}}">
+{{#mydata}}<div class= "{{typeCSS}}" id="{{title}}">
     <div class="name">{{title}}</div>
     <div class="type">Type : {{type}} {{pageType}}</div>
+	<p class="hidden pagePath">{{path}}</p>
     <h2 class='openRules {{hiddenCSS}}' onclick='HomePresenter.openRules(this.parentNode,event)'>O</h2>
 
     <h2 class='expand {{hiddenCSS}}' onclick='HomePresenter.expandPages(this.parentNode,event)'>+</h2>
@@ -11,7 +12,7 @@
 
         <div class="then">
             <div class="buttons addNewThen" onclick="HomePresenter.newThen(this.parentNode,event)">+</div>
-            <p class="hidden dataDirty">0</p>
+            
  			<p class="hidden rulesCount">0</p>
             <p class="hidden dataDirty">1</p>
         </div>

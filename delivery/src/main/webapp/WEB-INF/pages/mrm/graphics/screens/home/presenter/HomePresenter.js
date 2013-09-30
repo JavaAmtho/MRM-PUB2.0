@@ -183,7 +183,7 @@ HomePresenter.checkNum1 = function(){
 
 HomePresenter.createFlow = function(publications){
 
-    var publications = [
+   /* var publications = [
         {
             "id":"1",
             "name":"Publication 1",
@@ -220,7 +220,7 @@ HomePresenter.createFlow = function(publications){
             "previewType": "video"
         }
     ];
-
+*/
     GraphicDataStore.setCommChannelDetails(publications);
      var details = GraphicDataStore.getCommChannelDetails();
 
