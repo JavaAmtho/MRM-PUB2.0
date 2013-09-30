@@ -152,6 +152,13 @@ var DynaTree = function(){
     var droppedSrcNode;
 
     this.createTree = function(treeObj,data){
+
+        $(document).bind("expandParentNode", function onExpandParentNode(e){
+            var pNode = searchFolderNodeWithName(e.currentId,null)
+            pNode.parent.activate();
+            pNode.parent.expand()
+        });
+
         if(temp != null){
             temp.removeChildren();
             temp.addChild(data);
@@ -232,7 +239,7 @@ var DynaTree = function(){
             });
             temp = $(treeObj).dynatree("getRoot");
             if(pubIdToOpen){
-                var manode = seachFolderNodeWithName(pubIdToOpen,null)
+                var manode = searchFolderNodeWithName(pubIdToOpen,null)
                 manode.activate();
                 manode.expand()
             }
@@ -242,7 +249,7 @@ var DynaTree = function(){
             //$('#coverMain').fadeIn(600);
 
 
-            function seachFolderNodeWithName(name, searchFrom) {
+            function searchFolderNodeWithName(name, searchFrom) {
                 if (name == null) {
                     return undefined;
                 }
