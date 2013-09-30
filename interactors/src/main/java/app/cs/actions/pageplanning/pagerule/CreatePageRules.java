@@ -9,6 +9,7 @@ import app.cs.interfaces.pagerule.IPageRuleRepository;
 import app.cs.model.request.PageRulesRequest;
 import app.cs.model.request.RequestModel;
 import app.cs.model.response.ResponseModel;
+import app.cs.model.response.StringResponse;
 
 @Component
 public class CreatePageRules implements Interactor {
@@ -27,8 +28,7 @@ public class CreatePageRules implements Interactor {
 		PageRulesRequest pageRulesRequest = (PageRulesRequest) requestModel;
 		pageRules.setId(pageRulesRequest.getLogicalPageID());
 		pageRules.setPageRules(pageRulesRequest.getPageRules());
-		pageRuleRepository.savePageRules(pageRules);
-		return null;
+		return new StringResponse(pageRuleRepository.savePageRules(pageRules));
 	}
 
 }

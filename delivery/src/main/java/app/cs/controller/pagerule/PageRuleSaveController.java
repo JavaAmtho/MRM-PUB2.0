@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import app.cs.boundary.delivery.Interactor;
 import app.cs.model.request.PageRulesRequest;
+import app.cs.model.response.StringResponse;
 
 @Controller
 public class PageRuleSaveController {
@@ -22,8 +23,8 @@ public class PageRuleSaveController {
 
 	@RequestMapping(value = { "/page/rule/save/" }, method = RequestMethod.POST)
 	public @ResponseBody
-	void savePageRules(@RequestBody PageRulesRequest pageRulesRequest) {
-		createPageRules.execute(pageRulesRequest);
+	String savePageRules(@RequestBody PageRulesRequest pageRulesRequest) {
+		return  ((StringResponse) createPageRules.execute(pageRulesRequest)).getResponseString();
 	}
 
 }

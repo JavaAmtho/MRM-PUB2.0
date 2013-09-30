@@ -7,7 +7,7 @@ import app.cs.impl.model.PageRules;
 
 public interface IPageRuleRepository {
 
-	public void savePageRules(PageRules pageRules);
+	public String savePageRules(PageRules pageRules);
 
 	public abstract PageRules getPageRulesFor(String logicalPageID);
 

@@ -416,6 +416,10 @@ HomePresenter.createProductsJSON = function () {
     var columnName = "id";
     jsonData[columnName] = GraphicDataStore.getCurrentAssortment().id;
     UpdateAssortment.update(GraphicDataStore.getCurrentAssortment(), jsonData, HomePresenter.hideAssortPanel);
+    $(document).trigger({
+        type: "expandParentNode",
+        currentId: GraphicDataStore.getCurrentAssortment().title
+    });
 }
 
 HomePresenter.unHideAssortPanel = function () {
