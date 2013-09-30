@@ -122,9 +122,16 @@ HomePresenter.loadViewItems = function (evt, currentTemplateView) {
         $('.filter a').click(function () {
 
             var $this = $(this);
+            // don't proceed if already selected
+            if ($this.hasClass('calendarButtonPressed')) {
+                return;
+            }
+
             var $optionSet = $this.parents('.option-set');
-            // store filter value in object
-            // i.e. filters.color = 'red'
+            // change selected class
+            $optionSet.find('.calendarButtonPressed').removeClass('calendarButtonPressed');
+            $this.addClass('calendarButtonPressed');
+
             var group = $optionSet.attr('data-filter-group');
             filters[ group ] = $this.attr('data-filter-value');
             // convert object into array
@@ -137,10 +144,8 @@ HomePresenter.loadViewItems = function (evt, currentTemplateView) {
                 else if(filters[prop].indexOf("anyTargetGroup")!=-1)
                     bothTgs=filters[prop].split(",");
                 isoFilters.push(filters[ prop ])
-                console.log(isoFilters);
             }
             var selector;
-            console.log(bothRegions+"==>"+bothTgs)
             if(bothRegions!=undefined && bothTgs!=undefined)
             {
                 selector=bothRegions[0]+ bothTgs[1]+","+bothRegions[1]+bothTgs[0]+","+bothRegions[0]+bothTgs[0]+","+bothRegions[1]+bothTgs[1];
@@ -148,7 +153,6 @@ HomePresenter.loadViewItems = function (evt, currentTemplateView) {
             else{
                 selector = isoFilters.join('');
             }
-            console.log(selector)
             $isotopeContainer.isotope({ filter: selector });
 
             return false;
@@ -686,6 +690,7 @@ HomePresenter.saveRulesData = function (div) {
                 var condArray = [];
                 var $whenConditions = $($thenStatements[i]).children('.whenChild');
                 for (var j = 0; j < $whenConditions.length; j++) {
+                    console.log('inside for');
                     var variable = $($whenConditions[j]).children('.groupType')[0].value;
                     var value = $($whenConditions[j]).children('.value')[0].value;
                     if ((variable != '-1' && variable != 'Choose') && (value != '-1' && value != 'Choose')) {
@@ -803,13 +808,14 @@ HomePresenter.setRules = function (div) {
                 //var data = ''//Get Data from data store or CS
                 var newDiv = document.createElement("div");
                 $(newDiv).addClass("thenChild");
+                $(newDiv).addClass("row-fluid");
                 //HomePresenter.getMAMFileNames()
                 var pageNames = EngineDataStore.getMasterTemplateList();
                 var content = "<p class='hidden ruleID'>" + ruleId + "</p>";
                 content += "<p class='hidden wbdURL'>" + wbdURL + "</p>";
                 content += "<p class='hidden mamFileID'>" + mamFileID + "</p>";
                 content += "<select onclick='event.stopPropagation()' onchange='HomePresenter.makeDirty(this.parentNode)' " +
-                    "class='rulesText template selectpicker span2' data-width='auto'><option selected='selected' disabled='disabled' value='-1'>Select</option>";
+                    "class='rulesText  template selectpicker span2' data-width='45%'><option selected='selected' disabled='disabled' value='-1'>Select Master Template</option>";
                 for (var j = 0; j < pageNames.length; j++) {
                     content += "<option value='" + pageNames[j].templateID + "'>" + pageNames[j].templateName + "</option>";
                 }
@@ -825,7 +831,7 @@ HomePresenter.setRules = function (div) {
                 var assortmentList = assortments;
                 console.log(assortments)
                 content = "<select onchange='HomePresenter.makeDirty(this.parentNode)' onclick='event.stopPropagation()' " +
-                    "class='rulesText assortment selectpicker span2' data-width='auto'><option selected='selected' disabled='disabled' value='-1'>Select</option>";
+                    "class='rulesText assortment selectpicker span3' data-width='35%'><option selected='selected' disabled='disabled' value='-1'>Select Assortment</option>";
                 for (var j = 0; j < assortmentList.length; j++) {
                     content += "<option>" + assortmentList[j].name + "</option>";
                 }
@@ -1046,7 +1052,10 @@ HomePresenter.toggleRegionTargetGroup = function (toggle, makeDirty) {
             options += "<option>" + targetGroupsList[i] + "</option>";
         }
     }
-    $(toggle).siblings('.value').html(options);
+    options += "</select>";
+    $(toggle).siblings('.value').remove();
+    var $operationDropdown = $(toggle).siblings('.operation');
+    $($operationDropdown[$operationDropdown.length-1]).after(options);
     $('.selectpicker').selectpicker();
 
 }
@@ -1069,7 +1078,7 @@ HomePresenter.newWhen = function (reference, event) {
     var variablesList = groupTypes;
     content = "&nbsp;&nbsp;<select onchange='HomePresenter.toggleRegionTargetGroup(this,true)' " +
         "onclick='event.stopPropagation()' class='rulesText groupType selectpicker span2' data-width='auto' value='-1'>" +
-        "<option selected='selected' disabled='disabled'>Choose Dimension</option>";
+        "<option selected='selected' disabled='disabled'>Choose</option>";
     for (var i = 0; i < variablesList.length; i++) {
         content += "<option>" + variablesList[i] + "</option>";
     }
@@ -1122,7 +1131,7 @@ HomePresenter.newThen = function (reference, data) {
     content += "<p class='hidden wbdURL'> </p>";
     content += "<p class='hidden mamFileID'> </p>";
     content += "<select onclick='event.stopPropagation()' onchange='HomePresenter.makeDirty(this.parentNode)' " +
-        "class='rulesText btn-custom-mini template selectpicker span2' data-width='45%'><option selected='selected' disabled='disabled' value='-1'>Select Master Template</option>";
+        "class='rulesText  template selectpicker span2' data-width='45%'><option selected='selected' disabled='disabled' value='-1'>Select Master Template</option>";
     for (var i = 0; i < pageNames.length; i++) {
         content += "<option value=" + pageNames[i].templateID + ">" + pageNames[i].templateName + "</option>";
     }
