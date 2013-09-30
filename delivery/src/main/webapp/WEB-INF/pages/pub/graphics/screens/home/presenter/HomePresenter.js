@@ -6,6 +6,8 @@ var btnSelectionFlag = 0;
 var onTarget = false;
 var $isotopeContainer;
 
+var filters = {};
+
 var pages = {};
 
 HomePresenter.handleViewChange = function (evt) {
@@ -39,7 +41,7 @@ HomePresenter.loadViewItems = function (evt, currentTemplateView) {
             var stackcss = "";
             if (ref.type == "Page") {
                 pageIDs.push(GraphicDataStore.getCurrentPublication() + "." + ref.id);
-                css = "masterPage any";
+                css = "masterPage anyRegion anyTargetGroup";
                 console.log("CSS : " + css);
                 ref.typeCSS = css;
                 ref.hiddenCSS = "";
@@ -118,7 +120,7 @@ HomePresenter.loadViewItems = function (evt, currentTemplateView) {
         $isotopeContainer.isotope();
 
         $('.filter a').click(function () {
-            filters = {};
+
             var $this = $(this);
             var $optionSet = $this.parents('.option-set');
             // store filter value in object
@@ -126,11 +128,26 @@ HomePresenter.loadViewItems = function (evt, currentTemplateView) {
             var group = $optionSet.attr('data-filter-group');
             filters[ group ] = $this.attr('data-filter-value');
             // convert object into array
+            var bothRegions;
+            var bothTgs;
             var isoFilters = [];
             for (var prop in filters) {
+                if(filters[prop].indexOf("anyRegion")!=-1)
+                    bothRegions=filters[prop].split(",");
+                else if(filters[prop].indexOf("anyTargetGroup")!=-1)
+                    bothTgs=filters[prop].split(",");
                 isoFilters.push(filters[ prop ])
+                console.log(isoFilters);
             }
-            var selector = isoFilters.join(',');
+            var selector;
+            console.log(bothRegions+"==>"+bothTgs)
+            if(bothRegions!=undefined && bothTgs!=undefined)
+            {
+                selector=bothRegions[0]+ bothTgs[1]+","+bothRegions[1]+bothTgs[0]+","+bothRegions[0]+bothTgs[0]+","+bothRegions[1]+bothTgs[1];
+            }
+            else{
+                selector = isoFilters.join('');
+            }
             console.log(selector)
             $isotopeContainer.isotope({ filter: selector });
 
@@ -404,7 +421,7 @@ HomePresenter.unHideAssortPanel = function () {
 
 
 var regions = ['Germany', 'India', 'USA'];
-var targetGroups = ['Men', 'Women'];
+var targetGroups = ['Men', 'Women','Kids'];
 var groupTypes = ['Region', 'Target Group'];
 var masterTemplateList = new Array();
 
@@ -529,7 +546,8 @@ HomePresenter.expandPages = function (div, event) {
 
                 var newDiv = document.createElement("div");     //create new div for the child page
                 var content = '';
-                $(newDiv).addClass('any');
+                $(newDiv).addClass('anyTargetGroup');
+                $(newDiv).addClass('anyRegion');
                 if ($(div).hasClass('odd')) {
                     $(newDiv).addClass('odd');                               //According to whether odd
                     content += "<div class='childPages inner odd' " +        //or even page set the class names
@@ -555,20 +573,27 @@ HomePresenter.expandPages = function (div, event) {
                                                   //maintain some relation
                 $(newDiv).addClass('childPages');
 
-                $dimensionValues = $($results[i]).children('.whenChild').children('.value');
+                $dimensionValues = $($results[i]).children('.whenChild');
                 if ($dimensionValues.length > 0) {                                       //
-                        $(newDiv).removeClass('any');                                  //
-                    for (var j = 0; j < $dimensionValues.length; j++) {                  //logic written
+                    for (var j = 0; j < $dimensionValues.length; j++) {
+                        var filterType = $($dimensionValues[j]).children('.groupType')[0].value;                                                                //logic written
+                        if(filterType == 'Region'){
+                            if($(newDiv).hasClass('anyRegion')){
+                                $(newDiv).removeClass('anyRegion')
+                            }
+                        }
+                        else if(filterType == 'Target Group'){
+                            if($(newDiv).hasClass('anyTargetGroup')){
+                                $(newDiv).removeClass('anyTargetGroup');
+                            }
+                        }
                         if (!$($dimensionValues[j]).hasClass('hidden')) {                //     for
-                            $(newDiv).addClass($dimensionValues[j].value.toLowerCase()); // filtering
+                            $(newDiv).addClass($($dimensionValues[j]).children('.value')[0].value.toLowerCase()); // filtering
                         }                                                                //     logic
                     }                                                                    //
-                }                                                                        //
-                else {
-                    $(newDiv).addClass('any');
                 }
                 content += "<div class='childPageName' >" +
-                    $($results[i]).children('.template').find(":selected").text()[0] + "</div>";
+                    $(newDiv).attr('class') + "</div>";
                 content += "<p class='hidden logicalPageID'>" + div.id + "</p>";              //
                 content += "<p class='hidden ruleID'>" + ruleID + "</p>";                     //Data stored
                 content += "<p class='hidden data templateName' >" + $masterTemplate + "</p>";//into child
