@@ -1799,3 +1799,21 @@ a.pure-button:hover, a.pure-button{
     background-color: white;
     text-decoration: none;
 }*/
+
+.popupImage{
+    position:absolute;
+    height:17px;
+    top:2%;
+    left:80%;
+    margin:10px
+    -webkit-transition: box-shadow 0.5s ease-in;
+    -moz-transition: box-shadow 0.5s ease-in;
+    -ms-transition: box-shadow 0.5s ease-in;
+    -o-transition: box-shadow 0.5s ease-in;
+    transition: box-shadow 0.5s ease-in;
+}
+
+.popupImage.urlInjected{
+    box-shadow: 0 0 10px white, 0 0 10px white;
+    cursor:pointer;
+}
