@@ -157,6 +157,14 @@ new ContentFlowAddOn ('CSFlow', {
                     $( "#myPlayer" ).dialog({
                         autoOpen: false,
                         height: 455,
+                        show: {
+                            effect: "clip",
+                            duration: 500
+                        },
+                        hide: {
+                            effect: "clip",
+                            duration: 500
+                        },
                         width: 805,
                         modal: true,
                         title: item.content.id,

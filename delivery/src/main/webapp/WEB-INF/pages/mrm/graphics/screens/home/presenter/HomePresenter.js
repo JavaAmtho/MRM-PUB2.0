@@ -222,7 +222,7 @@ HomePresenter.createFlow = function(publications){
     ];
 */
     GraphicDataStore.setCommChannelDetails(publications);
-     var details = GraphicDataStore.getCommChannelDetails();
+    var details = GraphicDataStore.getCommChannelDetails();
 
     $(".flow").html("");
 
