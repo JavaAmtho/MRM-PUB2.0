@@ -172,7 +172,8 @@ var DynaTree = function(){
                     else
                     {
                         if(node.data.type == "Publication"){
-                            GraphicDataStore.setCurrentPublication(node.data.id);
+
+                            GraphicDataStore.setCurrentPublication(node.data.title);
                         }
                         data = HomePresenter.getChildrenForSelectedNode(node)
                     }

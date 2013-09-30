@@ -52,7 +52,7 @@ GraphicDataStore.getMasterTemplateList = function(){
 
 GraphicDataStore.getPageRuleById = function(id){
     if(this.pageRulesArr){
-        return this.pageRulesArr[id];
+        return this.pageRulesArr[this.currentPublication + "." + id];
     }
     else{
         return undefined;
@@ -76,7 +76,7 @@ GraphicDataStore.addToPageRules = function(rule){
     if(!this.pageRulesArr){
         this.pageRulesArr = {};
     }
-    this.pageRulesArr[rule.logicalPageID] = rule.pageRules;
+    this.pageRulesArr[this.currentPublication + "." + rule.logicalPageID] = rule.pageRules;
 }
 
 GraphicDataStore.setCurrentAssortment = function(obj){
