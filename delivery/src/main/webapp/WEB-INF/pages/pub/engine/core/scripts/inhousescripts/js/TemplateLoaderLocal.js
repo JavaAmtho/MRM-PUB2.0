@@ -27,7 +27,7 @@ function createJSON(callback)
 }
 
 function getHtml(htmlPath,eventsJsonPath,elementsJsonPath,callback){
-    jQuery.get(htmlPath).done(
+    jQuery.get(htmlPath, null, null, "html").done(
         function(data){
             currentHtml = data;
             getEvents(eventsJsonPath,elementsJsonPath,callback)
@@ -35,12 +35,12 @@ function getHtml(htmlPath,eventsJsonPath,elementsJsonPath,callback){
         .fail(function(data){
             //alert("failed");
             currentHtml = null;
-            getEvents(eventsJsonPath,elementsJsonPath,callback)
+            //getEvents(eventsJsonPath,elementsJsonPath,callback)
         });
 }
 
 function getEvents(eventsJsonPath,elementsJsonPath,callback){
-    jQuery.get(eventsJsonPath).done(
+    jQuery.get(eventsJsonPath, null, null, "script").done(
         function(data){
             events = data;
             getElements(elementsJsonPath,callback);
@@ -52,7 +52,7 @@ function getEvents(eventsJsonPath,elementsJsonPath,callback){
 }
 
 function getElements(elementsJsonPath,callback){
-    jQuery.getJSON(elementsJsonPath).done(
+    jQuery.getJSON(elementsJsonPath, null, null, "script").done(
         function(data){
             elements = data;
             createJSON(callback);
@@ -79,9 +79,11 @@ TemplateLoader.loadOnStartUp = function(){
 TemplateLoader.loadTemplate = function(key,callBack,containerID){
     //This sets the default value for the containerElementID
     containerID = typeof containerID !== ('undefined'||"") ? containerID : "mainContainer";
-
+    if(EngineDataStore.getScreenMappingObject()[key].needStyle == "true"){
+        var styleName = EngineDataStore.getScreenMappingObject()[key].className;
+    }
     TemplateLoader.forward(EngineDataStore.getScreenMappingObject()[key].screenName,true,function(data){
-        TemplateLoader.designScreen(data,containerID);
+        TemplateLoader.designScreen(data,containerID,styleName);
         if(callBack){
             callBack();
         }
@@ -89,11 +91,12 @@ TemplateLoader.loadTemplate = function(key,callBack,containerID){
 
 }
 
-TemplateLoader.designScreen = function(data,containerID){
+TemplateLoader.designScreen = function(data,containerID,styleName){
     //Comment this while DEPLOYING
     //data=eval('(' + data + ')');
     var placeHolderElement = document.getElementById(containerID);
     placeHolderElement.innerHTML = data.html;
+    $("#"+containerID).addClass(styleName);
 
     if(data.events){
         TemplateLoader.attachEvents(data.events);

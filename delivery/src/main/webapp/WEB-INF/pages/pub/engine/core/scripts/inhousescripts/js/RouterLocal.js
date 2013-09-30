@@ -10,6 +10,24 @@ Router.forward = function(url,async,callback){
         });
 }
 
+Router.forwardWithPost = function(url,async,reqBody,callback){
+    $.ajax({
+        url:url,
+        contentType: "application/json",
+        type:"POST",
+        data:JSON.stringify(reqBody),
+        dataType:"json",
+        async:async,
+        success:function(result){
+            callback(result);
+        },
+        error: function (error) {
+            callback("error");
+        }
+    });
+}
+
+
 Router.forwardAPIRequests = function(url,async,callback){
     jQuery.getJSON(EngineDataStore.getBaseURL()+"../"+url).done(callback)
         .fail(function(data){
@@ -18,8 +36,26 @@ Router.forwardAPIRequests = function(url,async,callback){
         });
 }
 
+Router.forwardWithPost = function(url,async,reqBody,callback){
+    $.ajax({
+        url:url,
+        contentType: "application/json",
+        type:"POST",
+        data:JSON.stringify(reqBody),
+        dataType:"json",
+        async:async,
+        success:function(result){
+            callback(result);
+        },
+        error: function (error) {
+            callback("error");
+        }
+    });
+}
+
 Router.loadRequest = function(key,async,callBack,params){
     //Comment this while DEPLOYING and uncomment belove
+	
     if(params){
 
         switch(params){
@@ -32,10 +68,10 @@ Router.loadRequest = function(key,async,callBack,params){
             case "3":
                 key = "getViewStructure3";
                 break;
-            case "Marketing Initiative-Campaign-SubCampaign-Communication Plan-Communication Channel":
+            case "MI-Campaign-SubCampaign-CP-CC-Publication":
                 key = "getTree1";
                 break;
-            case "Campaign-SubCampaign-Marketing Initiative-Communication Plan-Communication Channel":
+            case "Campaign-SubCampaign-MI-CP-CC-Publication":
                 key = "getTree2";
                 break;
             case "Campaign-Publication-MasterPublication":

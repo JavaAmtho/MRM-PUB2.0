@@ -1,38 +1,36 @@
-.darktabs{
+.darktabs {
     border-bottom-color: #040404;
 }
 
-.menubar{
-    width:10%;
+.menubar {
+    width: 10%;
     float: left;
     position: relative;
-    margin-left:0px;
-    margin-top:0px;
+    margin-left: 0px;
+    margin-top: 0px;
     min-height: 600px;
-    height:100%;
+    height: 100%;
     background-color: #373737;
     border-top: 1px solid #100E10;
     border-bottom: 1px solid #100E10;
 
+}
+
+.assestsJQList {
+    position: relative;
 
 }
 
-.assestsJQList{
-        position:relative;
-
-}
-
-#leftTree{
+#leftTree {
     padding-left: 15px;
-    margin-top: 30px;
+    margin-top: 5px;
 }
 
-
-.logo{
+.logo {
     padding: 25px 0 0 0;
     overflow: hidden;
-   /*background-image: 'url("'+EngineGraphicsData.getBaseUrl()+'+")';*/
-   background-image: url("/delivery/pages/pub/graphics/screens/home/images/cs_logo.png");
+    /*background-image: 'url("'+EngineGraphicsData.getBaseUrl()+'+")';*/
+    background-image: url("/delivery/pages/pub/graphics/screens/home/images/cs_logo.png");
 }
 
 .profileLogo {
@@ -40,39 +38,39 @@
     float: right;
     visibility: hidden;
 }
+
 .wrapper {
     float: right;
-    height:50px;
-    width:50px;
-    border-radius:50px;
-    border:4px solid white;
-    overflow:hidden ;
-    margin:5px 35px 0 0;
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    border: 4px solid white;
+    overflow: hidden;
+    margin: 5px 35px 0 0;
     visibility: hidden;
 }
 
-.logobounce{
-    height:64px;
-    width:300px;
+.logobounce {
+    height: 64px;
+    width: 300px;
     float: left;
 }
 
-
-.logoutdiv{
-    height:64px;
-    width:64px;
+.logoutdiv {
+    height: 64px;
+    width: 64px;
     float: right;
 }
 
-#leftbar{
-    width:25px;
-    background-color: #262626 ;
+#leftbar {
+    width: 25px;
+    background-color: #262626;
     float: left;
-    height:100%;
+    height: 100%;
 }
 
-.logout{
-    border:#fbb450;
+.logout {
+    border: #fbb450;
     float: right;
     margin: 15px 10px 0 0;
     visibility: hidden;
@@ -81,58 +79,65 @@
 }
 
 body {
-    margin:0;
-    padding:0;
-    border:0;
-    min-height: 600px;/* This removes the border around the viewport in old versions of IE */
-    width:100%;
-    height: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+     /* This removes the border around the viewport in old versions of IE */
+    width: 100%;
+    min-height: 100%;
     color: #333333;
     background-color: #ececec;
-   /* Minimum width of layout - remove line if not required */
+    font-family: calibri;
+    /* Minimum width of layout - remove line if not required */
     /* The min-width property does not work in old versions of Internet Explorer */
-    font-size:90%;
+    font-size: 90%;
     overflow: hidden;
 }
+
 a {
-    color:#369;
+    color: #369;
 }
+
 a:hover {
-    color:#fff;
-    background:#369;
-    text-decoration:none;
+    color: #fff;
+    background: #369;
+    text-decoration: none;
 }
+
 h1, h2, h3 {
-    margin:.8em 0 .2em 0;
-    padding:0;
+    margin: .8em 0 .2em 0;
+    padding: 0;
 }
+
 /*p {
     margin:.4em 0 .8em 0;
     padding:0;
 }*/
 img {
-    margin:0px 0 5px;
+    margin: 0px 0 5px;
 }
+
 #ads img {
-    display:block;
-    padding-top:10px;
+    display: block;
+    padding-top: 10px;
 }
 
 /* Header styles */
 .header {
-    position:relative;
-    top:0px;
-    clear:both;
-    float:left;
-    width:100%;
-    height: 65px;
-    border-bottom:2px solid #565656;
+    position: relative;
+    background-color: #343434;
+    top: 0px;
+    clear: both;
+    float: left;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid #565656;
     overflow: hidden;
 
 }
 
-.animatedbounce{
-    margin: 20px 0 0 10px  ;
+.animatedbounce {
+    margin: 12px 0 0 10px;
 }
 
 /*#header p,
@@ -183,103 +188,109 @@ img {
 }*/
 /* 'widths' sub menu */
 #layoutdims {
-    clear:both;
-    background:#eee;
-    border-top:4px solid #000;
-    margin:0;
-    padding:6px 15px !important;
-    text-align:right;
+    clear: both;
+    background: #eee;
+    border-top: 4px solid #000;
+    margin: 0;
+    padding: 6px 15px !important;
+    text-align: right;
 }
+
 /* column container */
 .colmask {
-    position:relative;	/* This fixes the IE7 overflow hidden bug */
+    position: relative; /* This fixes the IE7 overflow hidden bug */
     /*clear:both;*/
-    float:left;
+    float: left;
     min-width: 500px;
-    width:100%;			/* width of whole page */
-    height: 100%;
+    width: 100%; /* width of whole page */
+    height: 650px !important;
     /*overflow:hidden;		*//* This chops off any overhanging divs */
 }
 
 /* common column settings */
 .colleft {
-    float:left;
-    width:20%;
+    float: left;
+    width: 20%;
     height: 100%;
-    min-height: 600px;
-    position:relative;
-    margin-left:0px;
+    min-height: 500px;
+    position: relative;
+    margin-left: 0px;
     overflow-x: scroll;
     overflow-y: scroll;
     overflow: visible;
     background-color: white;
 }
 
-.colmid{
-    float:left;
-    position:relative;
+.colmid {
+    float: left;
+    position: relative;
     margin-left: 0px;
     height: 100px;
-    min-height:600px;
+    min-height: 500px;
     width: 0.5%;
     background-color: #BBBBBB;
 }
 
-.colmenu{
-    float:left;
+.colmenu {
+    float: left;
     margin-left: 0px;
-    position:relative;
-    width:30px;
-    background-color: #000000;
-    height:100%;
-
-}
-
-.colright{
-    float:left;
     position: relative;
-    width:80%;
+    width: 30px;
+    background-color: #000000;
     height: 100%;
-    min-height: 600px;
-    margin-left:0px;
+
 }
 
+.colright {
+    float: left;
+    position: relative;
+    width: 80%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height:auto;
+    margin-left: 0px;
+}
 
 /* 2 Column (left menu) settings */
 .leftmenu {
-    background:#fff;		/* right column background colour */
+    background: #fff; /* right column background colour */
 }
+
 .leftmenu {
-    right:75%;			/* right column width */
-    background:#f4f4f4;	/* left column background colour */
+    right: 75%; /* right column width */
+    background: #f4f4f4; /* left column background colour */
 }
+
 .leftmenu .col1 {
-    width:71%;			/* right column content width */
-    left:102%;			/* 100% plus left column left padding */
+    width: 71%; /* right column content width */
+    left: 102%; /* 100% plus left column left padding */
 }
+
 .leftmenu .col2 {
-    width:21%;			/* left column content width (column width minus left and right padding) */
-    left:6%;			/* (right column left and right padding) plus (left column left padding) */
+    width: 21%; /* left column content width (column width minus left and right padding) */
+    left: 6%; /* (right column left and right padding) plus (left column left padding) */
 }
 
 .leftmenu .col3 {
     display: inline-block;
     vertical-align: bottom;
-    width:2%;
-    left:6%;
+    width: 2%;
+    left: 6%;
     height: 550px;
     /*margin-top: -99999px;*/
-    background: #888;   /* (right column left and right padding) plus (left column left padding) */
+    background: #888; /* (right column left and right padding) plus (left column left padding) */
 }
+
 .separator {
     display: inline-block;
     vertical-align: bottom;
-    width:5%;
-    left:6%;
+    width: 5%;
+    left: 6%;
     height: 99999px;
     margin-top: -99999px;
     background: #888;
 }
+
 /* Footer styles */
 /*
 #footer {
@@ -300,60 +311,64 @@ img {
 }
 */
 
-
 /*
 Top Bar Animation Section starts
   */
-.selectLblCSS{
+.selectLblCSS {
     text-align: center;
     background-image: url('/delivery/pages/pub/graphics/screens/home/images/grad.png');
     background-repeat: repeat-x;
-    font-family: sans-serif;
-    font-family: verdana;
+    font-family:tahoma;
     font-size: 12px;
-    height:27px;
+    height: auto;
     color: #505050;
     font-weight: bolder;
-    padding-left: 5px;
-   /* padding-top: 5px;*/
-   /* background-color: #EEEEEE;*/
+    /* padding-top: 5px;*/
+    /* background-color: #EEEEEE;*/
     cursor: pointer;
-    margin-top: 0px;
-    border-bottom: 1px solid #BBBBBB;
+
+
 
 }
-.customSelectCSS{
+
+.customSelectCSS {
     position: relative;
     width: 80%;
 }
-.mainAnimationContainerCSS{
-    text-align: center;
-    background-color: #EEEEEE;
-    height: 27px;
-    border-top: 1px solid #BBBBBB;
-    border-left: 1px solid #BBBBBB;
-    border-right: 1px solid #BBBBBB;
-    border-bottom: 1px solid #BBBBBB;
+
+.mainAnimationContainerCSS {
+    vertical-align: middle;
+    background-color: white;
+    min-height: 35px;
+    height: auto;
+    padding: 3px;
+    display: none;
+
+    border-bottom: 1px solid #bbbbbb;
 }
 
-.formatTxt{
-    width: 100%;
-    height:27px;
-   /* background-color: #EEEEEE;*/
+.formatTxt {
+    margin: 5px;
+    vertical-align: middle;
+    width: auto;
+   /* min-height: 27px;*/
+    height: auto;
+    line-height: 16px;
+    /* background-color: #EEEEEE;*/
     background-image: url('/delivery/pages/pub/graphics/screens/home/images/grad.png');
     background-repeat: repeat-x;
+    float: left;
     text-align: center;
     font-size: 12px;
     font-weight: bolder;
-    font-family: verdana;
-    color:#505050;
-    border-top: 1px solid #BBBBBB;
-    border-left: 1px solid #BBBBBB;
-    border-right: 1px solid #BBBBBB;
-   /* border-bottom: 1px solid #BBBBBB;*/
-    margin:0;
-    margin-top: 0px;
+    font-family: tahoma;
+    color: #505050;
+
+    /* border-bottom: 1px solid #BBBBBB;*/
+
+    margin-left: 10px;
 }
+
 /*
 Top Bar Animation Section Ends
   */
@@ -367,10 +382,13 @@ Top Bar Animation Section Ends
 */
 
 
+html{
+    height: 100%;
+}
 
-.holder{
+.holder {
     min-height: 100%;
-    position:relative;
+    position: relative;
 }
 
 /*p{
@@ -378,27 +396,21 @@ Top Bar Animation Section Ends
     font-size: 14pt;
 }*/
 
-.logo{
+.logo {
     padding: 15px 20px 10px 10px;
 }
 
-.logoutBtnCSS{
-    border:#fbb450;
+.logoutBtnCSS {
+    border: #fbb450;
     float: right;
     margin: 15px 10px 0px 0px;
 }
-
 
 /*
 Top Bar Animation Section starts
   */
 
 /* Top Bar Animation Section Ends  */
-
-
-
-
-
 
 /*
 .header{
@@ -409,91 +421,90 @@ Top Bar Animation Section starts
     border-bottom:1px solid #000;
 }*/
 
-.loginViewContainerCSS{
+.loginViewContainerCSS {
     padding: 15px 20px 10px 10px;
 }
 
-.legendCSS{
+.legendCSS {
     padding: 0px 0px 0px 0px;
 }
 
-.mainContainer{
+.mainContainer {
+    min-height: 100%;
     float: left;
     position: relative;
     width: 100%;
-    min-height: 600px;
-    height:auto;
+    height: auto;
     margin-top: 0px;
-    overflow: hidden;
+    overflow: auto;
     /*position: relative;*/
 }
 
-.container{
-    width:100%;
+.container {
+    width: 100%;
     padding-left: 100px;
     background-color: white;
     border-bottom: 2px solid #565656;
 }
 
-.UIContainer{
+.UIContainer {
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
-    position:absolute;
+    position: absolute;
     background-color: #999999;
 }
 
-#leftPanel{
-    width:90%;
+#leftPanel {
+    width:30%;
     height: 100%;
     float:left;
     position: relative;
     background-color: white;
     min-height: 600px;
-   /* border-right: #0e0e0e solid thin;*/
+    /* border-right: #0e0e0e solid thin;*/
     margin-left: 0px;
     margin-top: 0px;
 }
-#rightPanel{
+
+#rightPanel {
     height: 100%;
-    min-height: 600px;
-    width: 99.5%;
+    width: 100%;
     margin-top: 0px;
-    float:left;
+    float: left;
     position: relative;
     margin-left: auto;
     margin-right: auto;
     background-color: white;
 }
 
-#lefttree{
+#lefttree {
     padding-left: 5px;
 }
 
-#rightPanelView
-{
+#rightPanelView {
     height: 100%;
     width: 100%;
-    float:left;
+    float: left;
     position: relative;
 }
 
-.footer{
+.footer {
     /*float: left;*/
     position: relative;
     background-image: url('/delivery/pages/pub/graphics/screens/home/images/grad.png');
     height: 27px;
-    width:100%;
+    width: 100%;
     border-top: 1px solid rgb(187, 187, 187);
     border-left: 1px solid rgb(187, 187, 187);
     border-right: 1px solid rgb(187, 187, 187);
     border-bottom: 1px solid rgb(187, 187, 187);
     float: left;
-    top:0px;
+    top: 0px;
 }
 
-#footertxt{
+#footertxt {
 
     margin-top: 5px;
     text-align: center;
@@ -502,7 +513,7 @@ Top Bar Animation Section starts
     font-family: calibri;
 }
 
-.notificationCSS{
+.notificationCSS {
 
     font-family: "verdana";
     font-size: 10px;
@@ -527,48 +538,50 @@ Top Bar Animation Section starts
     padding-bottom: 5px;
 }
 
-.notificationTxtCSS{
+.notificationTxtCSS {
     font-size: 12px;
 }
 
-#dim{
+#dim {
     position: relative;
     float: left;
-    background-color:white;
-    width: 97%;
+    background-color: white;
+    margin-left: 0;
+    width: 98%;
+    margin-right:0;
     height: 100%;
 }
 
 /* Right hand side Panel viewHolderCSS */
 
-.viewHolderCSS{
+.viewHolderCSS {
+    padding: 0px;
     position: relative;
     float: left;
-    background-color:white;
+    background-color: white;
     width: 100%;
-    height: 550px;
-   /* overflow-x:scroll;
-    overflow-y: scroll;*/
+    min-height: 550px;
+    /* overflow-x:scroll;
+     overflow-y: scroll;*/
 }
 
 /* CSS for Assortment Panel*/
 
-
-#assortPanel{
+#assortPanel {
     margin-top: 5px;
     margin-left: 5px;
     border: 1px solid #BBBBBB;
     position: relative;
-    float:left;
+    float: left;
     width: 80%;
     height: 99%;
     display: none;
 }
 
-#assortPanelHeader{
+#assortPanelHeader {
     position: relative;
     width: 100%;
-    margin-top:0px;
+    margin-top: 0px;
     height: 30px;
     background-color: #EEEEEE;
     text-align: center;
@@ -577,8 +590,7 @@ Top Bar Animation Section starts
     font-weight: bolder;
 }
 
-
-#subtab1{
+#subtab1 {
     border-top: 1px solid #BBBBBB;
     border-bottom: 1px solid #BBBBBB;
     text-align: center;
@@ -590,48 +602,46 @@ Top Bar Animation Section starts
     overflow-y: auto;
 }
 
-#subtab2{
+#subtab2 {
     float: left;
     position: relative;
     width: 100%;
     text-align: center;
 }
 
-#asBTN{
+#asBTN {
     margin-top: 15px;
 
 }
 
 /* CSS for laeft slide Panel for Assortment*/
 
-#rightMenuBar{
+#rightMenuBar {
     z-index: 1000;
-    position: relative;
-    width:2.8%;
-    min-height: 572px;
+    position: absolute;
+    width: 29px;
     height: 100%;
-    float:right;
-    margin-right: 0px;
+    float: right;
+    right: 0px;
     background-color: #373737;
     border-left: 1px solid #BBBBBB;
     border-top: 1px solid #BBBBBB;
 }
 
-#panel
-{
+#panel {
 
-    text-align:center;
-    color:#505050;
+    text-align: center;
+    color: #505050;
     font-family: tahoma;
     font-weight: bold;
     font-size: 12px;
-    background-color:#EEEEEE;
-    border:0px;
-    position:absolute;
-    right:-200px;
-    padding:0px;
-    min-height:600px;
-    width:200px;
+    background-color: #EEEEEE;
+    border: 0px;
+    position: absolute;
+    right: -200px;
+    padding: 0px;
+    height: 500px;
+    width: 200px;
     border-bottom-left-radius: 2px;
     border-top-left-radius: 2px;
     border-top: 1px solid #BBBBBB;
@@ -639,34 +649,33 @@ Top Bar Animation Section starts
     border-left: 1px solid #BBBBBB;
     border-right: 1px solid #BBBBBB;
 
-
 }
 
-.assetType{
+.assetType {
     padding-top: 5px;
-    width:100%;
-    height:25px;
+    width: 100%;
+    height: 25px;
     border-bottom: 1px solid #BBBBBB;
-    top:0px;
+    top: 0px;
     background-image: url(../images/icons/grad.png);
     background-size: auto;
     background-repeat: repeat-x;
 }
 
-#typeHolder{
+#typeHolder {
     font-weight: bolder;
-    width:100%;
-    height:27px;
+    width: 100%;
+    height: 27px;
     border-bottom: 1px solid #BBBBBB;
-    top:0px;
+    top: 0px;
     background-image: url(../images/icons/grad.png);
-    background-size:contain;
+    background-size: contain;
     background-repeat: repeat-x;
 }
 
-#assetSearch{
-    width:90%;
-    height:20px;
+#assetSearch {
+    width: 90%;
+    height: 20px;
     border-bottom-left-radius: 10px;
     border-top-left-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -675,109 +684,108 @@ Top Bar Animation Section starts
     margin-bottom: 5px;
 
 }
-#assetsTree{
+
+#assetsTree {
     overflow-x: auto;
     overflow-y: scroll;
     font-weight: lighter;
     margin-top: 5px;
-    background-color:white;
+    background-color: white;
     border-top: 1px solid #BBBBBB;
     border-bottom: 1px solid #BBBBBB;
     /* border-left: 1px solid #BBBBBB;*/
     /* border-right: 1px solid #BBBBBB;*/
-    top:0px;
-    width:100%;
-    height:250px;
+    top: 0px;
+    width: 100%;
+    height: 250px;
     text-align: left;
 
-
 }
-#assetDetails  {
+
+#assetDetails {
     overflow-x: auto;
     overflow-y: scroll;
     font-weight: lighter;
     font-style: italic;
     margin-top: 3px;
-    background-color:white;
+    background-color: white;
     border-top: 1px solid #BBBBBB;
     border-bottom: 1px solid #BBBBBB;
     /* border-left: 1px solid #BBBBBB;
      border-right: 1px solid #BBBBBB;*/
 
-    top:0px;
-    width:100%;
-    min-height:200px;
+    top: 0px;
+    width: 100%;
+    min-height: 200px;
 
 }
 
-#assetSearch input{
+#assetSearch input {
     margin-left: 5px;
     border-bottom-left-radius: 10px;
     border-top-left-radius: 10px;
     border-bottom-right-radius: 10px;
     border-top-right-radius: 10px;
-    width:98%;
-    height:60%;
+    width: 98%;
 }
 
-.rightMenu{
+.rightMenu {
     border-bottom: 1px solid #BBBBBB;
     width: 30px;
     height: 30px;
 
 }
 
-
-
-#btnPIM{
+#btnPIM {
     background-image: url("../images/icons/PIM.png");
 
 }
-#btnMIM{
+
+#btnMIM {
     background-image: url("../images/icons/MIM.png");
 
 }
-#btnMAM{
+
+#btnMAM {
     background-image: url("../images/icons/MAM.png");
 
 }
 
-
 /* Tile, List and Detail View Item Renderer CSS Section Starts */
-.tileImgCSS{
+.tileImgCSS {
     position: absolute;
-    top:50px;
-    left:40px;
-    height:27px;
+    top: 50px;
+    left: 40px;
+    height: 27px;
     width: 60px;
 }
 
-.listImgCSS{
+.listImgCSS {
     position: absolute;
-    top:5px;
-    left:5px;
+    top: 5px;
+    left: 5px;
     height: 13px;
     width: 30px;
 }
 
-.detailImgCSS{
-    position:relative;
+.detailImgCSS {
+    position: relative;
     top: 10px;
-    margin-left:5px;
+    margin-left: 5px;
     float: left;
-    height:70px;
+    height: 70px;
     width: 70px;
 }
 
-.tileListViewImgTxtCSS{
+.tileListViewImgTxtCSS {
     position: absolute;
-    bottom:0px;
+    bottom: 0px;
     font-size: 16px;
     text-align: center;
-    left:45px;
+    left: 45px;
 }
 
-.tileViewImgTxtCSS{
+.tileViewImgTxtCSS {
     position: absolute;
 
     font-size: 12px;
@@ -794,118 +802,129 @@ Top Bar Animation Section starts
 
 }
 
-
-.detailTitleTxtCSS{
+.detailTitleTxtCSS {
     position: relative;
-    margin-top:5px;
-    margin-left:20px;
+    margin-top: 5px;
+    margin-left: 20px;
     float: left;
-    height:auto;
-    width:auto;
+    height: auto;
+    width: auto;
 }
 
-.detailContentTxtCSS{
+.detailContentTxtCSS {
     position: relative;
-    margin-top:10px;
-    margin-left:20px;
-    width:auto;
-    height:auto;
+    margin-top: 10px;
+    margin-left: 20px;
+    width: auto;
+    height: auto;
     float: left;
     height: auto;
 }
 
-.detailTitleContent{
+.detailTitleContent {
     position: relative;
-    margin-top:5px;
-    margin-left:20px;
+    margin-top: 5px;
+    margin-left: 20px;
     float: left;
-    height:auto;
+    height: auto;
     width: auto;
-
 
 }
 
-.tileDivCSS{
+.tileDivCSS {
     position: relative;
     float: left;
-    height : 160px; width : 128px;
+    height: 160px;
+    width: 128px;
     padding: 5px;
     margin: 5px;
-    border:1px solid #BBBBBB;
-    border-radius:12px;
+    border: 1px solid #BBBBBB;
+    border-radius: 12px;
     background-color: #DFDFDF;
 }
 
-.listDivCSS{
+.listDivCSS {
     position: relative;
-    background-color:#DFDFDF;
+    background-color: #DFDFDF;
     float: left;
-    height : 35px;
-    width : 95%;
+    height: 35px;
+    width: 95%;
     padding: 5px;
     margin: 5px;
-    border:1px solid #BBBBBB;
-    border-radius:12px;
+    border: 1px solid #BBBBBB;
+    border-radius: 12px;
 }
 
-.detailDivCSS{
+.detailDivCSS {
     position: relative;
-    background-color:#DFDFDF;
-    border:1px solid #BBBBBB;
-    border-radius:12px;
+    background-color: #DFDFDF;
+    border: 1px solid #BBBBBB;
+    border-radius: 12px;
     float: left;
-    height : auto;
-    width : 95%;
+    height: auto;
+    width: 95%;
     padding: 5px;
     margin: 5px;
 
 }
 
-.viewOptionCSS{
+.viewOptionCSS {
     position: relative;
     /*background: 'url("'+EngineDataStore.getBaseURL()+'graphics/screens/home/images/icons/tile.png")';*/
-    background-image: url('/delivery/pages/pub/graphics/screens/home/images/icons/grad.png');
+    /*
+        background-image: url('../images/icons/');
+    */
     background-repeat: repeat-x;
+    /*display: none;*/
 
-   /* background-color:#777777;*/
+    /* background-color:#777777;*/
+    padding-top: 2px;
     float: left;
-    height : 27px;
-    width : 100%;
-    text-align: center;
-    border-top: 1px solid #BBBBBB;
-    border-left: 1px solid #BBBBBB;
-    border-bottom: 1px solid #BBBBBB;
+    min-height: 28px;
+    height: auto;
+    width: 100%;
+    border-bottom: 0px solid #BBBBBB;
+    background-image: linear-gradient(rgb(248, 248, 248), rgb(228, 229, 231));
 }
 
-.tileBtnCSS{
+.tileBtnCSS {
     /*background: 'url("'+EngineDataStore.getBaseURL()+'graphics/screens/home/images/icons/tile.png")';*/
-    background:url(/delivery/pages/pub/graphics/screens/home/images/icons/tile.png);
+    background-image: url("../images/icons/tile.png");
     background-repeat: no-repeat;
-    border:0px;
+    border: 0px;
     width: 28px;
     height: 22px;
     margin-top: 2px;
+    float: right;
+    margin-right: 0px;
+
 }
 
-.listBtnCSS{
+.listBtnCSS {
     /*background: 'url("'+EngineDataStore.getBaseURL()+'graphics/screens/home/images/icons/list.png")';*/
-    background:url(/delivery/pages/pub/graphics/screens/home/images/icons/list.png);
+    background-image: url("../images/icons/list.png");
     background-repeat: no-repeat;
-    border:0px;
+    border: 0px;
     width: 28px;
     height: 22px;
     margin-top: 2px;
+    float: right;
+    margin-right: 6px;
+
 }
 
-.detailBtnCSS{
+.detailBtnCSS {
     /*background: 'url("'+EngineDataStore.getBaseURL()+'graphics/screens/home/images/icons/detail.png")';*/
-    background:url(/delivery/pages/pub/graphics/screens/home/images/icons/detail.png);
+    background-image: url("../images/icons/detail.png");
     background-repeat: no-repeat;
-    border:0px;
+    border: 0px;
     width: 28px;
     height: 22px;
     margin-top: 2px;
+    float: right;
+    margin-right: 6px;
 }
+
 /* Tile, List and Detail View Item Renderer CSS Section Ends */
 /*
 
@@ -943,36 +962,44 @@ Top Bar Animation Section starts
     overflow-y: auto;
 }*/
 
-
-.jqx-listitem-state-normal   {
-    height:58px !important;
+.jqx-listitem-state-normal {
+    height: 58px !important;
     position: relative !important;
-    background-color:#DFDFDF !important;
-    border:1px solid #BBBBBB !important;
-    border-radius:12px !important;
+    background-color: #DFDFDF !important;
+    border: 1px solid #BBBBBB !important;
+    border-radius: 12px !important;
     float: left !important;
 
-
-    width : 95% !important;
-  /*  padding: 5px !important;
-    margin: 5px !important;*/
+    width: 95% !important;
+    /*  padding: 5px !important;
+      margin: 5px !important;*/
 }
 
-
+#mrmGanttChart{
+    min-height: 285px;
+    height: 100%;
+    width: 100%;
+    z-index: 9;
+    /*
+        resize: vertical;
+    */
+}
 
 /************************PAGE STUFF STARTS!!!!!********************/
 
 .masterPage {
-    width: 106px;
-    height: 150px;
-    margin: 20px;
+    z-index: 100;
+    width: 120px;
+    height: 160px;
+    margin-left: 20px;
+    margin-top: 20px;
     float: left;
     position: relative;
     color: #222;
-    padding: 8px;
+
     border: 1px solid #ccc;
-    box-shadow: inset 0 0 30px rgba(0,0,0,0.3), 1px 1px 3px rgba(0,0,0,0.9);
-    overflow: hidden;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.3), 1px 1px 3px rgba(0, 0, 0, 0.9);
+    overflow: visible;
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
@@ -981,95 +1008,110 @@ Top Bar Animation Section starts
 
 .childPages {
 
-    width: 106px;
-    height: 150px;
-    margin: 20px;
+    width: 120px;
+    height: 160px;
+    padding: 0;
+    margin-left: 20px;
+    margin-top: 20px;
+    /*margin: 20px;
     float: left;
     position: relative;
-    color: #222;
+*//*
     padding: 8px;
+*/
+    color: #222;
     background: transparent;
     overflow: hidden;
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
-
 }
 
-.childPages .inner {
-    width: 90px;
-    height: 125px;
-    margin-top: 15px;
-    margin: 13px 0px 5px 0px;
-    float: left;
-    position: relative;
-    color: #222;
-    padding: 8px;
+.childPages > .inner {
+    width: 105px;
+    height: 130px;
+    border-top-right-radius:10px ;
+    left: 7px;
+    bottom: 2px;
+    position: absolute;
+    margin: 0px !important;
     border: 1px solid #ccc;
-    box-shadow: inset 0 0 30px rgba(0,0,0,0.3), 1px 1px 3px rgba(0,0,0,0.9);
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.3), 1px 1px 3px rgba(0, 0, 0, 0.9);
+    color: #222;
+
     overflow: hidden;
-
+   /* bottom: 0;
+    right: 0;
+*//*
+    margin: 13px 0px 5px 0px;
+*//*
+    float: right;
+    position: absolute;
+    padding: 8px;
+  */
 }
 
+.assortment{
+    margin-left: 7px;
+}
+.templateName{
+    margin-left: 7px;
+    margin-top: 20px;
+}
 
-.childPages .inner:hover{
+.childPages .inner:hover {
     text-shadow: 0 0 5px white, 0 0 5px white;
-    cursor:pointer;
+    cursor: pointer;
 }
 
-.popupImage{
-    position:absolute;
-    height:17px;
-    top:2%;
-    left:80%;
-    margin:10px
-    -webkit-transition: box-shadow 0.5s ease-in;
-    -moz-transition: box-shadow 0.5s ease-in;
-    -ms-transition: box-shadow 0.5s ease-in;
-    -o-transition: box-shadow 0.5s ease-in;
-    transition: box-shadow 0.5s ease-in;
+.masterPage.odd {
+    background-color: #638FDB;
 }
 
-.popupImage.urlInjected{
-    box-shadow: 0 0 10px white, 0 0 10px white;
-    cursor:pointer;
+.masterPage.even {
+    background-color: #B8BFDB;
 }
 
-.masterPage.odd          { background: #638FDB;  }
-.masterPage.even           { background: #B8BFDB; }
-.childPages.odd.inner          { background: #638FDB; }
-.childPages.even.inner      { background: #B8BFDB; }
-
-
-.masterPage .type {
-    margin-top: 60px;
-    margin-left: 10px;
-    font-size: 1.0em;
+.masterPage > .name{
+    width: 80%;
+    margin: 2%;
 }
 
-.masterPage .name {
-    margin-top: 10px;
-    margin-left: 10px;
-    font-size: 2.2em;
+.childPages.odd.inner {
+    background-color: #82A2D8;
+}
+
+.childPages.even.inner {
+    background-color: #C9CDDB;
+}
+
+
+.masterPage > .type {
+    line-height: 1.5em;
+    bottom: 20%;
+    left:5px;
+    font-size: 1em;
+    position: absolute;
+}
+
+
+.masterPage > .name {
+    font-size: 1.5em;
+    line-height: 1.2em;
+
     color: #FFF;
 }
 
-.childPageName{
-    margin-top: 10px;
+
+.childPageName {
+    font-size: 1.5em;
+    line-height: 1.2em;
+    width: 80%;
     margin-left: 10px;
-    font-size: 30px;
+
     color: #FFF;
-    word-wrap: break-word;
-    display: inline-block;
-    -webkit-transition: text-shadow 0.5s ease-in;
-    -moz-transition: text-shadow 0.5s ease-in;
-    -ms-transition: text-shadow 0.5s ease-in;
-    -o-transition: text-shadow 0.5s ease-in;
-    transition: text-shadow 0.5s ease-in;
 }
-
-
 
 .masterPage.rules-opened {
     /*    -webkit-transform: rotateY(180deg);
@@ -1083,7 +1125,7 @@ Top Bar Animation Section starts
     background: #7894C4;
 
     height: 420px;
-    width:  420px;
+    width: 420px;
 }
 
 /*.masterPage.is-restored {
@@ -1100,21 +1142,18 @@ Top Bar Animation Section starts
 
 }*/
 
-
-
-h2.open{
-    position:absolute;
-    top:68%;
-    left:5%;
-    font-size: 25px;
+.open {
+    position: absolute;
+    /*bottom: -10px;
+    left: 5px;
+*/
 }
 
-h2:hover{
-    cursor:pointer;
-    /*color:white;*/
-    text-shadow:
-        0 0 8px white,
-        0 0 8px white;
+.openRules{
+    position: absolute;
+    font-family: tahoma;
+    bottom: -10px;
+    left: 5px;
     -webkit-transition: text-shadow 0.3s ease-out;
     -moz-transition: text-shadow 0.3s ease-out;
     -ms-transition: text-shadow 0.3s ease-out;
@@ -1122,12 +1161,31 @@ h2:hover{
     transition: text-shadow 0.3s ease-out;
 }
 
-h2.expand{
-    position:absolute;
-    top:68%;
-    left:80%;
+
+
+.selected {
+    border-bottom: 1px solid #d1d1d1;
+}
+
+h2:hover {
+    cursor: pointer;
+    /*color:white;*/
+    text-shadow: 0 0 8px white, 0 0 8px white;
+    -webkit-transition: text-shadow 0.3s ease-out;
+    -moz-transition: text-shadow 0.3s ease-out;
+    -ms-transition: text-shadow 0.3s ease-out;
+    -o-transition: text-shadow 0.3s ease-out;
+    transition: text-shadow 0.3s ease-out;
+}
+
+h2.expand {
+    position: absolute;
+    right: 5px ;
+    bottom: -5px ;
+    line-height: 25px;
+
     font-size: 25px;
-    display:none;
+    display: none;
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
@@ -1139,167 +1197,168 @@ h2.expand{
     color:black;
 }*/
 
-.loading-overlay { z-index:200;
-    display:none;
+.loading-overlay {
+    z-index: 200;
+    display: none;
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     background-color: #000;
-    opacity: 0.7; }
+    opacity: 0.7;
+}
 
-.loading-message { z-index:250;display:none; position: absolute;height:30px;width:30px;top:31%;left:35%;
+.loading-message {
+    z-index: 250;
+    display: none;
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    top: 31%;
+    left: 35%;
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
-    user-select: none; }
-
-
+    user-select: none;
+}
 
 /************************PAGE STUFF ENDS!!!!!********************/
-
 
 /************************RULE STUFF START!!!!!********************/
 
 .rule {
-    height:100%;
-    width:100%;
-    color:White;
-    top:1px;
-    position:absolute;
-    display:none;
+    height: 100%;
+    width: 100%;
+    color: White;
+    top: 1px;
+    position: absolute;
+    display: none;
     overflow-y: auto;
-    overflow-x:hidden;
+    overflow-x: hidden;
 }
 
-.rulesFront{
+.rulesFront {
     margin: 0 0 0 55%;
 }
 
-.rulesText{
-    height:25px;
-    width:125px;
+.rulesText {
+    height: 25px;
+    width: 125px;
     position: relative;
-    margin:2px;
+    margin: 2px;
     padding: 0px;
 }
 
-
-.operation{
-    padding:0px;
-    width:41px;
-    margin:0.5px;
+.operation {
+    padding: 0px;
+    width: 41px;
+    margin: 0.5px;
 }
 
-
-
-.groupType{
-    margin:0.5px;
-    width:108px
+.groupType {
+    margin: 0.5px;
+    width: 108px
 }
 
-.value{
-    margin:0.5px;
-    width:109px
+.value {
+    margin: 0.5px;
+    width: 109px
 }
 
-
-.buttons{
-    position:relative;
-    padding:5px;
+.buttons {
+    position: relative;
+    padding: 5px;
     font-weight: bold;
     font-size: 15px;
     cursor: pointer;
 }
 
-
-.addNewThen{
-    font-size: 27px;
-    width:5%;
+.addNewThen {
+    font-size: 22px;
+    width: 3%;
 }
 
-.thenChild{
-    position:relative;
-    width:100%;
-    border-bottom:1px dashed white;
+.thenChild {
+    position: relative;
+    width: 100%;
+    border-bottom: 1px dashed white;
     padding: 5px;
 }
 
-.then{
-    width:100%;
+.then {
+    width: 100%;
     z-index: 25;
 }
 
-.whenChild{
-    position:relative;
+.whenChild {
+    position: relative;
     padding-left: 20px;
-    margin:5px;
+    margin: 5px;
 }
 
-.backButtonClass{
-    position:absolute;
-    top:2px;
-    right:4px;
+.backButtonClass {
+    position: absolute;
+    top: 2px;
+    right: 4px;
 }
 
-h2.close:hover{
-    opacity:0.9;
+h2.close:hover {
+    opacity: 0.9;
     color: red;
-    text-shadow:
-        0 0 2px red,
-        0 0 2px red;
+    text-shadow: 0 0 2px red, 0 0 2px red;
 
-    -webkit-transition: color 0.3s ease-out;
-    -moz-transition: color 0.3s ease-out;
-    -ms-transition: color 0.3s ease-out;
-    -o-transition: color 0.3s ease-out;
-    transition: color 0.3s ease-out;
 }
 
-h2.close{
-    position:absolute;
-    top:0.7%;
-    left:92%;
+h2.close {
+    position: absolute;
+    top: 0.7%;
+    left: 92%;
     z-index: 50;
     line-height: 0px;
-    opacity:1;
+    opacity: 1;
     color: darkred;
     font-size: 16px;
     text-shadow: 0 0px 0 darkred;
+
+    -webkit-transition: color, text-shadow 0.3s ease-out;
+    -moz-transition: color, text-shadow 0.3s ease-out;
+    -ms-transition: color, text-shadow 0.3s ease-out;
+    -o-transition: color, text-shadow 0.3s ease-out;
+    transition: color, text-shadow 0.3s ease-out;
 }
 
-
-h2.save:hover{
-    opacity:0.7;
+h2.save:hover {
+    opacity: 0.7;
     color: greenyellow;
 }
 
-img.save{
+img.save {
     line-height: 0px;
-    top:2.1%;
-    left:6%;
+    top: 2.1%;
+    left: 8%;
     font-size: 15px;
-    position:absolute;
+    position: absolute;
     text-decoration: none;
     cursor: pointer;
     float: left;
     font-weight: bold;
     text-shadow: 0 1px 0 lightgreen;
-    height:17px;
+    height: 17px;
 }
 
 /************************RULE STUFF ENDS!!!!!********************/
 /*for hidden fields and unwanted divs in certain views*/
-.hidden{
-    visiblity:hidden;
+.hidden {
+    visiblity: hidden;
 }
 
 /*********************DIMESNION STUFF START!!!!!*****************/
 
 .dimension {
-    width: 200px;
-    height: 200px;
+    text-wrap: normal;
+    width: 150px;
+    height: 150px;
     margin: 5px;
     float: left;
     position: relative;
@@ -1307,26 +1366,31 @@ img.save{
     color: #222;
     padding: 8px;
     border: 1px solid #ccc;
-    box-shadow: inset 0 0 30px rgba(0,0,0,0.3), 1px 1px 3px rgba(0,0,0,0.9);
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.3), 1px 1px 3px rgba(0, 0, 0, 0.9);
     -webkit-border-top-right-radius: 1.2em;
     -moz-border-radius-topright: 1.2em;
     border-top-right-radius: 1.2em;
+
 }
 
 .dimension * {
     margin: 0;
 }
 
-.dimension .type {
-    margin-top: 80px;
+.type {
+
+    line-height: 1.5em;
+    bottom: 17px;
     left: 0.5em;
     font-size: 1.0em;
+    font-family: tahoma;
+    position: absolute;
 }
 
-.dimension .name {
-    margin-left: 10px;
-    font-size: 2.2em;
-    line-height: 2.0em;
+.name {
+    font-size: 1.5em;
+    line-height: 1.2em;
+
     color: #FFF;
 }
 
@@ -1339,13 +1403,12 @@ img.save{
 .dimension .number {
     font-size: 1.25em;
     font-weight: bold;
-    color: hsla(0,0%,0%,.5);
+    color: hsla(0, 0%, 0%, .5);
     right: 0.5em;
     top: 0.5em;
 }
 
 /*********************DIMESNION STUFF END!!!!!*****************/
-
 
 /*************ISOTOPE STUFF START!!******************************/
 
@@ -1379,18 +1442,17 @@ img.save{
 
 .isotope .isotope-item {
     -webkit-transition-property: -webkit-transform, opacity;
-    -moz-transition-property:    -moz-transform, opacity;
-    -ms-transition-property:     -ms-transform, opacity;
-    -o-transition-property:      -o-transform, opacity;
-    transition-property:         transform, opacity;
+    -moz-transition-property: -moz-transform, opacity;
+    -ms-transition-property: -ms-transform, opacity;
+    -o-transition-property: -o-transform, opacity;
+    transition-property: transform, opacity;
 }
 
 /*********************ISOTOPE STUFF END!!******************************/
 
-#dialog-confirm{
-    display:none;
+#dialog-confirm {
+    display: none;
 }
-
 
 .ui-dialog-titlebar {
     text-align: center;
@@ -1411,22 +1473,150 @@ img.save{
     line-height: 18px;
 }
 
-.ui-widget-header{
+.ui-widget-header {
     background-color: #343434;
     background-image: none !important;
     color: white;
     border: none !important;
 }
 
-.ui-dialog-buttonpane{
-    padding:0px !important;
+.ui-dialog-buttonpane {
+    padding: 0px !important;
     background-color: #c9c9c9 !important;
 }
 
-.ui-widget{
-    font-size: 11px; !important
+.ui-widget {
+    font-size: 11px;
+!important
 }
-.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset{
-    margin:0 auto;
+
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
+    margin: 0 auto;
+}
+
+.navbar-inverse .nav .active > a, .navbar-inverse .nav .active > a:hover, .navbar-inverse .nav .active > a:focus {
+    background-color: #FFFFFF;
+    color: #4D4D4F;
+}
+
+.dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {
+    background-color: #16A170;
+    background-image: linear-gradient(to bottom, #17AA76, #149466);
+    background-repeat: repeat-x;
+    color: #FFFFFF;
+    outline: 0 none;
+    text-decoration: none;
+}
+
+/*
+
+.paper-stack {
+    z-index: 1;
+    border: 1px solid #ccc;
+    background-color: white;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.3), 1px 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+
+
+.paper-stack::after {
+    z-index: -1;
+    content: "";
+    display: block;
+    width: 120px;
+    height: 160px;
+    background-color: white;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    border: 0px solid #ccc;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.3), 1px 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.paper-stack::before {
+    z-index: -2;
+    content: "";
+    width: 120px;
+    height: 160px;
+    background-color: red;
+    position: absolute;
+    left: -5px;
+    top: -5px;
+    border: 0px solid black;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.3), 1px 1px 3px rgba(0, 0, 0, 0.9);
+
+}
+*/
+
+
+.btn-group{
+    margin: 0 auto !important;
+    top:0px;
+
+}
+
+.btn-group > .btn{
+    font-size: 12px;
+    line-height: 14px;
+    font-family: tahoma;
+
+}
+
+#mainAnimationContainer > .bootstrap-select:not([class*="span"]){
+    width: 200px;
+    left: 10px;
+    float: left;
+}
+
+.btn-group > .dropdown-menu {
+    font-size: 11px;
+    padding: 0;
+
+}
+
+.dropdown-menu > .inner{
+    font-size: 12px;
+}
+
+.dynatree-ico-ef span.dynatree-icon {
+    background-image: url("../images/icons/520610-folder-16.png");
+    background-position: 0 0 !important;
+    opacity: .8;
+
+}
+
+.dynatree-ico-cf span.dynatree-icon {
+    background-image: url("../images/icons/520611-folder_2-16.png");
+    background-position: 0 0 !important;
+    opacity: .8;
+
+}
+
+.dynatree-exp-el span.dynatree-expander{
+
+}
+
+#viewOptionNew{
+    width: 150px;
+    height: 24px;
+    overflow: hidden;
+    float: right;
+    right: 10px;
+    position: absolute;
+
+
+}
+
+.then > .buttons{
+    padding: 2px 2px 2px 5px;
+}
+/*
+.btn-inverse:hover, .btn-inverse:focus{
+    background-color: #343434;
+}*/
+
+
+.jqx-fill-state-pressed{
+    background-color: #777777 !important;
 }
 

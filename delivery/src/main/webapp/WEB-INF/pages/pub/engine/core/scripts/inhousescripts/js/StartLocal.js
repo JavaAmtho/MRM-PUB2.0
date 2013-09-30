@@ -1,5 +1,6 @@
 var pubIdToOpen;
 $(document).ready(function() {
+    $("body").queryLoader2();
     pubIdToOpen = getParameterByName("pubId");
     EngineDataStore.setBaseURL("../../../");
     getScreenMappingObject();
