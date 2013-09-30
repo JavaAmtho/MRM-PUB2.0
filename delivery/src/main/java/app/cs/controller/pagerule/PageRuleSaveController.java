@@ -22,10 +22,8 @@ public class PageRuleSaveController {
 
 	@RequestMapping(value = { "/page/rule/save/" }, method = RequestMethod.POST)
 	public @ResponseBody
-	String savePageRules(@RequestBody PageRulesRequest pageRulesRequest) {
-		System.out.println("in controller");
+	void savePageRules(@RequestBody PageRulesRequest pageRulesRequest) {
 		createPageRules.execute(pageRulesRequest);
-		return "success";
 	}
 
 }

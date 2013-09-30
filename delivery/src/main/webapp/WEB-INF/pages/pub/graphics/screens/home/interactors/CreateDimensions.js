@@ -3,7 +3,7 @@ function CreateDimensions(){
 }
 
 CreateDimensions.createDim = function(prefix,action,name,currentPath,flag,callBack){
-
+       
     var reqBody = new Object();
     if(action === "Publication"){
         var myArr = EngineDataStore.getPublicationDetailsArray();

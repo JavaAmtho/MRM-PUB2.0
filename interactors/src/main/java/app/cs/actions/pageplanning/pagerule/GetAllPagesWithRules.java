@@ -26,11 +26,13 @@ public class GetAllPagesWithRules implements Interactor {
 
 	public ResponseModel execute(RequestModel requestMdel) {
 		StringRequest request = (StringRequest) requestMdel;
-		PageRules pageRules = pageRuleRepository.getPageRuleFor(request
+		PageRules pageRules = pageRuleRepository.getPageRulesFor(request
 				.getStringRequest());
-		pageRulesResponse.setLogicalPageID(pageRules.getId());
-		pageRulesResponse.setPageRules(pageRules.getPageRules());
-		return (ResponseModel) pageRulesResponse;
+		if(pageRules != null){
+		    pageRulesResponse.setLogicalPageID(pageRules.getId());
+            pageRulesResponse.setPageRules(pageRules.getPageRules());
+        }
+        return (ResponseModel) pageRulesResponse;
 	}
 
 }

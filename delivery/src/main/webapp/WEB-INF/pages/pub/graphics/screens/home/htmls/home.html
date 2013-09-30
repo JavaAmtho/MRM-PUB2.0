@@ -1,13 +1,26 @@
+<div id="viewOption" class="viewOptionCSS">
+    <div id="viewOptionNew">
+        <button id="tileView" class="tileBtnCSS"></button>
+        <button id="listView" class="listBtnCSS"></button>
+        <button id="detailView" class="detailBtnCSS"></button>
+    </div>
+</div>
 <div class="colmask">
-    <div class="colleft">
+    <div class="splitter-panel">
+<!--
         <div id="menubar" class="menubar"></div>
+-->
 
 
                 <span id="leftPanel" class="span3">
 
                     <div id="mainAnimationContainer" class="mainAnimationContainerCSS">
-                        <p id="selectLbl" class="selectLblCSS">Select View</p>
-                        <select id="schemaDropDown" class="customSelectCSS">
+<!--
+                        <p id="selectLbl" class="selectLblCSS" >Select View</p>
+-->
+                        <!--<select id="schemaDropDown" class="selectpicker"  data-style="btn-inverse" data-width="auto"> </select>-->
+                        <p id="selectLbl" class="selectLblCSS" >Select View</p>
+                        <select id="schemaDropDown" class="selectpicker"  data-style="btn-primary">
                         </select>
                     </div>
 
@@ -54,26 +67,29 @@
 
     </div>
 
-    <div class="colright">
+    <div class="splitter-panel">
+<!--
         <div class="colmid"></div>
+-->
 
               <span id="rightPanel" class="span9">
 
-                 <p id="txt" class="formatTxt"></p>
+
 
                      <div id="rightPanelView">
                          <div id="dim">
-                             <div id="viewOption" class="viewOptionCSS">
+                           <!--  <div id="viewOption" class="viewOptionCSS">
+                                 <span id="txt" class="formatTxt"></span>
                                  <button id="tileView" class="tileBtnCSS"></button>
                                  <button id="listView" class="listBtnCSS"></button>
                                  <button id="detailView" class="detailBtnCSS"></button>
-                             </div>
+                             </div>-->
                              <div id="viewHolder" class="viewHolderCSS">
 
                              </div>
                          </div>
                          <div id="assortPanel">
-                             <div id="assortPanelHeader">THIS IS HEADER</div>
+                             <div id="assortPanelHeader">Assortment Panel</div>
 
                              <div id="subtab1">
 
@@ -90,7 +106,7 @@
 
                          <div id="panel">
                              <div id="typeHolder"></div>
-                             <div id="assetSearch"><input type="text" placeholder="Search" id="asSearch"> </div>
+                             <div id="assetSearch"><input type="text" placeholder="Search" id="asSearch"/> </div>
                              <div id="assetsTree"></div>
                              <div id="assetDetails" class="assetDetails"></div>
                             <!-- <a href = "http://www.inbetween.com">My site</a><br>
@@ -98,5 +114,8 @@
                          </div>
                      </div>
              </span>
+        <div id="dialog-confirm" title="Closing rules">
+            <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Rules not saved. Do you wish to save or discard the changes?</p>
+        </div>
     </div>
 </div>

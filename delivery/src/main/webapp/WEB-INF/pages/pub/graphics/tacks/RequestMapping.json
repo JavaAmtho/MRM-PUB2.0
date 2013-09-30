@@ -9,6 +9,12 @@
     "searchPimAssets":"../../../../../pim/search/",
     "btnPIM":"../../pim/list",
     "btnMAM":"../../mam/list",
-    "btnMIM":"../../text/list"
-
+    "btnMIM":"../../text/list",
+    "getMAMFileNames":"http://192.168.135.104/CS13.0Trunk/admin/rest/whiteboard/2",
+    "saveRules":"/delivery/page/rule/save/",
+    "getRules" : "/delivery/page/rule/getrules/",
+    "getMasterTemplateList" : "/delivery/page/masterTemplateList/",
+    "createWBD" : "/delivery/page/createwbd/",
+    "getAssortmentsList" : "/delivery/assortment/getall/",
+    "getAllPageRules" : "/delivery/page/rule/getallrules/"
 }

@@ -169,6 +169,10 @@ var DynaTree = function(){
                         GraphicDataStore.setCurrentAssortment(node.data);
                         data = node.data.products;//HomePresenter.getProductsForSelectedNode(node);
                     }else{
+                        if(node.data.type == "Publication"){
+
+                            GraphicDataStore.setCurrentPublication(node.data.title);
+                        }
                         data = HomePresenter.getChildrenForSelectedNode(node)
                     }
                     $(document).trigger({
@@ -232,6 +236,11 @@ var DynaTree = function(){
                 manode.activate();
                 manode.expand()
             }
+
+            $('.colmask').jqxSplitter({ width: '100%', height: 700, splitBarSize:8, panels: [{ size: '20%'}, { size: '80%'}] });
+
+            //$('#coverMain').fadeIn(600);
+
 
             function seachFolderNodeWithName(name, searchFrom) {
                 if (name == null) {

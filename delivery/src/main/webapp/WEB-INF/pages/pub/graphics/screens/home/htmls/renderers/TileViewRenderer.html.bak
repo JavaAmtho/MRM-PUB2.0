@@ -1,0 +1,17 @@
+{{#mydata}}<div class= "{{typeCSS}}" id="{{typeID}}">
+    <div class="name">{{title}}</div>
+    <div class="type">Type : {{type}} {{pageType}}</div>
+    <h2 class='openRules {{hiddenCSS}}' onclick='HomePresenter.openRules(this.parentNode,event)'>O</h2>
+
+    <h2 class='expand {{hiddenCSS}}' onclick='HomePresenter.expandPages(this.parentNode,event)'>+</h2>
+
+    <div class="rule">
+        <img src='../../../graphics/screens/home/images/save.png' class='save' onclick='HomePresenter.saveRulesData(this.parentNode.parentNode,event)'/>
+        <h2 class='close' onclick='HomePresenter.openRules(this.parentNode.parentNode,event)'>X</h2>
+
+        <div class="then">
+            <div class="buttons addNewThen" onclick="HomePresenter.newThen(this.parentNode,event)">+</div>
+            <p class="hidden dataDirty">0</p>
+        </div>
+    </div>
+</div>{{/mydata}}

@@ -29,4 +29,5 @@ public interface IAssortmentRepository {
 
 	String updateAssortment(MultiDimensionalObject assortment);
 
+	public String getAllAssortmentNames(String pagePath, String logicalPageID);
 }

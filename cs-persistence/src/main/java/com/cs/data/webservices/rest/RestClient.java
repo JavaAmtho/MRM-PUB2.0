@@ -16,20 +16,44 @@ import com.sun.jersey.api.client.WebResource.Builder;
 @Component
 public class RestClient implements IRestClient {
 
-	/* (non-Javadoc)
-	 * @see com.cs.data.webservices.rest.IRestClient#get(java.lang.String, java.util.Map)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.cs.data.webservices.rest.IRestClient#get(java.lang.String,
+	 * java.util.Map)
 	 */
 	@Override
 	public String get(String url, Map<String, String> headerParameters) {
-		ClientResponse response = getResource(url, headerParameters).get(ClientResponse.class);
+		ClientResponse response = getResource(url, headerParameters).get(
+				ClientResponse.class);
 		return getSuccessResponse(url, response);
+	}
+
+	@Override
+	public ClientResponse post(String url,
+			Map<String, String> headerParameters, String input) {
+
+		WebResource webResource = getClient().resource(url);
+		if (headerParameters != null) {
+			Set<String> keySet = headerParameters.keySet();
+
+			Builder requestBuilder = webResource.getRequestBuilder();
+			for (String key : keySet) {
+				requestBuilder.header(key, headerParameters.get(key));
+			}
+		}
+
+		ClientResponse response = webResource.type("application/json").post(
+				ClientResponse.class, input);
+		return response;
 	}
 
 	protected String getSuccessResponse(String url, ClientResponse response) {
 		return response.getEntity(String.class);
 	}
 
-	protected Builder getResource(String url, Map<String, String> headerParameters) {
+	protected Builder getResource(String url,
+			Map<String, String> headerParameters) {
 		WebResource webResource = getClient().resource(url);
 		if (headerParameters != null) {
 			Set<String> keySet = headerParameters.keySet();

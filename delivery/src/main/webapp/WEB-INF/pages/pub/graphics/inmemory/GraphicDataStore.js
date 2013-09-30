@@ -11,6 +11,72 @@ var GraphicDataStore = function(){
     var currentSchema;
     var prodcutsArr=[];
     var currentAssortment;
+    var pageRulesArr;
+    var masterTemplateList;
+    var currentPublication;
+    var assortmentsList;
+}
+
+GraphicDataStore.pushToAssortmentsList = function(pageID,assortments){
+    if(!this.assortmentsList){
+        this.assortmentsList = {};
+    }
+    this.assortmentsList[pageID] = assortments;
+}
+
+GraphicDataStore.getAssortmentsByID = function(pageID){
+    if(this.assortmentsList){
+        return this.assortmentsList[pageID];
+    }
+    else{
+        return null;
+    }
+}
+
+GraphicDataStore.setCurrentPublication = function(obj){
+    this.currentPublication = obj;
+}
+
+GraphicDataStore.getCurrentPublication = function(){
+    return this.currentPublication;
+}
+
+GraphicDataStore.setMasterTemplateList = function(obj){
+    this.masterTemplateList = obj;
+}
+
+GraphicDataStore.getMasterTemplateList = function(){
+    return this.masterTemplateList;
+}
+
+
+GraphicDataStore.getPageRuleById = function(id){
+    if(this.pageRulesArr){
+        return this.pageRulesArr[this.currentPublication + "." + id];
+    }
+    else{
+        return undefined;
+    }
+}
+
+GraphicDataStore.addAllPageRules = function(rules){
+    if(!this.pageRulesArr){
+        this.pageRulesArr = {};
+    }
+    if(rules != null && rules.length > 0){
+        for(var i = 0 ; i < rules.length ; i++){
+            if(rules[i] != null){
+                this.pageRulesArr[rules[i].id] = rules[i].pageRules;
+            }
+        }
+    }
+}
+
+GraphicDataStore.addToPageRules = function(rule){
+    if(!this.pageRulesArr){
+        this.pageRulesArr = {};
+    }
+    this.pageRulesArr[this.currentPublication + "." + rule.logicalPageID] = rule.pageRules;
 }
 
 GraphicDataStore.setCurrentAssortment = function(obj){

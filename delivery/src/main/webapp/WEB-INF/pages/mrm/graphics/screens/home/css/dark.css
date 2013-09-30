@@ -1063,6 +1063,7 @@ select{
 #mrmGanttChart{
     min-height: 285px;
     height: 100%;
+    width: 100%;
     z-index: 9;
 /*
     resize: vertical;
@@ -1464,4 +1465,18 @@ body, .pure-g [class*="pure-u"], .pure-g-r [class*="pure-u"] {
     box-shadow:  1px 1px 5px 3px rgba(0, 0, 0, 0.5) inset, -1px -1px 5px 3px rgba(0, 0, 0, 0.5) inset;
 
 }*/
+
+/*
+#patcher{
+    height: 22px;
+    width: 50px;
+    background-color: #eaeff2;
+    top:122px;
+    left:5px;
+    position: absolute;
+    z-index: 99999;
+}
+*/
+
+
 

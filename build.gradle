@@ -69,7 +69,8 @@ project(':cs-repository') {
 	dependencies {
 		compile project(path: ':cs-persistence')
 		testCompile "junit:junit:4.11", project(':cs-persistence')
-		compile fileTree(dir: '/lib', include: '*.jar')
+
+		compile fileTree(dir: 'lib/', include: '*.jar')
 	}
 	task spiJar(type: Jar) {
 		baseName = 'repository-api'
@@ -108,5 +109,9 @@ project(':delivery') {
 		testCompile "junit:junit:4.11", project(path:':interactors')
 		testCompile "junit:junit:4.11", project(':cs-repository'),project(':cs-persistence')
 	}
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.5'
 }
 

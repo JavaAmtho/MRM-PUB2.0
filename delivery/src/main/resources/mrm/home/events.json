@@ -7,5 +7,12 @@
     {"id":"treeGantt","event":"click","func":HomePresenter.viewTreeAndGantt},
     {"id":"ScrollNext","event":"click","func":HomePresenter.scrollNext},
     {"id":"ScrollPrev","event":"click","func":HomePresenter.scrollPrev},
-    {"id":"ScrollToday","event":"click","func":HomePresenter.scrollToday}
+    {"id":"ScrollToday","event":"click","func":HomePresenter.scrollToday},
+    {"id":"manager", "event":"change", "func":HomePresenter.checkAlpha1},
+    {"id":"name", "event":"change", "func":HomePresenter.checkAlpha1},
+    {"id":"startdate", "event":"change", "func":HomePresenter.checkDate1},
+    {"id":"enddate", "event":"change", "func":HomePresenter.checkDate1},
+    {"id":"budget", "event":"change", "func":HomePresenter.checkNum1},
+    {"id":"budgetOwner", "event":"change", "func":HomePresenter.checkAlpha1}
+
 ]
