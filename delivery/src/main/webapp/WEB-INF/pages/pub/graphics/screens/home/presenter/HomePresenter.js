@@ -573,7 +573,11 @@ HomePresenter.expandPages = function (div, event) {
                                                   //maintain some relation
                 $(newDiv).addClass('childPages');
 
+
                 $dimensionValues = $($results[i]).children('.whenChild');
+                
+                
+
                 if ($dimensionValues.length > 0) {                                       //
                     for (var j = 0; j < $dimensionValues.length; j++) {
                         var filterType = $($dimensionValues[j]).children('.groupType')[0].value;                                                                //logic written
@@ -801,7 +805,7 @@ HomePresenter.setRules = function (div) {
                 content += "<p class='hidden wbdURL'>" + wbdURL + "</p>";
                 content += "<p class='hidden mamFileID'>" + mamFileID + "</p>";
                 content += "<select onclick='event.stopPropagation()' onchange='HomePresenter.makeDirty(this.parentNode)' " +
-                    "class='rulesText template'><option selected='selected' disabled='disabled' value='-1'>Select</option>";
+                    "class='rulesText template selectpicker span2' data-width='auto'><option selected='selected' disabled='disabled' value='-1'>Select</option>";
                 for (var j = 0; j < pageNames.length; j++) {
                     content += "<option value='" + pageNames[j].templateID + "'>" + pageNames[j].templateName + "</option>";
                 }
@@ -817,7 +821,7 @@ HomePresenter.setRules = function (div) {
                 var assortmentList = assortments;
                 console.log(assortments)
                 content = "<select onchange='HomePresenter.makeDirty(this.parentNode)' onclick='event.stopPropagation()' " +
-                    "class='rulesText assortment'><option selected='selected' disabled='disabled' value='-1'>Select</option>";
+                    "class='rulesText assortment selectpicker span2' data-width='auto'><option selected='selected' disabled='disabled' value='-1'>Select</option>";
                 for (var j = 0; j < assortmentList.length; j++) {
                     content += "<option>" + assortmentList[j].name + "</option>";
                 }
@@ -851,7 +855,7 @@ HomePresenter.setRules = function (div) {
 
                     var variablesList = groupTypes;
                     content = "<select onchange='HomePresenter.toggleRegionTargetGroup(this,true)' " +
-                        "onclick='event.stopPropagation()' class='rulesText groupType'>" +
+                        "onclick='event.stopPropagation()' class='rulesText groupType selectpicker span2' data-width='auto'>" +
                         "<option selected='selected' disabled='disabled' value='-1'>Choose</option>";
                     for (var k = 0; k < variablesList.length; k++) {
                         content += "<option>" + variablesList[k] + "</option>";
@@ -860,12 +864,12 @@ HomePresenter.setRules = function (div) {
                     whenDiv.innerHTML = whenDiv.innerHTML + content;
 
                     content = "<select onchange='HomePresenter.makeDirty(this.parentNode)' " +
-                        "onclick='event.stopPropagation()' class='rulesText operation'>" +
+                        "onclick='event.stopPropagation()' class='rulesText operation selectpicker span2' data-width='auto'>" +
                         "<option selected='selected'>=</option><option><=</option><option>>=</option></select>";
                     whenDiv.innerHTML = whenDiv.innerHTML + content;
 
                     content = "<select onclick='event.stopPropagation()' " +
-                        "onchange='HomePresenter.addValue(this,event)'  class='input rulesText value' type='text'>" +
+                        "onchange='HomePresenter.addValue(this,event)'  class='input rulesText value selectpicker span2' data-width='auto' type='text'>" +
                         "<option selected='selected' disabled='disabled' value='-1'>Choose</option></select>";
                     whenDiv.innerHTML = whenDiv.innerHTML + content;
 
@@ -876,6 +880,7 @@ HomePresenter.setRules = function (div) {
                     whenDiv.innerHTML = whenDiv.innerHTML + content;
 
                     newDiv.appendChild(whenDiv);
+
 
                     /******************Setting dropdown Values****************************/
                     $(whenDiv).children('.groupType').val(groupType);
@@ -893,6 +898,7 @@ HomePresenter.setRules = function (div) {
         console.log('removing dirty flags')
         $dirtyFields.html('0');
     }
+    $(".selectpicker").selectpicker();
 }
 
 
@@ -1021,7 +1027,9 @@ HomePresenter.toggleRegionTargetGroup = function (toggle, makeDirty) {
         $(toggle.parentNode.parentNode).children('.wbdURL').html(" ");
         $(toggle.parentNode.parentNode).children('.mamFileID').html(" ");
     }
-    var options = "<option disable='disabled' value='-1'>Select</option>";
+    var options = "<select onclick='event.stopPropagation()' " +
+        "onchange='HomePresenter.addValue(this,event)'  class='input rulesText value selectpicker span2' data-width='auto' type='text'>" +
+        "<option disable='disabled' value='-1'>Select</option>";
     if (toggle.selectedIndex == 1) {
         var regionsList = regions;
         for (var i = 0; i < regionsList.length; i++) {
@@ -1035,6 +1043,8 @@ HomePresenter.toggleRegionTargetGroup = function (toggle, makeDirty) {
         }
     }
     $(toggle).siblings('.value').html(options);
+    $('.selectpicker').selectpicker();
+
 }
 
 HomePresenter.makeDirty = function (reference) {
@@ -1050,11 +1060,11 @@ HomePresenter.newWhen = function (reference, event) {
     //Set dirty flag to the then child
 
     var newDiv = document.createElement("div");
-    $(newDiv).addClass("whenChild");
+    $(newDiv).addClass("whenChild row-fluid");
 
     var variablesList = groupTypes;
     content = "&nbsp;&nbsp;<select onchange='HomePresenter.toggleRegionTargetGroup(this,true)' " +
-        "onclick='event.stopPropagation()' class='rulesText groupType' value='-1'>" +
+        "onclick='event.stopPropagation()' class='rulesText groupType selectpicker span2' data-width='auto' value='-1'>" +
         "<option selected='selected' disabled='disabled'>Choose</option>";
     for (var i = 0; i < variablesList.length; i++) {
         content += "<option>" + variablesList[i] + "</option>";
@@ -1063,12 +1073,12 @@ HomePresenter.newWhen = function (reference, event) {
     newDiv.innerHTML = newDiv.innerHTML + content;
 
     content = "<select onchange='HomePresenter.makeDirty(this.parentNode)' " +
-        "onclick='event.stopPropagation()' onchange='HomePresenter.addValue(this,event)' class='rulesText operation'><option selected='selected'>=</option>" +
+        "onclick='event.stopPropagation()' onchange='HomePresenter.addValue(this,event)' class='rulesText operation selectpicker span2' data-width='auto'><option selected='selected'>=</option>" +
         "<option><=</option><option>>=</option></select>";
     newDiv.innerHTML = newDiv.innerHTML + content;
 
     content = "<select onclick='event.stopPropagation()' " +
-        "onchange='HomePresenter.addValue(this,event)'  class='input rulesText value' type='text'>" +
+        "onchange='HomePresenter.addValue(this,event)'  class='input rulesText value selectpicker span2' data-width='auto' type='text'>" +
         "<option selected='selected' disabled='disabled' value='-1'>Choose</option></select>";
     newDiv.innerHTML = newDiv.innerHTML + content;
 
@@ -1080,6 +1090,7 @@ HomePresenter.newWhen = function (reference, event) {
     newDiv.innerHTML = newDiv.innerHTML + content;
 
     reference.appendChild(newDiv);
+    $(".selectpicker").selectpicker();
 }
 
 HomePresenter.getMAMFileNames = function () {
@@ -1095,7 +1106,7 @@ HomePresenter.newThen = function (reference, data) {
     $(reference).children('.dataDirty').html('1');
 
     var newDiv = document.createElement("div");
-    $(newDiv).addClass("thenChild");
+    $(newDiv).addClass("thenChild row-fluid");
     //HomePresenter.getMAMFileNames();
     var pageNames = EngineDataStore.getMasterTemplateList();
     var rulesCount = $(reference).find('.rulesCount').html();
@@ -1107,7 +1118,7 @@ HomePresenter.newThen = function (reference, data) {
     content += "<p class='hidden wbdURL'> </p>";
     content += "<p class='hidden mamFileID'> </p>";
     content += "<select onclick='event.stopPropagation()' onchange='HomePresenter.makeDirty(this.parentNode)' " +
-        "class='rulesText template'><option selected='selected' disabled='disabled' value='-1'>Select</option>";
+        "class='rulesText template selectpicker span2' data-width='auto'><option selected='selected' disabled='disabled' value='-1'>Select</option>";
     for (var i = 0; i < pageNames.length; i++) {
         content += "<option value=" + pageNames[i].templateID + ">" + pageNames[i].templateName + "</option>";
     }
@@ -1122,14 +1133,13 @@ HomePresenter.newThen = function (reference, data) {
 
     var assortmentList = assortments;
     content = "<select onchange='HomePresenter.makeDirty(this.parentNode)' onclick='event.stopPropagation()' " +
-        "class='rulesText assortment'><option selected='selected' disabled='disabled' value='-1'>Select</option>";
+        "class='rulesText assortment selectpicker span2' data-width='auto'><option selected='selected' disabled='disabled' value='-1'>Select</option>";
     console.log(assortmentList)
     for (var i = 0; i < assortmentList.length; i++) {
         content += "<option>" + assortmentList[i].name + "</option>";
     }
     content += "</select>";
     newDiv.innerHTML = newDiv.innerHTML + content;
-
     content = "<span class='buttons remove' onclick='HomePresenter.removeNew(this.parentNode,event)'>-</span>"
     newDiv.innerHTML = newDiv.innerHTML + content;
     content = "<span class='buttons addCondition' onclick='HomePresenter.newWhen(this.parentNode,event)'>+</span>"
@@ -1137,6 +1147,8 @@ HomePresenter.newThen = function (reference, data) {
     content = "<p class='hidden dataDirty'>0</p>"
     newDiv.innerHTML = newDiv.innerHTML + content;
     reference.appendChild(newDiv);
+    $(".selectpicker").selectpicker();
+
 }
 
 
