@@ -122,9 +122,16 @@ HomePresenter.loadViewItems = function (evt, currentTemplateView) {
         $('.filter a').click(function () {
 
             var $this = $(this);
+            // don't proceed if already selected
+            if ($this.hasClass('calendarButtonPressed')) {
+                return;
+            }
+
             var $optionSet = $this.parents('.option-set');
-            // store filter value in object
-            // i.e. filters.color = 'red'
+            // change selected class
+            $optionSet.find('.calendarButtonPressed').removeClass('calendarButtonPressed');
+            $this.addClass('calendarButtonPressed');
+
             var group = $optionSet.attr('data-filter-group');
             filters[ group ] = $this.attr('data-filter-value');
             // convert object into array
@@ -137,10 +144,8 @@ HomePresenter.loadViewItems = function (evt, currentTemplateView) {
                 else if(filters[prop].indexOf("anyTargetGroup")!=-1)
                     bothTgs=filters[prop].split(",");
                 isoFilters.push(filters[ prop ])
-                console.log(isoFilters);
             }
             var selector;
-            console.log(bothRegions+"==>"+bothTgs)
             if(bothRegions!=undefined && bothTgs!=undefined)
             {
                 selector=bothRegions[0]+ bothTgs[1]+","+bothRegions[1]+bothTgs[0]+","+bothRegions[0]+bothTgs[0]+","+bothRegions[1]+bothTgs[1];
@@ -148,7 +153,6 @@ HomePresenter.loadViewItems = function (evt, currentTemplateView) {
             else{
                 selector = isoFilters.join('');
             }
-            console.log(selector)
             $isotopeContainer.isotope({ filter: selector });
 
             return false;
@@ -682,8 +686,10 @@ HomePresenter.saveRulesData = function (div) {
                 var condArray = [];
                 var $whenConditions = $($thenStatements[i]).children('.whenChild');
                 for (var j = 0; j < $whenConditions.length; j++) {
+                    console.log('inside for');
                     var variable = $($whenConditions[j]).children('.groupType')[0].value;
                     var value = $($whenConditions[j]).children('.value')[0].value;
+                    console.log(variable +" : "+ value);
                     if ((variable != '-1' && variable != 'Choose') && (value != '-1' && value != 'Choose')) {
                         var condition = {};
                         var columnName = "variable";
@@ -746,7 +752,7 @@ HomePresenter.saveRulesData = function (div) {
         for (var i = 0; i < $dirtyFields.length; i++) {
             $dirtyFields[i].innerHTML = '0';
         }
-
+        $(div).find('.savedText').show().delay(5000).fadeOut();
     }
     else {
         alert("No changes detected. No save operation performed.");
@@ -1041,8 +1047,12 @@ HomePresenter.toggleRegionTargetGroup = function (toggle, makeDirty) {
         for (var i = 0; i < targetGroupsList.length; i++) {
             options += "<option>" + targetGroupsList[i] + "</option>";
         }
+
     }
-    $(toggle).siblings('.value').html(options);
+    options += "</select>";
+    $(toggle).siblings('.value').remove();
+    var $operationDropdown = $(toggle).siblings('.operation');
+    $($operationDropdown[$operationDropdown.length-1]).after(options);
     $('.selectpicker').selectpicker();
 
 }
