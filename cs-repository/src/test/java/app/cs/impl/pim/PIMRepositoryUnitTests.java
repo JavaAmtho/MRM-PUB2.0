@@ -18,12 +18,12 @@ import com.cs.data.webservices.rest.RestClient;
 @RunWith(MockitoJUnitRunner.class)
 public class PIMRepositoryUnitTests {
 
-	private static final String SEARCH_URL = "http://192.168.135.104/CS13.0Trunk/admin/rest/pim/search/";
+	private static final String SEARCH_URL = "http://192.168.135.112/CS13.0Trunk/admin/rest/pim/search/";
 	private PimRepository pimRepository;
 	@Mock
 	private RestClient restClient;
 
-	private final String BASE_URL = "http://192.168.135.104/CS13.0Trunk/admin/rest/pim/list/";
+	private final String BASE_URL = "http://192.168.135.112/CS13.0Trunk/admin/rest/pim/list/";
 
 	@Before
 	public void setup() {
@@ -54,7 +54,7 @@ public class PIMRepositoryUnitTests {
 
 	private void prepareHeaderParameters(Map<String, String> headerParameters) {
 		headerParameters.put("Accept-Language", "en-US,en;q=0.8");
-		headerParameters.put("Host", "192.168.135.104");
+		headerParameters.put("Host", "192.168.135.112");
 		headerParameters
 				.put("User-Agent",
 						"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.63 Safari/537.31");
