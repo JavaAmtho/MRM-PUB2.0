@@ -9,8 +9,8 @@ subprojects {
 
 	def encoding = {it.encoding = 'UTF-8'}
 	test{
-		exclude 'app/cs/integration/**'
-		exclude 'com/cs/integration/**'
+		exclude 'app/**'
+		exclude 'com/**'
 	}
 
 	repositories {
@@ -69,7 +69,7 @@ project(':cs-repository') {
 	dependencies {
 		compile project(path: ':cs-persistence')
 		testCompile "junit:junit:4.11", project(':cs-persistence')
-		compile fileTree(dir: 'D:\\mrm-pub2.0\\MRM-PUB2.0\\cs-repository\\lib', include: '*.jar')
+		compile fileTree(dir: '/lib', include: '*.jar')
 	}
 	task spiJar(type: Jar) {
 		baseName = 'repository-api'
