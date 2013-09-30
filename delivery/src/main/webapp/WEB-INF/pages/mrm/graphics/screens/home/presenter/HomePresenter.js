@@ -194,8 +194,8 @@ HomePresenter.createFlow = function(publications){
         {
             "id":"2",
             "name":"Publication 2",
-            "previewImage": "http://192.168.135.112/CS13.0Trunk/admin/FileServer.php?src=F%3A%2FContentServ%2Fhtdocs%2FCS13.0Trunk%2FCSLive%2Fdata%2F.cs%2Fmam%2Fvolumes%2F75%2Ffiles%2F7547%2Fthumbs%2Fmaster.jpg&SecurityID=972146a8ada263573f41419871cc011f&rand=1378896763",
-            "actualImage": "http://192.168.135.112/CS13.0Trunk/admin/forward.php?forward=../CSLive/playCSVideoPlayerUsingMamFile.php&mamFileNo=7547",
+            "previewImage": "http://192.168.135.104/CS13.0Trunk/admin/FileServer.php?src=F%3A%2FContentServ%2Fhtdocs%2FCS13.0Trunk%2FCSLive%2Fdata%2F.cs%2Fmam%2Fvolumes%2F75%2Ffiles%2F7547%2Fthumbs%2Fmaster.jpg&SecurityID=972146a8ada263573f41419871cc011f&rand=1378896763",
+            "actualImage": "http://192.168.135.104/CS13.0Trunk/admin/forward.php?forward=../CSLive/playCSVideoPlayerUsingMamFile.php&mamFileNo=7547",
             "previewType": "video"
         },
         {
@@ -215,8 +215,8 @@ HomePresenter.createFlow = function(publications){
         {
             "id":"5",
             "name":"Publication 5",
-            "previewImage": "http://192.168.135.112/CS13.0Trunk/admin/FileServer.php?src=F%3A%2FContentServ%2Fhtdocs%2FCS13.0Trunk%2FCSLive%2Fdata%2F.cs%2Fmam%2Fvolumes%2F75%2Ffiles%2F7546%2Fthumbs%2Fmaster.jpg&SecurityID=972146a8ada263573f41419871cc011f&rand=1378896774",
-            "actualImage": "http://192.168.135.112/CS13.0Trunk/admin/forward.php?forward=../CSLive/playCSVideoPlayerUsingMamFile.php&mamFileNo=7546",
+            "previewImage": "http://192.168.135.104/CS13.0Trunk/admin/FileServer.php?src=F%3A%2FContentServ%2Fhtdocs%2FCS13.0Trunk%2FCSLive%2Fdata%2F.cs%2Fmam%2Fvolumes%2F75%2Ffiles%2F7546%2Fthumbs%2Fmaster.jpg&SecurityID=972146a8ada263573f41419871cc011f&rand=1378896774",
+            "actualImage": "http://192.168.135.104/CS13.0Trunk/admin/forward.php?forward=../CSLive/playCSVideoPlayerUsingMamFile.php&mamFileNo=7546",
             "previewType": "video"
         }
     ];

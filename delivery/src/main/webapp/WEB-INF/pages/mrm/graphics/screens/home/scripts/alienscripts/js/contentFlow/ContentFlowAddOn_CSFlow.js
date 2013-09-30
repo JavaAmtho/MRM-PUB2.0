@@ -150,8 +150,8 @@ new ContentFlowAddOn ('CSFlow', {
             }
             else{
                 url = GraphicDataStore.currentFocusedItem.actualImage;
-                $.get("http://192.168.135.112/CS13.0Trunk/admin/forward.php?forward=../CSLive/playCSVideoPlayerUsingMamFile.php&mamFileNo=7546",function(data){
-                    data = data.replace("../admin.local","http://192.168.135.112/CS13.0Trunk/admin.local");
+                $.get("http://192.168.135.104/CS13.0Trunk/admin/forward.php?forward=../CSLive/playCSVideoPlayerUsingMamFile.php&mamFileNo=7546",function(data){
+                    data = data.replace("../admin.local","http://192.168.135.104/CS13.0Trunk/admin.local");
                     console.log(data)
                     console.log( $( "#myPlayer" ) )
                     $( "#myPlayer" ).dialog({
