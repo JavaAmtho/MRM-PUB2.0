@@ -8,7 +8,7 @@ var DropDownJS = function(){
             opt.innerHTML = "ViewStructure"+jsonlist[i].id;
             dropDownObj.appendChild(opt);
         }
-        $(dropDownObj).selectpicker();
+        //$(dropDownObj).selectpicker();
 
         $(dropDownObj).change(function(){
             DropDownPresenter.getViewStructureById($(this).val());

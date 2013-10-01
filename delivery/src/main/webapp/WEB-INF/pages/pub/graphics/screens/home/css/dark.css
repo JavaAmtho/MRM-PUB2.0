@@ -1246,7 +1246,7 @@ h2.expand {
 .rule {
     height: 100%;
     width: 100%;
-    color: White;
+    color: black;
     top: 1px;
     position: absolute;
     display: none;
@@ -1258,13 +1258,13 @@ h2.expand {
     margin: 0 0 0 55%;
 }
 
-.rulesText {
+/*.rulesText {
     height: 25px;
     width: 125px;
     position: relative;
     margin: 2px;
     padding: 0px;
-}
+}*/
 
 .operation {
     padding: 0px;
@@ -1775,25 +1775,29 @@ body, .pure-g [class*="pure-u"], .pure-g-r [class*="pure-u"] {
     margin-left:250px;
 }
 
-ul
+ul.clearfix
 {
     list-style-type:   none ;
+    left: 0;
 }
-li{
+li.csIsotopeFilters,li#targetRegionText,li#targetGroupText{
     float: left;
     margin-bottom: 0.2em;
     margin: 0px;
     padding: 0px;
     border:0px;
+    left:70px !important;
 
     font: inherit;
     vertical-align: baseline;
+
+
 }
 
 .option-combo{
     margin-top: 0px;
     position: absolute;
-    width: 23%;
+    width: auto;
 }
 
 .option-set{
@@ -1802,7 +1806,7 @@ li{
 
 .targetGroup{
     float: right;
-    right: 0px;
+    right: 5px;
 }
 
 #targetText{
@@ -1854,10 +1858,7 @@ a.pure-button:hover, a.pure-button{
     margin-left: 7px !important;
 }
 
-.region{
-    float:right;
-    right: 300px;
-}
+
 
 .jqx-icon-arrow-right{
     background-image: url('../images/arr_right.png') !important;
@@ -1900,3 +1901,49 @@ h2.openRules{
 #listBoxContentassetDetails{
     height: 100% !important;
 }
+
+.region{
+    float:right;
+
+    right: 350px;
+}
+
+
+.selectboxit-container .selectboxit-options {
+    height:auto;
+    max-height: 150px;
+    max-width: 40%;
+}
+
+#targetGroupText, #targetRegionText{
+    font-size: 11px;
+    font-weight: bold;
+    font-family: tahoma;
+    width: 100px;
+    left:0;
+
+}
+
+
+.option-set {
+                  width: 300px;
+    float: right;
+    right: 0px;
+}
+
+.selectboxit-container .selectboxit {
+    margin: 5px 5px 0 5px !important;
+  }
+
+.selectboxit-container .operation .selectboxit, .selectboxit-container .operation .selectboxit-options{
+        min-width:50px;
+    max-width: 50px;
+}
+
+li#targetRegionText , li#targetGroupText{
+    margin-top: 3px;
+    font-family: tahoma;
+    font-weight: bold;
+    font-size: 11px;
+}
+

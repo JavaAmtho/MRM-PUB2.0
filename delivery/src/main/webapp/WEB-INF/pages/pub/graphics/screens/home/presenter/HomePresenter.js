@@ -864,9 +864,9 @@ HomePresenter.setRules = function (div) {
                     $(whenDiv).addClass("whenChild");
 
                     var variablesList = groupTypes;
-                    content = "<select onchange='HomePresenter.toggleRegionTargetGroup(this,true)' " +
-                        "onclick='event.stopPropagation()' class='rulesText groupType selectpicker span2' data-width='auto'>" +
-                        "<option selected='selected' disabled='disabled' value='-1'>Choose</option>";
+                    content = "&nbsp;&nbsp;<select onchange='HomePresenter.toggleRegionTargetGroup(this)' " +
+                        "onclick='event.stopPropagation()' class='rulesText groupType selectpicker span2' data-width='auto' value='-1'>" +
+                        "<option selected='selected' disabled='disabled'>Choose</option>";
                     for (var k = 0; k < variablesList.length; k++) {
                         content += "<option>" + variablesList[k] + "</option>";
                     }
@@ -874,13 +874,31 @@ HomePresenter.setRules = function (div) {
                     whenDiv.innerHTML = whenDiv.innerHTML + content;
 
                     content = "<select onchange='HomePresenter.makeDirty(this.parentNode)' " +
-                        "onclick='event.stopPropagation()' class='rulesText operation selectpicker span2' data-width='auto'>" +
-                        "<option selected='selected'>=</option><option><=</option><option>>=</option></select>";
+                        "onclick='event.stopPropagation()' onchange='HomePresenter.addValue(this,event)' class='rulesText operation selectpicker span2' data-width='auto'><option selected='selected'>=</option>" +
+                        "<option><=</option><option>>=</option></select>";
                     whenDiv.innerHTML = whenDiv.innerHTML + content;
 
                     content = "<select onclick='event.stopPropagation()' " +
                         "onchange='HomePresenter.addValue(this,event)'  class='input rulesText value selectpicker span2' data-width='auto' type='text'>" +
-                        "<option selected='selected' disabled='disabled' value='-1'>Choose</option></select>";
+                        "<option selected='selected' disabled='disabled' value='-1'>Choose</option>";
+
+                    console.log(groupType)
+                    if (groupType == 'Region') {
+                        var regionsList = regions;
+                        for (var i = 0; i < regionsList.length; i++) {
+                            content += "<option>" + regionsList[i] + "</option>";
+                        }
+                    }
+                    else if (groupType == 'Target Group') {
+                        var targetGroupsList = targetGroups;
+                        for (var i = 0; i < targetGroupsList.length; i++) {
+                            content += "<option>" + targetGroupsList[i] + "</option>";
+                        }
+                    }
+
+
+                    content +="</select>";
+                    console.log(content);
                     whenDiv.innerHTML = whenDiv.innerHTML + content;
 
                     var content = "&nbsp;&nbsp;<span class='buttons remove' " +
@@ -894,7 +912,7 @@ HomePresenter.setRules = function (div) {
 
                     /******************Setting dropdown Values****************************/
                     $(whenDiv).children('.groupType').val(groupType);
-                    HomePresenter.toggleRegionTargetGroup($(whenDiv).children('.groupType')[0], false)
+                    //HomePresenter.toggleRegionTargetGroup($(whenDiv).children('.groupType')[0], false)
                     $(whenDiv).children('.operation').val(operation);
                     $(whenDiv).children('.value').val(value);
                 }
@@ -908,12 +926,15 @@ HomePresenter.setRules = function (div) {
         console.log('removing dirty flags')
         $dirtyFields.html('0');
     }
-    $(".selectpicker").selectpicker();
+
+    $(".selectpicker").selectBoxIt({
+        autoWidth: false
+    });
+    console.log($('.value').val());
 }
 
 
 HomePresenter.openRules = function (div, event) {
-
     if (!$(div).hasClass('opened')) {
         if ($(div).hasClass('rules-opened')) {
             var $dirtyFields = $(div).find('.dataDirty');
@@ -985,6 +1006,7 @@ HomePresenter.openRules = function (div, event) {
             if ($(div).children(".expand").css('display') == 'block') {
                 $(div).children(".expand").toggle();
             }
+
             console.log(div)
             HomePresenter.toggleRulesView(div);
         }
@@ -1031,12 +1053,11 @@ HomePresenter.addValue = function (text, event) {
      $parentDiv.removeClass().addClass(basicClasses + ' ' + $filterClasses);*/
 }
 
-HomePresenter.toggleRegionTargetGroup = function (toggle, makeDirty) {
-    if (makeDirty) {
+HomePresenter.toggleRegionTargetGroup = function (toggle) {
         $(toggle.parentNode).children('.dataDirty').html('1');
         $(toggle.parentNode.parentNode).children('.wbdURL').html(" ");
         $(toggle.parentNode.parentNode).children('.mamFileID').html(" ");
-    }
+
     var options = "<select onclick='event.stopPropagation()' " +
         "onchange='HomePresenter.addValue(this,event)'  class='input rulesText value selectpicker span2' data-width='auto' type='text'>" +
         "<option disable='disabled' value='-1'>Select</option>";
@@ -1054,10 +1075,10 @@ HomePresenter.toggleRegionTargetGroup = function (toggle, makeDirty) {
     }
     options += "</select>";
     $(toggle).siblings('.value').remove();
-    var $operationDropdown = $(toggle).siblings('.operation');
+    console.log($(toggle).siblings('.selectboxit-container'));
+    var $operationDropdown = $(toggle).siblings('.selectboxit-container');
     $($operationDropdown[$operationDropdown.length-1]).after(options);
-    $('.selectpicker').selectpicker();
-
+    $('.selectpicker').selectBoxIt();
 }
 
 HomePresenter.makeDirty = function (reference) {
@@ -1076,7 +1097,7 @@ HomePresenter.newWhen = function (reference, event) {
     $(newDiv).addClass("whenChild row-fluid");
 
     var variablesList = groupTypes;
-    content = "&nbsp;&nbsp;<select onchange='HomePresenter.toggleRegionTargetGroup(this,true)' " +
+    content = "&nbsp;&nbsp;<select onchange='HomePresenter.toggleRegionTargetGroup(this)' " +
         "onclick='event.stopPropagation()' class='rulesText groupType selectpicker span2' data-width='auto' value='-1'>" +
         "<option selected='selected' disabled='disabled'>Choose</option>";
     for (var i = 0; i < variablesList.length; i++) {
@@ -1103,7 +1124,7 @@ HomePresenter.newWhen = function (reference, event) {
     newDiv.innerHTML = newDiv.innerHTML + content;
 
     reference.appendChild(newDiv);
-    $(".selectpicker").selectpicker();
+    $(".selectpicker").selectBoxIt({autoWidth:true});
 }
 
 HomePresenter.getMAMFileNames = function () {
@@ -1116,6 +1137,7 @@ HomePresenter.getMAMFileNames = function () {
 
 
 HomePresenter.newThen = function (reference, data) {
+
     $(reference).children('.dataDirty').html('1');
 
     var newDiv = document.createElement("div");
@@ -1131,7 +1153,7 @@ HomePresenter.newThen = function (reference, data) {
     content += "<p class='hidden wbdURL'> </p>";
     content += "<p class='hidden mamFileID'> </p>";
     content += "<select onclick='event.stopPropagation()' onchange='HomePresenter.makeDirty(this.parentNode)' " +
-        "class='rulesText  template selectpicker span2' data-width='45%'><option selected='selected' disabled='disabled' value='-1'>Select Master Template</option>";
+        "class='rulesText selectpicker  template ' ><option selected='selected' disabled='disabled' value='-1'>Select Master Template</option>";
     for (var i = 0; i < pageNames.length; i++) {
         content += "<option value=" + pageNames[i].templateID + ">" + pageNames[i].templateName + "</option>";
     }
@@ -1146,7 +1168,7 @@ HomePresenter.newThen = function (reference, data) {
 
     var assortmentList = assortments;
     content = "<select onchange='HomePresenter.makeDirty(this.parentNode)' onclick='event.stopPropagation()' " +
-        "class='rulesText assortment selectpicker span3' data-width='35%'><option selected='selected' disabled='disabled' value='-1'>Select Assortment</option>";
+        "class='rulesText assortment selectpicker span3' data-width='35%'><option selected='selected' value='-1'>Select Assortment</option>";
     console.log(assortmentList)
     for (var i = 0; i < assortmentList.length; i++) {
         content += "<option>" + assortmentList[i].name + "</option>";
@@ -1160,7 +1182,9 @@ HomePresenter.newThen = function (reference, data) {
     content = "<p class='hidden dataDirty'>0</p>"
     newDiv.innerHTML = newDiv.innerHTML + content;
     reference.appendChild(newDiv);
-    $(".selectpicker").selectpicker();
+    $(".selectpicker").selectBoxIt({
+        autoWidth: false
+    });
 
 }
 
