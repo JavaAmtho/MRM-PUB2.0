@@ -447,7 +447,7 @@ HomePresenter.openURL = function (reference) {
 
 //add click event once the WBD url has been received and also display the popout icon
 HomePresenter.addClickEventForWBDPopup = function (url, innerDiv) {
-    url = url.replace("../admin", "http://192.168.135.192.168.135.112/CS13.0Trunk/admin");
+    url = url.replace("../admin", "http://192.168.135.112/CS13.0Trunk/admin");
     var $childPage = $(innerDiv);
     $childPage.append("<p class='hidden url'>" + url + "</p>");
     $childPage.attr('onclick', "HomePresenter.openURL(this)");
