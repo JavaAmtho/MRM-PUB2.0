@@ -718,9 +718,9 @@ Top Bar Animation Section starts
 
 #assetDetails {
     overflow-x: auto;
-/*
-    overflow-y: auto;
-*/
+    /*
+        overflow-y: auto;
+    */
     font-weight: lighter;
     font-style: italic;
     margin-top: 3px;
@@ -1068,6 +1068,11 @@ Top Bar Animation Section starts
    */
 }
 
+.data{
+    font-size: 10px;
+    margin:5px !important;
+}
+
 .assortment{
     margin-left: 7px;
 }
@@ -1121,12 +1126,18 @@ Top Bar Animation Section starts
 
 
 .childPageName {
-    font-size: 1.5em;
+    margin-top:10px;
+    font-size: 15px;
     line-height: 1.2em;
     width: 80%;
-    margin-left: 10px;
+    margin-left: 5px;
 
     color: #FFF;
+}
+
+.textDetailsChildPages{
+    margin:5px !important;
+    font-size: 9px;
 }
 
 .masterPage.rules-opened {
@@ -1926,18 +1937,31 @@ h2.openRules{
 
 
 .option-set {
-                  width: 300px;
+    width: 300px;
     float: right;
     right: 0px;
 }
 
 .selectboxit-container .selectboxit {
     margin: 5px 5px 0 5px !important;
-  }
+    min-width:150px;
+    max-width: 150px;
+}
 
-.selectboxit-container .operation .selectboxit, .selectboxit-container .operation .selectboxit-options{
-        min-width:50px;
-    max-width: 50px;
+.template{
+    min-width:180px !important;
+    max-width: 180px !important;
+    white-space: normal;
+}
+
+.assortment{
+    min-width:150px !important;
+    max-width: 150px !important;
+    white-space: normal;
+}
+
+.selectboxit-container *{
+    font-size: 12px !important;
 }
 
 li#targetRegionText , li#targetGroupText{
@@ -1945,5 +1969,25 @@ li#targetRegionText , li#targetGroupText{
     font-family: tahoma;
     font-weight: bold;
     font-size: 11px;
+}
+
+.groupType{
+    min-width:100px !important;
+    max-width: 100px !important;
+}
+
+.operation{
+    min-width:50px !important;
+    max-width: 50px !important;
+}
+
+.value{
+    min-width:75px !important;
+    max-width: 75px !important;
+}
+
+
+span.buttons{
+    margin-top:5px
 }
 
