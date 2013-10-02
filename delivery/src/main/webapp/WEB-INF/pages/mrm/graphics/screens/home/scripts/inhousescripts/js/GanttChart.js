@@ -165,7 +165,7 @@ var GanttChart = function(){
 
     Grids.OnGetGanttHtml = function(G,row,col,width,comp,crit){
         switch(row.type){
-            case "MI":
+            case "MarketingInitiative":
                 Grids[0].SetValue(row,"nameIcon","cal1.png",1);
                 return "<div style=\"background: #6e6e6e;color:white;padding:2px; height: 11px; border:1px solid #6e6e6e; border-radius: 4px;  box-shadow: 2px 2px 3px rgba(255, 255, 255, .9) inset; \"></div>";
             case "Campaign":
@@ -174,10 +174,10 @@ var GanttChart = function(){
             case "SubCampaign":
                 Grids[0].SetValue(row,"nameIcon","cal1.png",1);
                 return "<div style=\"background: #b4cdcd;color:white;padding:2px; height: 11px; border:1px solid #b4cdcd; border-radius: 4px;  box-shadow: 2px 2px 3px rgba(255, 255, 255, .9) inset\"></div>";
-            case "CP":
+            case "CommunicationPlan":
                 Grids[0].SetValue(row,"nameIcon","cal2.png",1);
                 return "<div style=\"background: #b0e0e6;color:white;padding:2px; height: 11px; border:1px solid #b0e0e6; border-radius: 4px;  box-shadow: 2px 2px 3px rgba(255, 255, 255, .9) inset\"></div>";
-            case "CC":
+            case "CommunicationChannel":
                 Grids[0].SetValue(row,"nameIcon","cal2.png",1);
                 return "<div style=\"background: #60affe;color:white;padding:2px; height: 11px; border:1px solid #60affe; border-radius: 4px;  box-shadow: 2px 2px 3px rgba(255, 255, 255, .9) inset\"></div>";
             default:
@@ -276,7 +276,7 @@ var GanttChart = function(){
         Grids[0].SetValue(currentRow.lastChild,"manager",data.manager,1);
         Grids[0].SetValue(currentRow.lastChild,"Items",data.Items,1);
         switch(data.type){
-            case "MI":
+            case "MarketingInitiative":
                 Grids[0].SetValue(currentRow.lastChild,"nameIcon","cal1.png",1);
                 break;
             case "Campaign":
@@ -285,10 +285,10 @@ var GanttChart = function(){
             case "SubCampaign":
                 Grids[0].SetValue(currentRow.lastChild,"nameIcon","cal1.png",1);
                 break;
-            case "CP":
+            case "CommunicationPlan":
                 Grids[0].SetValue(currentRow.lastChild,"nameIcon","cal2.png",1);
                 break;
-            case "CC":
+            case "CommunicationChannel":
                 Grids[0].SetValue(currentRow.lastChild,"nameIcon","cal2.png",1);
                 break;
             default:
