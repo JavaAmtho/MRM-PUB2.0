@@ -216,7 +216,7 @@ var GanttChart = function(){
 
         if(row.id != "Header"){
             if(col === "name"){
-                if(row.type === "CC"){
+                if(row.type === "CommunicationChannel"){
                     //Call to server to get the publications of this Communication Channel
                     GanttChartPresenter.getPublications(row,Grids.onPublicationHandler);
                 }

@@ -1972,7 +1972,7 @@ li#targetRegionText , li#targetGroupText{
 
 .groupType{
     min-width:100px !important;
-    max-width: 100px !important;
+    max-width: 110px !important;
 }
 
 .operation{
@@ -1982,7 +1982,7 @@ li#targetRegionText , li#targetGroupText{
 
 .value{
     min-width:75px !important;
-    max-width: 75px !important;
+    max-width: 100px !important;
 }
 
 

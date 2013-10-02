@@ -5,7 +5,7 @@ var DynaLazyTree = function(){
                 url:  urls
             },
             onActivate: function(node) {
-                HomePresenter.populateAssetsList(node.data.children[0])
+                //HomePresenter.populateAssetsList(node.data.children[0])
             },
             onLazyRead: function(node){
                 node.appendAjax({

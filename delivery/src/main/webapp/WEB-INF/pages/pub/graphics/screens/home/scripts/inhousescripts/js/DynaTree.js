@@ -237,18 +237,7 @@ var DynaTree = function(){
                     }
                 }
             });
-            temp = $(treeObj).dynatree("getRoot");
-            if(pubIdToOpen){
-                var manode = searchFolderNodeWithName(pubIdToOpen,null)
-                manode.activate();
-                manode.expand()
-            }
-
-            $('.colmask').jqxSplitter({ width: '100%', height: 700, splitBarSize:8, panels: [{ size: '20%'}, { size: '80%'}] });
-
-            //$('#coverMain').fadeIn(600);
-
-
+            
             function searchFolderNodeWithName(name, searchFrom) {
                 if (name == null) {
                     return undefined;
@@ -268,6 +257,18 @@ var DynaTree = function(){
                 });
                 return match;
             };
+            
+            temp = $(treeObj).dynatree("getRoot");
+            if(pubIdToOpen){
+                var manode = searchFolderNodeWithName(pubIdToOpen,null)
+                manode.activate();
+                manode.expand()
+            }
+
+            $('.colmask').jqxSplitter({ width: '100%', height: 700, splitBarSize:8, panels: [{ size: '20%'}, { size: '80%'}] });
+
+            //$('#coverMain').fadeIn(600);
+
                // alert(pubIdToOpen);
             /*var manode = $(treeObj).dynatree("getTree");
             console.log(manode)*/

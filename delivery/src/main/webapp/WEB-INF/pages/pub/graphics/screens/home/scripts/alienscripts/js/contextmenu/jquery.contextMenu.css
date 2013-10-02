@@ -27,6 +27,7 @@
 	outline: none;
 	padding: 1px 5px;
 	padding-left: 28px;
+	white-space:nowrap;
 }
 
 .contextMenu LI.hover A {
