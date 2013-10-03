@@ -25,19 +25,23 @@ public class PimRepository implements AssetsRepository {
 	private static final String HOST = "Host";
 	private static final String LANGUAGE = "en-US,en;q=0.8";
 	private static final String ACCEPT_LANGUAGE = "Accept-Language";
-	@Value("${host}")
-	private String HOSTIP;
-	@Value("${url}")
-	private String BASE_URL;
-	@Value("${pimListUrl}")
-	private String LIST_URL;
-	@Value("${pimSearchUrl}")
-	private String SEARCH_URL;
+
 	private IRestClient client;
+	private String HOSTIP;
+	private String BASE_URL;
+	private String LIST_URL;
+	private String SEARCH_URL;
 
 	@Autowired
-	public PimRepository(IRestClient client) {
+	public PimRepository(IRestClient client, @Value("${host}") String HOSTIP,
+			@Value("${url}") String BASE_URL,
+			@Value("${pimListUrl}") String LIST_URL,
+			@Value("${pimSearchUrl}") String SEARCH_URL) {
 		this.client = client;
+		this.BASE_URL = BASE_URL;
+		this.HOSTIP = HOSTIP;
+		this.LIST_URL = LIST_URL;
+		this.SEARCH_URL = SEARCH_URL;
 
 	}
 

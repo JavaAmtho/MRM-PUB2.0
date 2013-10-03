@@ -29,11 +29,15 @@ public class Teacher implements Serializable, GenericDomain {
 		this.students = students;
 	}
 
-	public Teacher(String id, List<Student> students,List<String> phoneNumbers) {
+	public Teacher() {
+
+	}
+
+	public Teacher(String id, List<Student> students, List<String> phoneNumbers) {
 		super();
 		this.id = id;
 		this.students = students;
-		this.phoneNumbers=phoneNumbers;
+		this.phoneNumbers = phoneNumbers;
 	}
 
 	public String getId() {
