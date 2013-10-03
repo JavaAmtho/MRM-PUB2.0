@@ -469,8 +469,6 @@ HomePresenter.openWhiteBoard = function (divReference, event) {
     }
     var ruleID = $innerDiv.children('.ruleID').html();
     var logicalPageID = $innerDiv.children('.logicalPageID').html();
-    console.log(ruleID)
-    console.log(logicalPageID)
     CreateWBD.createWBD(ruleID, GraphicDataStore.getCurrentPublication() + "." + logicalPageID, publicationID, function (data) {
         if (data == 'error') {
             alert("Error creating WBD!!");
@@ -604,12 +602,13 @@ HomePresenter.expandPages = function (div, event) {
                         }                                                                //     logic
                     }                                                                    //
                 }
-                content += "<div class='childPageName' >" +
-                    $(newDiv).attr('class') + "</div>";
+                content += "<div class='childPageName' >" + ruleID + "</div>";
                 content += "<p class='hidden logicalPageID'>" + div.id + "</p>";              //
                 content += "<p class='hidden ruleID'>" + ruleID + "</p>";                     //Data stored
-                content += "<p class='hidden data templateName' >" + $masterTemplate + "</p>";//into child
-                content += "<p class='hidden data assortment' >" + $assortment + "</p>";      //
+                content += "<p class='childPagesText'>Mstr Templ ID: </p>";
+                content += "<p class='childPagesText data templateName' >" + $masterTemplate + "</p>";//into child
+                content += "<p class='childPagesText'>Assrtmnt Name: </p>";
+                content += "<p class='childPagesText data assortment' >" + $assortment + "</p>";      //
                 content += "<p class='hidden data wbdURL'> " + wbdURL + " </p>";              //
                 content += "<p class='hidden data mamFileID'>" + mamFileID + "</p>";          //
                 content += "</div>";
@@ -690,7 +689,6 @@ HomePresenter.saveRulesData = function (div) {
                 var condArray = [];
                 var $whenConditions = $($thenStatements[i]).children('.whenChild');
                 for (var j = 0; j < $whenConditions.length; j++) {
-                    console.log('inside for');
                     var variable = $($whenConditions[j]).children('.groupType')[0].value;
                     var value = $($whenConditions[j]).children('.value')[0].value;
                     if ((variable != '-1' && variable != 'Choose') && (value != '-1' && value != 'Choose')) {
@@ -724,7 +722,7 @@ HomePresenter.saveRulesData = function (div) {
                 var mamFileID = $($thenStatements[i]).children('.mamFileID').html()
                 additional[columnName] = mamFileID;
                 var columnName = "editUrl";
-                var editUrl = $($thenStatements[i]).children('.mamFileID').html()
+                var editUrl = $($thenStatements[i]).children('.wbdURL').html()
                 additional[columnName] = editUrl;
 
                 var columnName = "additionalInformation";
@@ -795,142 +793,135 @@ HomePresenter.setRules = function (div) {
         $dirtyFields.html('0');
         var pageRules = GraphicDataStore.getPageRuleById(div.id);
         if(pageRules){
-        console.log(pageRules)
-        var $thenReference = $(div).children('.rule').children('.then');
-        for (var i = 0; i < pageRules.length; i++) {
-            if (pageRules[i].ruleResult) {
-                var masterPageId = pageRules[i].ruleResult.masterPageId;
-                var assortmentName = pageRules[i].ruleResult.assortmentId;
-                var ruleId = pageRules[i].ruleID;
-                var mamFileID = pageRules[i].additionalInformation.mamFileID;
-                var wbdURL = pageRules[i].additionalInformation.editUrl;
-                /***********Then Div creation***********/
-                //var data = ''//Get Data from data store or CS
-                var newDiv = document.createElement("div");
-                $(newDiv).addClass("thenChild");
-                $(newDiv).addClass("row-fluid");
-                //HomePresenter.getMAMFileNames()
-                var pageNames = EngineDataStore.getMasterTemplateList();
-                var content = "<p class='hidden ruleID'>" + ruleId + "</p>";
-                content += "<p class='hidden wbdURL'>" + wbdURL + "</p>";
-                content += "<p class='hidden mamFileID'>" + mamFileID + "</p>";
-                content += "<select onclick='event.stopPropagation()' onchange='HomePresenter.makeDirty(this.parentNode)' " +
-                    "class='rulesText  template selectpicker span2' data-width='45%'><option selected='selected' disabled='disabled' value='-1'>Select Master Template</option>";
-                for (var j = 0; j < pageNames.length; j++) {
-                    content += "<option value='" + pageNames[j].templateID + "'>" + pageNames[j].templateName + "</option>";
-                }
-                content += "</select>";
-                newDiv.innerHTML = newDiv.innerHTML + content;
-
-                var assortments;
-                GetAssortments.get($(div).children('.pagePath').html(),div.id,function(data){
-                        GraphicDataStore.pushToAssortmentsList(div.id,data);
-                });
-                assortments = GraphicDataStore.getAssortmentsByID(div.id);
-
-                var assortmentList = assortments;
-                console.log(assortments)
-                content = "<select onchange='HomePresenter.makeDirty(this.parentNode)' onclick='event.stopPropagation()' " +
-                    "class='rulesText assortment selectpicker span3' data-width='35%'><option selected='selected' disabled='disabled' value='-1'>Select Assortment</option>";
-                for (var j = 0; j < assortmentList.length; j++) {
-                    content += "<option>" + assortmentList[j].name + "</option>";
-                }
-                content += "</select>";
-                newDiv.innerHTML = newDiv.innerHTML + content;
-
-                content = "<span class='buttons remove' onclick='HomePresenter.removeNew(this.parentNode,event)'>-</span>"
-                newDiv.innerHTML = newDiv.innerHTML + content;
-                content = "<span class='buttons addCondition' onclick='HomePresenter.newWhen(this.parentNode,event)'>+</span>"
-                newDiv.innerHTML = newDiv.innerHTML + content;
-                content = "<p class='hidden dataDirty'>0</p>"
-                newDiv.innerHTML = newDiv.innerHTML + content;
-
-                $thenReference.append(newDiv);
-                /*****************Setting drop down values************************/
-                $(newDiv).children('.template').val(masterPageId);
-                $(newDiv).children('.assortment').val(assortmentName);
-
-
-                var ruleConditions = pageRules[i].ruleConditions;
-
-                for (var j = 0; j < ruleConditions.length; j++) {
-                    var groupType = ruleConditions[j].variable;
-                    var operation = ruleConditions[j].operator;
-                    var value = ruleConditions[j].value;
-
-                    /***********when Div creation***********/
-
-                    var whenDiv = document.createElement("div");
-                    $(whenDiv).addClass("whenChild");
-
-                    var variablesList = groupTypes;
-                    content = "&nbsp;&nbsp;<select onchange='HomePresenter.toggleRegionTargetGroup(this)' " +
-                        "onclick='event.stopPropagation()' class='rulesText groupType selectpicker span2' data-width='auto' value='-1'>" +
-                        "<option selected='selected' disabled='disabled'>Choose</option>";
-                    for (var k = 0; k < variablesList.length; k++) {
-                        content += "<option>" + variablesList[k] + "</option>";
+            var $thenReference = $(div).children('.rule').children('.then');
+            for (var i = 0; i < pageRules.length; i++) {
+                if (pageRules[i].ruleResult) {
+                    var masterPageId = pageRules[i].ruleResult.masterPageId;
+                    var assortmentName = pageRules[i].ruleResult.assortmentId;
+                    var ruleId = pageRules[i].ruleID;
+                    var mamFileID = pageRules[i].additionalInformation.mamFileID;
+                    var wbdURL = pageRules[i].additionalInformation.editUrl;
+                    /***********Then Div creation***********/
+                    //var data = ''//Get Data from data store or CS
+                    var newDiv = document.createElement("div");
+                    $(newDiv).addClass("thenChild");
+                    $(newDiv).addClass("row-fluid");
+                    //HomePresenter.getMAMFileNames()
+                    var pageNames = EngineDataStore.getMasterTemplateList();
+                    var content = "<p class='hidden ruleID'>" + ruleId + "</p>";
+                    content += "<p class='hidden wbdURL'>" + wbdURL + "</p>";
+                    content += "<p class='hidden mamFileID'>" + mamFileID + "</p>";
+                    content += "<select onclick='event.stopPropagation()' onchange='HomePresenter.makeDirty(this.parentNode)' " +
+                        "class='rulesText  template selectpicker span2' data-width='45%'><option selected='selected' disabled='disabled' value='-1'>Select Master Template</option>";
+                    for (var j = 0; j < pageNames.length; j++) {
+                        content += "<option value='" + pageNames[j].templateID + "'>" + pageNames[j].templateName + "</option>";
                     }
                     content += "</select>";
-                    whenDiv.innerHTML = whenDiv.innerHTML + content;
+                    newDiv.innerHTML = newDiv.innerHTML + content;
 
-                    content = "<select onchange='HomePresenter.makeDirty(this.parentNode)' " +
-                        "onclick='event.stopPropagation()' onchange='HomePresenter.addValue(this,event)' class='rulesText operation selectpicker span2' data-width='auto'><option selected='selected'>=</option>" +
-                        "<option><=</option><option>>=</option></select>";
-                    whenDiv.innerHTML = whenDiv.innerHTML + content;
+                    var assortments;
+                    GetAssortments.get($(div).children('.pagePath').html(),div.id,function(data){
+                            GraphicDataStore.pushToAssortmentsList(div.id,data);
+                    });
+                    assortments = GraphicDataStore.getAssortmentsByID(div.id);
 
-                    content = "<select onclick='event.stopPropagation()' " +
-                        "onchange='HomePresenter.addValue(this,event)'  class='input rulesText value selectpicker span2' data-width='auto' type='text'>" +
-                        "<option selected='selected' disabled='disabled' value='-1'>Choose</option>";
-
-                    console.log(groupType)
-                    if (groupType == 'Region') {
-                        var regionsList = regions;
-                        for (var i = 0; i < regionsList.length; i++) {
-                            content += "<option>" + regionsList[i] + "</option>";
-                        }
+                    var assortmentList = assortments;
+                    content = "<select onchange='HomePresenter.makeDirty(this.parentNode)' onclick='event.stopPropagation()' " +
+                        "class='rulesText assortment selectpicker span3' data-width='35%'><option selected='selected' disabled='disabled' value='-1'>Select Assortment</option>";
+                    for (var j = 0; j < assortmentList.length; j++) {
+                        content += "<option>" + assortmentList[j].name + "</option>";
                     }
-                    else if (groupType == 'Target Group') {
-                        var targetGroupsList = targetGroups;
-                        for (var i = 0; i < targetGroupsList.length; i++) {
-                            content += "<option>" + targetGroupsList[i] + "</option>";
-                        }
-                    }
+                    content += "</select>";
+                    newDiv.innerHTML = newDiv.innerHTML + content;
 
-
-                    content +="</select>";
-                    console.log(content);
-                    whenDiv.innerHTML = whenDiv.innerHTML + content;
-
-                    var content = "&nbsp;&nbsp;<span class='buttons remove' " +
-                        "onclick='HomePresenter.removeNew(this.parentNode,event)'>-</span>";
-                    whenDiv.innerHTML = whenDiv.innerHTML + content;
+                    content = "<span class='buttons remove' onclick='HomePresenter.removeNew(this.parentNode,event)'>-</span>"
+                    newDiv.innerHTML = newDiv.innerHTML + content;
+                    content = "<span class='buttons addCondition' onclick='HomePresenter.newWhen(this.parentNode,event)'>+</span>"
+                    newDiv.innerHTML = newDiv.innerHTML + content;
                     content = "<p class='hidden dataDirty'>0</p>"
-                    whenDiv.innerHTML = whenDiv.innerHTML + content;
+                    newDiv.innerHTML = newDiv.innerHTML + content;
 
-                    newDiv.appendChild(whenDiv);
+                    $thenReference.append(newDiv);
+                    /*****************Setting drop down values************************/
+                    $(newDiv).children('.template').val(masterPageId);
+                    $(newDiv).children('.assortment').val(assortmentName);
 
 
-                    /******************Setting dropdown Values****************************/
-                    $(whenDiv).children('.groupType').val(groupType);
-                    //HomePresenter.toggleRegionTargetGroup($(whenDiv).children('.groupType')[0], false)
-                    $(whenDiv).children('.operation').val(operation);
-                    $(whenDiv).children('.value').val(value);
+                    var ruleConditions = pageRules[i].ruleConditions;
+
+                    if(ruleConditions){
+                        for (var j = 0; j < ruleConditions.length; j++) {
+                            var groupType = ruleConditions[j].variable;
+                            var operation = ruleConditions[j].operator;
+                            var value = ruleConditions[j].value;
+
+                            /***********when Div creation***********/
+                            var whenDiv = document.createElement("div");
+                            $(whenDiv).addClass("whenChild");
+
+                            var variablesList = groupTypes;
+                            content = "&nbsp;&nbsp;<select onchange='HomePresenter.toggleRegionTargetGroup(this)' " +
+                                "onclick='event.stopPropagation()' class='rulesText groupType selectpicker span2' data-width='auto' value='-1'>" +
+                                "<option selected='selected' disabled='disabled'>Choose</option>";
+                            for (var k = 0; k < variablesList.length; k++) {
+                                content += "<option>" + variablesList[k] + "</option>";
+                            }
+                            content += "</select>";
+                            whenDiv.innerHTML = whenDiv.innerHTML + content;
+
+                            content = "<select onchange='HomePresenter.makeDirty(this.parentNode)' " +
+                                "onclick='event.stopPropagation()' onchange='HomePresenter.addValue(this,event)' class='rulesText operation selectpicker span2' data-width='auto'><option selected='selected'>=</option>" +
+                                "<option><=</option><option>>=</option></select>";
+                            whenDiv.innerHTML = whenDiv.innerHTML + content;
+
+                            content = "<select onclick='event.stopPropagation()' " +
+                                "onchange='HomePresenter.addValue(this,event)'  class='input rulesText value selectpicker span2' data-width='auto' type='text'>" +
+                                "<option selected='selected' disabled='disabled' value='-1'>Choose</option>";
+
+                            if (groupType == 'Region') {
+                                var regionsList = regions;
+                                for (var k = 0; k < regionsList.length; k++) {
+                                    content += "<option>" + regionsList[k] + "</option>";
+                                }
+                            }
+                            else if (groupType == 'Target Group') {
+                                var targetGroupsList = targetGroups;
+                                for (var k = 0; k < targetGroupsList.length; k++) {
+                                    content += "<option>" + targetGroupsList[k] + "</option>";
+                                }
+                            }
+
+                            content +="</select>";
+                            whenDiv.innerHTML = whenDiv.innerHTML + content;
+
+                            var content = "&nbsp;&nbsp;<span class='buttons remove' " +
+                                "onclick='HomePresenter.removeNew(this.parentNode,event)'>-</span>";
+                            whenDiv.innerHTML = whenDiv.innerHTML + content;
+                            content = "<p class='hidden dataDirty'>0</p>"
+                            whenDiv.innerHTML = whenDiv.innerHTML + content;
+
+                            newDiv.appendChild(whenDiv);
+
+
+                            /******************Setting dropdown Values****************************/
+                            $(whenDiv).children('.groupType').val(groupType);
+                            //HomePresenter.toggleRegionTargetGroup($(whenDiv).children('.groupType')[0], false)
+                            $(whenDiv).children('.operation').val(operation);
+                            $(whenDiv).children('.value').val(value);
+
+                        }
+                    }
                 }
-
             }
-
         }
     }
-    }
     else {
-        console.log('removing dirty flags')
         $dirtyFields.html('0');
     }
 
     $(".selectpicker").selectBoxIt({
         autoWidth: false
     });
-    console.log($('.value').val());
 }
 
 
