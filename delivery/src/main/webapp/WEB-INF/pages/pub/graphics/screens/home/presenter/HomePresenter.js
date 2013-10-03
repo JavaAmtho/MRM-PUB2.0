@@ -486,7 +486,7 @@ HomePresenter.openWhiteBoard = function (divReference, event) {
     });
 
 
-    /*jQuery.getJSON("http://192.168.135.112/CS13.0Trunk/admin/rest/whiteboard/3/"+ $(divReference).children('.inner').children('.templateName').html(),function(data){
+    /*jQuery.getJSON("http://14.141.2.211/CS13.0Trunk/admin/rest/whiteboard/3/"+ $(divReference).children('.inner').children('.templateName').html(),function(data){
      console.log("WBD created "+data);
      mamFileID = data;
      console.log("Wbd stillWorking : "+stillWorking);
@@ -639,13 +639,13 @@ HomePresenter.expandPages = function (div, event) {
 
 /*
  HomePresenter.createMergeList = function (mamFileID, json, $loading) {
- jQuery.post("http://192.168.135.112/CS13.0Trunk/admin/rest/whiteboard/4/" + mamFileID, json, function (data){
+ jQuery.post("http://14.141.2.211/CS13.0Trunk/admin/rest/whiteboard/4/" + mamFileID, json, function (data){
  console.log("merge list prepared");
 
- jQuery.get("http://192.168.135.112/CS13.0Trunk/admin/rest/whiteboard/5/" + mamFileID, function (url) {
+ jQuery.get("http://14.141.2.211/CS13.0Trunk/admin/rest/whiteboard/5/" + mamFileID, function (url) {
  $loading.children('.loading-overlay').toggle();
  $loading.children('.loading-message').toggle();
- url = url.replace("../admin", "http://192.168.135.112/CS13.0Trunk/admin");
+ url = url.replace("../admin", "http://14.141.2.211/CS13.0Trunk/admin");
  console.log(url);
  var screenParams = [
  'height=' + (screen.height - 100),
