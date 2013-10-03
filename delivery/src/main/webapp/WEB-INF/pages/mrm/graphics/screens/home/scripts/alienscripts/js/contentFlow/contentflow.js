@@ -1284,10 +1284,11 @@ ContentFlow.prototype = {_imagesToLoad: 0, _activeItem: 0, _currentPosition: 0, 
     var D = this._findBiggestItem();
     var F = this.Flow.findPos();
     if (this.conf.verticalFlow) {
-        this.Flow.style.width = D.width.width + "px";
+    /*    this.Flow.style.width = D.width.width + "px";*/
+        this.Flow.style.width = "100%";
         this.Flow.style.height = 3 * D.width.width * (1 + this.conf.reflectionHeight + this.conf.reflectionGap) + "px"
     } else {
-        this.Flow.style.height = D.height.height + (D.height.top - F.top) + "px"
+        this.Flow.style.height = "250" + "px"
     }
     var C = this.conf.verticalFlow ? D.width.width : D.height.height;
     var B = C / (1 + this.conf.reflectionHeight + this.conf.reflectionGap);
