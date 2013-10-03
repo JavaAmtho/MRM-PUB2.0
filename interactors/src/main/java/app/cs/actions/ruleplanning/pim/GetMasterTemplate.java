@@ -20,7 +20,7 @@ public class GetMasterTemplate implements Interactor {
 	}
 
 	public ResponseModel execute(RequestModel model) {
-		return new StringResponse(masterTemplateRepository.getMasterTemplates());
+		return new StringResponse(masterTemplateRepository.getMasterTemplates("cache"));
 	}
 
 }
