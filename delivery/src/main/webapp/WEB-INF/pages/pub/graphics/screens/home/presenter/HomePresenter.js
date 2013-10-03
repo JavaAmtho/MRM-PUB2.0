@@ -450,9 +450,10 @@ HomePresenter.addClickEventForWBDPopup = function (url, innerDiv) {
     url = url.replace("../admin", "http://14.141.2.211/CS13.0Trunk/admin");
     var $childPage = $(innerDiv);
     $childPage.append("<p class='hidden url'>" + url + "</p>");
-    $childPage.attr('onclick', "HomePresenter.openURL(this)");
-    $childPage.attr('ondblclick', "");
+//    $childPage.attr('onclick', "HomePresenter.openURL(this)");
+    $childPage.attr('ondblclick', "event.stopPropagation()");
     $imageReference = $childPage.children('.popupImage');
+    $imageReference.attr('onclick', "HomePresenter.openURL(this.parentNode)");
     $imageReference.toggleClass('hidden');
     setInterval(function () {                   //pulsating glow logic
         $imageReference.toggleClass('urlInjected');
@@ -556,25 +557,32 @@ HomePresenter.expandPages = function (div, event) {
                 $(newDiv).addClass('anyRegion');
                 if ($(div).hasClass('odd')) {
                     $(newDiv).addClass('odd');                               //According to whether odd
-                    content += "<div class='childPages inner odd' " +        //or even page set the class names
-                        "ondblclick='HomePresenter.openWhiteBoard(this,event)'>";
+                    content += "<div class='childPages inner odd' ";        //or even page set the class names
+
                 }
                 else {
                     $(newDiv).addClass('even');
-                    content += "<div class='childPages inner even' " +
-                        "ondblclick='HomePresenter.openWhiteBoard(this,event)'>";
+                    content += "<div class='childPages inner even' ";
                 }
                 if (wbdURL != " ") {
+                    content += "ondblclick=''>";
+                    content += "<img onclick='HomePresenter.openURL(this.parentNode.parentNode)' " +             //Add the popout icon
+                        "src='../../../graphics/screens/home/images/popup_icon.png' " +   //and set whether
+                        "class='popupImage'/>";                    //to be visible or not
                     HomePresenter.addClickEventForWBDPopup(wbdURL, newDiv);
                 }
+                else{
+                        content += "ondblclick='HomePresenter.openWhiteBoard(this,event)'>";
+                    content += "<img onclick='HomePresenter.openURL(this.parentNode.parentNode)' " +             //Add the popout icon
+                        "src='../../../graphics/screens/home/images/popup_icon.png' " +   //and set whether
+                        "class='popupImage hidden'/>";                    //to be visible or not
+                }
+                console.log(content);
                 content += "<div class='loading-overlay' ondblclick='event.stopPropagation()'></div>" +
                     "<img ondblclick='event.stopPropagation()' " +                    //Add the loading screen
                     "src='../../../graphics/screens/home/images/load.gif' " +         //image and background
                     "class='loading-message'/>"                                       //        div
-                var checkWbdExists = (wbdURL == " ") ? "hidden" : "";
-                content += "<img ondblclick='event.stopPropagation()' " +             //Add the popout icon
-                    "src='../../../graphics/screens/home/images/popup_icon.png' " +   //and set whether
-                    "class='popupImage " + checkWbdExists + "'/>";                    //to be visible or not
+
                 $(newDiv).addClass($(div)[0].id); //Add the parent master page id as a classname to child to
                                                   //maintain some relation
                 $(newDiv).addClass('childPages');
@@ -623,7 +631,7 @@ HomePresenter.expandPages = function (div, event) {
         var $dirtyFields = $(div).find('.dataDirty');
         var isDirty = getDataDirtyFlag($dirtyFields);
         if (isDirty) {
-            GetPageRules.get(div.id, function (data) {
+            GetPageRules.get(GraphicDataStore.getCurrentPublication() + "." + div.id, function (data) {
                 if (data != 'error') {
                     GraphicDataStore.addToPageRules(data);
                     HomePresenter.setRules(div);
