@@ -23,6 +23,7 @@ public class EditDimension implements Interactor {
 	@Override
 	public ResponseModel execute(RequestModel requestMdel) {
 		EditDimensionRequest request = (EditDimensionRequest) requestMdel;
+		request.getDimensionalObject().setIsFolder(true);
 		dimensionRepository.save(request.getDimensionalObject());
 		return new EmptyResponse();
 	}
