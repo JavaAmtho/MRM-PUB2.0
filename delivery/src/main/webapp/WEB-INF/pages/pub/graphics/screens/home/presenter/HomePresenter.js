@@ -1195,21 +1195,8 @@ HomePresenter.removeNew = function (reference, event) {
 
         $(reference.parentNode).children('.wbdURL').html(" ");
         $(reference.parentNode).children('.mamFileID').html(" ");
-
-        $values = $(reference).find('.value');
-        console.log($values[0].value);
-        $(reference).closest('.rules-opened').removeClass($values[0].value.toLowerCase());
-    }
-    else if ($(reference).hasClass('thenChild')) {
-        $values = $(reference).find('.value');
-        console.log($values.length)
-        for (var i = 0; i < $values.length; i++) {
-            console.log($values[i].value)
-            $(reference).closest('.rules-opened').removeClass($values[i].value.toLowerCase());
-        }
     }
     reference.parentNode.removeChild(reference);
-    event.stopPropagation();
     return false;
 }
 

@@ -191,6 +191,7 @@ var DynaTree = function(){
                 dnd: {
                     preventVoidMoves: true, // Prevent dropping nodes 'before self', etc.
                     onDragStart: function(node) {
+
                         if(node.data.type == "Chapter"||node.data.type == "Page"||node.data.type == "Assortment" ) {
                             return true;
                         }
@@ -265,8 +266,13 @@ var DynaTree = function(){
                 manode.expand()
             }
 
-            $('.colmask').jqxSplitter({ width: '100%', height: 700, splitBarSize:8, panels: [{ size: '20%'}, { size: '80%'}] });
-
+            //$('.colmask').jqxSplitter({ width: '100%', height: 700, splitBarSize:8, panels: [{ size: '20%'}, { size: '80%'}] });
+            $('.colmask').split({
+                orientation: 'vertical',
+                limit: 30,
+                position: '20%'
+            });
+//            $('.colmask').splitter({splitVertical:true,A:$('#leftPanel'),B:$('#rightPanel'),closeableto:100});
             //$('#coverMain').fadeIn(600);
 
                // alert(pubIdToOpen);
