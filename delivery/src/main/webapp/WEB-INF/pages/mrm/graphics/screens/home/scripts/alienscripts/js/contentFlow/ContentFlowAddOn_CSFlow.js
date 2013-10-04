@@ -96,7 +96,7 @@ new ContentFlowAddOn ('CSFlow', {
         fixItemSize: false,             // don't scale item size to fit image, crop image if bigger than item
         relativeItemPosition: "top center", // align top/above, bottom/below, left, right, center of position coordinate
 
-        circularFlow: false,             // should the flow wrap around at begging and end?
+        circularFlow: true,             // should the flow wrap around at begging and end?
         verticalFlow: false,            // turn ContentFlow 90 degree counterclockwise
         visibleItems: -1,               // how man item are visible on each side (-1 := auto)
         endOpacity: 1,                  // opacity of last visible item on both sides

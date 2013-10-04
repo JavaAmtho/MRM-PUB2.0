@@ -222,6 +222,9 @@ var GanttChart = function(){
                     //Call to server to get the publications of this Communication Channel
                     GanttChartPresenter.getPublications(row,Grids.onPublicationHandler);
                 }
+                else{
+                    HomePresenter.hideCoverflow();
+                }
             }
             if(col != "ganttChart") {
                 Grids[0].ScrollToDate(row.startDate,"Center");
