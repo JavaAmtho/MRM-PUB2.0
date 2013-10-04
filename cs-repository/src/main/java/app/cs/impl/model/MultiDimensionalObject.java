@@ -223,7 +223,7 @@ public class MultiDimensionalObject implements Serializable, GenericDomain {
 	}
 
 	public String getTitle() {
-		return title;
+		return name;
 	}
 
 	public String getType() {
