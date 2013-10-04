@@ -187,19 +187,23 @@ HomePresenter.createFlow = function(publications){
 
     if(hasPublication){
         if(!HomePresenter.coverFlowExists){
-            HomePresenter.addImagesToFlow(details)
-            var scriptTag = '<script type="text/javascript" src="../../../graphics/screens/home/scripts/alienscripts/js/contentFlow/contentflow.js" load="CSFlow"></script>';
-            $("head").append(scriptTag);
             HomePresenter.coverFlowExists = true;
         }
-        else{
+        $(".flow").html("");
+        HomePresenter.addImagesToFlow(details)
+        var scriptTag = '<script type="text/javascript" src="../../../graphics/screens/home/scripts/alienscripts/js/contentFlow/contentflow.js" load="CSFlow" ></script>';
+        $("head").append(scriptTag);
+        var myNewFlow = new ContentFlow('myFantasicFlow',{ reflectionHeight: 0, circularFlow: true, load:"CSFlow" } );
+        //myNewFlow.init();
+
+        /*else{
             $(".flow").html("");
             HomePresenter.addImagesToFlow(details)
             ContentFlowGlobal.Flows = [];
             $("div").remove( ".mouseoverCheckElement" );
             var myNewFlow = new ContentFlow('myFantasicFlow');
             myNewFlow.init();
-        }
+        }*/
         $('#coverMain').fadeIn(600);
     }
     else{
