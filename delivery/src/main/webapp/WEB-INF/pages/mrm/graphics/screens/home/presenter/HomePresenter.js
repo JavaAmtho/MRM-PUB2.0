@@ -177,55 +177,53 @@ HomePresenter.checkNum1 = function(){
 
 }
 
-
-
-var myCount=0;
+HomePresenter.coverFlowExists = false;
 
 HomePresenter.createFlow = function(publications){
 
-    /* var publications = [
-     {
-     "id":"1",
-     "name":"Publication 1",
-     "previewImage":"../../../graphics/screens/home/images/img/Chrysanthemum.jpg",
-     "actualImage": "../../../graphics/screens/home/images/img/Chrysanthemum.jpg",
-     "previewType": "image"
-     },
-     {
-     "id":"2",
-     "name":"Publication 2",
-     "previewImage": "http://192.168.135.104/CS13.0Trunk/admin/FileServer.php?src=F%3A%2FContentServ%2Fhtdocs%2FCS13.0Trunk%2FCSLive%2Fdata%2F.cs%2Fmam%2Fvolumes%2F75%2Ffiles%2F7547%2Fthumbs%2Fmaster.jpg&SecurityID=972146a8ada263573f41419871cc011f&rand=1378896763",
-     "actualImage": "http://192.168.135.104/CS13.0Trunk/admin/forward.php?forward=../CSLive/playCSVideoPlayerUsingMamFile.php&mamFileNo=7547",
-     "previewType": "video"
-     },
-     {
-     "id":"3",
-     "name":"Publication 3",
-     "previewImage":"../../../graphics/screens/home/images/img/Hydrangeas.jpg",
-     "actualImage": "../../../graphics/screens/home/images/img/Hydrangeas.jpg",
-     "previewType": "image"
-     },
-     {
-     "id":"4",
-     "name":"Publication 4",
-     "previewImage":"../../../graphics/screens/home/images/img/Jellyfish.jpg",
-     "actualImage": "../../../graphics/screens/home/images/img/Jellyfish.jpg",
-     "previewType": "image"
-     },
-     {
-     "id":"5",
-     "name":"Publication 5",
-     "previewImage": "http://192.168.135.104/CS13.0Trunk/admin/FileServer.php?src=F%3A%2FContentServ%2Fhtdocs%2FCS13.0Trunk%2FCSLive%2Fdata%2F.cs%2Fmam%2Fvolumes%2F75%2Ffiles%2F7546%2Fthumbs%2Fmaster.jpg&SecurityID=972146a8ada263573f41419871cc011f&rand=1378896774",
-     "actualImage": "http://192.168.135.104/CS13.0Trunk/admin/forward.php?forward=../CSLive/playCSVideoPlayerUsingMamFile.php&mamFileNo=7546",
-     "previewType": "video"
-     }
-     ];
-     */
     GraphicDataStore.setCommChannelDetails(publications);
     var details = GraphicDataStore.getCommChannelDetails();
+    var hasPublication = HomePresenter.doesChannelHavePublications(details);
 
-    $(".flow").html("");
+    if(hasPublication){
+        if(!HomePresenter.coverFlowExists){
+            HomePresenter.addImagesToFlow(details)
+            var scriptTag = '<script type="text/javascript" src="../../../graphics/screens/home/scripts/alienscripts/js/contentFlow/contentflow.js" load="CSFlow"></script>';
+            $("head").append(scriptTag);
+            HomePresenter.coverFlowExists = true;
+        }
+        else{
+            $(".flow").html("");
+            HomePresenter.addImagesToFlow(details)
+            ContentFlowGlobal.Flows = [];
+            $("div").remove( ".mouseoverCheckElement" );
+            var myNewFlow = new ContentFlow('myFantasicFlow');
+            myNewFlow.init();
+        }
+        $('#coverMain').fadeIn(600);
+    }
+    else{
+        HomePresenter.hideCoverflow();
+    }
 
+}
+
+HomePresenter.hideCoverflow = function(){
+    if(HomePresenter.coverFlowExists){
+        $('#coverMain').fadeOut(600);
+    }
+}
+
+HomePresenter.doesChannelHavePublications = function(publications){
+    var exists = false;
+
+    if(publications.length > 0)
+      exists = true;
+
+    return exists;
+}
+
+HomePresenter.addImagesToFlow = function(details){
     for(var i=0; i< details.length; i++){
         var img = $(document.createElement('img'))
         img.attr('id', details[i].id);
@@ -235,19 +233,51 @@ HomePresenter.createFlow = function(publications){
         img.attr('title',details[i].name);
         img.appendTo('.flow');
     }
-
-    if(myCount == 0){
-        var scriptTag = '<script type="text/javascript" src="../../../graphics/screens/home/scripts/alienscripts/js/contentFlow/contentflow.js" load="CSFlow"></script>';
-        $("head").append(scriptTag);
-        $('#coverMain').fadeIn(600);
-        myCount += 1;
-    }
-    else{
-        ContentFlowGlobal.Flows = [];
-        $("div").remove( ".mouseoverCheckElement" );
-        var myNewFlow = new ContentFlow('myFantasicFlow');
-        myNewFlow.init();
-    }
-
 }
 
+
+
+
+
+
+
+
+
+/* var publications = [
+ {
+ "id":"1",
+ "name":"Publication 1",
+ "previewImage":"../../../graphics/screens/home/images/img/Chrysanthemum.jpg",
+ "actualImage": "../../../graphics/screens/home/images/img/Chrysanthemum.jpg",
+ "previewType": "image"
+ },
+ {
+ "id":"2",
+ "name":"Publication 2",
+ "previewImage": "http://192.168.135.104/CS13.0Trunk/admin/FileServer.php?src=F%3A%2FContentServ%2Fhtdocs%2FCS13.0Trunk%2FCSLive%2Fdata%2F.cs%2Fmam%2Fvolumes%2F75%2Ffiles%2F7547%2Fthumbs%2Fmaster.jpg&SecurityID=972146a8ada263573f41419871cc011f&rand=1378896763",
+ "actualImage": "http://192.168.135.104/CS13.0Trunk/admin/forward.php?forward=../CSLive/playCSVideoPlayerUsingMamFile.php&mamFileNo=7547",
+ "previewType": "video"
+ },
+ {
+ "id":"3",
+ "name":"Publication 3",
+ "previewImage":"../../../graphics/screens/home/images/img/Hydrangeas.jpg",
+ "actualImage": "../../../graphics/screens/home/images/img/Hydrangeas.jpg",
+ "previewType": "image"
+ },
+ {
+ "id":"4",
+ "name":"Publication 4",
+ "previewImage":"../../../graphics/screens/home/images/img/Jellyfish.jpg",
+ "actualImage": "../../../graphics/screens/home/images/img/Jellyfish.jpg",
+ "previewType": "image"
+ },
+ {
+ "id":"5",
+ "name":"Publication 5",
+ "previewImage": "http://192.168.135.104/CS13.0Trunk/admin/FileServer.php?src=F%3A%2FContentServ%2Fhtdocs%2FCS13.0Trunk%2FCSLive%2Fdata%2F.cs%2Fmam%2Fvolumes%2F75%2Ffiles%2F7546%2Fthumbs%2Fmaster.jpg&SecurityID=972146a8ada263573f41419871cc011f&rand=1378896774",
+ "actualImage": "http://192.168.135.104/CS13.0Trunk/admin/forward.php?forward=../CSLive/playCSVideoPlayerUsingMamFile.php&mamFileNo=7546",
+ "previewType": "video"
+ }
+ ];
+ */
