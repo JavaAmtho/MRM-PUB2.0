@@ -40,7 +40,7 @@ HomePresenter.loadViewItems = function (evt, currentTemplateView) {
             var css = "";
             var stackcss = "";
             if (ref.type == "Page") {
-                pageIDs.push(GraphicDataStore.getCurrentPublication() + "." + ref.id);
+                pageIDs.push(GraphicDataStore.getCurrentPublication() + "." + ref.title);
                 css = "masterPage anyRegion anyTargetGroup";
                 console.log("CSS : " + css);
                 ref.typeCSS = css;

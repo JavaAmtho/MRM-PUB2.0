@@ -519,9 +519,9 @@ var GanttChart = function(){
 
     function isFolder(dim){
         var flag =true;
-        if(dim == "Page" || dim == "Assortment"){
+        /*if(dim == "Page" || dim == "Assortment"){
             flag = false;
-        }
+        }*/
         return flag;
     }
 
