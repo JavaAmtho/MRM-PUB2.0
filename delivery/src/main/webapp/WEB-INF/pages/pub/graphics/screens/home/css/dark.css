@@ -662,6 +662,8 @@ Top Bar Animation Section starts
     border-bottom: 1px solid #BBBBBB;
     border-left: 1px solid #BBBBBB;
     border-right: 1px solid #BBBBBB;
+    transition: visibility 1s;
+    visibility: hidden;
 
 }
 

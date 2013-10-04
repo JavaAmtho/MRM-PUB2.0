@@ -144,7 +144,7 @@
             name= "Dimensions"
             startDate= "StartDate"
             endDate= "EndDate"
-            manager= "Manager"
+            manager= "Project Manager"
             budgetOwner= "Budget Owner"
             budget= "Budget"
             />

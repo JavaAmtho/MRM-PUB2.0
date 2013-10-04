@@ -170,6 +170,7 @@ HomePresenter.slidePanel = function (evt) {
 
     var btnId = evt.currentTarget.id;
     if (btnSelectionFlag == 0) {
+        $("#panel").css('visibility','visible')
         $("#typeHolder").html(evt.currentTarget.name);
         $("#panel").animate({right: '30px'}, "slow", function () {
             HomePresenter.createTree(btnId);
@@ -177,14 +178,18 @@ HomePresenter.slidePanel = function (evt) {
         btnSelectionFlag = 1;
     }
     else if (btnSelectionFlag == 1 && ($("#typeHolder").html() == evt.currentTarget.name)) {
+        $("#panel").css('visibility','hidden')
         $("#panel").animate({right: '-200px'}, "slow");
         HomePresenter.reset();
+
         btnSelectionFlag = 0;
     }
     else {
         $("#typeHolder").html(evt.currentTarget.name);
         HomePresenter.createTree(btnId);
     }
+
+
     HomePresenter.changeSelectedBtn(evt.currentTarget.id);
 }
 
@@ -244,6 +249,7 @@ $(document).bind("TREE_ITEM_CLICKED", function itemClickedHandler(e) {
 });
 
 HomePresenter.getChildrenForSelectedNode = function (node) {
+
     var nodeDetails = [];
     for (var i = 0; i < node.data.children.length; i++) {
         var obj = new TreeObjectVO();
@@ -258,6 +264,7 @@ HomePresenter.getChildrenForSelectedNode = function (node) {
 }
 
 HomePresenter.getProductsForSelectedNode = function (node) {
+
     var nodeDetails = [];
     for (var i = 0; i < node.data.products.length; i++) {
         var obj = new ProductVO();
@@ -312,6 +319,7 @@ HomePresenter.showAssortmentPanel = function (rendererData) {
 }
 
 HomePresenter.populateAssetsList = function (data) {
+    //alert(1234)
     //Converting the div into the jqwidget list with the renderer for that list
     $("#assetDetails").jqxListBox('beginUpdate');
     $("#assetDetails").jqxListBox({ source: data, autoItemsHeight: true, scrollBarSize: 15, height: '450px', displayMember: "title", valueMember: "description", width: 200, height: 250,
