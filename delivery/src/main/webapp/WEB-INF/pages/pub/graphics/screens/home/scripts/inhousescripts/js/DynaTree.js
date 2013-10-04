@@ -135,6 +135,10 @@ var DynaTree = function(){
     }
 
     function onDropSuccess(){
+        console.log(draggedNode + "draggedNode")
+        console.log(droppedSrcNode + "droppedSrcNode NEW")
+        console.log(oldParentNode + "oldParentNode OLD")
+
         if(draggedNode.data.type == "Assortment"){
             var cb = draggedNode.toDict(true, function(dict){
                 //dict.title = "Copy of " + dict.title;
@@ -144,12 +148,22 @@ var DynaTree = function(){
         }
         else{
             draggedNode.move(droppedSrcNode, dragHitMode);
+            for(var i=0; i< oldParentNode.data.children.length; i++){
+                if(draggedNode.data.title == oldParentNode.data.children[i].title){
+                    oldParentNode.data.children.splice(i,1);
+                }
+            }
         }
+
+        droppedSrcNode.data.children.push(draggedNode.data);
+        droppedSrcNode.activate();
+        droppedSrcNode.expand();
     }
 
     var draggedNode;
     var dragHitMode;
     var droppedSrcNode;
+    var oldParentNode;
 
     this.createTree = function(treeObj,data){
 
@@ -193,6 +207,7 @@ var DynaTree = function(){
                     onDragStart: function(node) {
 
                         if(node.data.type == "Chapter"||node.data.type == "Page"||node.data.type == "Assortment" ) {
+                            oldParentNode = node.parent;
                             return true;
                         }
                         else{
