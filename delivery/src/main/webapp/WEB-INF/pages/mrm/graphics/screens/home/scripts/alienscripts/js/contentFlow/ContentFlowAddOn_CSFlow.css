@@ -259,4 +259,21 @@
     border: 0px solid #343434 !important;
 }
 
+.globalCaption{
+    display: none;
+}
+
+#newCaption{
+    position :relative;
+    width: 100px;
+    text-align: center;
+    word-wrap: break-word;
+    margin: 0 auto;
+    font-family: tahoma, arial, helvetica;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 4px white;
+}
+
 

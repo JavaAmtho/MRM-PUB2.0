@@ -207,11 +207,13 @@ new ContentFlowAddOn ('CSFlow', {
             GraphicDataStore.setCurrentFocusedItem(item);
 
             document.getElementById("coverInfoHeader").innerHTML= GraphicDataStore.currentFocusedItem.name;
+            document.getElementById("newCaption").innerHTML= GraphicDataStore.currentFocusedItem.name;
+
             //console.log(document.getElementById("coverDetail"));
             document.getElementById("coverDetail").innerHTML="<br><b>Name: </b>"+GraphicDataStore.currentFocusedItem.name+"<br><br><b>Type: </b>"+GraphicDataStore.currentFocusedItem.previewType+"<br><br><b>Link: </b><a class='linkOfCoverflowItem' target='_blank'  href='"+GraphicDataStore.currentFocusedItem.actualImage+"'>"+GraphicDataStore.currentFocusedItem.actualImage+"</a>";
 
         },
-        
+
         /*
          * called when the target item/position is reached
          */
