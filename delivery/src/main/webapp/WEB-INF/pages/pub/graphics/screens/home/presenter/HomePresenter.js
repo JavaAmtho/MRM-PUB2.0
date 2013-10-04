@@ -443,7 +443,7 @@ var masterTemplateList = new Array();
 
 //Open the WBD URL in a popout window
 HomePresenter.openURL = function (reference) {
-    var urlToOpen = $(reference).children('.url').html();
+    var urlToOpen = $(reference).children('.wbdURL').html();
     urlToOpen = urlToOpen.replace(/&amp;/g, '&');
     var screenParams = [
         'height=' + (screen.height - 100),
@@ -457,12 +457,11 @@ HomePresenter.openURL = function (reference) {
 HomePresenter.addClickEventForWBDPopup = function (url, innerDiv) {
     url = url.replace("../admin", "http://14.141.2.211/CS13.0Trunk/admin");
     var $childPage = $(innerDiv);
-    $childPage.append("<p class='hidden url'>" + url + "</p>");
-//    $childPage.attr('onclick', "HomePresenter.openURL(this)");
+    $childPage.children('.wbdURL').html(url);
     $childPage.attr('ondblclick', "event.stopPropagation()");
     $imageReference = $childPage.children('.popupImage');
     $imageReference.attr('onclick', "HomePresenter.openURL(this.parentNode)");
-    $imageReference.toggleClass('hidden');
+    $imageReference.removeClass('hidden');
     setInterval(function () {                   //pulsating glow logic
         $imageReference.toggleClass('urlInjected');
     }, 1000);
@@ -478,20 +477,22 @@ HomePresenter.openWhiteBoard = function (divReference, event) {
     }
     var ruleID = $innerDiv.children('.ruleID').html();
     var logicalPageID = $innerDiv.children('.logicalPageID').html();
+    GraphicDataStore.addRuleToLoadingList(ruleID);
     CreateWBD.createWBD(ruleID, GraphicDataStore.getCurrentPublication() + "." + logicalPageID, publicationID, function (data) {
+        console.log(data);
         if (data == 'error') {
             alert("Error creating WBD!!");
-            $innerDiv.children('.loading-overlay').toggle();
-            $innerDiv.children('.loading-message').toggle();
+            $('.childPages').trigger("loadingError",[ruleID]);
         }
         else {
             $('#' + logicalPageID).children('.rule').children('.then').children('.dataDirty').html('1');
-            HomePresenter.addClickEventForWBDPopup(data.editorURL, $innerDiv[0]);
-            $innerDiv.children('.loading-overlay').toggle();
-            $innerDiv.children('.loading-message').toggle();
+            GraphicDataStore.addAdditionalInformationToPageRules(data,ruleID,publicationID + "." + logicalPageID);
+            $('.childPages').trigger("loadingDone",[ruleID,data.editorURL]);
         }
+        GraphicDataStore.stopLoadingStatus(ruleID)
     });
-
+    $innerDiv.children('.loading-overlay').toggleClass('hidden');       //toggle loading screen
+    $innerDiv.children('.loading-message').toggleClass('hidden');
 
     /*jQuery.getJSON("http://14.141.2.211/CS13.0Trunk/admin/rest/whiteboard/3/"+ $(divReference).children('.inner').children('.templateName').html(),function(data){
      console.log("WBD created "+data);
@@ -528,8 +529,6 @@ HomePresenter.openWhiteBoard = function (divReference, event) {
      HomePresenter.createMergeList(mamFileID, json,$(divReference).children('.inner'));
      }
      });*/
-    $innerDiv.children('.loading-overlay').toggle();       //toggle loading screen
-    $innerDiv.children('.loading-message').toggle();
 }
 
 
@@ -539,6 +538,11 @@ HomePresenter.expandPages = function (div, event) {
     var $container = $isotopeContainer;
     //Check if master page has been expanded into the child pages
     if (!$(div).hasClass('opened')) {
+            var $dirtyFields = $(div).find('.dataDirty');
+            var isDirty = getDataDirtyFlag($dirtyFields);
+            if (isDirty) {
+                HomePresenter.setRules(div);
+            }
             //If not then expand master page to child pages
             $(div).children('.expand').html("-");   //change '+' button to '-' to indicate expansion
             var $masterTemplate;
@@ -585,14 +589,14 @@ HomePresenter.expandPages = function (div, event) {
                         "src='../../../graphics/screens/home/images/popup_icon.png' " +   //and set whether
                         "class='popupImage hidden'/>";                    //to be visible or not
                 }
-                console.log(content);
-                content += "<div class='loading-overlay' ondblclick='event.stopPropagation()'></div>" +
+
+                var checkLoading = GraphicDataStore.checkIfRuleLoading(ruleID) ? "":" hidden";
+
+                content += "<div class='loading-overlay" + checkLoading + "' ondblclick='event.stopPropagation()'></div>" +
                     "<img ondblclick='event.stopPropagation()' " +                    //Add the loading screen
                     "src='../../../graphics/screens/home/images/load.gif' " +         //image and background
-                    "class='loading-message'/>"                                       //        div
+                    "class='loading-message"+ checkLoading +"'/>"                                       //        div
 
-                $(newDiv).addClass($(div)[0].id); //Add the parent master page id as a classname to child to
-                                                  //maintain some relation
                 $(newDiv).addClass('childPages');
 
 
@@ -633,23 +637,45 @@ HomePresenter.expandPages = function (div, event) {
                 $itemsToInsert[i] = newDiv;
             }
             $container.isotope('insert', $($itemsToInsert), $(div));
-
         }
     else {
-        var $dirtyFields = $(div).find('.dataDirty');
-        var isDirty = getDataDirtyFlag($dirtyFields);
-        if (isDirty) {
-            GetPageRules.get(GraphicDataStore.getCurrentPublication() + "." + div.id, function (data) {
-                if (data != 'error') {
-                    GraphicDataStore.addToPageRules(data);
-                    HomePresenter.setRules(div);
-                }
-            });
-        }
         $(div).children('.expand').html("+");
-        $container.isotope('remove', $('.' + $(div)[0].id));
+        var $logicalPageIDOfParentOfChild = $('.childPages').children('.inner').children('.logicalPageID:contains(' + div.id + ')');
+        var $childPages = $('.childPages').has($logicalPageIDOfParentOfChild);
+        $childPages.unbind("loadingError");
+//        $container.isotope('remove', $('.' + $(div)[0].id));
+        $container.isotope('remove',$childPages);
+        //$('.' + $(div)[0].id).unbind("loadingError");
         $(div).toggleClass('opened');
     }
+
+
+    $('.childPages').bind("loadingDone",function(event,ruleIDFinishLoading,wbdURL){     //
+        var $innerDiv = $(this).children('.inner');                                     //
+        var ruleIDnew = $innerDiv.children('.ruleID').html();                           //
+        if(ruleIDFinishLoading == ruleIDnew){                                           //
+            var logicalPageID = $innerDiv.children('.logicalPageID').html();            //
+            HomePresenter.addClickEventForWBDPopup(wbdURL, $innerDiv[0]);               //
+            $innerDiv.children('.loading-overlay').addClass('hidden');                  //
+            $innerDiv.children('.loading-message').addClass('hidden');                  //need to modify
+        }                                                                               //
+        //               $(this).unbind("loadingDone");                                 //  logic so that
+    });                                                                                 //
+                                                                                        //
+    $('.childPages').bind("loadingError",function(event,ruleIDFinishLoading){           //  toggle class can
+        var $innerDiv = $(this).children('.inner');                                     //
+        var ruleIDnew = $innerDiv.children('.ruleID').html();                           //   be used
+        if(ruleIDFinishLoading == ruleIDnew){                                           //
+            console.log('1231')                                                         //
+            console.log($innerDiv.children('.loading-overlay').attr('class'));          //
+            $innerDiv.children('.loading-overlay').addClass('hidden');                  //
+            console.log($innerDiv.children('.loading-overlay').attr('class'));          //
+            $innerDiv.children('.loading-message').addClass('hidden');                  //
+        }                                                                               //
+//                $(this).unbind("loadingError");
+    });
+
+
 }
 
 /*
@@ -658,8 +684,8 @@ HomePresenter.expandPages = function (div, event) {
  console.log("merge list prepared");
 
  jQuery.get("http://14.141.2.211/CS13.0Trunk/admin/rest/whiteboard/5/" + mamFileID, function (url) {
- $loading.children('.loading-overlay').toggle();
- $loading.children('.loading-message').toggle();
+ $loading.children('.loading-overlay').toggleClass('hidden');
+ $loading.children('.loading-message').toggleClass('hidden');
  url = url.replace("../admin", "http://14.141.2.211/CS13.0Trunk/admin");
  console.log(url);
  var screenParams = [
@@ -997,19 +1023,6 @@ HomePresenter.openRules = function (div, event) {
             }
         }
         else {
-                console.log(GraphicDataStore.getPageRuleById(div.id))
-                if (GraphicDataStore.getPageRuleById(div.id) != null) {
-                    HomePresenter.setRules(div);
-                }
-
-                else {
-                    GetPageRules.get(div.id, function (data) {
-                        if (data != 'error') {
-                            GraphicDataStore.addToPageRules(data);
-                            HomePresenter.setRules(div);
-                        }
-                    });
-                }
             if ($(div).children(".expand").css('display') == 'block') {
                 $(div).children(".expand").toggle();
             }
@@ -1208,6 +1221,16 @@ HomePresenter.removeNew = function (reference, event) {
     return false;
 }
 
+
+
+HomePresenter.setContainerRelayout = function(){
+    if($isotopeContainer){
+        $isotopeContainer.isotope('reLayout');
+    }
+}
+
+/*
+
 HomePresenter.edit = function (tagsClass, tagNo, reference, event) {
     console.log(reference.parentNode)
     var elements = reference.parentNode.getElementsByClassName(tagsClass);
@@ -1245,4 +1268,5 @@ HomePresenter.done = function (tagsClass, tagNo, reference, event) {
     event.stopPropagation();
 }
 
+*/
 

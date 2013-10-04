@@ -15,6 +15,33 @@ var GraphicDataStore = function(){
     var masterTemplateList;
     var currentPublication;
     var assortmentsList;
+    var loadingRulesList;
+}
+
+GraphicDataStore.checkIfRuleLoading = function(ruleID){
+    if(!this.loadingRulesList){
+        this.loadingRulesList = {};
+    }
+    if(this.loadingRulesList[ruleID] == 'loading'){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+GraphicDataStore.stopLoadingStatus = function(ruleID){
+    if(!this.loadingRulesList){
+        this.loadingRulesList = {};
+    }
+    this.loadingRulesList[ruleID] = "";
+}
+
+GraphicDataStore.addRuleToLoadingList = function(ruleID){
+    if(!this.loadingRulesList){
+        this.loadingRulesList = {};
+    }
+    this.loadingRulesList[ruleID] = "loading"
 }
 
 GraphicDataStore.pushToAssortmentsList = function(pageID,assortments){
@@ -78,6 +105,24 @@ GraphicDataStore.addToPageRules = function(rule){
     }
     this.pageRulesArr[this.currentPublication + "." + rule.logicalPageID] = rule.pageRules;
 }
+
+
+GraphicDataStore.addAdditionalInformationToPageRules = function(additionalInfo, ruleID, logicalPageID){
+    console.log(this.pageRulesArr[logicalPageID]);
+    if(this.pageRulesArr){
+        var pageRules = this.pageRulesArr[logicalPageID];
+        if(pageRules){
+            for(var i = 0 ; i < pageRules.length ; i++){
+                if(pageRules[i].ruleID == ruleID){
+                    pageRules[i].additionalInformation.mamFileID =  additionalInfo.mamFileID;
+                    pageRules[i].additionalInformation.editUrl =  additionalInfo.editorURL;
+                }
+            }
+        }
+    }
+    console.log(this.pageRulesArr[logicalPageID]);
+}
+
 
 GraphicDataStore.setCurrentAssortment = function(obj){
     this.currentAssortment = obj;

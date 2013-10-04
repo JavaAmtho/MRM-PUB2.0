@@ -1237,7 +1237,6 @@ h2.expand {
 
 .loading-overlay {
     z-index: 200;
-    display: none;
     position: absolute;
     top: 0;
     left: 0;
@@ -1249,7 +1248,6 @@ h2.expand {
 
 .loading-message {
     z-index: 250;
-    display: none;
     position: absolute;
     height: 30px;
     width: 30px;
