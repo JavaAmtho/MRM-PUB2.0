@@ -1436,36 +1436,22 @@ img.save {
 }
 
 .chapter.even{
-    background-image: linear-gradient(left bottom, #6d956b 22%, #8eba89 61%);
-    background-image: -o-linear-gradient(left bottom, #6d956b 22%, #8eba89 61%);
-    background-image: -moz-linear-gradient(left bottom, #6d956b 22%, #8eba89 61%);
-    background-image: -webkit-linear-gradient(left bottom, #6d956b 22%, #8eba89 61%);
-    background-image: -ms-linear-gradient(left bottom, #6d956b 22%, #8eba89 61%);
+    background-image: linear-gradient(left bottom, #8ebb8b 22%, #afdda9 61%);
+    background-image: -o-linear-gradient(left bottom, #8ebb8b 22%, #afdda9 61%);
+    background-image: -moz-linear-gradient(left bottom, #8ebb8b 22%, #afdda9 61%);
+    background-image: -webkit-linear-gradient(left bottom, #8ebb8b 22%, #afdda9 61%);
+    background-image: -ms-linear-gradient(left bottom, #8ebb8b 22%, #afdda9 61%);
 
-    background-image: -webkit-gradient(
-        linear,
-        left bottom,
-        right top,
-        color-stop(0.22, #7284A5),
-        color-stop(0.61, #959FC6)
-    );
 
 }
 
 .chapter.odd{
-    background-image: linear-gradient(left bottom, #7fac7d 22%, #99c695 61%);
-    background-image: -o-linear-gradient(left bottom, #7fac7d 22%, #99c695 61%);
-    background-image: -moz-linear-gradient(left bottom, #7fac7d 22%, #99c695 61%);
-    background-image: -webkit-linear-gradient(left bottom, #7fac7d 22%, #99c695 61%);
-    background-image: -ms-linear-gradient(left bottom, #7fac7d 22%, #99c695 61%);
+    background-image: linear-gradient(left bottom, #8ebf8c 22%, #a6d3a2 61%);
+    background-image: -o-linear-gradient(left bottom,#8ebf8c 22%, #a6d3a2 61%);
+    background-image: -moz-linear-gradient(left bottom,#8ebf8c 22%, #a6d3a2 61%);
+    background-image: -webkit-linear-gradient(left bottom,#8ebf8c 22%, #a6d3a2 61%);
+    background-image: -ms-linear-gradient(left bottom, ##8ebf8c 22%, #a6d3a2 61%);
 
-    background-image: -webkit-gradient(
-        linear,
-        left bottom,
-        right top,
-        color-stop(0.22, #7284A5),
-        color-stop(0.61, #959FC6)
-    );
 
 }
 
@@ -1476,14 +1462,7 @@ img.save {
     background-image: -webkit-linear-gradient(left bottom, #9d8c82 2%, #b8a7a3 51%, #d4a7a5 76%);
     background-image: -ms-linear-gradient(left bottom, #9d8c82 2%, #b8a7a3 51%, #d4a7a5 76%);
 
-    background-image: -webkit-gradient(
-        linear,
-        left bottom,
-        right top,
-        color-stop(0.02, #8F6978),
-        color-stop(0.51, #AC899C),
-        color-stop(0.76, #CFA5BC)
-    );
+
 }
 
 .assortmentItem.odd{
@@ -1493,14 +1472,7 @@ img.save {
     background-image: -webkit-linear-gradient(left bottom, #83736b 2%, #9c8b87 51%, #ba8f8d 76%);
     background-image: -ms-linear-gradient(left bottom, #83736b 2%, #9c8b87 51%, #ba8f8d 76%);
 
-    background-image: -webkit-gradient(
-        linear,
-        left bottom,
-        right top,
-        color-stop(0.02, #8F6978),
-        color-stop(0.51, #AC899C),
-        color-stop(0.76, #CFA5BC)
-    );
+
 }
 
 .dimension.even{
