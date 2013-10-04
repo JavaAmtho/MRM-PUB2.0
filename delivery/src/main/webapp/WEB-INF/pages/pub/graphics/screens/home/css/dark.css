@@ -1436,11 +1436,11 @@ img.save {
 }
 
 .chapter.even{
-    background-image: linear-gradient(left bottom, #7284A5 22%, #959FC6 61%);
-    background-image: -o-linear-gradient(left bottom, #7284A5 22%, #959FC6 61%);
+    background-image: linear-gradient(left bottom, #6d956b 22%, #8eba89 61%);
+    background-image: -o-linear-gradient(left bottom, #6d956b 22%, #8eba89 61%);
     background-image: -moz-linear-gradient(left bottom, #6d956b 22%, #8eba89 61%);
-    background-image: -webkit-linear-gradient(left bottom, #7284A5 22%, #959FC6 61%);
-    background-image: -ms-linear-gradient(left bottom, #7284A5 22%, #959FC6 61%);
+    background-image: -webkit-linear-gradient(left bottom, #6d956b 22%, #8eba89 61%);
+    background-image: -ms-linear-gradient(left bottom, #6d956b 22%, #8eba89 61%);
 
     background-image: -webkit-gradient(
         linear,
@@ -1453,11 +1453,11 @@ img.save {
 }
 
 .chapter.odd{
-    background-image: linear-gradient(left bottom, #7284A5 22%, #959FC6 61%);
-    background-image: -o-linear-gradient(left bottom, #7284A5 22%, #959FC6 61%);
+    background-image: linear-gradient(left bottom, #7fac7d 22%, #99c695 61%);
+    background-image: -o-linear-gradient(left bottom, #7fac7d 22%, #99c695 61%);
     background-image: -moz-linear-gradient(left bottom, #7fac7d 22%, #99c695 61%);
-    background-image: -webkit-linear-gradient(left bottom, #7284A5 22%, #959FC6 61%);
-    background-image: -ms-linear-gradient(left bottom, #7284A5 22%, #959FC6 61%);
+    background-image: -webkit-linear-gradient(left bottom, #7fac7d 22%, #99c695 61%);
+    background-image: -ms-linear-gradient(left bottom, #7fac7d 22%, #99c695 61%);
 
     background-image: -webkit-gradient(
         linear,
@@ -1470,11 +1470,11 @@ img.save {
 }
 
 .assortmentItem.even{
-    background-image: linear-gradient(left bottom, #8F6978 2%, #AC899C 51%, #CFA5BC 76%);
-    background-image: -o-linear-gradient(left bottom, #8F6978 2%, #AC899C 51%, #CFA5BC 76%);
+    background-image: linear-gradient(left bottom, #9d8c82 2%, #b8a7a3 51%, #d4a7a5 76%);
+    background-image: -o-linear-gradient(left bottom, #9d8c82 2%, #b8a7a3 51%, #d4a7a5 76%);
     background-image: -moz-linear-gradient(left bottom, #9d8c82 2%, #b8a7a3 51%, #d4a7a5 76%);
-    background-image: -webkit-linear-gradient(left bottom, #8F6978 2%, #AC899C 51%, #CFA5BC 76%);
-    background-image: -ms-linear-gradient(left bottom, #8F6978 2%, #AC899C 51%, #CFA5BC 76%);
+    background-image: -webkit-linear-gradient(left bottom, #9d8c82 2%, #b8a7a3 51%, #d4a7a5 76%);
+    background-image: -ms-linear-gradient(left bottom, #9d8c82 2%, #b8a7a3 51%, #d4a7a5 76%);
 
     background-image: -webkit-gradient(
         linear,
@@ -1487,11 +1487,11 @@ img.save {
 }
 
 .assortmentItem.odd{
-    background-image: linear-gradient(left bottom, #8F6978 2%, #AC899C 51%, #CFA5BC 76%);
-    background-image: -o-linear-gradient(left bottom, #8F6978 2%, #AC899C 51%, #CFA5BC 76%);
+    background-image: linear-gradient(left bottom, #83736b 2%, #9c8b87 51%, #ba8f8d 76%);
+    background-image: -o-linear-gradient(left bottom, #83736b 2%, #9c8b87 51%, #ba8f8d 76%);
     background-image: -moz-linear-gradient(left bottom, #83736b 2%, #9c8b87 51%, #ba8f8d 76%);
-    background-image: -webkit-linear-gradient(left bottom, #8F6978 2%, #AC899C 51%, #CFA5BC 76%);
-    background-image: -ms-linear-gradient(left bottom, #8F6978 2%, #AC899C 51%, #CFA5BC 76%);
+    background-image: -webkit-linear-gradient(left bottom, #83736b 2%, #9c8b87 51%, #ba8f8d 76%);
+    background-image: -ms-linear-gradient(left bottom, #83736b 2%, #9c8b87 51%, #ba8f8d 76%);
 
     background-image: -webkit-gradient(
         linear,
@@ -1504,40 +1504,30 @@ img.save {
 }
 
 .dimension.even{
-    background-image: linear-gradient(left bottom, #98BACC 42%, #B7E0F5 71%, #DCFFFF 86%);
-    background-image: -o-linear-gradient(left bottom, #98BACC 42%, #B7E0F5 71%, #DCFFFF 86%);
+    background-image: linear-gradient(left bottom, #b0b0ae 40%, #d7d7d7 70%, #d8d8d8 90%);
+    background-image: -o-linear-gradient(left bottom, #b0b0ae 40%, #d7d7d7 70%, #d8d8d8 90%);
     background-image: -moz-linear-gradient(left bottom, #b0b0ae 40%, #d7d7d7 70%, #d8d8d8 90%);
-    background-image: -webkit-linear-gradient(left bottom, #98BACC 42%, #B7E0F5 71%, #DCFFFF 86%);
-    background-image: -ms-linear-gradient(left bottom, #98BACC 42%, #B7E0F5 71%, #DCFFFF 86%);
+    background-image: -webkit-linear-gradient(left bottom, #b0b0ae 40%, #d7d7d7 70%, #d8d8d8 90%);
+    background-image: -ms-linear-gradient(left bottom, #b0b0ae 40%, #d7d7d7 70%, #d8d8d8 90%);
 
-    background-image: -webkit-gradient(
+   /* background-image: -webkit-gradient(
         linear,
         left bottom,
         right top,
         color-stop(0.42, #98BACC),
         color-stop(0.71, #B7E0F5),
         color-stop(0.86, #DCFFFF)
-    );
+    );*/
 
 
 }
 
 .dimension.odd{
-    background-image: linear-gradient(left bottom, #bbccee 42%, #B7E0F5 71%, #B7E0F5 86%);
-    background-image: -o-linear-gradient(left bottom, #95acca 42%, #B7E0F5 71%, #B7E0F5 86%);
+    background-image: linear-gradient(left bottom, #aeaeac 40%, #c3c3c1 70%, #d3d3d1 90%);
+    background-image: -o-linear-gradient(left bottom, #aeaeac 40%, #c3c3c1 70%, #d3d3d1 90%);
     background-image: -moz-linear-gradient(left bottom, #aeaeac 40%, #c3c3c1 70%, #d3d3d1 90%);
-    background-image: -webkit-linear-gradient(left bottom, #bbccee 42%, #B7E0F5 71%, #DCFFFF 86%);
-    background-image: -ms-linear-gradient(left bottom, #bbccee 42%, #B7E0F5 71%, #DCFFFF 86%);
-
-    background-image: -webkit-gradient(
-        linear,
-        left bottom,
-        right top,
-        color-stop(0.42, #98BACC),
-        color-stop(0.71, #B7E0F5),
-        color-stop(0.86, #DCFFFF)
-    );
-
+    background-image: -webkit-linear-gradient(left bottom, #aeaeac 40%, #c3c3c1 70%, #d3d3d1 90%);
+    background-image: -ms-linear-gradient(left bottom, #aeaeac 40%, #c3c3c1 70%, #d3d3d1 90%);
 
 }
 
