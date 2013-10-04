@@ -46,6 +46,14 @@ HomePresenter.loadViewItems = function (evt, currentTemplateView) {
                 ref.typeCSS = css;
                 ref.hiddenCSS = "";
             }
+            else if(ref.type == "Chapter"){
+                ref.typeCSS = "chapter";
+                ref.hiddenCSS = 'hidden';
+            }
+            else if(ref.type == "Assortment"){
+                ref.typeCSS = "assortmentItem";
+                ref.hiddenCSS = 'hidden';
+            }
             else {
                 ref.typeCSS = "dimension";
                 ref.hiddenCSS = 'hidden';
@@ -106,7 +114,7 @@ HomePresenter.loadViewItems = function (evt, currentTemplateView) {
 
         $isotopeContainer = $('#viewHolder');
 
-        $isotopeContainer.find('.masterPage').each(function (key, value) {
+        $isotopeContainer.find('.masterPage,.dimension,.chapter,.assortmentItem').each(function (key, value) {
             var $this = $(this),
                 number = key + 1;
             if (number % 2 == 1) {
