@@ -182,6 +182,20 @@ var DynaTree = function(){
                 onCreate: function(node, span){
                     bindContextMenu(span,node.data.type);
                 },
+                onExpand : function(flag, node){
+                	console.log(flag);
+                	if(!flag)
+                		return;
+                    if(node.data.type == "Assortment"){
+                        nodeType = "Assortment";
+                        GraphicDataStore.setCurrentAssortment(node.data);
+                    }else{
+                        if(node.data.type == "Publication"){
+
+                            GraphicDataStore.setCurrentPublication(node.data.title);
+                        }
+                    }
+                },
                 onActivate: function(node) {
                     var nodeType = "Dimension";
                     var data;
