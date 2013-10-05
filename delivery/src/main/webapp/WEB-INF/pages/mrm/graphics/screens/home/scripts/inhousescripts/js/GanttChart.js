@@ -233,6 +233,18 @@ var GanttChart = function(){
     }
 
     Grids.onPublicationHandler = function(data){
+    	var pubImageList = EngineDataStore.getPublicationDetailsArray();
+    	$.each(data, function(key, value){
+    		var pubObj = value;
+    		var pubName = pubObj.name;
+    		var imageObjForPub = pubImageList[pubName];
+    		if(imageObjForPub)
+			{
+    			pubObj.previewImage = imageObjForPub.previewImage;
+    			pubObj.actualImage = imageObjForPub.actualImage;
+    			pubObj.previewType = imageObjForPub.previewType;
+			}
+    	});
         HomePresenter.createFlow(data);
     }
 

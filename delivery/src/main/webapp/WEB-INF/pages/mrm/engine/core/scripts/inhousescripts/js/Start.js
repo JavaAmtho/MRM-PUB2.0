@@ -6,7 +6,7 @@ $(document).ready(function() {
 function loadInitialConfigurations(){
     Router.forward("../../../graphics/tacks/InitialConfiguration.json",true,function(json){
         parseInitialConfiguration(json);
-        getScreenMappingObject()
+        getPublicationDetailsObject();
     });
 }
 
@@ -15,6 +15,18 @@ function parseInitialConfiguration(data){
     EngineDataStore.setMrmUrl(data.MRMUrl);
     EngineDataStore.setPubUrl(data.PubUrl);
 }
+
+function getPublicationDetailsObject(){
+    Router.forward(EngineDataStore.getBaseURL()+"graphics/tacks/PublicationDetails.json",true,function(json){
+        parsePublicationDetailsObject(json);
+    });
+}
+
+function parsePublicationDetailsObject(json){
+    EngineDataStore.setPublicationDetailsArray(json);
+    getScreenMappingObject();
+}
+
 
 function getScreenMappingObject(){
     Router.forward(EngineDataStore.getBaseURL()+"graphics/tacks/screenMapping.json",true,function(json){

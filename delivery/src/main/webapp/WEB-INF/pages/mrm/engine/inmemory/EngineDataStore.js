@@ -4,6 +4,7 @@ var EngineDataStore = function(){
     var baseURL;
     var mrmUrl;
     var pubUrl;
+    var publicationDetailsArray;
 }
 
 EngineDataStore.setBaseURL = function(url){
@@ -44,4 +45,12 @@ EngineDataStore.setApiMappingObject = function(obj){
 
 EngineDataStore.getApiMappingObject = function(){
     return this.apiMappingObject;
+}
+
+EngineDataStore.setPublicationDetailsArray = function(obj){
+    this.publicationDetailsArray = obj;
+}
+
+EngineDataStore.getPublicationDetailsArray = function(){
+    return this.publicationDetailsArray;
 }

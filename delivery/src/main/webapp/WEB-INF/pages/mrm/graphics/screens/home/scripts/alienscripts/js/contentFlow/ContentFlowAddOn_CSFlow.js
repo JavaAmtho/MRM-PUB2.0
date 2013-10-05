@@ -149,7 +149,7 @@ new ContentFlowAddOn ('CSFlow', {
         onclickActiveItem: function (item) {
             console.log(item);
             GraphicDataStore.setCurrentFocusedItem(item);
-            var ur;
+            var url;
             if (GraphicDataStore.currentFocusedItem.previewType === "image") {
                url = EngineDataStore.getPubUrl()+"?pubId="+item.content.id;
                window.open(url,"_blank");
@@ -159,7 +159,7 @@ new ContentFlowAddOn ('CSFlow', {
                 url = GraphicDataStore.currentFocusedItem.actualImage;
                 $.get(url,function(data){
 
-                    data = data.replace("../admin.local","http://14.141.2.211/CS13.0Trunk/admin.local");
+                    data = data.replace("../admin.local","http://14.141.2.211/CS130Trunk/admin.local");
                     console.log(data)
                     console.log( $( "#myPlayer" ) )
                     $( "#myPlayer" ).dialog({
@@ -205,12 +205,21 @@ new ContentFlowAddOn ('CSFlow', {
          */
         onMakeActive: function (item) {
             GraphicDataStore.setCurrentFocusedItem(item);
+            var url;
+            var urlText = "Click here to open "+GraphicDataStore.currentFocusedItem.name;
+            if (GraphicDataStore.currentFocusedItem.previewType === "image") {
+                url = EngineDataStore.getPubUrl()+"?pubId="+item.content.id;
+             }
+             else{
+            	 urlText = "Click here to open video";
+                 url = GraphicDataStore.currentFocusedItem.actualImage;
+             }
 
             document.getElementById("coverInfoHeader").innerHTML= GraphicDataStore.currentFocusedItem.name;
             document.getElementById("newCaption").innerHTML= GraphicDataStore.currentFocusedItem.name;
 
             //console.log(document.getElementById("coverDetail"));
-            document.getElementById("coverDetail").innerHTML="<br><b>Name: </b>"+GraphicDataStore.currentFocusedItem.name+"<br><br><b>Type: </b>"+GraphicDataStore.currentFocusedItem.previewType+"<br><br><b>Link: </b><a class='linkOfCoverflowItem' target='_blank'  href='"+GraphicDataStore.currentFocusedItem.actualImage+"'>"+GraphicDataStore.currentFocusedItem.actualImage+"</a>";
+            document.getElementById("coverDetail").innerHTML="<br><b>Name: </b>"+GraphicDataStore.currentFocusedItem.name+"<br><br><b>Type: </b>"+GraphicDataStore.currentFocusedItem.previewType+"<br><br><b>Link: </b><a class='linkOfCoverflowItem' target='_blank'  href='"+url+"'>"+urlText+"</a>";
 
         },
 

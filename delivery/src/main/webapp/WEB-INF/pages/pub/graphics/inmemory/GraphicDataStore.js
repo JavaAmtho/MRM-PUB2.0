@@ -103,7 +103,7 @@ GraphicDataStore.addToPageRules = function(rule){
     if(!this.pageRulesArr){
         this.pageRulesArr = {};
     }
-    this.pageRulesArr[this.currentPublication + "." + rule.logicalPageID] = rule.pageRules;
+    this.pageRulesArr[rule.logicalPageID] = rule.pageRules;
 }
 
 

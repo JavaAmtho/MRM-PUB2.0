@@ -451,8 +451,10 @@ var masterTemplateList = new Array();
 
 //Open the WBD URL in a popout window
 HomePresenter.openURL = function (reference) {
+	console.log(reference);
     var urlToOpen = $(reference).children('.wbdURL').html();
     urlToOpen = urlToOpen.replace(/&amp;/g, '&');
+    urlToOpen = urlToOpen.replace("../admin", "http://14.141.2.211/CS130Trunk/admin");
     var screenParams = [
         'height=' + (screen.height - 100),
         'width=' + (screen.width - 100),
@@ -466,7 +468,7 @@ HomePresenter.addClickEventForWBDPopup = function (url, innerDiv) {
     url = url.replace("../admin", "http://14.141.2.211/CS130Trunk/admin");
     var $childPage = $(innerDiv);
     $childPage.children('.wbdURL').html(url);
-    $childPage.attr('ondblclick', "event.stopPropagation()");
+    //$childPage.attr('ondblclick', "event.stopPropagation()");
     $imageReference = $childPage.children('.popupImage');
     $imageReference.attr('onclick', "HomePresenter.openURL(this.parentNode)");
     $imageReference.removeClass('hidden');
@@ -546,6 +548,8 @@ HomePresenter.expandPages = function (div, event) {
     var $container = $isotopeContainer;
     //Check if master page has been expanded into the child pages
     if (!$(div).hasClass('opened')) {
+    	    
+    	    console.log("expand page");
             var $dirtyFields = $(div).find('.dataDirty');
             var isDirty = getDataDirtyFlag($dirtyFields);
             if (isDirty) {
@@ -586,14 +590,14 @@ HomePresenter.expandPages = function (div, event) {
                 }
                 if (wbdURL != " ") {
                     content += "ondblclick=''>";
-                    content += "<img onclick='HomePresenter.openURL(this.parentNode.parentNode)' " +             //Add the popout icon
+                    content += "<img onclick='HomePresenter.openURL(this.parentNode)' " +             //Add the popout icon
                         "src='../../../graphics/screens/home/images/popup_icon.png' " +   //and set whether
                         "class='popupImage'/>";                    //to be visible or not
                     HomePresenter.addClickEventForWBDPopup(wbdURL, newDiv);
                 }
                 else{
                         content += "ondblclick='HomePresenter.openWhiteBoard(this,event)'>";
-                    content += "<img onclick='HomePresenter.openURL(this.parentNode.parentNode)' " +             //Add the popout icon
+                    content += "<img onclick='HomePresenter.openURL(this.parentNode)' " +             //Add the popout icon
                         "src='../../../graphics/screens/home/images/popup_icon.png' " +   //and set whether
                         "class='popupImage hidden'/>";                    //to be visible or not
                 }
@@ -791,6 +795,7 @@ HomePresenter.saveRulesData = function (div) {
         var finalJson = {};
 
         var columnName = "logicalPageID";
+        
         finalJson[columnName] = GraphicDataStore.getCurrentPublication() + "." + div.id;
         var columnName = "pageRules";
         finalJson[columnName] = pageRuleArr;
@@ -835,7 +840,7 @@ function getDataDirtyFlag($dirtyFields) {
 
 
 HomePresenter.setRules = function (div) {
-
+    console.log("***setRules");
     var $dirtyFields = $(div).find('.dataDirty');
     var isDirty = getDataDirtyFlag($dirtyFields);
     if (isDirty) {
@@ -921,7 +926,7 @@ HomePresenter.setRules = function (div) {
 
                             content = "<select onchange='HomePresenter.makeDirty(this.parentNode)' " +
                                 "onclick='event.stopPropagation()' onchange='HomePresenter.addValue(this,event)' class='rulesText operation selectpicker span2' data-width='auto'><option selected='selected'>=</option>" +
-                                "<option><=</option><option>>=</option></select>";
+                                "</select>";
                             whenDiv.innerHTML = whenDiv.innerHTML + content;
 
                             content = "<select onclick='event.stopPropagation()' " +
@@ -1136,7 +1141,7 @@ HomePresenter.newWhen = function (reference, event) {
 
     content = "<select onchange='HomePresenter.makeDirty(this.parentNode)' " +
         "onclick='event.stopPropagation()' onchange='HomePresenter.addValue(this,event)' class='rulesText operation selectpicker span2' data-width='auto'><option selected='selected'>=</option>" +
-        "<option><=</option><option>>=</option></select>";
+        "</select>";
     newDiv.innerHTML = newDiv.innerHTML + content;
 
     content = "<select onclick='event.stopPropagation()' " +
@@ -1218,6 +1223,7 @@ HomePresenter.newThen = function (reference, data) {
 
 
 HomePresenter.removeNew = function (reference, event) {
+	console.log(reference);
     $(reference).children('.dataDirty').html('1');
     $(reference.parentNode).children('.dataDirty').html('1');
     if ($(reference).hasClass('whenChild')) {
