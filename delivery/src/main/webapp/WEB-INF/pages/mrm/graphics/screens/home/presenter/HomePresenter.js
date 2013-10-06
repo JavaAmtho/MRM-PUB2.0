@@ -137,7 +137,7 @@ HomePresenter.scrollToday = function(){
     Grids[0].ScrollToDate(HomePresenter.date);
 }
 
-var ck_alpha = /^[A-Za-z]+$/;
+var ck_alpha = /^[A-Za-z ]+$/;
 HomePresenter.checkAlpha1 = function(){
     if (!ck_alpha.test(event.currentTarget.value)) {
         $("#"+event.currentTarget.id).addClass( "ui-state-error") ;
