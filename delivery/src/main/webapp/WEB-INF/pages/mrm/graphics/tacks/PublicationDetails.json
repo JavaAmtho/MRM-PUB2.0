@@ -13,5 +13,15 @@
         "previewImage": "http://14.141.2.211/CS130Trunk/admin/ImageServer.php?ID=14041a7985@CSLive&rand=6cd8115e0234c3f79092f76f082edf49&force=true&width=640&height=480&colorspace=rgb",
         "actualImage": "http://14.141.2.211/CS130Trunk/admin/ImageServer.php?ID=14041a7985@CSLive&rand=6cd8115e0234c3f79092f76f082edf49&force=true&width=640&height=480&colorspace=rgb",
         "previewType": "video"
+    },
+    "Video1":{
+        "previewImage": "http://14.141.2.211/CS130Trunk/admin/FileServer.php?src=%2FApplications%2FCONTENTSERV%2Fhtdocs%2FCS130Trunk%2FCSLive%2Fdata%2F.cs%2Fmam%2Fvolumes%2F75%2Ffiles%2F7546%2Fthumbs%2Fmaster.jpg&SecurityID=972146a8ada263573f41419871cc011f&rand=1380899838",
+        "actualImage": "http://14.141.2.211/CS130Trunk/admin/forward.php?forward=../CSLive/playCSVideoPlayerUsingMamFile.php&mamFileNo=7546",
+        "previewType": "video"
+    },
+    "Video2":{
+        "previewImage": "http://14.141.2.211/CS130Trunk/admin/FileServer.php?src=%2FApplications%2FCONTENTSERV%2Fhtdocs%2FCS130Trunk%2FCSLive%2Fdata%2F.cs%2Fmam%2Fvolumes%2F75%2Ffiles%2F7547%2Fthumbs%2Fmaster.jpg&SecurityID=972146a8ada263573f41419871cc011f&rand=1380899835",
+        "actualImage": "http://14.141.2.211/CS130Trunk/admin/forward.php?forward=../CSLive/playCSVideoPlayerUsingMamFile.php&mamFileNo=7547",
+        "previewType": "video"
     }
 }

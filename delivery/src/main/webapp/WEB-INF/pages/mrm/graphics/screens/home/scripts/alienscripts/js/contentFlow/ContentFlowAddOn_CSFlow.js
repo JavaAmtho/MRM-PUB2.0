@@ -157,7 +157,8 @@ new ContentFlowAddOn ('CSFlow', {
             else{
 
                 url = GraphicDataStore.currentFocusedItem.actualImage;
-                $.get(url,function(data){
+                window.open(url, "popupWindow", "width=600,height=600,scrollbars=yes");
+                /*$.get(url,function(data){
 
                     data = data.replace("../admin.local","http://14.141.2.211/CS130Trunk/admin.local");
                     console.log(data)
@@ -185,7 +186,7 @@ new ContentFlowAddOn ('CSFlow', {
                     $('#myPlayer').dialog('open');
 
 
-                });
+                });*/
                 //window.open(url, "popupWindow", "width=600,height=600,scrollbars=yes");
             }
 
