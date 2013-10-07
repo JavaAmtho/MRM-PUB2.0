@@ -201,22 +201,30 @@ var DynaTree = function(){
                     var nodeType = "Dimension";
                     var data;
                     if(node.data.type == "Assortment"){
+                        $('#showAllPagesBtn').addClass('hidden');
+
                         nodeType = "Assortment";
                         GraphicDataStore.setCurrentAssortment(node.data);
                         data = node.data.products;//HomePresenter.getProductsForSelectedNode(node);
                     }else{
 
+
+
                         GraphicDataStore.setCurrentView(node.data.title);
                         data = HomePresenter.getChildrenForSelectedNode(node)
 
-                       /* if(node.data.type == "Publication"){
+                       if(node.data.type == "Publication"){
 
-                            if(data.length>0){
-                                var me = findPagesForPub(data);
-                                alert(JSON.stringify(me.length));
-                            }
+                          $('#showAllPagesBtn').removeClass('hidden');
+                          /* if(data.length>0){
+                               var me = findPagesForPub(data);
+                               alert(JSON.stringify(me.length));
+                           }*/
+                       }
+                        else{
+                           $('#showAllPagesBtn').addClass('hidden');
 
-                        }*/
+                       }
 
 
                     }
