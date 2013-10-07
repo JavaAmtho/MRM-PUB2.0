@@ -40,6 +40,7 @@ HomePresenter.loadViewItems = function (evt, currentTemplateView) {
             var css = "";
             var stackcss = "";
             if (ref.type == "Page") {
+
                 pageIDs.push(GraphicDataStore.getCurrentView() + "." + ref.title);
                 css = "masterPage anyRegion anyTargetGroup";
                 console.log("CSS : " + css);
@@ -184,7 +185,7 @@ HomePresenter.slidePanel = function (evt) {
 
     var btnId = evt.currentTarget.id;
     if (btnSelectionFlag == 0) {
-        $("#panel").css('visibility','visible')
+        $("#panel").css('display','block')
         $("#typeHolder").html(evt.currentTarget.name);
         $("#panel").animate({right: '30px'}, "slow", function () {
             HomePresenter.createTree(btnId);
@@ -192,8 +193,16 @@ HomePresenter.slidePanel = function (evt) {
         btnSelectionFlag = 1;
     }
     else if (btnSelectionFlag == 1 && ($("#typeHolder").html() == evt.currentTarget.name)) {
-        $("#panel").css('visibility','hidden')
+
         $("#panel").animate({right: '-200px'}, "slow");
+
+        setTimeout(function() {
+            $("#panel").css('display','none')
+
+        }, 500);
+
+
+
         HomePresenter.reset();
 
         btnSelectionFlag = 0;
