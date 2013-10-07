@@ -1190,7 +1190,7 @@ Top Bar Animation Section starts
 
 .buttonsHolder{
     background-color: black;
-    opacity: 0;
+    opacity: 0.6;
     position:absolute;
     top:85%;
     width:100%;
@@ -1202,9 +1202,6 @@ Top Bar Animation Section starts
     transition: opacity 0.3s ease-out;
 }
 
-.buttonsHolder:hover{
-    opacity:.6;
-}
 
 
 

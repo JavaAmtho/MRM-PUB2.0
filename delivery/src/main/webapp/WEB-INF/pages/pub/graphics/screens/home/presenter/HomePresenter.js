@@ -1255,6 +1255,11 @@ HomePresenter.setContainerRelayout = function(){
 
 HomePresenter.changeViewToShowAllPages = function(data){
     console.log(data);
+    $(document).trigger({
+        type: "TREE_ITEM_CLICKED",
+        uiData: data,
+        nodeType: "Dimension"
+    });
 }
 
 
