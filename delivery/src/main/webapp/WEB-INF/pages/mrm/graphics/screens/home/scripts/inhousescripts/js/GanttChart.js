@@ -13,7 +13,7 @@ var GanttChart = function(){
 
     this.createGanttChart = function(id){
         TreeGrid({Layout:{Url:EngineDataStore.getBaseURL()+"graphics/screens/home/scripts/inHouseScripts/js/Def_temp.xml"},
-        Data:{Script:"myData"}},id);
+        Data:{Script:"myData"},Debug:""},id);
     }
 
 
@@ -535,7 +535,7 @@ var GanttChart = function(){
     }
 
     function onFilter(){
-        alert(123);
+        //alert(123);
     }
 
     function isFolder(dim){
