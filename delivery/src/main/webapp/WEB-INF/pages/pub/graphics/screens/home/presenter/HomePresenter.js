@@ -61,7 +61,8 @@ HomePresenter.loadViewItems = function (evt, currentTemplateView) {
             }
             var pubImageList = EngineDataStore.getPublicationDetailsArray();
             if(pubImageList[ref.title]){
-                ref.backgroundImageStyle = "background-image: url("+pubImageList[ref.title].imageURL+")";
+            	var config = pubImageList["Config"];
+                ref.backgroundImageStyle = "background-image: url("+config.host+config.context+pubImageList[ref.title].imageURL+")";
                 console.log(ref.backgroundImageStyle);
             }
 

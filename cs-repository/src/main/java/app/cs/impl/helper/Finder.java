@@ -18,7 +18,7 @@ public class Finder {
 	private final String COMMA = ",";
 
 	private final String HIPHEN = "-";
-	private ArrayList<MultiDimensionalObject> pages;
+	private ArrayList<MultiDimensionalObject> pages = new ArrayList<MultiDimensionalObject>();
 
 	@Autowired
 	public Finder(IInMemoryViewStructure structure) {
