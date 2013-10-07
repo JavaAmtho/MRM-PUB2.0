@@ -1,5 +1,6 @@
 package app.cs.impl.helper;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,7 +18,7 @@ public class Finder {
 	private final String COMMA = ",";
 
 	private final String HIPHEN = "-";
-	private Set<MultiDimensionalObject> pages;
+	private ArrayList<MultiDimensionalObject> pages;
 
 	@Autowired
 	public Finder(IInMemoryViewStructure structure) {
@@ -80,13 +81,13 @@ public class Finder {
 		return paths[paths.length - 1];
 	}
 
-	public Set<MultiDimensionalObject> getAllPages() {
+	public ArrayList<MultiDimensionalObject> getAllPages() {
 		return pages;
 
 	}
 
 	public void setAllPagesToEmpty() {
-		pages = new HashSet<MultiDimensionalObject>();
+		pages = new ArrayList<MultiDimensionalObject>();
 
 	}
 

@@ -125,12 +125,12 @@ public class ChapterRepository implements IChapterRepository {
 
 	public List<MultiDimensionalObject> getAllPages(String publicationId) {
 
-		List<MultiDimensionalObject> pages = new ArrayList<MultiDimensionalObject>();
+//		List<MultiDimensionalObject> pages = new ArrayList<MultiDimensionalObject>();
 		finder.setAllPagesToEmpty();
 		finder.find(mongoRepository.getObjectByKey(publicationId,
 				MultiDimensionalObject.class), "");
-		pages.addAll(finder.getAllPages());
-		return pages;
-
+//		pages.addAll(finder.getAllPages());
+//		return pages;
+		return finder.getAllPages();
 	}
 }
