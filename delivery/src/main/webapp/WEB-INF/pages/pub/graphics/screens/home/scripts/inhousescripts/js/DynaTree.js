@@ -205,8 +205,25 @@ var DynaTree = function(){
                         GraphicDataStore.setCurrentAssortment(node.data);
                         data = node.data.products;//HomePresenter.getProductsForSelectedNode(node);
                     }else{
+
                         GraphicDataStore.setCurrentView(node.data.title);
                         data = HomePresenter.getChildrenForSelectedNode(node)
+
+                        if(node.data.type == "Publication"){
+
+                            GraphicDataStore.setCurrentPublication(node.data.title);
+                            /*data = HomePresenter.getChildrenForSelectedNode(node);
+                            if(data.length>0){
+                                var me = findPagesForPub(data);
+                                alert(JSON.stringify(me.length));
+                            }*/
+
+                        }
+                        /*else{*/
+                            data = HomePresenter.getChildrenForSelectedNode(node)
+                        /*}*/
+
+
                     }
                     $(document).trigger({
                         type: "TREE_ITEM_CLICKED",
@@ -265,7 +282,24 @@ var DynaTree = function(){
                     }
                 }
             });
-            
+
+           /* var myPagesColl;
+
+            function findPagesForPub(data){
+                 if(data.length>0){
+                     for(var i=0; i< data.length; i++){
+                         if(data[i].type == "Page"){
+                             myPagesColl.push(data[i]);
+                         }
+                         else{
+                             findPagesForPub(data[i].children);
+                         }
+                     }
+
+                 }
+                return myPagesColl;
+            }*/
+
             function searchFolderNodeWithName(name, searchFrom) {
                 if (name == null) {
                     return undefined;
