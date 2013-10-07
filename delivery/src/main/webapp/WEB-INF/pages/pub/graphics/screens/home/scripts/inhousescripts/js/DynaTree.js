@@ -77,15 +77,20 @@ var DynaTree = function(){
     }
 
     function addNode(data){
-        parentNode.addChild(newNode).activate();
-        var node_expand = parentNode.isExpanded();
-        if(node_expand == false)
-            parentNode.expand();
+        if(data){
+            parentNode.addChild(newNode).activate();
+             var node_expand = parentNode.isExpanded();
+             if(node_expand == false)
+             parentNode.expand();
 
-        if(parentNode.data.children==null){
-            parentNode.data.children=[];
+             if(parentNode.data.children==null){
+             parentNode.data.children=[];
+             }
+             parentNode.data.children.push(newNode);
         }
-        parentNode.data.children.push(newNode);
+        else{
+            alert("Duplicate names are not allowed");
+        }
     }
 
     function createAssortmentNode(name,type,path,flag){

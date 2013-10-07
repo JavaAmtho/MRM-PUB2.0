@@ -28,7 +28,7 @@ Router.forwardWithPost = function(url,async,reqBody,callback){
             callback(result);
         },
         error: function (error) {
-            callback("error "+error);
+            callback("error");
         }
     });
 }
