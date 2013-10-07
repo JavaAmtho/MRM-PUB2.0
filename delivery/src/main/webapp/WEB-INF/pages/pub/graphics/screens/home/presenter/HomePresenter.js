@@ -40,7 +40,7 @@ HomePresenter.loadViewItems = function (evt, currentTemplateView) {
             var css = "";
             var stackcss = "";
             if (ref.type == "Page") {
-                pageIDs.push(GraphicDataStore.getCurrentPublication() + "." + ref.title);
+                pageIDs.push(GraphicDataStore.getCurrentView() + "." + ref.title);
                 css = "masterPage anyRegion anyTargetGroup";
                 console.log("CSS : " + css);
                 ref.typeCSS = css;
@@ -486,7 +486,7 @@ HomePresenter.addClickEventForWBDPopup = function (url, innerDiv) {
 //Make server call to create WBD according to the data from the page rules and get the url to open it
 HomePresenter.openWhiteBoard = function (divReference, event) {
 
-    var publicationID = GraphicDataStore.getCurrentPublication();
+    var publicationID = GraphicDataStore.getCurrentView();
     var $innerDiv = $(divReference);
     if (!$innerDiv.hasClass('inner')) {
         $innerDiv = $innerDiv.children('.inner');
@@ -494,7 +494,7 @@ HomePresenter.openWhiteBoard = function (divReference, event) {
     var ruleID = $innerDiv.children('.ruleID').html();
     var logicalPageID = $innerDiv.children('.logicalPageID').html();
     GraphicDataStore.addRuleToLoadingList(ruleID);
-    CreateWBD.createWBD(ruleID, GraphicDataStore.getCurrentPublication() + "." + logicalPageID, publicationID, function (data) {
+    CreateWBD.createWBD(ruleID, GraphicDataStore.getCurrentView() + "." + logicalPageID, publicationID, function (data) {
         console.log(data);
         if (data == 'error') {
             alert("Error creating WBD!!");
@@ -502,6 +502,7 @@ HomePresenter.openWhiteBoard = function (divReference, event) {
         }
         else {
             $('#' + logicalPageID).children('.rule').children('.then').children('.dataDirty').html('1');
+            console.log($('#' + logicalPageID))
             GraphicDataStore.addAdditionalInformationToPageRules(data,ruleID,publicationID + "." + logicalPageID);
             $('.childPages').trigger("loadingDone",[ruleID,data.editorURL]);
         }
@@ -804,7 +805,7 @@ HomePresenter.saveRulesData = function (div) {
 
         var columnName = "logicalPageID";
         
-        finalJson[columnName] = GraphicDataStore.getCurrentPublication() + "." + div.id;
+        finalJson[columnName] = GraphicDataStore.getCurrentView() + "." + div.id;
         var columnName = "pageRules";
         finalJson[columnName] = pageRuleArr;
         alert("Saved Successfully");

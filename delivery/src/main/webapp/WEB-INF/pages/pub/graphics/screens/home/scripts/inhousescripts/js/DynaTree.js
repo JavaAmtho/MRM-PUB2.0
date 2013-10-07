@@ -195,10 +195,6 @@ var DynaTree = function(){
                         nodeType = "Assortment";
                         GraphicDataStore.setCurrentAssortment(node.data);
                     }else{
-                        if(node.data.type == "Publication"){
-
-                            GraphicDataStore.setCurrentPublication(node.data.title);
-                        }
                     }
                 },
                 onActivate: function(node) {
@@ -209,10 +205,7 @@ var DynaTree = function(){
                         GraphicDataStore.setCurrentAssortment(node.data);
                         data = node.data.products;//HomePresenter.getProductsForSelectedNode(node);
                     }else{
-                        if(node.data.type == "Publication"){
-
-                            GraphicDataStore.setCurrentPublication(node.data.title);
-                        }
+                        GraphicDataStore.setCurrentView(node.data.title);
                         data = HomePresenter.getChildrenForSelectedNode(node)
                     }
                     $(document).trigger({

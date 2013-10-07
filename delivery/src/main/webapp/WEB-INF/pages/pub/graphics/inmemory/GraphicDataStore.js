@@ -60,12 +60,12 @@ GraphicDataStore.getAssortmentsByID = function(pageID){
     }
 }
 
-GraphicDataStore.setCurrentPublication = function(obj){
-    this.currentPublication = obj;
+GraphicDataStore.setCurrentView = function(obj){
+    this.currentView = obj;
 }
 
-GraphicDataStore.getCurrentPublication = function(){
-    return this.currentPublication;
+GraphicDataStore.getCurrentView = function(){
+    return this.currentView;
 }
 
 GraphicDataStore.setMasterTemplateList = function(obj){
@@ -79,7 +79,7 @@ GraphicDataStore.getMasterTemplateList = function(){
 
 GraphicDataStore.getPageRuleById = function(id){
     if(this.pageRulesArr){
-        return this.pageRulesArr[this.currentPublication + "." + id];
+        return this.pageRulesArr[this.currentView + "." + id];
     }
     else{
         return undefined;
