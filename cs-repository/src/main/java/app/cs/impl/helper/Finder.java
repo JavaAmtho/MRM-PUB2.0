@@ -23,11 +23,17 @@ public class Finder {
 	public Finder(IInMemoryViewStructure structure) {
 
 		this.structure = structure;
-		pages = new HashSet<MultiDimensionalObject>();
 	}
 
+	/**
+	 * @param publication
+	 * @param parentId
+	 *            TODO: Please saparate the responsibilities
+	 * @return
+	 */
 	public MultiDimensionalObject find(MultiDimensionalObject publication,
 			String parentId) {
+
 		MultiDimensionalObject child = null;
 		if (publication.getId().equals(parentId)
 				|| publication.getName().equals(parentId)) {
@@ -76,6 +82,11 @@ public class Finder {
 
 	public Set<MultiDimensionalObject> getAllPages() {
 		return pages;
+
+	}
+
+	public void setAllPagesToEmpty() {
+		pages = new HashSet<MultiDimensionalObject>();
 
 	}
 
