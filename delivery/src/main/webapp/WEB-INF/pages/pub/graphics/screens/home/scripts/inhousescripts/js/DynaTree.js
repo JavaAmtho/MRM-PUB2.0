@@ -209,19 +209,14 @@ var DynaTree = function(){
                         GraphicDataStore.setCurrentView(node.data.title);
                         data = HomePresenter.getChildrenForSelectedNode(node)
 
-                        if(node.data.type == "Publication"){
+                       /* if(node.data.type == "Publication"){
 
-                            GraphicDataStore.setCurrentPublication(node.data.title);
-                            /*data = HomePresenter.getChildrenForSelectedNode(node);
                             if(data.length>0){
                                 var me = findPagesForPub(data);
                                 alert(JSON.stringify(me.length));
-                            }*/
+                            }
 
-                        }
-                        /*else{*/
-                            data = HomePresenter.getChildrenForSelectedNode(node)
-                        /*}*/
+                        }*/
 
 
                     }
