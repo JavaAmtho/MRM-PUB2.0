@@ -1252,6 +1252,18 @@ HomePresenter.setContainerRelayout = function(){
     }
 }
 
+
+HomePresenter.changeViewToShowAllPages = function(data){
+    console.log(data);
+}
+
+
+HomePresenter.showAllPages = function(){
+    var publicationName = GraphicDataStore.getCurrentView();
+    GetAllPagesInPublication.get(publicationName,HomePresenter.changeViewToShowAllPages);
+}
+
+
 /*
 
 HomePresenter.edit = function (tagsClass, tagNo, reference, event) {

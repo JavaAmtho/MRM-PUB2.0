@@ -1832,6 +1832,13 @@ img.save {
 }
 
 
+.pure-button-single {
+
+    border-radius: 10px 10px 10px 10px !important;
+}
+
+
+
 .pure-button:focus {
     outline: 0px none;
 }
@@ -1929,7 +1936,7 @@ li.csIsotopeFilters,li#targetRegionText,li#targetGroupText{
 
 .targetGroup{
     float: right;
-    right: 5px;
+    right: 120px;
 }
 
 #targetText{
@@ -2018,7 +2025,7 @@ h2.openRules{
 .region{
     float:right;
 
-    right: 350px;
+    right: 470px;
 }
 
 
@@ -2092,3 +2099,19 @@ li#targetRegionText , li#targetGroupText{
 
 }
 
+
+#showAllPagesBtn{
+    width: auto;
+    height: 21px;
+    position: absolute;
+    float: right;
+    margin-top: 1px !important;
+    right: 10px;
+    cursor: pointer;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+
+}
