@@ -454,7 +454,8 @@ HomePresenter.openURL = function (reference) {
 	console.log(reference);
     var urlToOpen = $(reference).children('.wbdURL').html();
     urlToOpen = urlToOpen.replace(/&amp;/g, '&');
-    urlToOpen = urlToOpen.replace("../admin", "http://14.141.2.211/CS130Trunk/admin");
+    var config = EngineDataStore.getPublicationDetailsArray()["Config"];
+    urlToOpen = urlToOpen.replace("../admin", config.host+config.context+"/admin");
     var screenParams = [
         'height=' + (screen.height - 100),
         'width=' + (screen.width - 100),
@@ -465,7 +466,9 @@ HomePresenter.openURL = function (reference) {
 
 //add click event once the WBD url has been received and also display the popout icon
 HomePresenter.addClickEventForWBDPopup = function (url, innerDiv) {
-    url = url.replace("../admin", "http://14.141.2.211/CS130Trunk/admin");
+	
+	var config = EngineDataStore.getPublicationDetailsArray()["Config"];
+    url = url.replace("../admin",  config.host+config.context+"/admin");
     var $childPage = $(innerDiv);
     $childPage.children('.wbdURL').html(url);
     //$childPage.attr('ondblclick', "event.stopPropagation()");

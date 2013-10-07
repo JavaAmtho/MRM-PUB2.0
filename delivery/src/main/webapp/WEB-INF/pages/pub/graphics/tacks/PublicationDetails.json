@@ -1,17 +1,21 @@
 {
+    "Config":{
+    	"host": "http://14.141.2.211/",
+    	"context": "CS130Trunk"
+    },
     "Catalogue":{
-        "previewImage": "http://14.141.2.211/CS130Trunk/admin/ImageServer.php?ID=6317da7973@CSLive&rand=417106141bda5e69aa5d4d7862ba9f40&force=true&width=640&height=480&colorspace=rgb",
-        "actualImage": "http://14.141.2.211/CS130Trunk/admin/ImageServer.php?ID=6317da7973@CSLive&rand=417106141bda5e69aa5d4d7862ba9f40&force=true&width=640&height=480&colorspace=rgb",
+        "previewImage": "/admin/ImageServer.php?ID=6317da7973@CSLive&rand=417106141bda5e69aa5d4d7862ba9f40&force=true&width=640&height=480&colorspace=rgb",
+        "actualImage": "/admin/ImageServer.php?ID=6317da7973@CSLive&rand=417106141bda5e69aa5d4d7862ba9f40&force=true&width=640&height=480&colorspace=rgb",
         "previewType": "image"
     },
     "Pricelist":{
-        "previewImage": "http://14.141.2.211/CS130Trunk/admin/ImageServer.php?ID=16be0a7974@CSLive&rand=c2fbb96e0fd3c1068bada927fa82218c&force=true&width=640&height=480&colorspace=rgb",
-        "actualImage": "http://14.141.2.211/CS130Trunk/admin/ImageServer.php?ID=16be0a7974@CSLive&rand=c2fbb96e0fd3c1068bada927fa82218c&force=true&width=640&height=480&colorspace=rgb",
+        "previewImage": "/admin/ImageServer.php?ID=16be0a7974@CSLive&rand=c2fbb96e0fd3c1068bada927fa82218c&force=true&width=640&height=480&colorspace=rgb",
+        "actualImage": "/admin/ImageServer.php?ID=16be0a7974@CSLive&rand=c2fbb96e0fd3c1068bada927fa82218c&force=true&width=640&height=480&colorspace=rgb",
         "previewType": "image"
     },
     "Microsite":{
-        "previewImage": "http://14.141.2.211/CS130Trunk/admin/ImageServer.php?ID=14041a7985@CSLive&rand=6cd8115e0234c3f79092f76f082edf49&force=true&width=640&height=480&colorspace=rgb",
-        "actualImage": "http://14.141.2.211/CS130Trunk/admin/ImageServer.php?ID=14041a7985@CSLive&rand=6cd8115e0234c3f79092f76f082edf49&force=true&width=640&height=480&colorspace=rgb",
+        "previewImage": "/admin/ImageServer.php?ID=14041a7985@CSLive&rand=6cd8115e0234c3f79092f76f082edf49&force=true&width=640&height=480&colorspace=rgb",
+        "actualImage": "/admin/ImageServer.php?ID=14041a7985@CSLive&rand=6cd8115e0234c3f79092f76f082edf49&force=true&width=640&height=480&colorspace=rgb",
         "previewType": "video"
     }
 }

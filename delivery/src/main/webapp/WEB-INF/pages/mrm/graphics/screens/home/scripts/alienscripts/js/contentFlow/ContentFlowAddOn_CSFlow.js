@@ -157,9 +157,10 @@ new ContentFlowAddOn ('CSFlow', {
             else{
 
                 url = GraphicDataStore.currentFocusedItem.actualImage;
+                if(url == null) return;
                 $.get(url,function(data){
-
-                    data = data.replace("../admin.local","http://14.141.2.211/CS130Trunk/admin.local");
+                	var config = EngineDataStore.getPublicationDetailsArray()["Config"];		
+                    data = data.replace("../admin.local",config.host+config.context+"/admin.local");
                     console.log(data)
                     console.log( $( "#myPlayer" ) )
                     $( "#myPlayer" ).dialog({

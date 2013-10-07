@@ -240,8 +240,9 @@ var GanttChart = function(){
     		var imageObjForPub = pubImageList[pubName];
     		if(imageObjForPub)
 			{
-    			pubObj.previewImage = imageObjForPub.previewImage;
-    			pubObj.actualImage = imageObjForPub.actualImage;
+    			var config = pubImageList["Config"];
+    			pubObj.previewImage = config.host+config.context+imageObjForPub.previewImage;
+    			pubObj.actualImage = config.host+config.context+imageObjForPub.actualImage;
     			pubObj.previewType = imageObjForPub.previewType;
 			}
     	});
