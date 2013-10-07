@@ -158,9 +158,11 @@ new ContentFlowAddOn ('CSFlow', {
 
                 url = GraphicDataStore.currentFocusedItem.actualImage;
                 if(url == null) return;
-                $.get(url,function(data){
-                	var config = EngineDataStore.getPublicationDetailsArray()["Config"];		
-                    data = data.replace("../admin.local",config.host+config.context+"/admin.local");
+                window.open(url, "popupWindow", "width=600,height=600,scrollbars=yes");
+                /*$.get(url,function(data){
+
+                    data = data.replace("../admin.local","http://14.141.2.211/CS130Trunk/admin.local");
+>>>>>>> b5c07d2642c79d55337906c7d253e7bc50ec9cfe
                     console.log(data)
                     console.log( $( "#myPlayer" ) )
                     $( "#myPlayer" ).dialog({
@@ -186,7 +188,7 @@ new ContentFlowAddOn ('CSFlow', {
                     $('#myPlayer').dialog('open');
 
 
-                });
+                });*/
                 //window.open(url, "popupWindow", "width=600,height=600,scrollbars=yes");
             }
 

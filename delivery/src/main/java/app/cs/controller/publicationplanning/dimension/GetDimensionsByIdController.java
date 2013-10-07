@@ -34,5 +34,14 @@ public class GetDimensionsByIdController {
 				.execute(byIdRequest)).getTree();
 
 	}
+    @RequestMapping(value = "/communicationchannel/get/{planName}", method = RequestMethod.POST)
+    public @ResponseBody
+    List<MultiDimensionalObject> getCommunicationChannelBy(
+            @RequestBody GetDimensionByIdRequest byIdRequest,
+            @PathVariable String planName) {
+        return ((TreeResponse) getPublicationsForGivenChannel
+                .execute(byIdRequest)).getTree();
+
+    }
 
 }

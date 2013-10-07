@@ -13,7 +13,7 @@ var GanttChart = function(){
 
     this.createGanttChart = function(id){
         TreeGrid({Layout:{Url:EngineDataStore.getBaseURL()+"graphics/screens/home/scripts/inHouseScripts/js/Def_temp.xml"},
-        Data:{Script:"myData"}},id);
+        Data:{Script:"myData"},Debug:""},id);
     }
 
 
@@ -31,11 +31,45 @@ var GanttChart = function(){
         }, 1000);
 
 
-
     }
 
+   /* Grids.OnDisplayRow = function(grid, row){
+        console.log('displaying'+ row.type)
+
+        switch(row.type){
+            case "MarketingInitiative":
+                Grids[0].SetValue(row,"nameIcon","cal1.png",1);
+                Grids[0].RefreshRow(row);
+            case "Campaign":
+                Grids[0].SetValue(row,"nameIcon","cal2.png",1);
+                Grids[0].RefreshRow(row);
+
+
+            case "SubCampaign":
+                Grids[0].SetValue(row,"nameIcon","cal1.png",1);
+                Grids[0].RefreshRow(row);
+
+            case "CommunicationPlan":
+                Grids[0].SetValue(row,"nameIcon","cal2.png",1);
+                Grids[0].RefreshRow(row);
+
+            case "CommunicationChannel":
+                Grids[0].SetValue(row,"nameIcon","cal2.png",1);
+                Grids[0].RefreshRow(row);
+
+            default:
+                return null;
+        }
+
+    }*/
+
+    Grids.OnRenderRow = function(grid, row, col){
+
+        console.log('rendering'+ row.type)
+    }
 
     Grids.OnGetMenu = function(G,row,col){
+        Grids[0].Focus(row,0,0);
         var possibleDim=[];
         possibleDim  = GraphicDataStore.getPossibleChild(row.type);
         var menuItems = [];
@@ -75,6 +109,7 @@ var GanttChart = function(){
     }
 
     Grids.OnContextMenu = function(G,row,col,name){
+
         currentRow = row;
         if(name == "Delete"){
 
@@ -145,6 +180,10 @@ var GanttChart = function(){
     }
 
      Grids.OnExpand = function(grid,row){
+
+         if(row.type == 'root'){
+             Grids[0].SetValue(row,"CanDelete","0",1);
+         }
         /* if(row.Level === 5){
              var arr = [];
              var length =  row.childNodes.length;
@@ -164,6 +203,14 @@ var GanttChart = function(){
              return true;
          }*/
      }
+
+    Grids.OnRenderRow = function(grid,row,col){
+       if(row.type == 'root'){
+           Grids[0].SetValue(row,"CanDelete","0");
+           Grids[0].SetValue(row,"CanSelect","0");
+
+       }
+    }
 
     Grids.OnGetGanttHtml = function(G,row,col,width,comp,crit){
         switch(row.type){
@@ -218,7 +265,7 @@ var GanttChart = function(){
 
         if(row.id != "Header"){
             if(col === "name"){
-                if(row.type === "CommunicationChannel"){
+                if(row.type === "CommunicationPlan"){
                     //Call to server to get the publications of this Communication Channel
                     GanttChartPresenter.getPublications(row,Grids.onPublicationHandler);
                 }
@@ -231,6 +278,8 @@ var GanttChart = function(){
             }
         }
     }
+
+
 
     Grids.onPublicationHandler = function(data){
     	var pubImageList = EngineDataStore.getPublicationDetailsArray();
@@ -279,43 +328,52 @@ var GanttChart = function(){
         }*/
     }
 
-    function addNode(data){
-        Grids[0].AddRow(currentRow,null,1);
-        Grids[0].SetValue(currentRow.lastChild,"name",data.name,1);
-        Grids[0].SetValue(currentRow.lastChild,"title",data.title,1);
-        Grids[0].SetValue(currentRow.lastChild,"path",data.path,1);
-        Grids[0].SetValue(currentRow.lastChild,"id",data.id,1);
-        Grids[0].SetValue(currentRow.lastChild,"groupId",data.groupId,1);
-        Grids[0].SetValue(currentRow.lastChild,"type",data.type,1);
-        Grids[0].SetValue(currentRow.lastChild,"budgetOwner",data.budgetOwner,1);
-        Grids[0].SetValue(currentRow.lastChild,"budget",data.budget,1);
-        Grids[0].SetValue(currentRow.lastChild,"startDate",data.startDate,1);
-        Grids[0].SetValue(currentRow.lastChild,"endDate",data.endDate,1);
-        Grids[0].SetValue(currentRow.lastChild,"manager",data.manager,1);
-        Grids[0].SetValue(currentRow.lastChild,"Items",data.Items,1);
-        switch(data.type){
-            case "MarketingInitiative":
-                Grids[0].SetValue(currentRow.lastChild,"nameIcon","cal1.png",1);
-                break;
-            case "Campaign":
-                Grids[0].SetValue(currentRow.lastChild,"nameIcon","cal1.png",1);
-                break;
-            case "SubCampaign":
-                Grids[0].SetValue(currentRow.lastChild,"nameIcon","cal1.png",1);
-                break;
-            case "CommunicationPlan":
-                Grids[0].SetValue(currentRow.lastChild,"nameIcon","cal2.png",1);
-                break;
-            case "CommunicationChannel":
-                Grids[0].SetValue(currentRow.lastChild,"nameIcon","cal2.png",1);
-                break;
-            default:
-                Grids[0].SetValue(currentRow.lastChild,"nameIcon","cal2.png",1);
-                break;
-        }
 
-        Grids[0].ScrollToDate(data.startDate,"Left");
-         //Grids[0].Recalculate(currentRow,"startDate",1);
+    function addNode(data){
+        if(data !== "error"){
+            closeDimensionDialog();
+            Grids[0].AddRow(currentRow,null,1);
+            Grids[0].SetValue(currentRow.lastChild,"name",data.name,1);
+            Grids[0].SetValue(currentRow.lastChild,"title",data.title,1);
+            Grids[0].SetValue(currentRow.lastChild,"path",data.path,1);
+            Grids[0].SetValue(currentRow.lastChild,"id",data.id,1);
+            Grids[0].SetValue(currentRow.lastChild,"groupId",data.groupId,1);
+            Grids[0].SetValue(currentRow.lastChild,"type",data.type,1);
+            Grids[0].SetValue(currentRow.lastChild,"budgetOwner",data.budgetOwner,1);
+            Grids[0].SetValue(currentRow.lastChild,"budget",data.budget,1);
+            Grids[0].SetValue(currentRow.lastChild,"startDate",data.startDate,1);
+            Grids[0].SetValue(currentRow.lastChild,"endDate",data.endDate,1);
+            Grids[0].SetValue(currentRow.lastChild,"manager",data.manager,1);
+            Grids[0].SetValue(currentRow.lastChild,"Items",data.Items,1);
+            switch(data.type){
+                case "MarketingInitiative":
+                    Grids[0].SetValue(currentRow.lastChild,"nameIcon","cal1.png",1);
+                    break;
+                case "Campaign":
+                    Grids[0].SetValue(currentRow.lastChild,"nameIcon","cal1.png",1);
+                    break;
+                case "SubCampaign":
+                    Grids[0].SetValue(currentRow.lastChild,"nameIcon","cal1.png",1);
+                    break;
+                case "CommunicationPlan":
+                    Grids[0].SetValue(currentRow.lastChild,"nameIcon","cal2.png",1);
+                    break;
+                case "CommunicationChannel":
+                    Grids[0].SetValue(currentRow.lastChild,"nameIcon","cal2.png",1);
+                    break;
+                default:
+                    Grids[0].SetValue(currentRow.lastChild,"nameIcon","cal2.png",1);
+                    break;
+            }
+
+            Grids[0].SetScrollTop(Grids[0].GetScrollTop()+30) ;
+
+            Grids[0].ScrollToDate(data.startDate,"Left");
+            //Grids[0].Recalculate(currentRow,"startDate",1);
+        }
+        else{
+            alert("Duplicate names are not allowed");
+        }
     }
 
     function checkRegexp( o, regexp, n ) {
@@ -432,7 +490,11 @@ var GanttChart = function(){
                     errorMsg += "Fields should not be EMPTY!";
                 }
 
-                if(startdate.val()>enddate.val()){
+                var startdateDATE = new Date(startdate.val()); //    in order to do comparisons between
+                var enddateDATE = new Date(enddate.val());     //    dates they have to be converted to date objects
+
+                if(startdateDATE>enddateDATE){
+                    console.log(startdateDATE)
                     errorMsg += "Please verify start and end dates!";
                     popupValid =  false;
                     startdate.addClass( "ui-state-error") ;
@@ -473,19 +535,14 @@ var GanttChart = function(){
 
                     var flag = isFolder(name);
                     var prefix=getUrlPrefix(name,"create");
-                   // newNode = createNewRow(input.name,name,currentPath,"cal1.png");
-                    if(name == "Assortment"){
-                        GanttChartPresenter.createAssortment(prefix,name,input.name,currentPath,flag,addNode);
-                    }else{
-                        GanttChartPresenter.createDimension(prefix,name,input,currentPath,flag,addNode);
-                    }
+                    // newNode = createNewRow(input.name,name,currentPath,"cal1.png");
+                    GanttChartPresenter.createDimension(prefix,name,input,currentPath,flag,addNode);
                 }
 
-                $( this ).dialog( "close" );
                 }
             },
             Cancel: function() {
-                $( this ).dialog( "close" );
+                closeDimensionDialog();
             }
         },
         close: function() {
@@ -517,6 +574,10 @@ var GanttChart = function(){
         });
     }
 
+    function closeDimensionDialog(){
+        $("#dialog-form").dialog( "close" );
+    }
+
     function  createNewRow(name,type,path,icon){
         var newRowNode = {
             "id": "",
@@ -530,7 +591,7 @@ var GanttChart = function(){
     }
 
     function onFilter(){
-        alert(123);
+        //alert(123);
     }
 
     function isFolder(dim){

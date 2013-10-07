@@ -3,19 +3,51 @@
     	"host": "http://14.141.2.211/",
     	"context": "CS130Trunk"
     },
-    "Catalogue":{
-        "previewImage": "/admin/ImageServer.php?ID=6317da7973@CSLive&rand=417106141bda5e69aa5d4d7862ba9f40&force=true&width=640&height=480&colorspace=rgb",
-        "actualImage": "/admin/ImageServer.php?ID=6317da7973@CSLive&rand=417106141bda5e69aa5d4d7862ba9f40&force=true&width=640&height=480&colorspace=rgb",
-        "previewType": "image"
+    "Front Cover":{
+        "imageURL": "/admin/ImageServer.php?ID=6317da7973@CSLive&rand=904f6eb56438c3064534fdaf96fd3e4c&force=true&width=640&height=480&colorspace=rgb"
     },
-    "Pricelist":{
-        "previewImage": "/admin/ImageServer.php?ID=16be0a7974@CSLive&rand=c2fbb96e0fd3c1068bada927fa82218c&force=true&width=640&height=480&colorspace=rgb",
-        "actualImage": "/admin/ImageServer.php?ID=16be0a7974@CSLive&rand=c2fbb96e0fd3c1068bada927fa82218c&force=true&width=640&height=480&colorspace=rgb",
-        "previewType": "image"
+    "Image1":{
+        "imageURL": "/admin/ImageServer.php?ID=16be0a7974@CSLive&rand=bef36413ae3106fa722fbb06873a56f0&force=true&width=640&height=480&colorspace=rgb"
     },
-    "Microsite":{
-        "previewImage": "/admin/ImageServer.php?ID=14041a7985@CSLive&rand=6cd8115e0234c3f79092f76f082edf49&force=true&width=640&height=480&colorspace=rgb",
-        "actualImage": "/admin/ImageServer.php?ID=14041a7985@CSLive&rand=6cd8115e0234c3f79092f76f082edf49&force=true&width=640&height=480&colorspace=rgb",
-        "previewType": "video"
+    "URU":{
+        "imageURL": "/admin/ImageServer.php?ID=16be0a7974@CSLive&rand=bef36413ae3106fa722fbb06873a56f0&force=true&width=640&height=480&colorspace=rgb"
+    },
+    "Overview":{
+        "imageURL": "/admin/ImageServer.php?ID=df771a8077@CSLive&rand=66c0a8737eb10b0378def41c605f5637&force=true&width=640&height=480&colorspace=rgb"
+    },
+    "Technical features":{
+        "imageURL": "/admin/ImageServer.php?ID=02d83a7978@CSLive&rand=215a9ec11593f355c88a65e7e1c198bb&force=true&width=640&height=480&colorspace=rgb"
+    },
+    "Image2":{
+        "imageURL": "/admin/ImageServer.php?ID=02d83a7978@CSLive&rand=215a9ec11593f355c88a65e7e1c198bb&force=true&width=640&height=480&colorspace=rgb"
+    },
+    "Article":{
+        "imageURL": "/admin/ImageServer.php?ID=0e5d0a8078@CSLive&rand=dc60d88bb61c9729854975b28c456fc3&force=true&width=640&height=480&colorspace=rgb"
+    },
+    "Image GTS":{
+        "imageURL": "/admin/ImageServer.php?ID=43b90a7981@CSLive&rand=9cb14ee5b7a08031772e835f570c0095&force=true&width=640&height=480&colorspace=rgb"
+    },
+    "GTS":{
+        "imageURL": "/admin/ImageServer.php?ID=77e3fa8079@CSLive&rand=c9e74390d888d8a833e15b513c344fc6&force=true&width=640&height=480&colorspace=rgb"
+    },
+    "Image GIN Bar":{
+        "imageURL": "/admin/ImageServer.php?ID=44135a7983@CSLive&rand=5183a3e8b9667e30f604a0224495f135&force=true&width=640&height=480&colorspace=rgb"
+    },
+    "GIN Bar":{
+        "imageURL": "/admin/ImageServer.php?ID=940e3a8080@CSLive&rand=20f447fbd5f226de1b8ee0ff87dfbf76&force=true&width=640&height=480&colorspace=rgb"
+    },
+
+    "URU summary":{
+        "imageURL": "/admin/ImageServer.php?ID=14041a7985@CSLive&rand=8f17f853c6c6c22c3db4d108d609f6b1&force=true&width=640&height=480&colorspace=rgb"
+    },
+    "Image":{
+        "imageURL": "/admin/ImageServer.php?ID=14041a7985@CSLive&rand=8f17f853c6c6c22c3db4d108d609f6b1&force=true&width=640&height=480&colorspace=rgb"
+    },
+    "URU Evaluated":{
+        "imageURL": "/admin/ImageServer.php?ID=c7892a8081@CSLive&rand=22b15a626ff733ca63f36bd197cb496c&force=true&width=640&height=480&colorspace=rgb"
+    },
+    "Back cover":{
+        "imageURL": "/admin/ImageServer.php?ID=8db33a8082@CSLive&rand=f0919d7fe461f87168a9ccb56929a6c6&force=true&width=640&height=480&rand=1381149140&colorspace=rgb"
     }
+
 }

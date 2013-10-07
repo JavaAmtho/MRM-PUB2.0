@@ -10,7 +10,6 @@ import app.cs.impl.mastertemplate.MasterTemplateImpl;
 
 import com.cs.data.api.core.nosql.redis.InMemoryNoSqlRepository;
 import com.cs.data.core.nosql.redis.RedisRepository;
-import com.cs.data.webservices.rest.RestClient;
 
 public class MasterTemplateLoader implements ServletContextListener {
 

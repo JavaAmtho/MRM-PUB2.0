@@ -30,9 +30,9 @@ public class FinderUnitTests {
 				"A,B,C,D,E", true);
 		MultiDimensionalObject test = new MultiDimensionalObject("test01",
 				"chapter", "A,B,C,D,E,publication", false);
-		test.addchild(new MultiDimensionalObject("test03", "test", "test", true));
+		test.addchild(new MultiDimensionalObject("test03", "Page", "test", true));
 		publication.addchild(test);
-		publication.addchild(new MultiDimensionalObject("test02", "test", "A",
+		publication.addchild(new MultiDimensionalObject("test02", "Page", "A",
 				true));
 
 	}
@@ -70,4 +70,10 @@ public class FinderUnitTests {
 
 	}
 
+	@Test
+	public void itShouldReturnAllPagesAvailable() {
+		finder.find(publication, "");
+		assertThat(finder.getAllPages().size()).isEqualTo(2);
+
+	}
 }

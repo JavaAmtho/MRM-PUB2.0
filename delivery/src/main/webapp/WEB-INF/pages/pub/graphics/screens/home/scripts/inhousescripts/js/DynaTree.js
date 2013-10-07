@@ -77,15 +77,20 @@ var DynaTree = function(){
     }
 
     function addNode(data){
-        parentNode.addChild(newNode).activate();
-        var node_expand = parentNode.isExpanded();
-        if(node_expand == false)
-            parentNode.expand();
+        if(data){
+            parentNode.addChild(newNode).activate();
+             var node_expand = parentNode.isExpanded();
+             if(node_expand == false)
+             parentNode.expand();
 
-        if(parentNode.data.children==null){
-            parentNode.data.children=[];
+             if(parentNode.data.children==null){
+             parentNode.data.children=[];
+             }
+             parentNode.data.children.push(newNode);
         }
-        parentNode.data.children.push(newNode);
+        else{
+            alert("Duplicate names are not allowed");
+        }
     }
 
     function createAssortmentNode(name,type,path,flag){
@@ -190,25 +195,38 @@ var DynaTree = function(){
                         nodeType = "Assortment";
                         GraphicDataStore.setCurrentAssortment(node.data);
                     }else{
-                        if(node.data.type == "Publication"){
-
-                            GraphicDataStore.setCurrentPublication(node.data.title);
-                        }
                     }
                 },
                 onActivate: function(node) {
                     var nodeType = "Dimension";
                     var data;
                     if(node.data.type == "Assortment"){
+                        $('#showAllPagesBtn').addClass('hidden');
+
                         nodeType = "Assortment";
                         GraphicDataStore.setCurrentAssortment(node.data);
                         data = node.data.products;//HomePresenter.getProductsForSelectedNode(node);
                     }else{
-                        if(node.data.type == "Publication"){
 
-                            GraphicDataStore.setCurrentPublication(node.data.title);
-                        }
+
+
+                        GraphicDataStore.setCurrentView(node.data.title);
                         data = HomePresenter.getChildrenForSelectedNode(node)
+
+                       if(node.data.type == "Publication"){
+
+                          $('#showAllPagesBtn').removeClass('hidden');
+                          /* if(data.length>0){
+                               var me = findPagesForPub(data);
+                               alert(JSON.stringify(me.length));
+                           }*/
+                       }
+                        else{
+                           $('#showAllPagesBtn').addClass('hidden');
+
+                       }
+
+
                     }
                     $(document).trigger({
                         type: "TREE_ITEM_CLICKED",
@@ -267,7 +285,24 @@ var DynaTree = function(){
                     }
                 }
             });
-            
+
+           /* var myPagesColl;
+
+            function findPagesForPub(data){
+                 if(data.length>0){
+                     for(var i=0; i< data.length; i++){
+                         if(data[i].type == "Page"){
+                             myPagesColl.push(data[i]);
+                         }
+                         else{
+                             findPagesForPub(data[i].children);
+                         }
+                     }
+
+                 }
+                return myPagesColl;
+            }*/
+
             function searchFolderNodeWithName(name, searchFrom) {
                 if (name == null) {
                     return undefined;

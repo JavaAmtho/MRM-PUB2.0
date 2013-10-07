@@ -40,7 +40,8 @@ HomePresenter.loadViewItems = function (evt, currentTemplateView) {
             var css = "";
             var stackcss = "";
             if (ref.type == "Page") {
-                pageIDs.push(GraphicDataStore.getCurrentPublication() + "." + ref.title);
+
+                pageIDs.push(GraphicDataStore.getCurrentView() + "." + ref.title);
                 css = "masterPage anyRegion anyTargetGroup";
                 console.log("CSS : " + css);
                 ref.typeCSS = css;
@@ -58,6 +59,12 @@ HomePresenter.loadViewItems = function (evt, currentTemplateView) {
                 ref.typeCSS = "dimension";
                 ref.hiddenCSS = 'hidden';
             }
+            var pubImageList = EngineDataStore.getPublicationDetailsArray();
+            if(pubImageList[ref.title]){
+                ref.backgroundImageStyle = "background-image: url("+pubImageList[ref.title].imageURL+")";
+                console.log(ref.backgroundImageStyle);
+            }
+
         }
 
     });
@@ -178,7 +185,7 @@ HomePresenter.slidePanel = function (evt) {
 
     var btnId = evt.currentTarget.id;
     if (btnSelectionFlag == 0) {
-        $("#panel").css('visibility','visible')
+        $("#panel").css('display','block')
         $("#typeHolder").html(evt.currentTarget.name);
         $("#panel").animate({right: '30px'}, "slow", function () {
             HomePresenter.createTree(btnId);
@@ -186,8 +193,16 @@ HomePresenter.slidePanel = function (evt) {
         btnSelectionFlag = 1;
     }
     else if (btnSelectionFlag == 1 && ($("#typeHolder").html() == evt.currentTarget.name)) {
-        $("#panel").css('visibility','hidden')
+
         $("#panel").animate({right: '-200px'}, "slow");
+
+        setTimeout(function() {
+            $("#panel").css('display','none')
+
+        }, 500);
+
+
+
         HomePresenter.reset();
 
         btnSelectionFlag = 0;
@@ -483,7 +498,7 @@ HomePresenter.addClickEventForWBDPopup = function (url, innerDiv) {
 //Make server call to create WBD according to the data from the page rules and get the url to open it
 HomePresenter.openWhiteBoard = function (divReference, event) {
 
-    var publicationID = GraphicDataStore.getCurrentPublication();
+    var publicationID = GraphicDataStore.getCurrentView();
     var $innerDiv = $(divReference);
     if (!$innerDiv.hasClass('inner')) {
         $innerDiv = $innerDiv.children('.inner');
@@ -491,7 +506,7 @@ HomePresenter.openWhiteBoard = function (divReference, event) {
     var ruleID = $innerDiv.children('.ruleID').html();
     var logicalPageID = $innerDiv.children('.logicalPageID').html();
     GraphicDataStore.addRuleToLoadingList(ruleID);
-    CreateWBD.createWBD(ruleID, GraphicDataStore.getCurrentPublication() + "." + logicalPageID, publicationID, function (data) {
+    CreateWBD.createWBD(ruleID, GraphicDataStore.getCurrentView() + "." + logicalPageID, publicationID, function (data) {
         console.log(data);
         if (data == 'error') {
             alert("Error creating WBD!!");
@@ -499,6 +514,7 @@ HomePresenter.openWhiteBoard = function (divReference, event) {
         }
         else {
             $('#' + logicalPageID).children('.rule').children('.then').children('.dataDirty').html('1');
+            console.log($('#' + logicalPageID))
             GraphicDataStore.addAdditionalInformationToPageRules(data,ruleID,publicationID + "." + logicalPageID);
             $('.childPages').trigger("loadingDone",[ruleID,data.editorURL]);
         }
@@ -559,7 +575,8 @@ HomePresenter.expandPages = function (div, event) {
                 HomePresenter.setRules(div);
             }
             //If not then expand master page to child pages
-            $(div).children('.expand').html("-");   //change '+' button to '-' to indicate expansion
+            //$(div).children('.expand').html("-");   //change '+' button to '-' to indicate expansion
+            $(div).children('.expand').css('background-image','url("../../../graphics/screens/home/images/collapse.png")');
             var $masterTemplate;
             var $assortment;
             var $itemsToInsert = new Array();
@@ -654,7 +671,8 @@ HomePresenter.expandPages = function (div, event) {
             $container.isotope('insert', $($itemsToInsert), $(div));
         }
     else {
-        $(div).children('.expand').html("+");
+        //$(div).children('.expand').html("+");
+        $(div).children('.expand').css('background-image','url("../../../graphics/screens/home/images/expand.png")');
         var $logicalPageIDOfParentOfChild = $('.childPages').children('.inner').children('.logicalPageID:contains(' + div.id + ')');
         var $childPages = $('.childPages').has($logicalPageIDOfParentOfChild);
         $childPages.unbind("loadingError");
@@ -799,7 +817,7 @@ HomePresenter.saveRulesData = function (div) {
 
         var columnName = "logicalPageID";
         
-        finalJson[columnName] = GraphicDataStore.getCurrentPublication() + "." + div.id;
+        finalJson[columnName] = GraphicDataStore.getCurrentView() + "." + div.id;
         var columnName = "pageRules";
         finalJson[columnName] = pageRuleArr;
         alert("Saved Successfully");
@@ -1245,6 +1263,23 @@ HomePresenter.setContainerRelayout = function(){
         $isotopeContainer.isotope('reLayout');
     }
 }
+
+
+HomePresenter.changeViewToShowAllPages = function(data){
+    console.log(data);
+    $(document).trigger({
+        type: "TREE_ITEM_CLICKED",
+        uiData: data,
+        nodeType: "Dimension"
+    });
+}
+
+
+HomePresenter.showAllPages = function(){
+    var publicationName = GraphicDataStore.getCurrentView();
+    GetAllPagesInPublication.get(publicationName,HomePresenter.changeViewToShowAllPages);
+}
+
 
 /*
 

@@ -1,5 +1,8 @@
 package app.cs.impl.chapter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -94,9 +97,9 @@ public class ChapterRepository implements IChapterRepository {
 		saveToRepository(parentPublication);
 		return chapter.getId();
 	}
-	
-	public MultiDimensionalObject findMultiDimensionalObjectByID(MultiDimensionalObject publication,
-											String assortmentID){
+
+	public MultiDimensionalObject findMultiDimensionalObjectByID(
+			MultiDimensionalObject publication, String assortmentID) {
 		return finder.find(publication, assortmentID);
 	}
 
@@ -109,7 +112,6 @@ public class ChapterRepository implements IChapterRepository {
 		chapterForNewLocation.setPath(newPath);
 		save(chapterForNewLocation);
 		delete(chapter);
-		//TODO move should not return any value ? delete method does this ?
 	}
 
 	public MultiDimensionalObject getParentPublication(String path) {
@@ -118,7 +120,17 @@ public class ChapterRepository implements IChapterRepository {
 	}
 
 	public MultiDimensionalObject getParentPublicationByID(String id) {
-		return mongoRepository.getObjectByKey(id,
-				MultiDimensionalObject.class);
+		return mongoRepository.getObjectByKey(id, MultiDimensionalObject.class);
+	}
+
+	public List<MultiDimensionalObject> getAllPages(String publicationId) {
+
+//		List<MultiDimensionalObject> pages = new ArrayList<MultiDimensionalObject>();
+		finder.setAllPagesToEmpty();
+		finder.find(mongoRepository.getObjectByKey(publicationId,
+				MultiDimensionalObject.class), "");
+//		pages.addAll(finder.getAllPages());
+//		return pages;
+		return finder.getAllPages();
 	}
 }

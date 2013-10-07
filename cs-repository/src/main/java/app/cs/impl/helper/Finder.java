@@ -1,5 +1,9 @@
 package app.cs.impl.helper;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,6 +18,7 @@ public class Finder {
 	private final String COMMA = ",";
 
 	private final String HIPHEN = "-";
+	private ArrayList<MultiDimensionalObject> pages;
 
 	@Autowired
 	public Finder(IInMemoryViewStructure structure) {
@@ -21,8 +26,15 @@ public class Finder {
 		this.structure = structure;
 	}
 
+	/**
+	 * @param publication
+	 * @param parentId
+	 *            TODO: Please saparate the responsibilities
+	 * @return
+	 */
 	public MultiDimensionalObject find(MultiDimensionalObject publication,
 			String parentId) {
+
 		MultiDimensionalObject child = null;
 		if (publication.getId().equals(parentId)
 				|| publication.getName().equals(parentId)) {
@@ -32,6 +44,8 @@ public class Finder {
 
 		if (publication.hasChildren()) {
 			for (MultiDimensionalObject chapter : publication.getChildren()) {
+				if (chapter.getType().equals("Page"))
+					pages.add(chapter);
 				if (child != null) {
 					break;
 				}
@@ -65,6 +79,16 @@ public class Finder {
 	public String getParentId(String path) {
 		String[] paths = path.split(COMMA);
 		return paths[paths.length - 1];
+	}
+
+	public ArrayList<MultiDimensionalObject> getAllPages() {
+		return pages;
+
+	}
+
+	public void setAllPagesToEmpty() {
+		pages = new ArrayList<MultiDimensionalObject>();
+
 	}
 
 }

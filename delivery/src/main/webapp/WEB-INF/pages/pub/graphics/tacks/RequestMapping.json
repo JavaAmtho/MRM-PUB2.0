@@ -15,5 +15,6 @@
     "getMasterTemplateList" : "/delivery/page/masterTemplateList/",
     "createWBD" : "/delivery/page/createwbd/",
     "getAssortmentsList" : "/delivery/assortment/getall/",
-    "getAllPageRules" : "/delivery/page/rule/getallrules/"
+    "getAllPageRules" : "/delivery/page/rule/getallrules/",
+    "getAllPagesUnderPublication" : "/delivery/page/all/"
 }
