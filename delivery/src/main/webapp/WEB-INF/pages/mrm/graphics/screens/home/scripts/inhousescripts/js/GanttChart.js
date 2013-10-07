@@ -31,11 +31,45 @@ var GanttChart = function(){
         }, 1000);
 
 
-
     }
 
+   /* Grids.OnDisplayRow = function(grid, row){
+        console.log('displaying'+ row.type)
+
+        switch(row.type){
+            case "MarketingInitiative":
+                Grids[0].SetValue(row,"nameIcon","cal1.png",1);
+                Grids[0].RefreshRow(row);
+            case "Campaign":
+                Grids[0].SetValue(row,"nameIcon","cal2.png",1);
+                Grids[0].RefreshRow(row);
+
+
+            case "SubCampaign":
+                Grids[0].SetValue(row,"nameIcon","cal1.png",1);
+                Grids[0].RefreshRow(row);
+
+            case "CommunicationPlan":
+                Grids[0].SetValue(row,"nameIcon","cal2.png",1);
+                Grids[0].RefreshRow(row);
+
+            case "CommunicationChannel":
+                Grids[0].SetValue(row,"nameIcon","cal2.png",1);
+                Grids[0].RefreshRow(row);
+
+            default:
+                return null;
+        }
+
+    }*/
+
+    Grids.OnRenderRow = function(grid, row, col){
+
+        console.log('rendering'+ row.type)
+    }
 
     Grids.OnGetMenu = function(G,row,col){
+        Grids[0].Focus(row,0,0);
         var possibleDim=[];
         possibleDim  = GraphicDataStore.getPossibleChild(row.type);
         var menuItems = [];
@@ -147,6 +181,9 @@ var GanttChart = function(){
 
      Grids.OnExpand = function(grid,row){
 
+         if(row.type == 'root'){
+             Grids[0].SetValue(row,"CanDelete","0",1);
+         }
         /* if(row.Level === 5){
              var arr = [];
              var length =  row.childNodes.length;
@@ -167,6 +204,13 @@ var GanttChart = function(){
          }*/
      }
 
+    Grids.OnRenderRow = function(grid,row,col){
+       if(row.type == 'root'){
+           Grids[0].SetValue(row,"CanDelete","0");
+           Grids[0].SetValue(row,"CanSelect","0");
+
+       }
+    }
 
     Grids.OnGetGanttHtml = function(G,row,col,width,comp,crit){
         switch(row.type){
@@ -320,6 +364,8 @@ var GanttChart = function(){
                     Grids[0].SetValue(currentRow.lastChild,"nameIcon","cal2.png",1);
                     break;
             }
+
+            Grids[0].SetScrollTop(Grids[0].GetScrollTop()+30) ;
 
             Grids[0].ScrollToDate(data.startDate,"Left");
             //Grids[0].Recalculate(currentRow,"startDate",1);

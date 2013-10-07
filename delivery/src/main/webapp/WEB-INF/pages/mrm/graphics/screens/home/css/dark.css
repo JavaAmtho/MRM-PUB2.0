@@ -1486,7 +1486,11 @@ body, .pure-g [class*="pure-u"], .pure-g-r [class*="pure-u"] {
 */
 
 
-.GECellSpaceEdit:hover .GEText{
+.GECellSpaceEdit:hover {
     background-color: white !important;
+cursor: text !important;
+}
 
+.GEClassFocusedCell{
+    background-color:#eee !important;
 }

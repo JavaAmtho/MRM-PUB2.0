@@ -1121,7 +1121,7 @@ Top Bar Animation Section starts
     line-height: 1.5em;
     bottom: 20%;
     left:5px;
-    font-size: 1em;
+    font-size: 11px;
     position: absolute;
 }
 
@@ -1135,11 +1135,14 @@ Top Bar Animation Section starts
 
 
 .childPageName {
-    margin-top:20px;
-    margin-bottom: 15px;
-    font-size: 12px;
+    margin-top:5px;
+    font-size: 15px;
     width: 80%;
+    margin-bottom: 40px;
     margin-left: 5px;
+    font-family: tahoma;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px grey;
 
     color: #FFF;
 }
@@ -1518,17 +1521,21 @@ img.save {
     line-height: 1.5em;
     bottom: 17px;
     left: 0.5em;
-    font-size: 12px;
+    font-size: 11px;
     font-family: tahoma;
     position: absolute;
     word-break: break-all;
+    text-shadow: 1px 1px 2px grey;
 }
 
 .name {
     font-size: 1.5em;
     line-height: 1.2em;
+    font-family: tahoma;
 
     word-break: break-all;
+    text-shadow: 2px 2px 4px grey;
+
 
     color: #FFF;
 }

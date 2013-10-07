@@ -672,9 +672,9 @@ u.GENL { padding-left:21px; }
 .GEPanelMoveOff { background-position: -50px 0px; }
 .GEPanelSelect { background-image:url(checkbox_no.png);background-position: 3px 4px; background-size: 14px 14px}
 .GEPanelSelectOn { background-image:url(checkbox_yes.png);background-position: 3px 4px;background-size: 14px 14px }
-.GEPanelSelectOff { background-image:url(checkbox_no.png);background-position: 3px 5px; background-size: 12px 12px}
+.GEPanelSelectOff { background-color: transparent}
 .GEPanelDelete{background-image: url(RecycleBin.png); background-position: 2px 4px; background-size: 12px 12px}
-.GEPanelDeleteOff { background-image:url(RecycleBin.png);background-position: 2px 4px; background-size: 12px 12px}
+.GEPanelDeleteOff { background-color: transparent}
 .GEPanelCopy { background-image:url(page_white_copy.png) !important; background-size: 14px 14px}
 .GEPanelCopyOff { background-position: -400px 0px; }
 .GEPanelButton { font:10px "Microsoft Sans Serif",Verdana,Arial; padding:0px; height:17px; width:19px; margin:0px; cursor:pointer; _cursor:hand; }
