@@ -1,5 +1,8 @@
 package app.cs.impl.helper;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,11 +17,13 @@ public class Finder {
 	private final String COMMA = ",";
 
 	private final String HIPHEN = "-";
+	private Set<MultiDimensionalObject> pages;
 
 	@Autowired
 	public Finder(IInMemoryViewStructure structure) {
 
 		this.structure = structure;
+		pages = new HashSet<MultiDimensionalObject>();
 	}
 
 	public MultiDimensionalObject find(MultiDimensionalObject publication,
@@ -32,6 +37,8 @@ public class Finder {
 
 		if (publication.hasChildren()) {
 			for (MultiDimensionalObject chapter : publication.getChildren()) {
+				if (chapter.getType().equals("Page"))
+					pages.add(chapter);
 				if (child != null) {
 					break;
 				}
@@ -65,6 +72,11 @@ public class Finder {
 	public String getParentId(String path) {
 		String[] paths = path.split(COMMA);
 		return paths[paths.length - 1];
+	}
+
+	public Set<MultiDimensionalObject> getAllPages() {
+		return pages;
+
 	}
 
 }
