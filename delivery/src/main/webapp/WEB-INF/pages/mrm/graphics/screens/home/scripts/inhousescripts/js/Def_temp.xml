@@ -37,7 +37,7 @@
               WidthPad= "17"
               CanFilter= "1"
               MinWidth="130"
-              ResultMask="^[A-Za-z]+$"
+              ResultMask="^[A-Za-z ]+$"
                 />
         <C 	Name= "budgetOwner"
 
@@ -45,7 +45,7 @@
               WidthPad= "17"
               MinWidth= "130"
               CanFilter= "1"
-              ResultMask="^[A-Za-z]+$"
+              ResultMask="^[A-Za-z ]+$"
                 />
         <C 	Name= "budget"
 
@@ -134,6 +134,7 @@
         Buttons= "Select,Delete,Move"/>
 
         <C Name = "name"
+        ResultMask="^[A-Za-z ]+$"
         Type= "Text"
         Width= "500"
         GanttSizeFit= "1"

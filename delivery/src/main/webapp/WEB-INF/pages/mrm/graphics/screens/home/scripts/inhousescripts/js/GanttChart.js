@@ -75,6 +75,7 @@ var GanttChart = function(){
     }
 
     Grids.OnContextMenu = function(G,row,col,name){
+
         currentRow = row;
         if(name == "Delete"){
 
@@ -145,6 +146,7 @@ var GanttChart = function(){
     }
 
      Grids.OnExpand = function(grid,row){
+
         /* if(row.Level === 5){
              var arr = [];
              var length =  row.childNodes.length;
@@ -164,6 +166,7 @@ var GanttChart = function(){
              return true;
          }*/
      }
+
 
     Grids.OnGetGanttHtml = function(G,row,col,width,comp,crit){
         switch(row.type){
@@ -231,6 +234,8 @@ var GanttChart = function(){
             }
         }
     }
+
+
 
     Grids.onPublicationHandler = function(data){
     	var pubImageList = EngineDataStore.getPublicationDetailsArray();
@@ -438,7 +443,11 @@ var GanttChart = function(){
                     errorMsg += "Fields should not be EMPTY!";
                 }
 
-                if(startdate.val()>enddate.val()){
+                var startdateDATE = new Date(startdate.val()); //    in order to do comparisons between
+                var enddateDATE = new Date(enddate.val());     //    dates they have to be converted to date objects
+
+                if(startdateDATE>enddateDATE){
+                    console.log(startdateDATE)
                     errorMsg += "Please verify start and end dates!";
                     popupValid =  false;
                     startdate.addClass( "ui-state-error") ;

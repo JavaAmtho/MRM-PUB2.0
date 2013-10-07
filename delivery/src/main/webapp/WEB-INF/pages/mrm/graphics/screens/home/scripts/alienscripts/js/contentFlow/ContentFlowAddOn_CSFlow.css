@@ -170,7 +170,7 @@
         border-radius: 2px;
         border: 1px solid #777;
         margin-top: 0;
-        background-color: #e6dfe6;
+        background-color: #e6e6e6;
        /* background-image: linear-gradient(left bottom, #E6DFE6 0%, #EFF6FC 61%, #FFFFFF 81%);
         background-image: -o-linear-gradient(left bottom, #E6DFE6 0%, #EFF6FC 61%, #FFFFFF 81%);
         background-image: -moz-linear-gradient(left bottom, #E6DFE6 0%, #EFF6FC 61%, #FFFFFF 81%);
@@ -198,11 +198,11 @@
         border: 1px solid #777;
         height: 100%;
         width: 72%;
-        background-image: linear-gradient(left bottom, rgb(171,164,171) 0%, rgb(239,246,252) 61%, rgb(230,223,230) 81%);
-        background-image: -o-linear-gradient(left bottom, rgb(171,164,171) 0%, rgb(239,246,252) 61%, rgb(230,223,230) 81%);
-        background-image: -moz-linear-gradient(left bottom, rgb(171,164,171) 0%, rgb(239,246,252) 61%, rgb(230,223,230) 81%);
-        background-image: -webkit-linear-gradient(left bottom, rgb(171,164,171) 0%, rgb(239,246,252) 61%, rgb(230,223,230) 81%);
-        background-image: -ms-linear-gradient(left bottom, rgb(171,164,171) 0%, rgb(239,246,252) 61%, rgb(230,223,230) 81%);
+        background-image: linear-gradient(left bottom, rgb(180, 180, 180) 0%, rgb(237, 239, 236) 61%, rgb(230, 230, 230) 81%);
+        background-image: -o-linear-gradient(left bottom, rgb(180, 180, 180) 0%, rgb(237, 239, 236) 61%, rgb(230, 230, 230) 81%);
+        background-image: -moz-linear-gradient(left bottom, rgb(180, 180, 180) 0%, rgb(237, 239, 236) 61%, rgb(230, 230, 230) 81%);
+        background-image: -webkit-linear-gradient(left bottom, rgb(180, 180, 180) 0%, rgb(237, 239, 236) 61%, rgb(230, 230, 230) 81%);
+        background-image: -ms-linear-gradient(left bottom,left bottom, rgb(180, 180, 180) 0%, rgb(237, 239, 236) 61%, rgb(230, 230, 230) 81%);
 
         background-image: -webkit-gradient(
             linear,

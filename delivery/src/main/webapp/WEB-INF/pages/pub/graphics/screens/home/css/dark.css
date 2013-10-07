@@ -1521,11 +1521,14 @@ img.save {
     font-size: 12px;
     font-family: tahoma;
     position: absolute;
+    word-break: break-all;
 }
 
 .name {
     font-size: 1.5em;
     line-height: 1.2em;
+
+    word-break: break-all;
 
     color: #FFF;
 }
