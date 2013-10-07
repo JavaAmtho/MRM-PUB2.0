@@ -58,6 +58,12 @@ HomePresenter.loadViewItems = function (evt, currentTemplateView) {
                 ref.typeCSS = "dimension";
                 ref.hiddenCSS = 'hidden';
             }
+            var pubImageList = EngineDataStore.getPublicationDetailsArray();
+            if(pubImageList[ref.title]){
+                ref.backgroundImageStyle = "background-image: url("+pubImageList[ref.title].imageURL+")";
+                console.log(ref.backgroundImageStyle);
+            }
+
         }
 
     });
@@ -556,7 +562,8 @@ HomePresenter.expandPages = function (div, event) {
                 HomePresenter.setRules(div);
             }
             //If not then expand master page to child pages
-            $(div).children('.expand').html("-");   //change '+' button to '-' to indicate expansion
+            //$(div).children('.expand').html("-");   //change '+' button to '-' to indicate expansion
+            $(div).children('.expand').css('background-image','url("../../../graphics/screens/home/images/collapse.png")');
             var $masterTemplate;
             var $assortment;
             var $itemsToInsert = new Array();
@@ -651,7 +658,8 @@ HomePresenter.expandPages = function (div, event) {
             $container.isotope('insert', $($itemsToInsert), $(div));
         }
     else {
-        $(div).children('.expand').html("+");
+        //$(div).children('.expand').html("+");
+        $(div).children('.expand').css('background-image','url("../../../graphics/screens/home/images/expand.png")');
         var $logicalPageIDOfParentOfChild = $('.childPages').children('.inner').children('.logicalPageID:contains(' + div.id + ')');
         var $childPages = $('.childPages').has($logicalPageIDOfParentOfChild);
         $childPages.unbind("loadingError");

@@ -1023,6 +1023,8 @@ Top Bar Animation Section starts
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    background-size: cover;
+    background-repeat:no-repeat;
 }
 
 .childPages {
@@ -1080,11 +1082,6 @@ Top Bar Animation Section starts
     background-color: #B8BFDB;
 }
 
-.masterPage > .name{
-    width: 80%;
-    margin: 2%;
-}
-
 .childPages.odd.inner {
     background-color: #82A2D8;
 }
@@ -1126,14 +1123,6 @@ Top Bar Animation Section starts
 }
 
 
-.masterPage > .name {
-    font-size: 1.5em;
-    line-height: 1.2em;
-
-    color: #FFF;
-}
-
-
 .childPageName {
     margin-top:5px;
     font-size: 15px;
@@ -1167,6 +1156,8 @@ Top Bar Animation Section starts
 
     height: 420px;
     width: 420px;
+    background-repeat:no-repeat;
+    background-size: cover;
 }
 
 /*.masterPage.is-restored {
@@ -1190,17 +1181,6 @@ Top Bar Animation Section starts
 */
 }
 
-.openRules{
-    position: absolute;
-    font-family: tahoma;
-    bottom: -10px;
-    left: 5px;
-    -webkit-transition: text-shadow 0.3s ease-out;
-    -moz-transition: text-shadow 0.3s ease-out;
-    -ms-transition: text-shadow 0.3s ease-out;
-    -o-transition: text-shadow 0.3s ease-out;
-    transition: text-shadow 0.3s ease-out;
-}
 
 
 
@@ -1208,30 +1188,42 @@ Top Bar Animation Section starts
     border-bottom: 1px solid #d1d1d1;
 }
 
-h2:hover {
-    cursor: pointer;
-    /*color:white;*/
-    text-shadow: 0 0 8px white, 0 0 8px white;
-
+.buttonsHolder{
+    background-color: black;
+    opacity: 0;
+    position:absolute;
+    top:85%;
+    width:100%;
+    height:15%;
+    -webkit-transition: opacity 0.3s ease-out;
+    -moz-transition: opacity 0.3s ease-out;
+    -ms-transition: opacity 0.3s ease-out;
+    -o-transition: opacity 0.3s ease-out;
+    transition: opacity 0.3s ease-out;
 }
 
+.buttonsHolder:hover{
+    opacity:.6;
+}
+
+
+
 h2.expand {
+    cursor:pointer;
     position: absolute;
     right: 5px ;
     bottom: -5px ;
     line-height: 25px;
-
-    font-size: 25px;
+    height: 15px;
+    width: 15px;
+    background-image:url('../images/expand.png');
+    background-position: -10px -10px;
     display: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -webkit-transition: text-shadow 0.3s ease-out;
-    -moz-transition: text-shadow 0.3s ease-out;
-    -ms-transition: text-shadow 0.3s ease-out;
-    -o-transition: text-shadow 0.3s ease-out;
-    transition: text-shadow 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
 }
 
 /*h2.close:hover{
@@ -1430,10 +1422,10 @@ img.save {
     position: relative;
     background: #888;
     color: #222;
-    padding: 8px;
     border: 1px solid #ccc;
     box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.3), 1px 1px 3px rgba(0, 0, 0, 0.9);
-
+    background-size: cover;
+    background-repeat:no-repeat;
 
 }
 
@@ -1529,7 +1521,7 @@ img.save {
 }
 
 .name {
-    font-size: 1.5em;
+    font-size: 15px;
     line-height: 1.2em;
     font-family: tahoma;
 
@@ -1538,6 +1530,8 @@ img.save {
 
 
     color: #FFF;
+    width: 80%;
+    margin: 7%;
 }
 
 .dimension .weight {
@@ -2006,8 +2000,15 @@ a.pure-button:hover, a.pure-button{
 }
 
 h2.openRules{
-    font-size: 20px !important;
+    background-image:url('../images/openRules.png');
+    height: 15px;
+    width: 15px;
+    left: 5px ;
     margin-bottom: 15px;
+    position: absolute;
+    bottom: -10px;
+    left: 5px;
+    cursor:pointer;
 }
 
 #listBoxContentassetDetails{

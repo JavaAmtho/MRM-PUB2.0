@@ -1,10 +1,12 @@
-{{#mydata}}<div class= "{{typeCSS}}" id="{{title}}">
+{{#mydata}}<div class= "{{typeCSS}}" id="{{title}}" style="{{backgroundImageStyle}}">
     <div class="name">{{title}}</div>
-    <div class="type">Type : {{type}} {{pageType}}</div>
+    <!--<div class="type">Type : {{type}} {{pageType}}</div>-->
 	<p class="hidden pagePath">{{path}}</p>
-    <h2 class='openRules {{hiddenCSS}}' onclick='HomePresenter.openRules(this.parentNode,event)'>O</h2>
+    <div class='buttonsHolder {{hiddenCSS}}' >
+    </div>
+    <h2 class='openRules {{hiddenCSS}}' onclick='HomePresenter.openRules(this.parentNode,event)'></h2>
 
-    <h2 class='expand {{hiddenCSS}}' onclick='HomePresenter.expandPages(this.parentNode,event)'>+</h2>
+    <h2 class='expand {{hiddenCSS}}' onclick='HomePresenter.expandPages(this.parentNode,event)'></h2>
 
     <div class="rule">
         <img src='../../../graphics/screens/home/images/save.png' class='save' onclick='HomePresenter.saveRulesData(this.parentNode.parentNode,event)'/>
