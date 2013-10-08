@@ -1,8 +1,7 @@
 package app.cs.impl.helper;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,7 +17,7 @@ public class Finder {
 	private final String COMMA = ",";
 
 	private final String HIPHEN = "-";
-	private ArrayList<MultiDimensionalObject> pages = new ArrayList<MultiDimensionalObject>();
+	private List<MultiDimensionalObject> pages;
 
 	@Autowired
 	public Finder(IInMemoryViewStructure structure) {
@@ -81,7 +80,7 @@ public class Finder {
 		return paths[paths.length - 1];
 	}
 
-	public ArrayList<MultiDimensionalObject> getAllPages() {
+	public List<MultiDimensionalObject> getAllPages() {
 		return pages;
 
 	}
