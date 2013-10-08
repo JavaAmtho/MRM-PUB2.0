@@ -851,6 +851,7 @@ HomePresenter.toggleRulesView = function (div) {
     $(div).children(".rule").toggle();
     $(div).children(".name").toggle();
     $(div).children(".type").toggle();
+    $(div).children(".buttonsHolder").toggle();
 }
 
 

@@ -486,7 +486,7 @@ Top Bar Animation Section starts
 
 #rightPanelView {
     height: 100%;
-    width: 99%;
+    width: 98.5%;
     float: left;
     position: relative;
     overflow-x: hidden;
@@ -653,9 +653,9 @@ Top Bar Animation Section starts
     background-color: #EEEEEE;
     border: 0px;
     position: fixed;
-    z-index: 6;
     right: -200px;
     padding: 0px;
+    z-index: 9;
     height:595px;
     width: 200px;
     border-bottom-left-radius: 2px;
@@ -985,14 +985,25 @@ Top Bar Animation Section starts
 .jqx-listitem-state-normal {
     height: 58px !important;
     position: relative !important;
-    background-color: #DFDFDF !important;
     border: 1px solid #BBBBBB !important;
-    border-radius: 12px !important;
     float: left !important;
+    margin: 1px !important;
+    background-image: linear-gradient(left bottom,  #fefefc 15%, #ededeb 100%) !important) ;
+    background-image: -o-linear-gradient(left bottom,  #fefefc 15%, #ededeb 100%) !important);
+    background-image: -moz-linear-gradient(left bottom, #fefefc 15%, #ededeb 100%) !important;
+    background-image: -webkit-linear-gradient(left bottom, #fefefc 15%, #ededeb 100%) !important);
+    background-image: -ms-linear-gradient(left bottom,  #fefefc 15%, #ededeb 100%) !important);
+    box-shadow: 2px 2px 7px 2px #bbb !important;
+    font-family: tahoma !important;
 
-    width: 70% !important;
+    width: 72% !important;
     /*  padding: 5px !important;
       margin: 5px !important;*/
+}
+
+.jqx-listitem-element{
+    height: 60px !important;
+
 }
 
 #mrmGanttChart{
@@ -1128,7 +1139,7 @@ Top Bar Animation Section starts
     margin-top:5px;
     font-size: 15px;
     width: 80%;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     margin-left: 5px;
     font-family: tahoma;
     font-weight: bold;
@@ -1154,6 +1165,8 @@ Top Bar Animation Section starts
     -o-transition: all .5s ease-out;*/
     z-index: 100;
     background: #7894C4;
+    box-shadow: 0px 0px 600px 10px #000 inset;
+
 
     height: 420px;
     width: 420px;
@@ -1524,7 +1537,7 @@ img.save {
     font-family: tahoma;
 
     word-break: break-all;
-    text-shadow: 2px 2px 4px grey;
+    text-shadow: 1px 1px 1px #343434;
 
 
     color: #FFF;
@@ -2102,3 +2115,6 @@ li#targetRegionText , li#targetGroupText{
 
 }
 
+td > img{
+    max-height: 45px !important;
+}

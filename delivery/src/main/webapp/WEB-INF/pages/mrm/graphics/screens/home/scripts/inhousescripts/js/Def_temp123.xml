@@ -1,0 +1,195 @@
+<Grid>
+
+    <Cfg
+            id="Search"
+            MainCol="name"
+            ShowDeleted= "0"
+            Style= "ExtJS"
+            MinRowHeight= "23"
+            Expanded="false"
+            RightWidth="800"
+            ConstWidth="1"
+            ConstHeight="1"
+            Validate="Added,Changed"
+            RightCanResize="3"
+            LeftCanResize="2"
+            SectionResizing="1"
+            ExportType="Expanded,Indent"
+
+
+    />
+    <Cfg
+            SearchCells="1"
+            SearchFocused="3"
+            SearchNumbers="3"
+            SearchAction="Mark"
+            SearchAlertFound="500"
+            SearchWhiteChars=" "
+            />
+    <Cols>
+        <C 	Name= "currency"
+              Type= "Text"
+              CanFilter= "1"
+              Visible ="0"
+                />
+        <C 	Name= "manager"
+              Type= "Text"
+              WidthPad= "17"
+              CanFilter= "1"
+              MinWidth="130"
+              ResultMask="^[A-Za-z ]+$"
+                />
+        <C 	Name= "budgetOwner"
+
+              Type= "Text"
+              WidthPad= "17"
+              MinWidth= "130"
+              CanFilter= "1"
+              ResultMask="^[A-Za-z ]+$"
+                />
+        <C 	Name= "budget"
+
+              Type= "Text"
+              WidthPad= "17"
+              CanFilter= "1"
+              MinWidth= "130"
+              ResultMask="^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?[$]?$"
+                />
+        <C 	Name= "startDate"
+
+              Type= "Date"
+              Format= "dd/MM/yyyy"
+              WidthPad= "17"
+              CanFilter= "1"
+              MinWidth= "130"
+              ResultMask="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$"
+                />
+        <C 	Name= "endDate"
+
+              Type= "Date"
+              Format= "dd/MM/yyyy"
+              WidthPad= "17"
+              RelWidth="1"
+              GanttSizeFit= "0"
+              CanFilter= "1"
+              ResultMask="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$"
+                />
+        <C 	Name= "ganttChart"
+              Type= "Gantt"
+              GanttStart= "startDate"
+              GanttEnd= "endDate"
+              CanFilter= "1"
+              RelWidth="1"
+
+              GanttSlack= "Slack"
+              GanttFormatObject= "MainPrev"
+              GanttFormat= "*name*"
+              GanttMainTip= "&lt;div style='height: 16px;padding-bottom:5px;position:relative;font-weight:bold'>*name*&lt;/div>
+                            &lt;div style='height: 13px;padding-bottom:5px;position:relative;'> &lt;span  style='text-align: left;
+                            float:left;font-size:11px'>Start:&lt;/span>&lt;span style='text-align: right;
+                            margin-left:65px;float:right;font-size:11px'>*startDate*&lt;/span>&lt;/div>
+                            &lt;div style='height: 13px;padding-bottom:5px;position:relative;'>&lt;span  style='text-align: left;
+                            float: left;font-size: 11px'>End:&lt;/span>&lt;span style='text-align: right;
+                            margin-left:65px;float: right;font-size: 11px'>*endDate*&lt;/span>&lt;/div>
+                            &lt;div style='height: 13px;padding-bottom:5px;position:relative;'>&lt;span  style='text-align: left;
+                            float: left;font-size: 11px'>Manager:&lt;/span>&lt;span style='text-align: right;
+                            margin-left:65px;float: right;font-size: 11px'>*manager*&lt;/span>&lt;/div> &lt;div style='height: 13px;padding-bottom:5px;position:relative;'>
+                            &lt;span  style='text-align: left;float: left;font-size: 11px'>Budget:&lt;/span>
+                            &lt;span style='text-align: right;float: right;margin-left:65px;font-size: 11px'>
+                            *budget**currency*&lt;/span>&lt;/div>"
+              GanttZoom= "months"
+              GanttExclude = " w#1/5/2013~1/7/2013"
+              GanttClass="GanttOrange"
+              GanttZoomList="[
+                            { Name: 'years', GanttUnits: 'M', GanttChartRound: 'y', GanttWidth: 65,
+                            GanttHeader1: 'y#yyyy', GanttHeader2: 'M#MMM',
+                            GanttBackground: 'M#1/1/2008#1', GanttRight: '0', GanttLeft: '0' },
+
+                            { Name: 'months', GanttUnits: 'w', GanttChartRound: 'M', GanttWidth: 170,
+                            GanttHeader1: 'M#MMMM yyyy', GanttHeader2: 'w#Week ddddddd', GanttHeader3: 'd#dd',
+                            GanttBackground: 'w#1/6/2008#1', GanttRight: '0', GanttLeft: '0'
+                            },
+
+                            { Name: 'weeks', GanttUnits: 'd', GanttChartRound: 'w', GanttWidth: 100,
+                            GanttHeader1: 'w#MMMM yyyy Week ddddddd', GanttHeader2: 'd#dddd',
+                            GanttBackground: 'd#1/2/2008#1'
+                            },
+
+                            { Name: 'days', GanttUnits: 'h', GanttChartRound: 'd', GanttWidth: 30,
+                            GanttBackground: 'h#01#1',
+                            GanttHeader1: 'd#dddd d MMMM yyyy', GanttHeader2: 'h#HH'
+                            }
+
+               ] "
+
+                />
+
+    </Cols>
+
+
+    <LeftCols>
+        <C Name = "Panel"
+        Type= "Panel"
+        WidthPad= "17"
+        Buttons= "Select,Delete,Move"/>
+
+        <C Name = "name"
+        ResultMask="^[A-Za-z ]+$"
+        Type= "Text"
+        Width= "500"
+        GanttSizeFit= "1"
+        WidthPad= "17"/>
+    </LeftCols>
+
+    <Header
+            name= "Dimensions"
+            startDate= "StartDate"
+            endDate= "EndDate"
+            manager= "Project Manager"
+            budgetOwner= "Budget Owner"
+            budget= "Budget"
+            />
+    <Solid>
+        <Search
+                Space="0"
+                Cells="Expression,Search,Actions,Select,Mark,Find,Clear,CELLS,CASE"
+                ExpressionLeft="0"
+                ActionsRange="1"
+                Actions="Mark;Find"
+                ExpressionAction="Last"
+                ExpressionTip="You can search any string in grid"
+                CELLSType="Select"
+                CELLSDefaults="|Search in rows|Search in cells"
+                CELLS="Search in cells"
+                CELLSLeft="0"
+                CELLSOnChange="Grid.SearchCells = Grid.GetDefaultsIndex(Row,Col,Value); Grid.DoSearch('Refresh');"
+
+                CASEType="Bool"
+                CASELabelRight="Case sensitive"
+                CASEOnChange="Grid.SearchCaseSensitive = Value; Grid.DoSearch('Refresh');"
+
+        />
+
+        <Toolbar
+                Space="4"
+                Kind="Toolbar1"
+                Panel="0"
+                Cells="ExpandAll,CollapseAll,ZoomIn,ZoomOut,ZoomFit,Print,Export"
+                PrintLabel=" |  Print/Export to PDF"
+                ExportPDFLabel=" |  Export to PDF"
+                ExportLabel=" |  Export to Excel"
+                ExpandAllLabel="  Expand All"
+                CollapseAllLabel=" |  Collapse All"
+                ZoomInLabel=" |  Zoom In"
+                ZoomOutLabel=" |  Zoom Out"
+                ZoomFitLabel=" |  Zoom Fit"
+
+        />
+     </Solid>
+    <Toolbar
+            Space="9"
+            Kind="Toolbar2"
+            Cells=""
+    />
+
+</Grid>
