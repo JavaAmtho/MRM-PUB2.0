@@ -21,7 +21,7 @@ public class Finder {
 
 	@Autowired
 	public Finder(IInMemoryViewStructure structure) {
-
+		pages = new ArrayList<MultiDimensionalObject>();
 		this.structure = structure;
 	}
 

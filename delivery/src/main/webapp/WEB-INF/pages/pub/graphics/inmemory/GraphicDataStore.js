@@ -16,6 +16,22 @@ var GraphicDataStore = function(){
     var currentPublication;
     var assortmentsList;
     var loadingRulesList;
+    var publicationPosition;
+    var currentPublication;
+}
+
+GraphicDataStore.setCurrentPublication = function(currentPublication){
+    console.log(currentPublication);
+    this.currentPublication = currentPublication;
+}
+
+GraphicDataStore.getCurrentPublication = function(){
+    if(this.currentPublication){
+        return this.currentPublication;
+    }
+    else{
+        return "";
+    }
 }
 
 GraphicDataStore.checkIfRuleLoading = function(ruleID){
@@ -162,6 +178,12 @@ GraphicDataStore.setDefaultSchema = function(){
 
 GraphicDataStore.setCurrentSchema = function(schema){
     this.currentSchema = schema;
+    var schemaSplit = schema.name.split("-");
+    this.publicationPosition = schemaSplit.indexOf("Publication");
+}
+
+GraphicDataStore.getPublicationPosition = function(){
+    return this.publicationPosition;
 }
 
 GraphicDataStore.getCurrentSchema = function(schema){

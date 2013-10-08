@@ -34,6 +34,7 @@ HomePresenter.handleViewChange = function (evt) {
 
 HomePresenter.loadViewItems = function (evt, currentTemplateView) {
     var pageIDs = [];
+    var publicationPosition = GraphicDataStore.getPublicationPosition();
     $.each(evt.mydata, function (index, value) {
         var ref = value;
         if (ref != null) {
@@ -46,6 +47,8 @@ HomePresenter.loadViewItems = function (evt, currentTemplateView) {
                 console.log("CSS : " + css);
                 ref.typeCSS = css;
                 ref.hiddenCSS = "";
+                var splitPath = ref.path.split(",");
+                GraphicDataStore.setCurrentPublication(splitPath[publicationPosition]);
             }
             else if(ref.type == "Chapter"){
                 ref.typeCSS = "chapter";
@@ -75,7 +78,7 @@ HomePresenter.loadViewItems = function (evt, currentTemplateView) {
             GraphicDataStore.addAllPageRules(data.listOfPageRules);
         });
 
-        var $masterPages =  $("#viewHolder").children('.masterPage');
+        /*var $masterPages =  $("#viewHolder").children('.masterPage');
         console.log($masterPages)
         for(var i = 0 ; i < $masterPages ; i++){
             var pageRule = $masterPages[i].id;
@@ -88,7 +91,7 @@ HomePresenter.loadViewItems = function (evt, currentTemplateView) {
                     }
                 }
             }
-        }
+        }*/
     }
 
     MustacheWrapper.createUI(currentTemplateView, evt, function (currentViewStr) {
@@ -499,7 +502,7 @@ HomePresenter.addClickEventForWBDPopup = function (url, innerDiv) {
 //Make server call to create WBD according to the data from the page rules and get the url to open it
 HomePresenter.openWhiteBoard = function (divReference, event) {
 
-    var publicationID = GraphicDataStore.getCurrentView();
+    var publicationID = GraphicDataStore.getCurrentPublication();
     var $innerDiv = $(divReference);
     if (!$innerDiv.hasClass('inner')) {
         $innerDiv = $innerDiv.children('.inner');
@@ -514,9 +517,9 @@ HomePresenter.openWhiteBoard = function (divReference, event) {
             $('.childPages').trigger("loadingError",[ruleID]);
         }
         else {
-            $('#' + logicalPageID).children('.rule').children('.then').children('.dataDirty').html('1');
-            console.log($('#' + logicalPageID))
-            GraphicDataStore.addAdditionalInformationToPageRules(data,ruleID,publicationID + "." + logicalPageID);
+            $("[id = '"+logicalPageID+"']").children('.rule').children('.then').children('.dataDirty').html('1');
+            console.log($("[id = '"+logicalPageID+"']"))
+            GraphicDataStore.addAdditionalInformationToPageRules(data,ruleID,GraphicDataStore.getCurrentView() + "." + logicalPageID);
             $('.childPages').trigger("loadingDone",[ruleID,data.editorURL]);
         }
         GraphicDataStore.stopLoadingStatus(ruleID)
