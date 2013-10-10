@@ -10,7 +10,7 @@
 	/WEB-INF/application-context-nosql.xml
 </param-value>
 </context-param>
-
+<!-- start -->
 <listener>
 <listener-class>
 	org.springframework.web.context.ContextLoaderListener
@@ -22,6 +22,7 @@
 	app.cs.startup.MasterTemplateLoader
 </listener-class>
 </listener>
+<!-- End maintain sequence -->
 	<servlet>
 		<servlet-name>publication</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>

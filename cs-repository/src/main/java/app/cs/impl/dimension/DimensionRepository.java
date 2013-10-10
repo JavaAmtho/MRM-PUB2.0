@@ -118,7 +118,11 @@ public class DimensionRepository implements IDimensionRepository {
 
 		return groupCache.getDimensionGroupIdFor(path);
 	}
-
+/*
+ * 
+ * 
+ * TODO: change return type to GenericDomain
+ */
 	@Override
 	public MultiDimensionalObject getDomain(String type) {
 
@@ -158,7 +162,7 @@ public class DimensionRepository implements IDimensionRepository {
 				possibleDeleteTypes, dimension.getClass());
 	}
 
-	public List<String> getPossibleTypesWhichAreGoingToAffected(
+	protected List<String> getPossibleTypesWhichAreGoingToAffected(
 			String currentNodeType) {
 		List<String> types = splitViewStructure();
 		return types.subList(types.indexOf(currentNodeType), types.size());

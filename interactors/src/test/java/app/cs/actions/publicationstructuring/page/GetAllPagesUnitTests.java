@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import app.cs.impl.chapter.ChapterRepository;
+import app.cs.impl.chapter.ChapterAndPageRepository;
 import app.cs.impl.model.MultiDimensionalObject;
 import app.cs.model.request.GetAllPagesRequest;
 
@@ -18,7 +18,7 @@ public class GetAllPagesUnitTests {
 	private GetAllPages getAllPages;
 
 	@Mock
-	private ChapterRepository repository;
+	private ChapterAndPageRepository repository;
 
 	@Before
 	public void setUp() throws Exception {

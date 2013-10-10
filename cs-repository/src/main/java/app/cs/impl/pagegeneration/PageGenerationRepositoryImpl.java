@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import app.cs.impl.chapter.ChapterRepository;
+import app.cs.impl.chapter.ChapterAndPageRepository;
 import app.cs.impl.model.MultiDimensionalObject;
 import app.cs.impl.model.PageRule;
 import app.cs.impl.model.PageRules;
@@ -26,7 +26,7 @@ import com.sun.jersey.api.client.ClientResponse;
 @Component
 public class PageGenerationRepositoryImpl implements IPageGenerationRepository {
 
-	private ChapterRepository chapterRepository;
+	private ChapterAndPageRepository chapterRepository;
 	private IPageRuleRepository pageRuleRepository;
 
 	private static final String CHARSET = "ISO-8859-1,utf-8;q=0.7,*;q=0.3"; //$NON-NLS-1$
@@ -51,13 +51,15 @@ public class PageGenerationRepositoryImpl implements IPageGenerationRepository {
 
 	@Autowired
 	public PageGenerationRepositoryImpl(IRestClient client,
-			ChapterRepository chapterRepository,
+			ChapterAndPageRepository chapterRepository,
 			PageRuleRepositoryImpl pageRuleRepository) {
 		this.client = client;
 		this.chapterRepository = chapterRepository;
 		this.pageRuleRepository = pageRuleRepository;
 	}
-
+/*
+ * TODO: Make it a saparate class. rather building a JSON string. Assign to a Type
+ */
 	@Override
 	public String createAndPlanWBD(String ruleID, String logicalPageID,
 			String publicationID) {
@@ -70,10 +72,11 @@ public class PageGenerationRepositoryImpl implements IPageGenerationRepository {
 
 		int countOfProducts = 1;
 
+		Map<String, String> headerParameters = new HashMap<String, String>();
 		HashMap<String, String> additionalInformation = new HashMap<String, String>();
+		PageRules pageRules = pageRuleRepository.getPageRulesFor(logicalPageID);
 
 		// get the rule
-		PageRules pageRules = pageRuleRepository.getPageRulesFor(logicalPageID);
 		if (pageRules == null) {
 			return "pageRules not found";
 		}
@@ -111,7 +114,6 @@ public class PageGenerationRepositoryImpl implements IPageGenerationRepository {
 		input = "{\"templateID\":\"" + masterPageID + "\",\"products\":["
 				+ productIds + "]}";
 
-		Map<String, String> headerParameters = new HashMap<String, String>();
 		prepareHeaderParameters(headerParameters);
 
 		// create wbd and plan assortment

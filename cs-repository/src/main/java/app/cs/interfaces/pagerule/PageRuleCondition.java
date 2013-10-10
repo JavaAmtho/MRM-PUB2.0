@@ -1,5 +1,7 @@
 package app.cs.interfaces.pagerule;
-
+/*
+ * TODO: Make it a model, or deprecate
+ */
 public class PageRuleCondition {
 	
 	public String variable;

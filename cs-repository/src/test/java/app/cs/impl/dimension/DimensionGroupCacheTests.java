@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import app.cs.impl.inmemory.InMemoryDimensionGroup;
 import app.cs.impl.model.MultiDimensionalObject;
 import app.cs.interfaces.dimension.IInMemoryDimensionGroup;
 

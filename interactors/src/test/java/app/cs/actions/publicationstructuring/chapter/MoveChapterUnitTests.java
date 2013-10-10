@@ -10,7 +10,7 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import static org.junit.Assert.assertEquals;
 
-import app.cs.impl.chapter.ChapterRepository;
+import app.cs.impl.chapter.ChapterAndPageRepository;
 import app.cs.impl.delegate.factory.DomainFactory;
 import app.cs.impl.model.MultiDimensionalObject;
 import app.cs.model.request.MoveChapterRequest;
@@ -21,7 +21,7 @@ public class MoveChapterUnitTests {
 	private MoveChapter moveChapter;
 
 	@Mock
-	private ChapterRepository chapterRepository;
+	private ChapterAndPageRepository chapterRepository;
 
 	MoveChapterRequest moveChapterRequest;
 

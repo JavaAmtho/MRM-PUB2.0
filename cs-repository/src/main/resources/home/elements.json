@@ -1,3 +1,0 @@
-[{"id":"leftTree","event":"load","func":"generateTree","type":"tree"},
-    {"id":"rightTabs","event":"load","func":"generateTabs","type":"tabs"},
-    {"id":"schemaDropDown","event":"load","func":"generateDropDown","type":"dropdown"}]

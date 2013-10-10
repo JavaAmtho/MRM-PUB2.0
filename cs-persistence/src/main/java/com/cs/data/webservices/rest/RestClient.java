@@ -16,12 +16,6 @@ import com.sun.jersey.api.client.WebResource.Builder;
 @Component
 public class RestClient implements IRestClient {
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.cs.data.webservices.rest.IRestClient#get(java.lang.String,
-	 * java.util.Map)
-	 */
 	@Override
 	public String get(String url, Map<String, String> headerParameters) {
 		ClientResponse response = getResource(url, headerParameters).get(

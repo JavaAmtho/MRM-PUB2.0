@@ -1,4 +1,4 @@
-package app.cs.impl.dimension;
+package app.cs.impl.inmemory;
 
 import java.util.List;
 

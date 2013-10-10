@@ -20,7 +20,7 @@ import com.cs.data.core.nosql.mongodb.MongoRepository;
 @RunWith(MockitoJUnitRunner.class)
 public class ChapterRepositoryUnitTests {
 
-	private ChapterRepository repository;
+	private ChapterAndPageRepository repository;
 
 	@Mock
 	private MongoRepository noSqlTemplateForMongo;
@@ -37,7 +37,7 @@ public class ChapterRepositoryUnitTests {
 
 	@Before
 	public void setUp() {
-		repository = new ChapterRepository(noSqlTemplateForMongo, factory,
+		repository = new ChapterAndPageRepository(noSqlTemplateForMongo, factory,
 				finder);
 		publication = new MultiDimensionalObject("Test", "publication",
 				"CP01,MP01,PG01", true);

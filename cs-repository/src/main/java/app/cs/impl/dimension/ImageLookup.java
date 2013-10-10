@@ -10,7 +10,9 @@ import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Component;
 
 import app.cs.utils.FileUtils;
-
+/*
+ * TODO: Deprecate me.
+ */
 @Component
 public class ImageLookup {
 

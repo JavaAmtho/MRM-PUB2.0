@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import app.cs.impl.chapter.ChapterRepository;
+import app.cs.impl.chapter.ChapterAndPageRepository;
 import app.cs.impl.delegate.factory.DomainFactory;
 import app.cs.impl.model.MultiDimensionalObject;
 import app.cs.model.request.MovePageRequest;
@@ -21,7 +21,7 @@ public class MovePageUnitTests {
 	private MovePage movePage;
 
 	@Mock
-	private ChapterRepository chapterRepository;
+	private ChapterAndPageRepository chapterRepository;
 
 	MovePageRequest movePageRequest;
 

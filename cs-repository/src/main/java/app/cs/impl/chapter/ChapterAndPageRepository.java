@@ -1,6 +1,5 @@
 package app.cs.impl.chapter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,7 @@ import com.cs.data.api.core.nosql.mongodb.NoSqlRepository;
  * Dont use ContentObject(DimensionObject) TODO with separate interface****
  */
 @Component
-public class ChapterRepository implements IChapterRepository {
+public class ChapterAndPageRepository implements IChapterRepository {
 	/** The nosql template for mongo. */
 	private NoSqlRepository mongoRepository;
 
@@ -36,7 +35,7 @@ public class ChapterRepository implements IChapterRepository {
 	 *            the cache
 	 */
 	@Autowired
-	public ChapterRepository(NoSqlRepository noSqlRepository,
+	public ChapterAndPageRepository(NoSqlRepository noSqlRepository,
 			DomainFactory factory, Finder finder) {
 		this.mongoRepository = noSqlRepository;
 		this.factory = factory;

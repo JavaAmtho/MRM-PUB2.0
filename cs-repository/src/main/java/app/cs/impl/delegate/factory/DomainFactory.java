@@ -14,7 +14,6 @@ public class DomainFactory implements IDomainFactory {
 		if (type.equals("MultiDimensionalObject"))
 			return new MultiDimensionalObject();
 		if (type.equals("HierarchicalObjet"))
-			//TODO refactor should return HierarchicalObject object
 			return new MultiDimensionalObject();
 
 		return null;

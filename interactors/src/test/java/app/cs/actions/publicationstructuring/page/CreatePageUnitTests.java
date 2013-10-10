@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import app.cs.impl.chapter.ChapterRepository;
+import app.cs.impl.chapter.ChapterAndPageRepository;
 import app.cs.impl.delegate.factory.DomainFactory;
 import app.cs.impl.model.MultiDimensionalObject;
 import app.cs.model.request.CreatePageRequest;
@@ -23,7 +23,7 @@ public class CreatePageUnitTests {
 	private CreatePage createPage;
 
 	@Mock
-	private ChapterRepository chapterRepository;
+	private ChapterAndPageRepository chapterRepository;
 
 	@Mock
 	private DomainFactory factory;

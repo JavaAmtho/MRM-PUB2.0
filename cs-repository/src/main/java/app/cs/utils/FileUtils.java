@@ -29,7 +29,6 @@ public class FileUtils {
 	 */
 	public String getFileContents(String relativePath) throws IOException,
 			URISyntaxException {
-
 		byte[] encoded = Files.readAllBytes(Paths.get(getClass()
 				.getClassLoader().getResource(relativePath).toURI()));
 		return Charset.defaultCharset().decode(ByteBuffer.wrap(encoded))
@@ -37,7 +36,7 @@ public class FileUtils {
 
 	}
 
-	public String getFileContentsFromGivenPath(URI realPath) throws IOException {
+	public String getFileContents(URI realPath) throws IOException {
 		byte[] encoded = Files.readAllBytes(Paths.get(realPath));
 		return Charset.defaultCharset().decode(ByteBuffer.wrap(encoded))
 				.toString();

@@ -14,6 +14,7 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import app.cs.impl.delegate.factory.DomainFactory;
+import app.cs.impl.inmemory.InMemoryDimensionGroup;
 import app.cs.impl.inmemory.InMemoryViewStructure;
 import app.cs.impl.model.MultiDimensionalObject;
 import app.cs.utils.FileUtils;
