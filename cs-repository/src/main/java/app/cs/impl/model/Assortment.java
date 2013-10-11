@@ -7,9 +7,6 @@ import com.cs.data.api.core.GenericDomain;
 
 
 public class Assortment implements GenericDomain, Serializable {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	private List<Product> products;
@@ -34,13 +31,11 @@ public class Assortment implements GenericDomain, Serializable {
 
 	@Override
 	public String getObjectKey() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getKey() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
