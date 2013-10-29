@@ -352,7 +352,8 @@ function removeProduct(indx){
 
     if(removed){
         GraphicDataStore.getProdcutsArr().splice(indx,1);
-        if(GraphicDataStore.getProdcutsArr().length>1)
+        var items = $("#subtab1").jqxListBox('getItems');
+        if(items.length>1)
             $('#subtab1').jqxListBox('refresh');
         //alert(JSON.stringify(GraphicDataStore.getProdcutsArr()));
     }
