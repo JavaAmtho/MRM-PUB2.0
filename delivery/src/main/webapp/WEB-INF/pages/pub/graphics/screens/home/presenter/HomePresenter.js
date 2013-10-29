@@ -334,7 +334,7 @@ HomePresenter.showAssortmentPanel = function (rendererData) {
                 console.log("Inside IF==>" + index);
                 var imgurl = datarecord.image;
                 var img = '<img height="50" width="40" src="' + imgurl + '"/>';
-                var table = '<table style="min-width: 130px; height: 70px"><tr><td style="width: 40px;" rowspan="1">' + img + '</td><td>' + datarecord.title + " " + '</td></tr></table>';
+                var table = '<table style="min-width: 130px; height: 70px"><tr><td style="width: 40px;" rowspan="1">' + img + '</td><td>' + datarecord.title + " " + '</td><td class="removeProductBtn"><img src="../../../graphics/screens/home/images/_close.png" onclick="removeProduct('+index+')"/></td></tr></table>';
                 return table;
             }
 
@@ -343,6 +343,17 @@ HomePresenter.showAssortmentPanel = function (rendererData) {
     });
     $('#subtab1').jqxListBox('refresh');
 
+}
+
+
+function removeProduct(indx){
+    event.stopImmediatePropagation();
+    var removed = $("#subtab1").jqxListBox('removeAt', indx );
+
+    if(removed){
+        GraphicDataStore.getProdcutsArr().splice(indx,1);
+        //alert(JSON.stringify(GraphicDataStore.getProdcutsArr()));
+    }
 }
 
 HomePresenter.populateAssetsList = function (data) {

@@ -54,3 +54,15 @@ TreePresenter.dragAndDropAssortment = function(prefix,name,newPath,callBack){
     jsonData[columnName] = GraphicDataStore.getProdcutsArr();
     CopyAssortment.dragAndDropAssortment(prefix,name,newPath,jsonData,callBack);
 }
+
+/**
+ *
+ * @param prefix
+ * @param type
+ * @param input
+ * @param callback
+ * @description calls DeleteDimension interactor
+ */
+TreePresenter.deleteDimension = function(prefix,type,input,callback){
+    DeleteDimension.deleteDim(prefix,type,input,callback);
+}

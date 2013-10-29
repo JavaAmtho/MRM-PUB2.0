@@ -3,6 +3,7 @@ var temp;
 var DynaTree = function(){
     var currentPath;
     var parentNode;
+    var nodeToBeDeleted;
     var newNode
 
     function menuExists(type){
@@ -32,8 +33,31 @@ var DynaTree = function(){
             elem.appendChild(anchor);
             list.appendChild(elem);
         }
+
+        if(type != "root"){
+            var deleteAnchor = document.createElement("a");
+            deleteAnchor.href = "#delete";
+            deleteAnchor.textContent = "Delete";
+            var delElem = document.createElement("li");
+            delElem.appendChild(deleteAnchor);
+            list.appendChild(delElem);
+        }
+
         contextMenusHolder.appendChild(list);
     }
+
+    function  onDeleteSuccess(){
+        nodeToBeDeleted.remove();
+        var parNode = nodeToBeDeleted.parent;
+        for(var i=0; i< parNode.data.children.length; i++){
+            if(nodeToBeDeleted.data.title == parNode.data.children[i].title){
+                parNode.data.children.splice(i,1);
+            }
+        }
+        alert("Deleted successfully");
+        parNode.activate();
+    }
+
 
     // --- Contextmenu --------------------------------------------------
     function bindContextMenu(span,type) {
@@ -47,30 +71,49 @@ var DynaTree = function(){
                 createList(type,possibleDim);
             }
             $(span).contextMenu({menu: type}, function(action, el, pos) {
-                var name=prompt("Please enter "+action+" name","");
-                if(name != null){
-                    if(name != ""){
-                        parentNode = $.ui.dynatree.getNode(el);
-                        if(parentNode.data.type == "root"){
-                            currentPath = "-1";
-                        }
-                        else{
-                            currentPath = parentNode.data.path+","+ parentNode.data.title;
-                            if(currentPath.indexOf("-1")==0)
-                                currentPath = currentPath.match(/([^,]*),(.*)/)[2];   //To remove -1 root folder
-                        }
+                if(action != "delete"){
+                    var name=prompt("Please enter "+action+" name","");
+                    if(name != null){
+                        if(name != ""){
+                            parentNode = $.ui.dynatree.getNode(el);
+                            if(parentNode.data.type == "root"){
+                                currentPath = "-1";
+                            }
+                            else{
+                                currentPath = parentNode.data.path+","+ parentNode.data.title;
+                                if(currentPath.indexOf("-1")==0)
+                                    currentPath = currentPath.match(/([^,]*),(.*)/)[2];   //To remove -1 root folder
+                            }
 
-                        var flag = isFolder(action);
-                        var prefix=getUrlPrefix(action,"create");
-                        if(action == "Assortment"){
-                            newNode = createAssortmentNode(name,action,currentPath,flag);
-                            TreePresenter.createAssortment(prefix,action,name,currentPath,flag,addNode);
-                        }else{
-                            newNode = createNode(name,action,currentPath,flag);
-                            TreePresenter.createDimension(prefix,action,name,currentPath,flag,addNode);
+                            var flag = isFolder(action);
+                            var prefix=getUrlPrefix(action,"create");
+                            if(action == "Assortment"){
+                                newNode = createAssortmentNode(name,action,currentPath,flag);
+                                TreePresenter.createAssortment(prefix,action,name,currentPath,flag,addNode);
+                            }else{
+                                newNode = createNode(name,action,currentPath,flag);
+                                TreePresenter.createDimension(prefix,action,name,currentPath,flag,addNode);
+                            }
                         }
                     }
+                }else{
+                    nodeToBeDeleted = $.ui.dynatree.getNode(el);
+                    var r=confirm("Are you sure you want to delete "+ nodeToBeDeleted.data.title);
+                    if (r==true)
+                    {
+                        //Send API call to delete the node
+                        var input=new Object();
+                        input.id=nodeToBeDeleted.data.id;
+                        input.name=nodeToBeDeleted.data.title;
+                        input.type=nodeToBeDeleted.data.type;
+                        input.groupId=nodeToBeDeleted.data.groupId;
+                        var prefix=getUrlPrefix(nodeToBeDeleted.data.type,"delete");
+                        TreePresenter.deleteDimension(prefix,nodeToBeDeleted.data.type,input,onDeleteSuccess);
+                    }
+                    else{
+                    }
                 }
+
             });
 
         }
@@ -78,6 +121,12 @@ var DynaTree = function(){
 
     function addNode(data){
         if(data){
+            if((newNode.type !="Chapter"))
+                if(newNode.type !="Page")
+                    if(newNode.type !="Assortment")
+                        newNode = data;
+
+
             parentNode.addChild(newNode).activate();
              var node_expand = parentNode.isExpanded();
              if(node_expand == false)
@@ -96,7 +145,7 @@ var DynaTree = function(){
     function createAssortmentNode(name,type,path,flag){
         var flag = isFolder(type);
         var newNode = {
-            "id": "",
+            "id": name,
             "title": name,
             "type": type,
             "path": path,
@@ -109,7 +158,7 @@ var DynaTree = function(){
     function createNode(name,type,path,flag){
         var flag = isFolder(type);
         var newNode = {
-                        "id": "",
+                        "id": name,
                         "title": name,
                         "type": type,
                         "path": path,
