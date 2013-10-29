@@ -347,7 +347,7 @@ HomePresenter.showAssortmentPanel = function (rendererData) {
 
 
 function removeProduct(indx){
-    event.stopImmediatePropagation();
+    //event.stopImmediatePropagation();
     var removed = $("#subtab1").jqxListBox('removeAt', indx );
 
     if(removed){
